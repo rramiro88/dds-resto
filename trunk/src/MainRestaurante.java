@@ -2,6 +2,8 @@
  * ESTO ES UNA PRUEBA DE SINCRONIZACIÓN CON EL REPOSITORIO DE GOOGLE CODES
  * */
 
+//	Esta es una subida y cambios realizados desde una bajada y subida desde otra pc	-	BORRAR
+
 import java.io.*;
 import java.util.Vector;
 

@@ -1,4 +1,5 @@
-//	Esta es una subida y cambios realizados desde una bajada y subida desde otra pc	-	BORRAR
+//	Esta es una subida y cambios realizados desde una 
+//	bajada y subida desde otra pc	-	BORRAR
 
 public class Mozo {
 	private String nombre;

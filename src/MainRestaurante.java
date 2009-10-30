@@ -143,7 +143,7 @@ public class MainRestaurante {
 		try	{
 			char s = (char)reader.read();
 		  	switch (s){
-			  	case '1' : {this.abrirComanda();
+			  	case '1' : {this.abrirMesa();
 			  	break;
 			  	}
 			  	case '2' : {this.agregarItemComanda();
@@ -170,7 +170,11 @@ public class MainRestaurante {
 	  **/
 	
 	
-	public void abrirComanda (){
+	//Se llamaba abrirComanda() en la primer entrega. Creo que abrirMesa es más claro.
+	//Lo que hace, si están dadas las condiciones, es llamar a restaurante.abrirMesa(m)
+	//que creará la comanda activa para esa mesa. La comanda es el todo, los pedidos que
+	//se van realizando son items de comanda.
+	public void abrirMesa (){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println(" ");
 		System.out.println("Ingrese la mesa a iniciarle una comanda");
@@ -182,7 +186,7 @@ public class MainRestaurante {
 			if (m != null){
 				if (m.isHabilitada()){
 					if (! m.isOcupada()){
-						restaurante.arrancarLaMesa(m);
+						restaurante.abrirMesa(m);
 						
 						//Comanda c = m.abrirMesa();
 						//comandas.add(c);	
@@ -204,39 +208,28 @@ public class MainRestaurante {
 	
 	public void agregarItemComanda(){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println(" ");
-		System.out.println("Ingrese la mesa: ");
+		
+		
 		int nroMesa;
 		//String nroItemCarta;
 		int nroItemCarta;
 		int cant;
 		try {
+			System.out.println(" ");
+			System.out.println("Ingrese la mesa: ");
 			nroMesa = Integer.parseInt(reader.readLine());
 			
 			System.out.println(" ");
 			System.out.println("Ingrese el numero del Item/Menu: ");
-			
 			nroItemCarta = Integer.parseInt(reader.readLine());
 			
 			//nroItemCarta = reader.readLine();
 			
 			System.out.println(" ");
 			System.out.println("Ingrese la Cantidad: ");
-			
 			cant = Integer.parseInt(reader.readLine());
 			
-			Mesa m = restaurante.buscarMesa(nroMesa);
-			if ((m != null) && (m.isOcupada())){
-				ItemDeCarta itemCarta = restaurante.buscarItemDeCarta(nroItemCarta);
-				if ((itemCarta != null) && itemCarta.esPreparable(cant)){
-					m.agregarItemComanda(cant, itemCarta);
-				}else{
-					System.out.println("No existe el item de carta " + nroItemCarta);
-				}
-			}else{
-				System.out.println("No existe la mesa " + nroMesa + " o no esta ocuapada");
-			}
-			System.out.println("Agregado OK");
+			restaurante.agregarItemComanda(nroMesa,nroItemCarta,cant);
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -443,63 +436,47 @@ public class MainRestaurante {
 	public void pagarMozos(){
 		System.out.println(" ");
 		System.out.println("Le pagamos a los mozos");
-		int cantMozos = restaurante.mozosTotales();
-		Vector <Mozo> moz = restaurante.getMozos();
-		for (int j=0;j<cantMozos;j++)
-		{
-			float totalMozo = 0;
-			//Mozo mozo = restaurante.buscarMozo(j);
-			Mozo mozo = moz.elementAt(j);
-			if (mozo != null){
-				Vector<Comanda> comandasMozo = restaurante.buscarComandasMozo(mozo);
-				if (comandasMozo != null){
-					for (int i=0; i<comandasMozo.size(); i++){
-						totalMozo = totalMozo + comandasMozo.elementAt(i).getTotal();
-					}
-					totalMozo = totalMozo * (1 + mozo.getComision()); 
-					//return totalMozo * (1 + mozo.getComision()); 
-				}
-			}
-			System.out.println("Mozo: " +mozo.getNombre());
-			System.out.println("A pagar: " +totalMozo);
-			System.out.println(" ");
-		}	
+		restaurante.pagarMozos();
+	
 		menuAdministracion();
 	}
 	
+	
 	public void modificarComisionMozo (){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println(" ");
-		System.out.println("Ingrese el Numero de mozo: ");
 		int id;
 		float comision;
 		try {
+			System.out.println(" ");
+			System.out.println("Ingrese el Numero de mozo: ");
 			id = Integer.parseInt(reader.readLine());
+			
 			System.out.println(" ");
 			System.out.println("Ingrese la comision: ");
 			comision = Float.parseFloat(reader.readLine());
 			
-			Mozo m = restaurante.buscarMozo(id);
-			m.setComision(comision);
+			restaurante.modificarComisionMozo(id, comision);
 		}
 		catch (Exception e)	{
 		}
 		menuAdministracion();
 	}
 	
+	
 	public void modificarNombreMozo (){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println(" ");
-		System.out.println("Ingrese el Numero de mozo: ");
 		int id;
-		//float comision;
+
 		try {
+			System.out.println(" ");
+			System.out.println("Ingrese el Numero de mozo: ");
 			id = Integer.parseInt(reader.readLine());
 			System.out.println(" ");
 			System.out.println("Ingrese el nuevo nombre: ");
 			String nombre = reader.readLine();
-			Mozo m = restaurante.buscarMozo(id);
-			m.setNombre(nombre);
+			
+			restaurante.modificarNombreMozo(id,nombre);
+			
 		}
 		catch (Exception e)	{
 		}

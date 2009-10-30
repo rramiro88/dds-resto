@@ -32,4 +32,17 @@ public class Carta {
 	public void eliminarItemCarta (ItemDeCarta itdc){
 		this.itemsCarta.remove(itdc);
 	}
+
+	public ItemDeCarta buscarItemDeCarta (int nro){
+ 		for (int i=0; i<itemsCarta.size(); i++){
+			ItemDeCarta idecarta = itemsCarta.elementAt(i);
+			if (idecarta.getNroItem() == nro){
+				System.out.println("item existente");
+				return idecarta;
+			}
+		}
+		System.out.println("item NO existe");
+ 		return null;
+	}
+
 }

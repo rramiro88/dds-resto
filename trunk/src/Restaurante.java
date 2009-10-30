@@ -11,8 +11,8 @@ public class Restaurante {
 	private Vector <Producto> productos;
 
 	private boolean mesasAsignadas;
-
 	private boolean open;
+	private Carta cartaActiva;
 
 	public Restaurante (){
 		itemsCarta = new Vector <ItemDeCarta>();
@@ -56,6 +56,13 @@ public class Restaurante {
 	}
 	public void setOpen(boolean open) {
 		this.open = open;
+	}
+
+	public Carta getCartaActiva() {
+		return cartaActiva;
+	}
+	public void setCartaActiva(Carta cartaActiva) {
+		this.cartaActiva = cartaActiva;
 	}
 
 //	Metodos que operan con platos o bebidas (Items De Carta)
@@ -183,7 +190,7 @@ public class Restaurante {
 			Vector <ItemDeCarta> it = letter.getItemsCarta();
 			System.out.println("");
 			System.out.println("Nombre: "+ letter.getDia());
-			System.out.println("Activa: "+ letter.isHabilitada());
+//			System.out.println("Activa: "+ letter.isHabilitada());
 			System.out.println("");
 			for (int i=0; i<it.size(); i++){
 				ItemDeCarta car = it.elementAt(i);

@@ -2,12 +2,12 @@ import java.util.Vector;
 
 public class Carta {
 	private String dia;
-	private boolean habilitada;
+//	private boolean habilitada;
 	private Vector <ItemDeCarta> itemsCarta;
 
 	public Carta (String day){
 		this.dia = day;
-		this.habilitada = false;
+//		this.habilitada = false;
 		itemsCarta = new Vector <ItemDeCarta>();
 	}
 
@@ -16,13 +16,6 @@ public class Carta {
 	}
 	public void setDia(String dia) {
 		this.dia = dia;
-	}
-
-	public boolean isHabilitada() {
-		return habilitada;
-	}
-	public void setHabilitada(boolean habilitada) {
-		this.habilitada = habilitada;
 	}
 
 	public Vector<ItemDeCarta> getItemsCarta() {

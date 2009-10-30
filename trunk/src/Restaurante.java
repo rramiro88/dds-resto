@@ -3,11 +3,9 @@ import java.util.Vector;
 public class Restaurante {
 	private Vector <ItemDeCarta> itemsCarta;
 	private Vector <Carta> cartas;
-	
 	private Vector<Mozo> mozos;
 	private Vector<Comanda> comandas;
 	private Vector<Mesa> mesas;
-	
 	private Vector <Proveedor> proveedores;
 	private Vector <OrdenDeCompra> ordenesCompra;
 	private Vector <Producto> productos;
@@ -362,7 +360,7 @@ public class Restaurante {
 		mesas.elementAt(mesa).setHabilitada();
 	}
 	
-	public Mozo buscarMozo(int id){
+	private Mozo buscarMozo(int id){
 		int i = 0;
 		while (i < mozos.size()){
 			Mozo m = mozos.elementAt(i);
@@ -375,7 +373,7 @@ public class Restaurante {
 		return null;	
 	}
 	
-	public Vector<Comanda> buscarComandasMozo(Mozo mozo){
+	private Vector<Comanda> buscarComandasMozo(Mozo mozo){
 		Vector<Comanda> comandasMozo = new Vector<Comanda>();
 		for (int i = 0; i<comandas.size(); i++){
 			if (comandas.elementAt(i).getMozo().equals(mozo)){
@@ -385,6 +383,21 @@ public class Restaurante {
 		return comandasMozo;
 	}
 	
+	
+	public void modificarComisionMozo(int id, float comision){
+		Mozo m = buscarMozo(id);
+		if (m != null)
+			m.setComision(comision);
+	}
+	
+	
+	public void modificarNombreMozo(int id, String nombre){
+		Mozo m = buscarMozo(id);
+		if (m != null)
+			m.setNombre(nombre);
+	}
+	
+	
 	public void bajaDeMozo (int idMozo){
 		Mozo garzon = buscarMozo(idMozo);
 		if (garzon != null){
@@ -393,6 +406,29 @@ public class Restaurante {
 		}
 	}
 	
+	
+	public void pagarMozos(){
+		int cantMozos = mozosTotales();
+		//Vector <Mozo> moz = getMozos();
+		for (int j=0;j<cantMozos;j++)
+		{
+			float totalMozo = 0;
+			//Mozo mozo = restaurante.buscarMozo(j);
+			Mozo mozo = mozos.elementAt(j);
+			if (mozo != null){
+				Vector<Comanda> comandasMozo = buscarComandasMozo(mozo);
+				if (comandasMozo != null){
+					for (int i=0; i<comandasMozo.size(); i++){
+						totalMozo = totalMozo + comandasMozo.elementAt(i).getTotal();
+					}
+					totalMozo = totalMozo * (1 + mozo.getComision()); 
+				}
+			}
+			System.out.println("Mozo: " +mozo.getNombre());
+			System.out.println("A pagar: " +totalMozo);
+			System.out.println(" ");
+		}
+	}
 	
 //	Metodos que operan con Mesas
 //	-------------------------------------------------------------
@@ -446,10 +482,27 @@ public class Restaurante {
 		return null;
 	}
 	
-	public void arrancarLaMesa (Mesa m){
+	public void abrirMesa (Mesa m){
 		Comanda c = m.abrirMesa();
 		comandas.add(c);	
 	}
+	
+	
+	public void agregarItemComanda(int nroMesa, int nroItemCarta, int cant){
+		Mesa m = buscarMesa(nroMesa);
+		if ((m != null) && (m.isOcupada())){
+			ItemDeCarta itemCarta = buscarItemDeCarta(nroItemCarta);
+			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
+				m.agregarItemComanda(cant, itemCarta);
+			}else{
+				System.out.println("No existe el item de carta " + nroItemCarta);
+			}
+		}else{
+			System.out.println("No existe la mesa " + nroMesa + " o no esta ocuapada");
+		}
+		System.out.println("Agregado OK");
+	}
+	
 	
 	public void bajaDeMesa(int id){
 		Mesa table = buscarMesa(id);
@@ -461,7 +514,7 @@ public class Restaurante {
 
 //	Metodos que operan con Proveedores
 //	-------------------------------------------------------------
-	 public Proveedor buscarProveedor (int cuit){
+	 private Proveedor buscarProveedor (int cuit){
 	 	for (int i=0; i<proveedores.size(); i++){
 	 		Proveedor prov = proveedores.elementAt(i);
 			if (prov.getCuit()==(cuit)){

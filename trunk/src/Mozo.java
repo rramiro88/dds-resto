@@ -1,11 +1,11 @@
-//	Esta es una subida y cambios realizados desde una 
-//	bajada y subida desde otra pc	-	BORRAR
+//	Revisar ¿que es liquidacion?, 
+//	No queda claro como se setea y se modifica.
 
 public class Mozo {
 	private String nombre;
 	private int idMozo;
 	private float comision; //o la guardamos como entero
-	private float liquidacion;
+	private float liquidacion;	//leer comentario arriba de todo
 	private boolean habilitado = false;
 	
 	public Mozo (String nombre, int idMozo, float comision)

@@ -9,20 +9,29 @@ public class Restaurante {
 	private Vector <Proveedor> proveedores;
 	private Vector <OrdenDeCompra> ordenesCompra;
 	private Vector <Producto> productos;
-
 	private boolean mesasAsignadas;
 	private boolean open;
 	private Carta cartaActiva;
+	static private Restaurante restaurante = null;
 
-	public Restaurante (){
+	
+	private Restaurante (){
 		itemsCarta = new Vector <ItemDeCarta>();
 		cartas = new Vector <Carta>();
 		productos = new Vector <Producto>();
-		
 		mozos = new Vector <Mozo> ();
 		comandas = new Vector <Comanda> ();
 		mesas = new Vector <Mesa> ();
 	}
+	
+	
+	static public Restaurante getRestaurante(){
+		if (restaurante == null){
+			restaurante = new Restaurante();
+		}
+		return restaurante;
+	}
+	
 	
 	public Vector<ItemDeCarta> getItemsCarta() {
 		return itemsCarta;

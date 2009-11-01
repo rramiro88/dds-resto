@@ -14,7 +14,7 @@ public class MainRestaurante {
 //	-------------------------------------------------------------
 	public MainRestaurante(){
 		super();
-		restaurante = new Restaurante();
+		//restaurante = new Restaurante();
 	}
 	public void setRestaurante(Restaurante newRestaurante) {
 		restaurante = newRestaurante;

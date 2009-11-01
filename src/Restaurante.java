@@ -99,6 +99,7 @@ public class Restaurante {
 		System.out.println("item NO existe");
  		return null;
 	}
+	
 
 	public void altaDePlato (String nombre, float precio){
 		ItemDeCarta itemc = buscarItemDeCarta(nombre);
@@ -507,11 +508,11 @@ public class Restaurante {
 	public void agregarItemComanda(int nroMesa, int nroItemCarta, int cant){
 		Mesa m = buscarMesa(nroMesa);
 		if ((m != null) && (m.isOcupada())){
-			ItemDeCarta itemCarta = buscarItemDeCarta(nroItemCarta);
+			ItemDeCarta itemCarta = cartaActiva.buscarItemDeCarta(nroItemCarta);
 			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
 				m.agregarItemComanda(cant, itemCarta);
 			}else{
-				System.out.println("No existe el item de carta " + nroItemCarta);
+				System.out.println("En la carta del día no existe el ítem " + nroItemCarta);
 			}
 		}else{
 			System.out.println("No existe la mesa " + nroMesa + " o no esta ocuapada");

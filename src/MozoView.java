@@ -1,18 +1,17 @@
-//	Esta es una subida y cambios realizados desde una 
-//	bajada y subida desde otra pc	-	BORRAR
+import java.util.Vector;
 
 public class MozoView {
 	private String nombre;
 	private int idMozo;
 	private float comision; //o la guardamos como entero
 	private float liquidacion;
-	private boolean habilitado = false;
+	//private boolean habilitado = false;
 	
-	public MozoView (String nombre, int idMozo, float comision)
+	public MozoView (int idMozo, String nombre, float comision)
 	{
 		super();
-		this.nombre = nombre;
 		this.idMozo = idMozo;
+		this.nombre = nombre;	
 		this.comision = comision;
 	}
 	
@@ -35,8 +34,8 @@ public class MozoView {
 		return comision;
 	}
 
-	public boolean getHabilitado (){
+/*	public boolean getHabilitado (){
 		return habilitado;
 	}
-	
+*/
 }

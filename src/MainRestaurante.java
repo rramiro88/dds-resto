@@ -1,9 +1,3 @@
-/*
- * ESTO ES UNA PRUEBA DE SINCRONIZACIÓN CON EL REPOSITORIO DE GOOGLE CODES
- * */
-
-//	Esta es una subida y cambios realizados desde una bajada y subida desde otra pc	-	BORRAR
-
 import java.io.*;
 import java.util.Vector;
 
@@ -483,6 +477,7 @@ public class MainRestaurante {
 		menuAdministracion();
 	}
 	
+	
 	public void altaMozo (){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
@@ -491,12 +486,12 @@ public class MainRestaurante {
 			System.out.println("---------------");
 			System.out.print("Nombre del Mozo: ");
 			String nombre = reader.readLine();
-			System.out.print("Ingrese idMozo: ");
-			int idMozo = Integer.parseInt(reader.readLine());
+			/*System.out.print("Ingrese idMozo: ");
+			int idMozo = Integer.parseInt(reader.readLine());*/
 			System.out.print("Ingrese Comision: ");
 			float comision = Float.parseFloat(reader.readLine());
-			restaurante.altaDeMozo(nombre, idMozo, comision);
-			
+			//restaurante.altaDeMozo(nombre, idMozo, comision);
+			restaurante.altaDeMozo(nombre, comision);
 		}
 		catch (Exception e)	{
 		}

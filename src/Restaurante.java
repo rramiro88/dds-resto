@@ -340,7 +340,13 @@ public class Restaurante {
 		return (mozos.size());
 	}
 	
-	public void altaDeMozo (String nombre, int idMozo, float comision){
+	
+	public void altaDeMozo (String nombre, float comision){
+		Mozo mozo = new Mozo (nombre, comision);
+		mozos.add(mozo);
+	}
+	
+	/*
 		Mozo mozoNuevo = buscarMozo(idMozo);
 		if (mozoNuevo == null){
 			Mozo pibenuevo = new Mozo (nombre, idMozo, comision);
@@ -350,7 +356,7 @@ public class Restaurante {
 			System.out.println("El id de Mozo ya existe.");
 		}
 	}
-	
+	*/
 	public void habilitarMozo (int idMozo){
 		Mozo mozoHab = buscarMozo(idMozo);
 		if (mozoHab != null){
@@ -446,6 +452,16 @@ public class Restaurante {
 			System.out.println(" ");
 		}
 	}
+	
+	public Vector<MozoView> getMozosView(){
+		Vector mv = new Vector();
+		for (int i= 0; i < mozos.size(); i++)
+		{
+			mv.add(((Mozo)mozos.elementAt(i)).toVector());
+		}
+		return mv;
+	}
+	
 	
 //	Metodos que operan con Mesas
 //	-------------------------------------------------------------

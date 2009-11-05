@@ -7,6 +7,7 @@ public abstract class ItemDeCartaView {
 	boolean disponible;
 	private int nroItem;
 	private static int ultimoNroItem = 0;
+	static final String[] encabezados = {"Nombre", "Precio", "Habilitar"};
 
 	
 //	Constructor de instancia ItemDeCarta
@@ -36,6 +37,27 @@ public abstract class ItemDeCartaView {
 	}
 	public Vector<Ingrediente> getIngredientes() {
 		return ingredientes;
+	}
+	
+	/* En el form de Alta de Carta queremos que se pueda dar un nombre y 
+	 * seleccionar los ítem que la compondrán. Entonces hay que mostrar todos los
+	 * items existentes y permitir darlos de alta para esa carta.
+	 * Ver como manejamos eso en una tabla
+	 */
+	static public Vector getEncabezados() {
+		Vector v = new Vector();
+		for (int i=0; i<encabezados.length; i++){
+			v.add(encabezados[i]);
+		}
+		return v;
+	}
+	
+	public Vector toVector()
+	{
+		Vector v = new Vector();
+		v.add(name);
+		v.add(price);
+		return v;
 	}
 	
 }

@@ -79,27 +79,10 @@ public class FormAltaMozo extends javax.swing.JFrame {
 				jScrollPane1 = new JScrollPane();
 				{
 					Vector datos = Restaurante.getRestaurante().getMozosView();
-					Vector headers = new Vector();
-					headers.add("ID");
-					headers.add("Nombre");
-					headers.add("Comision");
-
-					//Vector<MozoView> columnas = new Vector<MozoView>();
-					//columnas.add("ID");
-					//columnas.add("Nombre");
-					//columnas.add("Comision");
-					
-					//TableModel jTable1Model = new DefaultTableModel(datos, columnas);
-					
-					
-					/*TableModel jTable1Model = 
-						new DefaultTableModel(
-								new String[][] { { "1", "Pepe Sanchez", "1.05" }, { "5", "Jose Velez", "1.10" } },
-								new String[] { "ID", "Nombre", "Comision" }); */
-					
-					jTable1 = new JTable(datos,headers);
+					TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
+					jTable1 = new JTable();
 					jScrollPane1.setViewportView(jTable1);
-					//jTable1.setModel(jTable1Model);
+					jTable1.setModel(dtm);
 				}
 			}
 			{
@@ -205,12 +188,8 @@ public class FormAltaMozo extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt) {
 					Restaurante.getRestaurante().altaDeMozo(jTextField2.getText(), Float.parseFloat(jTextField3.getText()));
 					Vector datos = Restaurante.getRestaurante().getMozosView();
-					Vector headers = new Vector();
-					headers.add("ID");
-					headers.add("Nombre");
-					headers.add("Comisión");
-					TableModel jTable1Model = new DefaultTableModel(datos, headers);
-					jTable1.setModel(jTable1Model);
+					TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
+					jTable1.setModel(dtm);
 					jTextField2.setText("");
 					jTextField3.setText("");
 				}

@@ -453,7 +453,7 @@ public class Restaurante {
 		}
 	}
 	
-	public Vector<MozoView> getMozosView(){
+ 	public Vector getMozosView(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mozos.size(); i++)
 		{
@@ -461,7 +461,7 @@ public class Restaurante {
 		}
 		return mv;
 	}
-	
+		
 	
 //	Metodos que operan con Mesas
 //	-------------------------------------------------------------

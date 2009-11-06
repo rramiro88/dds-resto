@@ -1,3 +1,5 @@
+import java.util.Vector;
+
 
 public class Proveedor {
 	private String razonsocial;
@@ -8,6 +10,13 @@ public class Proveedor {
 		this.razonsocial = razonsocial;
 		this.domicilio = domicilio;
 		this.cuit = cuit;
+	}
+	
+	public Vector toVector()
+	{
+		Vector v = new Vector();
+		v.add(razonsocial);
+		return v;
 	}
 
 	public String getRazonsocial() {

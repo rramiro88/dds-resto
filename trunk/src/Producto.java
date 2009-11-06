@@ -1,3 +1,5 @@
+import java.util.Vector;
+
 
 public class Producto {
 	private String nombre;
@@ -5,7 +7,7 @@ public class Producto {
 	private float puntoped;
 	private float puntoreab;
 	private Proveedor proveedor;
-	private boolean isDisponible;
+	//private boolean isDisponible;
 	
 	public Producto (String name, float canti, float puntop, float puntor, Proveedor prov){
 		this.nombre = name;
@@ -13,7 +15,18 @@ public class Producto {
 		this.puntoped = puntop;
 		this.puntoreab = puntor;
 		this.proveedor = prov;
-		this.isDisponible = true;
+		//this.isDisponible = true;
+	}
+	
+	public Vector toVector()
+	{
+		Vector v = new Vector();
+		v.add(nombre);
+		v.add(cantidad);
+		v.add(puntoped);
+		v.add(puntoreab);
+		v.add(proveedor.getRazonsocial());
+		return v;
 	}
 
 	public String getNombre() {
@@ -51,12 +64,12 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 
-	public boolean isDisponible() {
+	/*public boolean isDisponible() {
 		return isDisponible;
 	}
 	public void setDisponible(boolean isDisponible) {
 		this.isDisponible = isDisponible;
-	}
+	}*/
 
 	public boolean esReducible(float cantidadTotal){
 		if (this.cantidad - cantidadTotal>=0){

@@ -225,10 +225,10 @@ public class Restaurante {
  		return null;
 	}
 	
-	public void altaDeProducto (String materia, float cantidad, float pedido, float reab, Proveedor prov){
-		Producto prod = buscarProducto(materia);
+	public void altaDeProducto (String nombre, float cantidad, float pedido, float reab, Proveedor prov){
+		Producto prod = buscarProducto(nombre);
 		if (prod == null){
-			prod = new Producto(materia, cantidad, pedido, reab, prov);
+			prod = new Producto(nombre, cantidad, pedido, reab, prov);
 			productos.add(prod);
 			System.out.println("Producto creado con exito.");
 		}
@@ -262,6 +262,30 @@ public class Restaurante {
 			prod.setCantidad(nuevaCantidad);
 		}
 	}
+	
+	public Vector getProductosView(){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < productos.size(); i++)
+		{
+			mv.add(((Producto)productos.elementAt(i)).toVector());
+		}	
+		return mv;
+	}
+	
+//	Metodos que operan con Ordenes de Compra
+//	-------------------------------------------------------------
+	
+	public Vector getProveedoresView(){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < proveedores.size(); i++)
+		{
+			mv.add(((Proveedor)proveedores.elementAt(i)).toVector());
+		}
+		//Borrar luego de pruebas
+		mv.add("Carnicería La Vaca Loca");
+		return mv;
+	}
+	
 
 //	Metodos que operan con Ordenes de Compra
 //	-------------------------------------------------------------
@@ -310,12 +334,15 @@ public class Restaurante {
 		}
 	}
 	
+	// ****************************
+	// ***** revisar todo esto. falta controlar si hay que pedirlo o no al producto.
+	// ****************************
 	public void cargarOrdenCompra (int nro){
 		OrdenDeCompra ord = buscarOrden (nro);
 		if (ord != null){
 			for (int i=0; i<productos.size();i++){
 				Producto prod = productos.elementAt(i);
-				if (!prod.isDisponible() && prod.getProveedor().equals(ord.getProveedor())){
+				if (prod.getProveedor().equals(ord.getProveedor())){
 					ord.cargarItemPedido(prod);
 				}
 			}

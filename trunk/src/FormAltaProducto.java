@@ -117,8 +117,6 @@ public class FormAltaProducto extends javax.swing.JFrame {
 				txtPtoRefill.setBounds(223, 78, 86, 21);
 			}
 			{
-				
-				
 				cmbProveedores = new JComboBox(Restaurante.getRestaurante().getProveedoresViewVector());
 				/*Vector vpv = Restaurante.getRestaurante().getProveedoresView();
 				for (int i=0; i<vpv.size(); i++){

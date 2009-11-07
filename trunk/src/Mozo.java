@@ -6,7 +6,7 @@ public class Mozo {
 	private int comision; //o la guardamos como entero
 	private float liquidacion;	//ultima liquidacion de esta mozo (lo que hay que pagarle)
 	private boolean habilitado = false;
-	private static int ultimoMozo = 0;
+	private static int ultimoMozo = 100;
 	
 	public Mozo (String nombre, int comision)
 	{

@@ -37,14 +37,14 @@ public class Ingrediente {
 //	Metodos con productos - preparar plato o bebida	
 //	-------------------------------------------------------------	
 	public boolean esSuficiente(float cantidadTotal){
-		if (!producto.esReducible(cantidadTotal)){
-			return false;
+		if (producto.getCantidad()>=cantidadTotal){
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public void usar(float cantidadTotal){
-		this.producto.reducirCantidad(cantidadTotal);
+		this.producto.setCantidad(producto.getCantidad()-cantidadTotal);
 	}
 		
 }

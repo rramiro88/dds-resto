@@ -4,12 +4,12 @@ import java.util.Vector;
 public class Producto {
 	private String nombre;
 	private float cantidad;
-	private float puntoped;
-	private float puntoreab;
+	private int puntoped;
+	private int puntoreab;
 	private Proveedor proveedor;
 	//private boolean isDisponible;
 	
-	public Producto (String name, float canti, float puntop, float puntor, Proveedor prov){
+	public Producto (String name, int canti, int puntop, int puntor, Proveedor prov){
 		this.nombre = name;
 		this.cantidad = canti;
 		this.puntoped = puntop;
@@ -43,17 +43,17 @@ public class Producto {
 		this.cantidad = cantidad;
 	}
 
-	public float getPuntoped() {
+	public int getPuntoped() {
 		return puntoped;
 	}
-	public void setPuntoped(float puntoped) {
+	public void setPuntoped(int puntoped) {
 		this.puntoped = puntoped;
 	}
 
-	public float getPuntoreab() {
+	public int getPuntoreab() {
 		return puntoreab;
 	}
-	public void setPuntoreab(float puntoreab) {
+	public void setPuntoreab(int puntoreab) {
 		this.puntoreab = puntoreab;
 	}
 
@@ -69,9 +69,9 @@ public class Producto {
 	}
 	public void setDisponible(boolean isDisponible) {
 		this.isDisponible = isDisponible;
-	}*/
-
-	public boolean esReducible(float cantidadTotal){
+	}
+	
+	public boolean esReducible(int cantidadTotal){
 		if (this.cantidad - cantidadTotal>=0){
 			return true;
 		}
@@ -81,5 +81,5 @@ public class Producto {
 	public void reducirCantidad(float cantidadTotal){
 		this.setCantidad(this.cantidad - cantidadTotal);
 	}
-	
+*/	
 }

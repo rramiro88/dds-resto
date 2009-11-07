@@ -2,32 +2,24 @@ import java.util.Vector;
 
 public class Mozo {
 	private String nombre;
-	private int idMozo;
+	private int id;
 	private int comision; //o la guardamos como entero
 	private float liquidacion;	//ultima liquidacion de esta mozo (lo que hay que pagarle)
 	private boolean habilitado = false;
 	private static int ultimoMozo = 0;
 	
-	/*
-	public Mozo (String nombre, int idMozo, float comision)
-	{
-		super();
-		this.nombre = nombre;
-		this.idMozo = idMozo;
-		this.comision = comision;
-	}
-	*/
-	
 	public Mozo (String nombre, int comision)
 	{
 		super();
 		this.nombre = nombre;
-		this.idMozo = ++ultimoMozo;
+		this.id = ++ultimoMozo;
 		this.comision = comision;
+		this.liquidacion = 0;
+		this.habilitado = true;
 	}
 	
 	public MozoView getMozoView(){
-		MozoView mv = new MozoView(idMozo, nombre, comision);
+		MozoView mv = new MozoView(id, nombre, comision);
 		return mv;
 	}
 	
@@ -36,9 +28,9 @@ public class Mozo {
 		return nombre;
 	}
 	
-	public int getIdMozo()
+	public int getId()
 	{
-		return idMozo;
+		return id;
 	}
 	
 	public float getLiquidacion()

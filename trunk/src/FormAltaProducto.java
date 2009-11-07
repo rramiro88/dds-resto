@@ -118,16 +118,13 @@ public class FormAltaProducto extends javax.swing.JFrame {
 			}
 			{
 				
-				/*ComboBoxModel cmbProveedoresModel = 
-					new DefaultComboBoxModel(
-							new String[] { "Item One", "Item Two" });*/
-				cmbProveedores = new JComboBox();
-				Vector vpv = Restaurante.getRestaurante().getProveedoresView();
+				
+				cmbProveedores = new JComboBox(Restaurante.getRestaurante().getProveedoresViewVector());
+				/*Vector vpv = Restaurante.getRestaurante().getProveedoresView();
 				for (int i=0; i<vpv.size(); i++){
 					cmbProveedores.addItem(vpv.elementAt(i).toString());
-				}
+				}*/
 				getContentPane().add(cmbProveedores);
-				//cmbProveedores.setModel(cmbProveedoresModel);
 				cmbProveedores.setBounds(223, 101, 237, 21);
 			}
 			{
@@ -159,7 +156,8 @@ public class FormAltaProducto extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt) {
 					try{
 						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(1,12);
-						Restaurante.getRestaurante().altaDeProductoFromView(txtNombre.getText(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtPtoPedido.getText()), Integer.parseInt(txtPtoRefill.getText()), sProveedor); 
+						Restaurante.getRestaurante().altaDeProductoFromView(txtNombre.getText(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtPtoPedido.getText()), Integer.parseInt(txtPtoRefill.getText()), sProveedor);
+						JOptionPane.showMessageDialog(null, "Producto creado con exito.", "Alta de Producto", JOptionPane.INFORMATION_MESSAGE);
 						txtNombre.setText("");
 						txtCantidad.setText("");
 						txtPtoPedido.setText("");

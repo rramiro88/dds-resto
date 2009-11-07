@@ -25,6 +25,8 @@ public class Restaurante {
 		proveedores = new Vector <Proveedor>();
 		
 		// Para usar en la prueba y borrar !!!!
+		altaDeMozo("Cacho Garay", 15);
+		altaDeMozo("Cacho Buenaventua", 20);
 		altaDeProveedor("99999999995", "La Vaca Loca", "Lavalle 111");
 		altaDeProveedor("21636582139", "La Botilleria de Jose", "Alsina 888");
 		Proveedor prov = buscarProveedor("99999999995");
@@ -280,11 +282,20 @@ public class Restaurante {
 		}
 	}
 	
-	public Vector getProductosView(){ 
+	public Vector<ProductoView> getProductosView(){ 
+		Vector<ProductoView> mv = new Vector<ProductoView>();
+		for (int i= 0; i < productos.size(); i++)
+		{
+			mv.add(productos.elementAt(i).getProductoView());
+		}	
+		return mv;
+	}
+	
+	public Vector getProductosViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < productos.size(); i++)
 		{
-			mv.add(((Producto)productos.elementAt(i)).toVector());
+			mv.add(((Producto)productos.elementAt(i)).getProductoView().toVector());
 		}	
 		return mv;
 	}
@@ -292,11 +303,20 @@ public class Restaurante {
 //	Metodos que operan con vectores view
 //	-------------------------------------------------------------
 	
-	public Vector getProveedoresView(){ 
+	public Vector getProveedoresViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < proveedores.size(); i++)
 		{
 			mv.add(proveedores.elementAt(i).getProveedorView().toVector());
+		}
+		return mv;
+	}
+	
+	public Vector<ProveedorView> getProveedoresView(){ 
+		Vector<ProveedorView> mv = new Vector<ProveedorView>();
+		for (int i= 0; i < proveedores.size(); i++)
+		{
+			mv.add(proveedores.elementAt(i).getProveedorView());
 		}
 		return mv;
 	}
@@ -386,6 +406,7 @@ public class Restaurante {
 	public void altaDeMozo (String nombre, int comision){
 		Mozo mozo = new Mozo (nombre, comision);
 		mozos.add(mozo);
+		System.out.println("Mozo creado con exito.");
 	}
 	
 	/*
@@ -429,7 +450,7 @@ public class Restaurante {
 		int i = 0;
 		while (i < mozos.size()){
 			Mozo m = mozos.elementAt(i);
-			if (m.getIdMozo() == id)
+			if (m.getId() == id)
 				return m;
 			else
 				i++;
@@ -449,17 +470,24 @@ public class Restaurante {
 	}
 	
 	
-	public void modificarComisionMozo(int id, int comision){
+	/*public void modificarComisionMozo(int id, int comision){
 		Mozo m = buscarMozo(id);
 		if (m != null)
 			m.setComision(comision);
 	}
 	
-	
 	public void modificarNombreMozo(int id, String nombre){
 		Mozo m = buscarMozo(id);
 		if (m != null)
 			m.setNombre(nombre);
+	}*/
+	
+	public void modificarMozo(int id, String nombre, int comision){
+		Mozo m = buscarMozo(id);
+		if (m != null){
+			m.setNombre(nombre);
+			m.setComision(comision);
+		}
 	}
 	
 	
@@ -495,7 +523,7 @@ public class Restaurante {
 		}
 	}
 	
- 	public Vector getMozosView(){ 
+ 	public Vector getMozosViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mozos.size(); i++)
 		{
@@ -504,6 +532,15 @@ public class Restaurante {
 		return mv;
 	}
 		
+ 	public Vector<MozoView> getMozosView(){ 
+		Vector<MozoView> mv = new Vector<MozoView>();
+		for (int i= 0; i < mozos.size(); i++)
+		{
+			mv.add(mozos.elementAt(i).getMozoView());
+		}
+		return mv;
+	}
+ 	
 	
 //	Metodos que operan con Mesas
 //	-------------------------------------------------------------

@@ -2,16 +2,16 @@ import java.util.Vector;
 
 public class MozoView {
 	private String nombre;
-	private int idMozo;
+	private int id;
 	private int comision;
 	private float liquidacion;
 	static final String[] encabezados = {"ID", "Nombre", "Comision"};
 	//private boolean habilitado = false;
 	
-	public MozoView (int idMozo, String nombre, int comision)
+	public MozoView (int id, String nombre, int comision)
 	{
 		super();
-		this.idMozo = idMozo;
+		this.id = id;
 		this.nombre = nombre;	
 		this.comision = comision;
 	}
@@ -19,7 +19,7 @@ public class MozoView {
 	public Vector toVector()
 	{
 		Vector v = new Vector();
-		v.add(idMozo);
+		v.add(id);
 		v.add(nombre);
 		v.add(comision);
 		return v;
@@ -38,9 +38,9 @@ public class MozoView {
 		return nombre;
 	}
 	
-	public int getIdMozo()
+	public int getId()
 	{
-		return idMozo;
+		return id;
 	}
 	
 /*	public float getLiquidacion()
@@ -48,12 +48,7 @@ public class MozoView {
 		return liquidacion;
 	}
 */
-	public float getComision() {
+	public int getComision() {
 		return comision;
 	}
-
-/*	public boolean getHabilitado (){
-		return habilitado;
-	}
-*/
 }

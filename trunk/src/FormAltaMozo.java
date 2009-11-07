@@ -79,7 +79,7 @@ public class FormAltaMozo extends javax.swing.JFrame {
 			{
 				jScrollPane1 = new JScrollPane();
 				{
-					Vector datos = Restaurante.getRestaurante().getMozosView();
+					Vector datos = Restaurante.getRestaurante().getMozosViewVector();
 					TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
 					jTable1 = new JTable();
 					jScrollPane1.setViewportView(jTable1);
@@ -190,7 +190,7 @@ public class FormAltaMozo extends javax.swing.JFrame {
 					try{
 					
 						Restaurante.getRestaurante().altaDeMozo(jTextField2.getText(), Integer.parseInt(jTextField3.getText()));
-						Vector datos = Restaurante.getRestaurante().getMozosView();
+						Vector datos = Restaurante.getRestaurante().getMozosViewVector();
 						TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
 						jTable1.setModel(dtm);
 						jTextField2.setText("");

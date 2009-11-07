@@ -2,11 +2,11 @@ import java.util.Vector;
 
 
 public class Proveedor {
-	private String razonsocial;
+	private String cuit;
 	private String domicilio;
-	private int cuit;
+	private String razonsocial;
 
-	public Proveedor (String razonsocial, String domicilio, int cuit){
+	public Proveedor (String razonsocial, String domicilio, String cuit){
 		this.razonsocial = razonsocial;
 		this.domicilio = domicilio;
 		this.cuit = cuit;
@@ -33,10 +33,10 @@ public class Proveedor {
 		this.domicilio = domicilio;
 	}
 
-	public int getCuit() {
+	public String getCuit() {
 		return cuit;
 	}
-	public void setCuit(int cuit) {
+	public void setCuit(String cuit) {
 		this.cuit = cuit;
 	}
 	

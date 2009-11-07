@@ -22,6 +22,7 @@ public class Restaurante {
 		mozos = new Vector <Mozo> ();
 		comandas = new Vector <Comanda> ();
 		mesas = new Vector <Mesa> ();
+		proveedores = new Vector <Proveedor>();
 	}
 	
 	
@@ -225,7 +226,7 @@ public class Restaurante {
  		return null;
 	}
 	
-	public void altaDeProducto (String nombre, float cantidad, float pedido, float reab, Proveedor prov){
+	public void altaDeProducto (String nombre, int cantidad, int pedido, int reab, Proveedor prov){
 		Producto prod = buscarProducto(nombre);
 		if (prod == null){
 			prod = new Producto(nombre, cantidad, pedido, reab, prov);
@@ -242,7 +243,7 @@ public class Restaurante {
 		}
 	}
 	
-	public void modificarProducto (String name, float canti, float puntop, float puntor, Proveedor prov){
+	public void modificarProducto (String name, int canti, int puntop, int puntor, Proveedor prov){
 		Producto prod = buscarProducto(name);
 		if (prod != null){
 			prod.setNombre(name);
@@ -272,17 +273,17 @@ public class Restaurante {
 		return mv;
 	}
 	
-//	Metodos que operan con Ordenes de Compra
+//	Metodos que operan con vectores view
 //	-------------------------------------------------------------
 	
-	public Vector getProveedoresView(){ 
+	public Vector getProveedoreseView(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < proveedores.size(); i++)
 		{
 			mv.add(((Proveedor)proveedores.elementAt(i)).toVector());
 		}
 		//Borrar luego de pruebas
-		mv.add("Carnicería La Vaca Loca");
+		mv.add("Carnicerï¿½a La Vaca Loca");
 		return mv;
 	}
 	
@@ -302,7 +303,7 @@ public class Restaurante {
 		return null;
 	}
 
-	public void altaDeOrden (int nro, int cuit){
+	public void altaDeOrden (int nro, String cuit){
 		Proveedor prov = buscarProveedor(cuit);
 		OrdenDeCompra ord = buscarOrden (nro);
 		if (prov != null){
@@ -322,7 +323,7 @@ public class Restaurante {
 		}
 	}
 
-	public void modificarOrden(int cuit, int nro){
+	public void modificarOrden(String cuit, int nro){
 		Proveedor prov = buscarProveedor(cuit);
 		OrdenDeCompra ord = buscarOrden (nro);
 		if (prov != null){
@@ -555,7 +556,7 @@ public class Restaurante {
 			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
 				m.agregarItemComanda(cant, itemCarta);
 			}else{
-				System.out.println("En la carta del día no existe el ítem " + nroItemCarta);
+				System.out.println("En la carta del dï¿½a no existe el ï¿½tem " + nroItemCarta);
 			}
 		}else{
 			System.out.println("No existe la mesa " + nroMesa + " o no esta ocuapada");
@@ -574,28 +575,28 @@ public class Restaurante {
 
 //	Metodos que operan con Proveedores
 //	-------------------------------------------------------------
-	 private Proveedor buscarProveedor (int cuit){
+	 private Proveedor buscarProveedor (String cuit){
 	 	for (int i=0; i<proveedores.size(); i++){
 	 		Proveedor prov = proveedores.elementAt(i);
-			if (prov.getCuit()==(cuit)){
-				System.out.println("Existe el proveedor");
+			if (prov.getCuit().equals(cuit)){
+				//System.out.println("Existe el proveedor");
 				return prov;
 			}
 		}
-		System.out.println("El proveedor NO existe");
+		//System.out.println("El proveedor NO existe");
 		return null;
 	}
 
-	public void altaDeProveedor (int cuit, String razonsocial, String domicilio){
+	public void altaDeProveedor (String cuit, String razonsocial, String domicilio){
 		Proveedor prov = buscarProveedor(cuit);
 		if (prov == null){
-			prov = new Proveedor(razonsocial, domicilio, cuit);
+			prov = new Proveedor(cuit, razonsocial, domicilio);
 			proveedores.add(prov);
 			System.out.println("Proveedor creado con exito.");
 		}
 	}
 
-	public void bajaDeProveedor (int cuit){
+	public void bajaDeProveedor (String cuit){
 		Proveedor prov = buscarProveedor(cuit);
 		if (prov != null){
 			proveedores.remove(prov);
@@ -603,7 +604,7 @@ public class Restaurante {
 		}
 	}
 
-	public void modificarProveedor(int cuit, String razonsocial, String domicilio){
+	public void modificarProveedor(String cuit, String razonsocial, String domicilio){
 		Proveedor prov = buscarProveedor(cuit);
 		if (prov != null){
 			prov.setCuit(cuit);

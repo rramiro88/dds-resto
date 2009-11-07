@@ -106,10 +106,11 @@ public abstract class ItemDeCarta {
 		}
 	}
 
-	public boolean esPreparable(int cantidad){
+	public boolean esPreparable(int cantidadItemsDeCarta){
 		for (int i=0; i<ingredientes.size(); i++){
 			Ingrediente ing = ingredientes.elementAt(i);
-			if (!ing.esSuficiente(ing.getCantidad()*cantidad)){
+//			if (!ing.esSuficiente(ing.getCantidad()*cantidad)){
+			if (ing.esSuficiente(cantidadItemsDeCarta * ing.getCantidad())){
 				return false;
 			}
 		}

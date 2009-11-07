@@ -1,7 +1,17 @@
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.WindowConstants;
+import javax.swing.SwingUtilities;
+
+import java.util.Vector;
 
 
 /**
@@ -16,87 +26,163 @@ import java.awt.event.*;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class FormAltaProducto extends JFrame implements ActionListener {
-	
-	//private JTextField txtCodigo;
-	//private JLabel lblCodigo; 
-	private JTextField txtNombre;
+public class FormAltaProducto extends javax.swing.JFrame {
 	private JLabel lblNombre;
+	private JLabel lblPtoPedido;
+	private JLabel lblPtoRefill;
+	private JLabel lblProveedores;
+	private AbstractAction cancelarAction;
+	private JTextField txtNombre;
+	private JButton btnCancelar;
+	private AbstractAction aceptarAction;
+	private JButton btnAceptar;
+	private JComboBox cmbProveedores;
+	private JTextField txtPtoRefill;
+	private JTextField txtPtoPedido;
 	private JTextField txtCantidad;
 	private JLabel lblCantidad;
-	private JTextField txtPtoPedido;
-	private JLabel lblPtoPedido;
-	private JTextField txtPtoRefill;
-	private JLabel lblPtoRefill;
-	private JComboBox cmbProveedores;
-	private JLabel lblProveedores;
-	private JButton btnAceptar;
-	private JButton btnListar;
-	
-	
-	public FormAltaProducto (){
-		this.setVisible (true);   //Por defecto se abre como no visible.
-		this.setSize(350,550);
-		this.setTitle("Alta de Producto");
-		//txtCodigo = new JTextField (10); //Crea un cuadro de texto.
-		//lblCodigo = new JLabel ("Código");
-		txtNombre = new JTextField (50); //Crea un cuadro de texto.
-		lblNombre = new JLabel ("Nombre");
-		txtCantidad = new JTextField (10); //Crea un cuadro de texto.
-		lblCantidad = new JLabel ("Cantidad");
-		txtPtoPedido = new JTextField (10); //Crea un cuadro de texto.
-		lblPtoPedido = new JLabel ("Pto. de Pedido");
-		txtPtoRefill = new JTextField (10); //Crea un cuadro de texto.
-		lblPtoRefill = new JLabel ("Pto. de Reabastecimiento");
-		cmbProveedores = new JComboBox (Restaurante.getRestaurante().getProveedoresView());
-		lblProveedores = new JLabel ("Proveedores");
-		
-		Container panel = this.getContentPane(); //Me devuelve un objeto que sera la bolsa donde voy a meter los controles.
-		panel.setLayout(new GridLayout (6,2)); //Me hace una division virtual en la pantalla y puedo colocar los objetos donde quiera. Primer num filas, seg. columnas, terc. separacion horiz, cuarto sep. vert.
-		//panel.setLayout(new FlowLayout());
-		
-		btnAceptar = new JButton ("Aceptar");//Me agrega el boton aceptar.
-	    btnAceptar.addActionListener(this);
-	    btnListar = new JButton ("Listar");
-	    btnListar.addActionListener(this);
-		
-	    panel.add(lblNombre);
-	    lblNombre.setBounds(21, 42, 63, 28);
-	   	panel.add (txtNombre);
-	   	txtNombre.setBounds(70, 42, 110, 28);
-	    panel.add (lblCantidad);
-	    lblCantidad.setBounds(21, 62, 63, 28);
-	    panel.add (txtCantidad);
-	    panel.add (lblPtoPedido);
-	    lblPtoPedido.setBounds(21, 82, 63, 28);
-	    panel.add (txtPtoPedido);
-	    panel.add (lblPtoRefill);
-	    lblPtoRefill.setBounds(21, 102, 63, 28);
-	    panel.add (txtPtoRefill);
-	    panel.add (lblProveedores);
-	    lblProveedores.setBounds(21, 122, 63, 28);
-	    panel.add(cmbProveedores);
-	    panel.add (btnAceptar);
-	    btnAceptar.setBounds(21, 1422, 63, 28);
-	    panel.add(btnListar);
-	    
-	    setDefaultCloseOperation (EXIT_ON_CLOSE);
-	    this.pack(); //Me define la ventana del tamaño de los controles.
-	    //this.move(400, 270); //Mueve la ventana a la posicion que el indico.
+
+	/**
+	* Auto-generated main method to display this JFrame
+	*/
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				FormAltaProducto inst = new FormAltaProducto();
+				inst.setLocationRelativeTo(null);
+				inst.setVisible(true);
+			}
+		});
 	}
 	
-	public void actionPerformed (ActionEvent e){
-		if (e.getActionCommand().equals("Aceptar")){
-			// Hay que validar que sean cantidades enteras !!!!
-			Restaurante.getRestaurante().altaDeProducto(txtNombre.getText(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtPtoPedido.getText()), Integer.parseInt(txtPtoRefill.getText()),(Proveedor)cmbProveedores.getSelectedItem()); //Cargo en el vector los datos que el usuario cargo en la ventana.
-			txtNombre.setText("");
-			txtCantidad.setText("");
-			txtPtoPedido.setText("");
-			txtPtoRefill.setText("");
-			//System.out.println("Còdigo: " + txtCodigo.getText () + "\n" + "Precio: " + txtPrecio.getText () + "\n" + "Descripción: " + txtDesc.getText()); //Muestro por pantalla lo que cargo el usuario.
-		}
-		if (e.getActionCommand().equals("Listar")){
-			System.out.println(Restaurante.getRestaurante().getProductosView());
+	public FormAltaProducto() {
+		super();
+		initGUI();
+	}
+	
+	private void initGUI() {
+		try {
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			getContentPane().setLayout(null);
+			this.setPreferredSize(new java.awt.Dimension(480, 230));
+			this.setTitle("Alta de Producto");
+			{
+				lblNombre = new JLabel();
+				getContentPane().add(lblNombre);
+				lblNombre.setText("NOMBRE: ");
+				lblNombre.setBounds(12, 12, 229, 14);
+			}
+			{
+				lblCantidad = new JLabel();
+				getContentPane().add(lblCantidad);
+				lblCantidad.setText("CANTIDAD: ");
+				lblCantidad.setBounds(12, 35, 229, 14);
+			}
+			{
+				lblPtoPedido = new JLabel();
+				getContentPane().add(lblPtoPedido);
+				lblPtoPedido.setText("PUNTO DE PEDIDO: ");
+				lblPtoPedido.setBounds(12, 58, 229, 14);
+			}
+			{
+				lblPtoRefill = new JLabel();
+				getContentPane().add(lblPtoRefill);
+				lblPtoRefill.setText("PUNTO DE REABASTECIMIENTO: ");
+				lblPtoRefill.setBounds(12, 81, 229, 14);
+			}
+			{
+				lblProveedores = new JLabel();
+				getContentPane().add(lblProveedores);
+				lblProveedores.setText("PROVEEDOR: ");
+				lblProveedores.setBounds(12, 104, 229, 14);
+			}
+			{
+				txtNombre = new JTextField();
+				getContentPane().add(txtNombre);
+				txtNombre.setBounds(223, 9, 237, 21);
+			}
+			{
+				txtCantidad = new JTextField();
+				getContentPane().add(txtCantidad);
+				txtCantidad.setBounds(223, 32, 86, 21);
+			}
+			{
+				txtPtoPedido = new JTextField();
+				getContentPane().add(txtPtoPedido);
+				txtPtoPedido.setBounds(223, 55, 86, 21);
+			}
+			{
+				txtPtoRefill = new JTextField();
+				getContentPane().add(txtPtoRefill);
+				txtPtoRefill.setBounds(223, 78, 86, 21);
+			}
+			{
+				
+				/*ComboBoxModel cmbProveedoresModel = 
+					new DefaultComboBoxModel(
+							new String[] { "Item One", "Item Two" });*/
+				cmbProveedores = new JComboBox();
+				Vector vpv = Restaurante.getRestaurante().getProveedoresView();
+				for (int i=0; i<vpv.size(); i++){
+					cmbProveedores.addItem(vpv.elementAt(i).toString());
+				}
+				getContentPane().add(cmbProveedores);
+				//cmbProveedores.setModel(cmbProveedoresModel);
+				cmbProveedores.setBounds(223, 101, 237, 21);
+			}
+			{
+				btnAceptar = new JButton();
+				getContentPane().add(btnAceptar);
+				btnAceptar.setText("Aceptar");
+				btnAceptar.setBounds(127, 151, 96, 25);
+				btnAceptar.setFont(new java.awt.Font("Tahoma",1,11));
+				btnAceptar.setAction(getAceptarAction());
+			}
+			{
+				btnCancelar = new JButton();
+				getContentPane().add(btnCancelar);
+				btnCancelar.setText("Cancelar");
+				btnCancelar.setBounds(253, 151, 96, 25);
+				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
+				btnCancelar.setAction(getCancelarAction());
+			}
+			this.pack();
+			this.setSize(480, 230);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
+	
+	private AbstractAction getAceptarAction() {
+		if(aceptarAction == null) {
+			aceptarAction = new AbstractAction("Aceptar", null) {
+				public void actionPerformed(ActionEvent evt) {
+					try{
+						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(1,12);
+						Restaurante.getRestaurante().altaDeProductoFromView(txtNombre.getText(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtPtoPedido.getText()), Integer.parseInt(txtPtoRefill.getText()), sProveedor); 
+						txtNombre.setText("");
+						txtCantidad.setText("");
+						txtPtoPedido.setText("");
+						txtPtoRefill.setText("");
+					}
+					catch  (Exception e){
+						JOptionPane.showMessageDialog(null, "Cantidad, punto de pedido y reabastecimiento deben contener valores enteros.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+					}
+				}
+			};
+		}
+		return aceptarAction;
+	}
+	
+	private AbstractAction getCancelarAction() {
+		if(cancelarAction == null) {
+			cancelarAction = new AbstractAction("Cancelar", null) {
+				public void actionPerformed(ActionEvent evt) {
+					System.exit(0);
+				}
+			};
+		}
+		return cancelarAction;
+	}
+
 }

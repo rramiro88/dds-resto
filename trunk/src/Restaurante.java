@@ -23,6 +23,12 @@ public class Restaurante {
 		comandas = new Vector <Comanda> ();
 		mesas = new Vector <Mesa> ();
 		proveedores = new Vector <Proveedor>();
+		
+		// Para usar en la prueba y borrar !!!!
+		altaDeProveedor("99999999995", "La Vaca Loca", "Lavalle 111");
+		altaDeProveedor("21636582139", "La Botilleria de Jose", "Alsina 888");
+		Proveedor prov = buscarProveedor("99999999995");
+		altaDeProducto("lomo", 1000, 100, 5000, prov);
 	}
 	
 	
@@ -234,6 +240,16 @@ public class Restaurante {
 			System.out.println("Producto creado con exito.");
 		}
 	}
+	
+	public void altaDeProductoFromView (String nombre, int cantidad, int pedido, int reab, String cuit){
+		Proveedor proveedor = buscarProveedor(cuit);
+		Producto prod = buscarProducto(nombre);
+		if ((prod == null) && (proveedor != null)){
+			prod = new Producto(nombre, cantidad, pedido, reab, proveedor);
+			productos.add(prod);
+			System.out.println("Producto creado con exito.");
+		}
+	}
 
 	public void bajaDeProducto (String nombre){
 		Producto prod = buscarProducto(nombre);
@@ -276,14 +292,12 @@ public class Restaurante {
 //	Metodos que operan con vectores view
 //	-------------------------------------------------------------
 	
-	public Vector getProveedoreseView(){ 
+	public Vector getProveedoresView(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < proveedores.size(); i++)
 		{
-			mv.add(((Proveedor)proveedores.elementAt(i)).toVector());
+			mv.add(proveedores.elementAt(i).getProveedorView().toVector());
 		}
-		//Borrar luego de pruebas
-		mv.add("Carnicer�a La Vaca Loca");
 		return mv;
 	}
 	
@@ -369,7 +383,7 @@ public class Restaurante {
 	}
 	
 	
-	public void altaDeMozo (String nombre, float comision){
+	public void altaDeMozo (String nombre, int comision){
 		Mozo mozo = new Mozo (nombre, comision);
 		mozos.add(mozo);
 	}
@@ -435,7 +449,7 @@ public class Restaurante {
 	}
 	
 	
-	public void modificarComisionMozo(int id, float comision){
+	public void modificarComisionMozo(int id, int comision){
 		Mozo m = buscarMozo(id);
 		if (m != null)
 			m.setComision(comision);
@@ -485,7 +499,7 @@ public class Restaurante {
 		Vector mv = new Vector();
 		for (int i= 0; i < mozos.size(); i++)
 		{
-			mv.add(((Mozo)mozos.elementAt(i)).toVector());
+			mv.add(mozos.elementAt(i).getMozoView().toVector());
 		}
 		return mv;
 	}
@@ -592,7 +606,7 @@ public class Restaurante {
 		if (prov == null){
 			prov = new Proveedor(cuit, razonsocial, domicilio);
 			proveedores.add(prov);
-			System.out.println("Proveedor creado con exito.");
+			//System.out.println("Proveedor creado con exito.");
 		}
 	}
 

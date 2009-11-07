@@ -3,17 +3,26 @@ import java.util.Vector;
 public class MozoView {
 	private String nombre;
 	private int idMozo;
-	private float comision; //o la guardamos como entero
+	private int comision;
 	private float liquidacion;
 	static final String[] encabezados = {"ID", "Nombre", "Comision"};
 	//private boolean habilitado = false;
 	
-	public MozoView (int idMozo, String nombre, float comision)
+	public MozoView (int idMozo, String nombre, int comision)
 	{
 		super();
 		this.idMozo = idMozo;
 		this.nombre = nombre;	
 		this.comision = comision;
+	}
+	
+	public Vector toVector()
+	{
+		Vector v = new Vector();
+		v.add(idMozo);
+		v.add(nombre);
+		v.add(comision);
+		return v;
 	}
 	
 	static public Vector getEncabezados() {

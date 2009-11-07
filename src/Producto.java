@@ -18,15 +18,9 @@ public class Producto {
 		//this.isDisponible = true;
 	}
 	
-	public Vector toVector()
-	{
-		Vector v = new Vector();
-		v.add(nombre);
-		v.add(cantidad);
-		v.add(puntoped);
-		v.add(puntoreab);
-		v.add(proveedor.getRazonsocial());
-		return v;
+	public ProductoView getProductoView(){
+		ProductoView pv = new ProductoView(nombre, cantidad, puntoped, puntoreab, proveedor);
+		return pv;
 	}
 
 	public String getNombre() {

@@ -18,6 +18,17 @@ public class ProductoView {
 //		this.isDisponible = true;
 	}
 	
+	public Vector toVector()
+	{
+		Vector v = new Vector();
+		v.add(nombre);
+		v.add(cantidad);
+		v.add(puntoped);
+		v.add(puntoreab);
+		v.add(proveedor.getRazonsocial());
+		return v;
+	}
+	
 	static public Vector getEncabezados() {
 		Vector v = new Vector();
 		for (int i=0; i<encabezados.length; i++){

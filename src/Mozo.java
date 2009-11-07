@@ -1,12 +1,9 @@
 import java.util.Vector;
 
-//	Revisar ¿que es liquidacion?, 
-//	No queda claro como se setea y se modifica.
-
 public class Mozo {
 	private String nombre;
 	private int idMozo;
-	private float comision; //o la guardamos como entero
+	private int comision; //o la guardamos como entero
 	private float liquidacion;	//ultima liquidacion de esta mozo (lo que hay que pagarle)
 	private boolean habilitado = false;
 	private static int ultimoMozo = 0;
@@ -21,7 +18,7 @@ public class Mozo {
 	}
 	*/
 	
-	public Mozo (String nombre, float comision)
+	public Mozo (String nombre, int comision)
 	{
 		super();
 		this.nombre = nombre;
@@ -29,13 +26,9 @@ public class Mozo {
 		this.comision = comision;
 	}
 	
-	public Vector toVector()
-	{
-		Vector v = new Vector();
-		v.add(idMozo);
-		v.add(nombre);
-		v.add(comision);
-		return v;
+	public MozoView getMozoView(){
+		MozoView mv = new MozoView(idMozo, nombre, comision);
+		return mv;
 	}
 	
 	public String getNombre()
@@ -57,7 +50,7 @@ public class Mozo {
 		return comision;
 	}
 
-	public void setComision(float comision) {
+	public void setComision(int comision) {
 		this.comision = comision;
 	}
 	

@@ -107,11 +107,11 @@ public class FormAltaMozo extends javax.swing.JFrame {
 				}
 				{
 					jLabel2 = new JLabel();
-					jLabel2.setText("Nombre: ");
+					jLabel2.setText("NOMBRE: ");
 				}
 				{
 					jLabel3 = new JLabel();
-					jLabel3.setText("Comisiï¿½n: ");
+					jLabel3.setText("COMISION: ");
 				}
 				jPanel1Layout.setHorizontalGroup(jPanel1Layout.createSequentialGroup()
 					.addContainerGap()
@@ -189,7 +189,7 @@ public class FormAltaMozo extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt) {
 					try{
 					
-						Restaurante.getRestaurante().altaDeMozo(jTextField2.getText(), Float.parseFloat(jTextField3.getText()));
+						Restaurante.getRestaurante().altaDeMozo(jTextField2.getText(), Integer.parseInt(jTextField3.getText()));
 						Vector datos = Restaurante.getRestaurante().getMozosView();
 						TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
 						jTable1.setModel(dtm);
@@ -197,7 +197,8 @@ public class FormAltaMozo extends javax.swing.JFrame {
 						jTextField3.setText("");
 					}
 					catch  (Exception e){
-						JOptionPane.showMessageDialog(null, "La comision debe ser un valor numerico.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "La comisión debe ser un valor numérico entero.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						jTextField3.setText("");
 					}
 				}
 			};

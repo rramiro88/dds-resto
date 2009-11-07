@@ -1,16 +1,24 @@
 import java.util.Vector;
 
-
 public class ProveedorView {
+	private String cuit;
 	private String razonsocial;
 	private String domicilio;
-	private int cuit;
-	static final String[] encabezados = {"Razón Social", "Domicilio", "CUIT"};
+	static final String[] encabezados = {"CUIT", "Razón Social", "Domicilio"};
 
-	public ProveedorView (String razonsocial, String domicilio, int cuit){
+	public ProveedorView (String cuit, String razonsocial, String domicilio){
+		this.cuit = cuit;
 		this.razonsocial = razonsocial;
 		this.domicilio = domicilio;
-		this.cuit = cuit;
+	}
+	
+	public Vector toVector()
+	{
+		Vector v = new Vector();
+		v.add(cuit);
+		v.add(razonsocial);
+		v.add(domicilio);
+		return v;
 	}
 	
 	static public Vector getEncabezados() {
@@ -27,7 +35,7 @@ public class ProveedorView {
 	public String getDomicilio() {
 		return domicilio;
 	}
-	public int getCuit() {
+	public String getCuit() {
 		return cuit;
 	}
 	

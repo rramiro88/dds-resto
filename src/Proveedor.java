@@ -1,22 +1,18 @@
-import java.util.Vector;
-
-
 public class Proveedor {
 	private String cuit;
-	private String domicilio;
 	private String razonsocial;
+	private String domicilio;
+	
 
-	public Proveedor (String razonsocial, String domicilio, String cuit){
+	public Proveedor (String cuit, String razonsocial, String domicilio){
+		this.cuit = cuit;
 		this.razonsocial = razonsocial;
 		this.domicilio = domicilio;
-		this.cuit = cuit;
 	}
 	
-	public Vector toVector()
-	{
-		Vector v = new Vector();
-		v.add(razonsocial);
-		return v;
+	public ProveedorView getProveedorView(){
+		ProveedorView pv = new ProveedorView(cuit, razonsocial, domicilio);
+		return pv;
 	}
 
 	public String getRazonsocial() {

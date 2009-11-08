@@ -25,8 +25,12 @@ public class Restaurante {
 		proveedores = new Vector <Proveedor>();
 		
 		// Para usar en la prueba y borrar !!!!
+		altaDeMesa();
+		altaDeMesa();
+		altaDeMesa();
 		altaDeMozo("Cacho Garay", 15);
 		altaDeMozo("Cacho Buenaventua", 20);
+		asignarMesas();
 		altaDeProveedor("99999999995", "La Vaca Loca", "Lavalle 111");
 		altaDeProveedor("21636582139", "La Botilleria de Jose", "Alsina 888");
 		Proveedor prov = buscarProveedor("99999999995");
@@ -222,15 +226,13 @@ public class Restaurante {
 
 //	Metodos que operan con Productos
 //	-------------------------------------------------------------
-	public Producto buscarProducto (String materia){
+	public Producto buscarProducto (String nombre){
  		for (int i=0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
-			if (prod.getNombre().equals(materia)){
-				System.out.println("producto existente");
+			if (prod.getNombre().equals(nombre)){
 				return prod;
 			}
 		}
-		System.out.println("producto NO existe.");
  		return null;
 	}
 	
@@ -441,10 +443,47 @@ public class Restaurante {
 	}
 	
 	
-	public void asignarMesaMozo (int mesa, int mozo){
+	/*public void asignarMesaMozo (int mesa, int mozo){
 		mesas.elementAt(mesa).setMozo(mozos.elementAt(mozo));
 		mesas.elementAt(mesa).setHabilitada();
+	}*/
+	
+	public void asignarMesas(){
+		int indice=0;
+		int i=0, j=0;
+		if (!mozos.isEmpty() && !mesas.isEmpty()){
+			if (mozos.size() >= mesas.size()){
+				while (i<mesas.size() && j<mozos.size()){
+					Mozo mozo = mozos.elementAt (j);
+					if (mozo.getHabilitado()){
+						mesas.elementAt(i).setMozo(mozos.elementAt(j));
+						mesas.elementAt(i).setHabilitada(true);
+						i++;
+						j++;
+					}else{
+						j++;
+					}
+				}
+			}else{
+				int mesasXmozo = mesas.size() / mozos.size();
+				for (i=0; i<mozos.size(); i++){
+					Mozo mozo = mozos.elementAt (i);
+					if (mozo.getHabilitado()){
+						for (j=0; j<mesasXmozo; j++){
+							mesas.elementAt(indice).setMozo(mozos.elementAt(i));
+							mesas.elementAt(indice).setHabilitada(true);
+							indice++;
+						}
+					}
+				}
+			}
+			setMesasAsignadas(true);
+			System.out.println("Mesas asignadas.");
+		}else{
+			System.out.println("No hay mozos habilitados o mesas disponibles");
+		}
 	}
+	
 	
 	private Mozo buscarMozo(int id){
 		int i = 0;
@@ -548,7 +587,7 @@ public class Restaurante {
  		return (mesas.size());
  	}
 	
-	public void altaDeMesa (int numeroMesa){
+	/*public void altaDeMesa (int numeroMesa){
 		Mesa mesaNueva = buscarMesa(numeroMesa);
 		if (mesaNueva == null){
 			Mesa mesaNew = new Mesa (numeroMesa);
@@ -557,6 +596,12 @@ public class Restaurante {
 		}else{
 			System.out.println("La Mesa ya existe.");
 		}
+	}*/
+	
+	public void altaDeMesa (){
+		Mesa mesaNew = new Mesa ();
+		mesas.add(mesaNew);
+		System.out.println("Mesa creada con exito.");
 	}
 	
 	/*

@@ -11,7 +11,7 @@ public class Ingrediente {
 		//this.isFabricable = true;
 	}
 
-	//	Metodos sets y Gets para los atributos de Ingrediente	
+//	Metodos sets y Gets para los atributos de Ingrediente	
 //	-------------------------------------------------------------	
 	public float getCantidad() {
 		return cantidad;
@@ -34,17 +34,20 @@ public class Ingrediente {
 		this.isFabricable = isFabricable;
 	}*/
 	
-//	Metodos con productos - preparar plato o bebida	
+//	Metodos con productos - Preparar plato o bebida
 //	-------------------------------------------------------------	
+
+	//	Revisa que la cantidad total de producto alcance para preparar
+	//	el total de items de carta requeridos
 	public boolean esSuficiente(float cantidadTotal){
-		if (producto.getCantidad()>=cantidadTotal){
+		if (producto.getCantidad()>=cantidadTotal)
 			return true;
-		}
 		return false;
 	}
 
+	//	Ordena preparar el total de items de carta requeridos
 	public void usar(float cantidadTotal){
 		this.producto.setCantidad(producto.getCantidad()-cantidadTotal);
 	}
-		
+
 }

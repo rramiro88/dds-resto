@@ -1,6 +1,13 @@
 import java.util.Vector;
 
 public class Restaurante {
+	static private Restaurante restaurante = null;
+
+	private boolean mesasAsignadas;
+	private boolean open;
+
+	private Carta cartaActiva;
+
 	private Vector <ItemDeCarta> itemsCarta;
 	private Vector <Carta> cartas;
 	private Vector<Mozo> mozos;
@@ -9,32 +16,68 @@ public class Restaurante {
 	private Vector <Proveedor> proveedores;
 	private Vector <OrdenDeCompra> ordenesCompra;
 	private Vector <Producto> productos;
-	private boolean mesasAsignadas;
-	private boolean open;
-	private Carta cartaActiva;
-	static private Restaurante restaurante = null;
 
-	
 	private Restaurante (){
 		itemsCarta = new Vector <ItemDeCarta>();
 		cartas = new Vector <Carta>();
-		productos = new Vector <Producto>();
 		mozos = new Vector <Mozo> ();
 		comandas = new Vector <Comanda> ();
 		mesas = new Vector <Mesa> ();
 		proveedores = new Vector <Proveedor>();
+		ordenesCompra = new Vector <OrdenDeCompra>();
+		productos = new Vector <Producto>();
 		
-		// Para usar en la prueba y borrar !!!!
+/*		----------------------------------------------------
+ **
+ **		Metodos que cargan datos
+ **
+ **		Para usar en la prueba y borrar !!!!
+ **
+ **		----------------------------------------------------
+*/
+		//	Mesas
 		altaDeMesa();
 		altaDeMesa();
 		altaDeMesa();
+		//	Mozos
 		altaDeMozo("Cacho Garay", 15);
 		altaDeMozo("Cacho Buenaventua", 20);
+
 		asignarMesas();
+
+		//	Proveedores
 		altaDeProveedor("99999999995", "La Vaca Loca", "Lavalle 111");
 		altaDeProveedor("21636582139", "La Botilleria de Jose", "Alsina 888");
+		altaDeProveedor("20123456783", "Verduleria El Choclo Feliz", "Marcelo T 231");
 		Proveedor prov = buscarProveedor("99999999995");
+		Proveedor prov2 = buscarProveedor("21636582139");
+		Proveedor prov3 = buscarProveedor("20123456783");
+		//	Productos
 		altaDeProducto("lomo", 1000, 100, 5000, prov);
+		altaDeProducto("pollo", 1500, 80, 2000, prov);
+		altaDeProducto("papa", 800, 100, 1200, prov3);
+		altaDeProducto("ravioles", 1000, 550, 1000, prov2);
+		altaDeProducto("tomate", 1000, 550, 1000, prov3);		
+		altaDeProducto("vino tinto", 20, 4, 8, prov2);
+		altaDeProducto("gaseosa naranja", 20, 4, 8, prov2);		
+		//	Items de Carta		
+		altaDePlato("pollo con papas", 18);
+		ItemDeCarta polloPapas = buscarItemDeCarta ("pollo con papas");
+		polloPapas.agregarIngrediente(buscarProducto("pollo"), 120);
+		polloPapas.agregarIngrediente(buscarProducto("papa"), 85);
+		altaDePlato("ravioles con tuco", 12);
+		ItemDeCarta raviolesTuco = buscarItemDeCarta ("ravioles con tuco");
+		raviolesTuco.agregarIngrediente(buscarProducto("ravioles"), 230);
+		raviolesTuco.agregarIngrediente(buscarProducto("tomate"), 35);
+		altaDeBebida("gaseosa naranja", 8);
+		ItemDeCarta gaseosa = buscarItemDeCarta ("gaseosa naranja");
+		gaseosa.agregarIngrediente(buscarProducto("gaseosa naranja"), 1);
+		altaDeBebida("vino tinto", 16);
+		ItemDeCarta vinoT = buscarItemDeCarta ("vino tinto");
+		vinoT.agregarIngrediente(buscarProducto("vinoTinto"), 1);
+		//	Cartas
+		altaDeCarta("lunes");
+		
 	}
 	
 	
@@ -89,7 +132,7 @@ public class Restaurante {
 
 //	Metodos que operan con platos o bebidas (Items De Carta)
 //	-------------------------------------------------------------	
-	public ItemDeCarta buscarItemDeCarta (String nombre){
+	private ItemDeCarta buscarItemDeCarta (String nombre){
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
 			if (idecarta.getNombre().equals(nombre)){
@@ -101,7 +144,7 @@ public class Restaurante {
  		return null;
 	}
 	
-	public ItemDeCarta buscarItemDeCarta (int nro){
+	private ItemDeCarta buscarItemDeCarta (int nro){
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
 			if (idecarta.getNroItem() == nro){
@@ -157,7 +200,7 @@ public class Restaurante {
 	
 //	Metodos que operan con Carta
 //	-------------------------------------------------------------
-	public Carta buscarCarta (String dia){
+	private Carta buscarCarta (String dia){
  		for (int i=0; i<cartas.size(); i++){
 			Carta car = cartas.elementAt(i);
 			if (car.getDia().equals(dia)){
@@ -226,7 +269,7 @@ public class Restaurante {
 
 //	Metodos que operan con Productos
 //	-------------------------------------------------------------
-	public Producto buscarProducto (String nombre){
+	private Producto buscarProducto (String nombre){
  		for (int i=0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getNombre().equals(nombre)){
@@ -327,7 +370,7 @@ public class Restaurante {
 //	Metodos que operan con Ordenes de Compra
 //	-------------------------------------------------------------
 
-	 public OrdenDeCompra buscarOrden (int nro){
+	private OrdenDeCompra buscarOrdenDeCompra (int nro){
 	 	for (int i=0; i<proveedores.size(); i++){
 	 		OrdenDeCompra ord = ordenesCompra.elementAt(i);
 			if (ord.getNumero()==(nro)){
@@ -339,9 +382,9 @@ public class Restaurante {
 		return null;
 	}
 
-	public void altaDeOrden (int nro, String cuit){
+	public void altaDeOrdenDeCompra (int nro, String cuit){
 		Proveedor prov = buscarProveedor(cuit);
-		OrdenDeCompra ord = buscarOrden (nro);
+		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
 		if (prov != null){
 			if (ord == null){
 				ord = new OrdenDeCompra(nro, prov);
@@ -351,17 +394,17 @@ public class Restaurante {
 		}
 	}
 
-	public void bajaDeOrden (int nro){
-		OrdenDeCompra ord = buscarOrden (nro);
+	public void bajaDeOrdenDeCompra (int nro){
+		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
 		if (ord != null){
 			ordenesCompra.remove(nro);
 			System.out.println("Orden eliminada con exito.");
 		}
 	}
 
-	public void modificarOrden(String cuit, int nro){
+	public void modificarOrdenDeCompra(String cuit, int nro){
 		Proveedor prov = buscarProveedor(cuit);
-		OrdenDeCompra ord = buscarOrden (nro);
+		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
 		if (prov != null){
 			if (ord != null){
 				ord.setNumero(nro);
@@ -375,7 +418,7 @@ public class Restaurante {
 	// ***** revisar todo esto. falta controlar si hay que pedirlo o no al producto.
 	// ****************************
 	public void cargarOrdenCompra (int nro){
-		OrdenDeCompra ord = buscarOrden (nro);
+		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
 		if (ord != null){
 			for (int i=0; i<productos.size();i++){
 				Producto prod = productos.elementAt(i);
@@ -626,7 +669,7 @@ public class Restaurante {
 	}
 	*/
 	
-	public Mesa buscarMesa(int id){
+	private Mesa buscarMesa(int id){
 		int i = 0;
 		while (i < mesas.size()){
 			Mesa m = mesas.elementAt(i);

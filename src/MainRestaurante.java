@@ -300,24 +300,24 @@ public class MainRestaurante {
 			  	case '1' : {this.abrirJornada();
 			  	break;
 			  	}
-			  	case '2' : {this.asignarMesas();
-			  	break;
-		  		}
-			  	case '3' : {this.altaMozo();
-			  	break;
-				}
-			  	case '4' : {this.habilitarMozo();
-			  	break;
-				}
-			  	case '5' : {this.desHabilitarMozo();
-			  	break;
-				}
-			  	case '6' : {this.modificarNombreMozo();
-			  	break;
-				}
-			  	case '7' : {this.eliminarMozo();
-			  	break;
-				}
+			  	//case '2' : {this.asignarMesas();
+			  	//break;
+		  		//}
+			  	//case '3' : {this.altaMozo();
+			  	//break;
+				//}
+			  	//case '4' : {this.habilitarMozo();
+			  	//break;
+				//}
+			  	//case '5' : {this.desHabilitarMozo();
+			  	//break;
+				//}
+			  	//case '6' : {this.modificarNombreMozo();
+			  	//break;
+				//}
+			  	//case '7' : {this.eliminarMozo();
+			  	//break;
+				//}
 			  	/*
 			  	case '8' : {this.habilitarMesa();
 			  	break;
@@ -329,9 +329,9 @@ public class MainRestaurante {
 			  	case '8' : {this.pagarMozos();
 			  	break;
 				}
-			  	case '9' : {this.modificarComisionMozo();
-			  	break;
-				}
+			  	//case '9' : {this.modificarComisionMozo();
+			  	//break;
+				//}
 			  	case 'a' : {this.altaMesa();
 			  	break;
 				}
@@ -381,50 +381,6 @@ public class MainRestaurante {
 		menuAdministracion();
 	}
 	
-	// No seria mejor que se asignen todas las mesas y eliminar el atributo habilitada???
-	//consulta de JuanMA, si ya se trabajo un dia anterior con mas mesas, al iniciar, no habria
-	//antes q poner todas las mesas sin mozos?
-	
-	public void asignarMesas(){
-		//int indice = 0;
-		int cantMozos = restaurante.cantidadMozos();
-		int cantMesas = restaurante.cantidadMesas();
-		System.out.println("----------------");
-		System.out.println("Mozos: "+cantMozos);
-		System.out.println("Mesas: "+cantMesas);
-		Vector <Mozo> moz = restaurante.getMozos();
-		int indice=0;
-		int i=0, j=0;
-		if (cantMozos != 0 && cantMesas != 0){
-			if (cantMozos >= cantMesas){
-				while (i<restaurante.cantidadMesas() && j<restaurante.cantidadMozos()){
-					Mozo mozoloco = moz.elementAt (j);
-					if (mozoloco.getHabilitado()){
-						restaurante.asignarMesaMozo(i,j);
-						i++;
-						j++;
-					}else{
-						j++;
-					}
-				}
-			}else{
-				int mesasXmozo = cantMesas / cantMozos;
-				for (int k=0; k<moz.size();k++){
-					Mozo mozoloco = moz.elementAt (k);
-					if (mozoloco.getHabilitado()){
-						for (int l=0; l<mesasXmozo; l++){
-						restaurante.asignarMesaMozo(indice,k);
-						indice++;
-						}
-					}
-				}
-			}
-			restaurante.setMesasAsignadas(true);
-		}else{
-			System.out.println("No hay mozos habilitados o mesas disponibles");
-		}
-		menuAdministracion();
-	}
 	
 	
 	public void pagarMozos(){
@@ -449,7 +405,7 @@ public class MainRestaurante {
 			System.out.println("Ingrese la comision: ");
 			comision = Float.parseFloat(reader.readLine());
 			
-			restaurante.modificarComisionMozo(id, comision);
+			//restaurante.modificarComisionMozo(id, comision);
 		}
 		catch (Exception e)	{
 		}
@@ -469,7 +425,7 @@ public class MainRestaurante {
 			System.out.println("Ingrese el nuevo nombre: ");
 			String nombre = reader.readLine();
 			
-			restaurante.modificarNombreMozo(id,nombre);
+			//restaurante.modificarNombreMozo(id,nombre);
 			
 		}
 		catch (Exception e)	{
@@ -491,7 +447,7 @@ public class MainRestaurante {
 			System.out.print("Ingrese Comision: ");
 			float comision = Float.parseFloat(reader.readLine());
 			//restaurante.altaDeMozo(nombre, idMozo, comision);
-			restaurante.altaDeMozo(nombre, comision);
+			//restaurante.altaDeMozo(nombre, comision);
 		}
 		catch (Exception e)	{
 		}
@@ -509,7 +465,7 @@ public class MainRestaurante {
 			Vector <Mozo> moz = restaurante.getMozos();
 			for (int i=0;i<moz.size();i++){
 				Mozo m = (Mozo)moz.elementAt(i);
-				if (m.getIdMozo()==idMozo){
+				if (m.getId()==idMozo){
 					restaurante.bajaDeMozo(idMozo);
 				}else{
 					System.out.println("El Mozo NO se elimino");
@@ -587,7 +543,7 @@ public class MainRestaurante {
 			System.out.print("Ingrese Numero de Mesa: ");
 			int numeroMesa = Integer.parseInt(reader.readLine());
 			//restaurante.altaDeMozo(nombre, idMozo, comision);
-			restaurante.altaDeMesa(numeroMesa);
+			//restaurante.altaDeMesa(numeroMesa);
 		}
 		catch (Exception e)	{
 		}
@@ -605,7 +561,7 @@ public class MainRestaurante {
 			Mozo m = mesaloca.getMozo();
 			int id = 0;
 			if ( m != null ){
-				id = m.getIdMozo();
+				id = m.getId();
 				System.out.println("Mesa: " +mesaloca.getNroMesa()+ " - Mozo asignado: " +id);
 			}else{
 				System.out.println("Mesa: " +mesaloca.getNroMesa()+ " - Sin Mozo asignado.");
@@ -637,7 +593,7 @@ public class MainRestaurante {
 		Vector <Mozo> moz = restaurante.getMozos();
 		for (int i=0 ; i<moz.size() ; i++){
 			Mozo mozoloco = moz.elementAt (i);
-			System.out.println("Id: "+mozoloco.getIdMozo()+" - Nombre: "+mozoloco.getNombre());
+			System.out.println("Id: "+mozoloco.getId()+" - Nombre: "+mozoloco.getNombre());
 			if (mozoloco.getHabilitado()){
 				System.out.println("HABILITADO");
 			}else{

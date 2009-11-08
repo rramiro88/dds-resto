@@ -5,13 +5,13 @@ public class Mesa {
 	private Comanda comandaActual;
 	private boolean ocupada = false;
 	private boolean habilitada = false;
+	private static int ultimaMesa = 0;
 	
 	
-	public Mesa(int nro)
+	public Mesa()
 	{
 		super();
-		this.nroMesa = nro;
-		this.ocupada = false;
+		this.nroMesa = ++ultimaMesa;
 	}
 	
 	public int getNroMesa()
@@ -70,12 +70,8 @@ public class Mesa {
 		return habilitada;
 	}
 
-	public void setHabilitada() {
-		this.habilitada = true;
-	}
-	
-	public void setNoHabilitada() {
-		this.habilitada = false;
+	public void setHabilitada(boolean hab) {
+		this.habilitada = hab;
 	}
 
 }

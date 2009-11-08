@@ -1,12 +1,12 @@
 import java.util.Vector;
 
 public abstract class ItemDeCarta {
-	private String name;
-	private float price;
-	private Vector <Ingrediente> ingredientes;
+	protected String name;
+	protected float price;
+	protected Vector <Ingrediente> ingredientes;
 	boolean disponible;
-	private int nroItem;
-	private static int ultimoNroItem = 0;
+	protected int nroItem;
+	protected static int ultimoNroItem = 0;
 
 	
 //	Constructor de instancia ItemDeCarta
@@ -21,7 +21,7 @@ public abstract class ItemDeCarta {
 
 //	Metodos sets y gets para los atributos de la clase ItemDeCarta
 //	-------------------------------------------------------------	
-	private int getProximoNroItem(){
+	protected int getProximoNroItem(){
 		return ++ultimoNroItem;		
 	}
 	public int getNroItem() {
@@ -58,7 +58,7 @@ public abstract class ItemDeCarta {
 
 //	Metodos con Ingredientes
 //	-------------------------------------------------------------	
-	public Ingrediente buscarIngrediente (Producto prod){
+	private Ingrediente buscarIngrediente (Producto prod){
  		for (int i=0; i<ingredientes.size(); i++){
  			Ingrediente ingred = ingredientes.elementAt(i);
 			if (ingred.getProducto().equals(prod)){
@@ -71,6 +71,8 @@ public abstract class ItemDeCarta {
 	}
 
 	public void agregarIngrediente(Producto prod, float cant){
+		//	La validación del Producto a cargar ya se hizo en el
+		//	Restaurante. El producto llega al método YA validado
 		Ingrediente com = buscarIngrediente (prod);
 		if (com == null){
 			com = new Ingrediente (prod, cant);
@@ -110,17 +112,16 @@ public abstract class ItemDeCarta {
 		for (int i=0; i<ingredientes.size(); i++){
 			Ingrediente ing = ingredientes.elementAt(i);
 //			if (!ing.esSuficiente(ing.getCantidad()*cantidad)){
-			if (ing.esSuficiente(cantidadItemsDeCarta * ing.getCantidad())){
+			if (ing.esSuficiente(cantidadItemsDeCarta * ing.getCantidad()))
 				return false;
-			}
 		}
 		return true;
 	}
 	
-	public void preparar (int cantidad){
+	public void preparar (int cantidadItemsDeCarta){
 		for (int i=0; i<ingredientes.size(); i++){
 			Ingrediente ing = ingredientes.elementAt(i);
-			ing.usar((ing.getCantidad()*cantidad));
+			ing.usar((ing.getCantidad()*cantidadItemsDeCarta));
 		}
 	}
 	

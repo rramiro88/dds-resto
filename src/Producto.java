@@ -1,4 +1,4 @@
-import java.util.Vector;
+//import java.util.Vector;
 
 
 public class Producto {
@@ -23,6 +23,8 @@ public class Producto {
 		return pv;
 	}
 
+//	Metodos sets y Gets para los atributos de Producto	
+//	-------------------------------------------------------------	
 	public String getNombre() {
 		return nombre;
 	}

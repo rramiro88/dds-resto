@@ -1,4 +1,5 @@
 
+
 public class Ingrediente {
 	private float cantidad;
 	private Producto producto;

@@ -1,3 +1,4 @@
+
 import java.util.Vector;
 
 public abstract class ItemDeCartaView {

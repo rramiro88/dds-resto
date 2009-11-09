@@ -1,33 +1,47 @@
+
 import java.util.Vector;
 
-public class OrdenDeCompra {
-//	private String numero;
-	private int numero;
-	private Vector <ItemDePedido> itemsDePedido;
-	private Proveedor proveedor;
+/**
+ * Las ordenes de compra se identifican por el n° de CUIT del proveedor.
+ * Para diferenciar entre ordenes a nombre de un mismo proveedor se 
+ * utiliza la fecha dia-mes-año (formato: dd/mm/aaaa) en que fueron generadas.
+ * 
+ * **/
+
+	public class OrdenDeCompra {
+		//	private int numero;
+		private String numero;
+		private Vector<Producto> itemsDePedido;
+		private Proveedor proveedor;
+		private String fecha;	//	La fecha se debe escribir en formato dd/mm/aaaa
 	
 //	Constructor de instancia OrdenDecompra
 //	-------------------------------------------------------------	
-	public OrdenDeCompra (int numero, Proveedor proveedor){
-//		this.numero = proveedor.getCuit();
-		this.numero = numero;
-		itemsDePedido = new Vector<ItemDePedido>();
-		this.proveedor = proveedor;
+/**	
+	La orden de compra recibe un proveedor y un vector de productos
+	bajo punto de pedido que corresponde a ESE proveedor.
+**/	
+	public OrdenDeCompra (Proveedor prov, String date, Vector <Producto> itemsApedir){
+//		this.numero = numero;
+		this.numero = prov.getCuit();
+		itemsDePedido = itemsApedir;
+		this.proveedor = prov;
+		this.fecha = date;
 	}
 
 //	Metodos sets y gets para los atributos de la clase OrdenDecompra
 //	-------------------------------------------------------------	
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setNumero(String cuit) {
+		this.numero = cuit;
 	}
 
-	public Vector<ItemDePedido> getItemsDePedido() {
+	public Vector<Producto> getItemsDePedido() {
 		return itemsDePedido;
 	}
-	public void setItemsDePedido(Vector<ItemDePedido> itemsDePedido) {
+	public void setItemsDePedido(Vector<Producto> itemsDePedido) {
 		this.itemsDePedido = itemsDePedido;
 	}
 
@@ -38,11 +52,27 @@ public class OrdenDeCompra {
 		this.proveedor = proveedor;
 	}
 
+	public String getFecha() {
+		return fecha;
+	}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+/*	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+*/
+	
 //	Metodos que operan con items de pedido
 //	-------------------------------------------------------------
-	
-	public void cargarItemPedido (Producto produ){
+
+/*	public void cargarItemPedido (Producto produ){
 		ItemDePedido itemp = new ItemDePedido(produ);
 		this.itemsDePedido.add(itemp);
 	}
+*/
 }

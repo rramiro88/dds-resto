@@ -164,9 +164,9 @@ public class MainRestaurante {
 	  **/
 	
 	
-	//Se llamaba abrirComanda() en la primer entrega. Creo que abrirMesa es más claro.
-	//Lo que hace, si están dadas las condiciones, es llamar a restaurante.abrirMesa(m)
-	//que creará la comanda activa para esa mesa. La comanda es el todo, los pedidos que
+	//Se llamaba abrirComanda() en la primer entrega. Creo que abrirMesa es mï¿½s claro.
+	//Lo que hace, si estï¿½n dadas las condiciones, es llamar a restaurante.abrirMesa(m)
+	//que crearï¿½ la comanda activa para esa mesa. La comanda es el todo, los pedidos que
 	//se van realizando son items de comanda.
 	public void abrirMesa (){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -185,10 +185,10 @@ public class MainRestaurante {
 						//Comanda c = m.abrirMesa();
 						//comandas.add(c);	
 					}else{
-						System.out.println("La mesa está ocupada. Se debe finalizar la comanda activa.");
+						System.out.println("La mesa estï¿½ ocupada. Se debe finalizar la comanda activa.");
 					}
 				}else{
-					System.out.println("La mesa no se encuentra habilitada el día de hoy.");
+					System.out.println("La mesa no se encuentra habilitada el dï¿½a de hoy.");
 				}
 			}else{
 				System.out.println("No existe la mesa " + nroMesa);
@@ -243,9 +243,9 @@ public class MainRestaurante {
 			Mesa m = restaurante.buscarMesa(nroMesa);
 			if ((m != null) && (m.isOcupada())){
 				float totalMesa = m.cerrarMesa();
-				System.out.println("La mesa " + nroMesa + " consumió por $" + totalMesa);
+				System.out.println("La mesa " + nroMesa + " consumiï¿½ por $" + totalMesa);
 			}else{
-				System.out.println("No existe la mesa o está desocupada");
+				System.out.println("No existe la mesa o estï¿½ desocupada");
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -780,6 +780,8 @@ public class MainRestaurante {
 			System.out.println(" ");
 			System.out.print("Dia: ");
 			String dia = reader.readLine();
+			//	ESTO NO SIRVE MAS. La validacion de dia para la carta 
+			//	la implementÃ© directamente en la clase carta
 			if (dia.equalsIgnoreCase("lunes")){
 				restaurante.altaDeCarta(dia);
 			}else{

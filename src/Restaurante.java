@@ -79,15 +79,22 @@ public class Restaurante {
 		altaDeCarta("lunes");
 		
 	}
-	
-	
+/*		
+**	------------------------------------------------------------
+**	------------------------------------------------------------
+*/	
+
+	//	SINGLETON de Restaurante para que halla una sola instancia
 	static public Restaurante getRestaurante(){
 		if (restaurante == null){
 			restaurante = new Restaurante();
 		}
 		return restaurante;
 	}
+
 	
+//	Metodos sets y gets para los atributos de Restaurante
+//	-------------------------------------------------------------	
 	
 	public Vector<ItemDeCarta> getItemsCarta() {
 		return itemsCarta;
@@ -95,6 +102,7 @@ public class Restaurante {
 	public void setItemsCarta(Vector<ItemDeCarta> itemsCarta) {
 		this.itemsCarta = itemsCarta;
 	}
+
 	public Vector<Carta> getCartas() {
 		return cartas;
 	}
@@ -105,10 +113,45 @@ public class Restaurante {
 	public Vector<Mozo> getMozos() {
 		return mozos;
 	}
+	public void setMozos(Vector<Mozo> mozos) {
+		this.mozos = mozos;
+	}
 	
 	public Vector<Mesa> getMesas() {
 		return mesas;
 	}
+	public void setMesas(Vector<Mesa> mesas) {
+		this.mesas = mesas;
+	}
+
+	public Vector<Comanda> getComandas() {
+		return comandas;
+	}
+	public void setComandas(Vector<Comanda> comandas) {
+		this.comandas = comandas;
+	}
+
+	public Vector<Proveedor> getProveedores() {
+		return proveedores;
+	}
+	public void setProveedores(Vector<Proveedor> proveedores) {
+		this.proveedores = proveedores;
+	}
+
+	public Vector<OrdenDeCompra> getOrdenesCompra() {
+		return ordenesCompra;
+	}
+	public void setOrdenesCompra(Vector<OrdenDeCompra> ordenesCompra) {
+		this.ordenesCompra = ordenesCompra;
+	}
+
+	public Vector<Producto> getProductos() {
+		return productos;
+	}
+	public void setProductos(Vector<Producto> productos) {
+		this.productos = productos;
+	}
+
 	public boolean isMesasAsignadas() {
 		return mesasAsignadas;
 	}
@@ -144,7 +187,9 @@ public class Restaurante {
  		return null;
 	}
 	
-	private ItemDeCarta buscarItemDeCarta (int nro){
+/*	Metodo que buscar items de carta segun un nro de identificación
+ 	NO LO USAMOS	
+ 	private ItemDeCarta buscarItemDeCarta (int nro){
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
 			if (idecarta.getNroItem() == nro){
@@ -155,7 +200,7 @@ public class Restaurante {
 		System.out.println("item NO existe");
  		return null;
 	}
-	
+*/	
 
 	public void altaDePlato (String nombre, float precio){
 		ItemDeCarta itemc = buscarItemDeCarta(nombre);
@@ -174,14 +219,23 @@ public class Restaurante {
 			System.out.println("Bebida creada con exito.");
 		}
 	}	
-	
+
 	public void bajaDeItemDeCarta (String nombre){
 		ItemDeCarta itemc = buscarItemDeCarta(nombre);
 		if (itemc != null){
 			itemsCarta.remove(itemc);
 		}
 	}
+
+	public void modificarItemDeCarta (String nombre, float precio){
+		ItemDeCarta itcar = buscarItemDeCarta(nombre);
+		if (itcar != null){
+			itcar.setNombre(nombre);
+			itcar.setPrecio(precio);
+		}
+	}
 	
+	// BOORAR???
 	public void listarItemsCarta (){
 		Vector <ItemDeCarta> itcart = this.getItemsCarta();
 		for (int i=0;i<itcart.size();i++){
@@ -195,8 +249,6 @@ public class Restaurante {
 			}
 		}
 	}
-	
-	
 	
 //	Metodos que operan con Carta
 //	-------------------------------------------------------------
@@ -212,12 +264,40 @@ public class Restaurante {
  		return null;
 	}
 
+	public boolean diaValido (String dia){
+		//	Comprueba que sea un dia de semana válido
+		if (dia.equalsIgnoreCase("lunes"))
+			return true;
+		else
+			if (dia.equalsIgnoreCase("martes"))
+				return true;
+			else
+				if (dia.equalsIgnoreCase("miercoles"))
+					return true;
+				else
+					if (dia.equalsIgnoreCase("jueves"))
+						return true;
+					else
+						if (dia.equalsIgnoreCase("viernes"))
+							return true;
+						else
+							if (dia.equalsIgnoreCase("sabado"))
+								return true;
+							else
+								if (dia.equalsIgnoreCase("domingo"))
+									return true;
+								else
+									return false;
+	}
+	
 	public void altaDeCarta (String dia){
-		Carta letter = buscarCarta(dia);
-		if (letter == null){
-			letter = new Carta (dia);
-			cartas.add(letter);
-			System.out.println("Carta creada con exito.");
+		if (diaValido(dia)){
+			Carta letter = buscarCarta(dia);
+			if (letter == null){
+				letter = new Carta (dia);
+				cartas.add(letter);
+				System.out.println("Carta creada con exito.");
+			}
 		}
 	}
 
@@ -228,7 +308,7 @@ public class Restaurante {
 			System.out.println("Carta eliminada con exito.");
 		}
 	}
-	
+
 	public void cargarCarta (String nombreCarta, String nombreItem){
 		Carta letter = buscarCarta(nombreCarta);
 		if (letter != null){
@@ -317,7 +397,7 @@ public class Restaurante {
 		}		
 	}
 
-	// Actualizar stock cuando ingresa mercaderia nueva
+	//	Actualizar stock cuando ingresa mercaderia nueva
 	public void ingresarMercaderia (String produc, float cantidad){
 		Producto prod = buscarProducto(produc);
 		if (prod != null){
@@ -409,14 +489,16 @@ public class Restaurante {
 			if (ord != null){
 				ord.setNumero(nro);
 				ord.setProveedor(prov);
-				System.out.println("Proveedor modificado exitosamente.");
+				System.out.println("Orden de Compra modificada exitosamente.");
 			}
 		}
 	}
 	
 	// ****************************
 	// ***** revisar todo esto. falta controlar si hay que pedirlo o no al producto.
+	//		LEO: GENERE VARIOS METODOS PARA CARGAR ORDENES DE COMPRA - PROBARLOS
 	// ****************************
+	
 	public void cargarOrdenCompra (int nro){
 		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
 		if (ord != null){
@@ -429,6 +511,33 @@ public class Restaurante {
 		}
 	}
 
+	public void generarOrdenDeCompra(String cuitProveedor){
+		Proveedor prov = buscarProveedor(cuitProveedor);
+		if (prov != null){
+			for (int i=0; i<productos.size();i++){
+				Producto prod = productos.elementAt(i);
+				if (prod.getProveedor().equals(prov) && prod.getCantidad()<=prod.getPuntoped());
+					
+			}
+		}
+	}
+	
+	public Vector<Producto> productosBajoPuntoPedido(String cuitProveedor){
+		Vector<Producto> produc = new Vector <Producto>();
+		Proveedor prov = buscarProveedor(cuitProveedor);
+		if (prov != null){
+			for (int i= 0; i<productos.size(); i++){
+				Producto prod = productos.elementAt(i);
+				if (prod.getProveedor().equals(prov)){
+					if (prod.getCantidad()<=prod.getPuntoped()){
+						produc.add(prod);
+					}
+				}
+			}
+		}
+		return produc;
+	}
+	
 //	Metodos que operan con Mozos
 //	-------------------------------------------------------------
 	public int cantidadMozos (){
@@ -688,17 +797,17 @@ public class Restaurante {
 	}
 	
 	
-	public void agregarItemComanda(int nroMesa, int nroItemCarta, int cant){
+	public void agregarItemComanda(int nroMesa, String nombreItemCarta, int cant){
 		Mesa m = buscarMesa(nroMesa);
 		if ((m != null) && (m.isOcupada())){
-			ItemDeCarta itemCarta = cartaActiva.buscarItemDeCarta(nroItemCarta);
+			ItemDeCarta itemCarta = cartaActiva.buscarItemDeCarta(nombreItemCarta);
 			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
 				m.agregarItemComanda(cant, itemCarta);
 			}else{
-				System.out.println("En la carta del d�a no existe el �tem " + nroItemCarta);
+				System.out.println("En la carta del d�a no existe el �tem " + nombreItemCarta);
 			}
 		}else{
-			System.out.println("No existe la mesa " + nroMesa + " o no esta ocuapada");
+			System.out.println("No existe la mesa " + nroMesa + " o no esta ocupada");
 		}
 		System.out.println("Agregado OK");
 	}

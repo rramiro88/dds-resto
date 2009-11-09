@@ -1,3 +1,11 @@
+
+/**
+ * Esta clase hay que borrarla. La orden de compra guardará directamente
+ * el producto a comprar. Para saber la cantidad a pedir se consulta
+ * el atributo punto de pedido dentro el objeto PRODUCTO.
+ * 
+ * **/
+
 public class ItemDePedido {
     private Producto producto;
 	private float cantidad;

@@ -1,4 +1,6 @@
+
 import java.util.Vector;
+//	import java.util.Date;
 
 public class Restaurante {
 	static private Restaurante restaurante = null;
@@ -450,41 +452,67 @@ public class Restaurante {
 //	Metodos que operan con Ordenes de Compra
 //	-------------------------------------------------------------
 
-	private OrdenDeCompra buscarOrdenDeCompra (int nro){
-	 	for (int i=0; i<proveedores.size(); i++){
+	private OrdenDeCompra buscarOrdenDeCompra (String cuitProv, String date){
+	 	for (int i=0; i<ordenesCompra.size(); i++){
 	 		OrdenDeCompra ord = ordenesCompra.elementAt(i);
-			if (ord.getNumero()==(nro)){
-				System.out.println("Existe la orden de compra");
-				return ord;
+	 		//	Busca la orden de compra segun el Proveedor
+	 		if (ord.getNumero().equals(cuitProv)){
+	 			//	Compara fechas
+				if(ord.getFecha().equals(date)){
+					System.out.println("Existe la orden de compra");
+					return ord;
+				}
 			}
 		}
 		System.out.println("La orden de compra NO existe");
 		return null;
 	}
 
-	public void altaDeOrdenDeCompra (int nro, String cuit){
-		Proveedor prov = buscarProveedor(cuit);
-		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
-		if (prov != null){
-			if (ord == null){
-				ord = new OrdenDeCompra(nro, prov);
-				ordenesCompra.add(ord);
-				System.out.println("Orden de compra creada con exito.");
+/*	
+ *	Metodo que genera un vector con productos bajo punto de pedido correspondientes   
+ *	a un mismo proveedor. El vector generado se utiliza en altaDeOrdenDeCompra.	
+ */
+	public Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
+		Vector<Producto> produc = new Vector <Producto>();
+		for (int i= 0; i<productos.size(); i++){
+			Producto prod = productos.elementAt(i);
+			if (prod.getProveedor().equals(bajoProve)){
+				if (prod.getCantidad()<=prod.getPuntoped()){
+					produc.add(prod);
+				}
 			}
+		}
+		return produc;	//	Devuelve un vector con todos los productos bajos punto de pedido
+	}
+
+	public void altaDeOrdenDeCompra (String cuitProv, String date){
+		Proveedor prov = buscarProveedor(cuitProv);
+		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
+		if (prov != null && ord == null){
+			//	Emplea el metodo productosBajoPuntoPedido para cargarlo en la orden de compra
+			Vector<Producto> itemsApedir = productosBajoPuntoPedido(prov);
+			ord = new OrdenDeCompra(prov, date, itemsApedir);
+			ordenesCompra.add(ord);
+			System.out.println("Orden de compra creada y cargada con exito.");
 		}
 	}
 
-	public void bajaDeOrdenDeCompra (int nro){
-		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
+	public void bajaDeOrdenDeCompra (String cuitProv, String date){
+		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
 		if (ord != null){
-			ordenesCompra.remove(nro);
+			ordenesCompra.remove(ord);
 			System.out.println("Orden eliminada con exito.");
 		}
 	}
 
-	public void modificarOrdenDeCompra(String cuit, int nro){
-		Proveedor prov = buscarProveedor(cuit);
-		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
+/*	***********
+ *	***	No es necesario modificar ordenes de compra existentes, ya que el sistema
+ *	***	las genera automaticamente para los productos bajos de stock. El enunciado no requiere
+ *	***	ni pide poder modificar una orden de compra existente.
+ *	***********
+	public void modificarOrdenDeCompra(String cuitProv, String date){
+		Proveedor prov = buscarProveedor(cuitProv);
+		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
 		if (prov != null){
 			if (ord != null){
 				ord.setNumero(nro);
@@ -493,7 +521,7 @@ public class Restaurante {
 			}
 		}
 	}
-	
+
 	// ****************************
 	// ***** revisar todo esto. falta controlar si hay que pedirlo o no al producto.
 	//		LEO: GENERE VARIOS METODOS PARA CARGAR ORDENES DE COMPRA - PROBARLOS
@@ -511,7 +539,7 @@ public class Restaurante {
 		}
 	}
 
-	public void generarOrdenDeCompra(String cuitProveedor){
+	public void generarOrdenDeCompra(String cuitProveedor, String fecha){
 		Proveedor prov = buscarProveedor(cuitProveedor);
 		if (prov != null){
 			for (int i=0; i<productos.size();i++){
@@ -521,22 +549,7 @@ public class Restaurante {
 			}
 		}
 	}
-	
-	public Vector<Producto> productosBajoPuntoPedido(String cuitProveedor){
-		Vector<Producto> produc = new Vector <Producto>();
-		Proveedor prov = buscarProveedor(cuitProveedor);
-		if (prov != null){
-			for (int i= 0; i<productos.size(); i++){
-				Producto prod = productos.elementAt(i);
-				if (prod.getProveedor().equals(prov)){
-					if (prod.getCantidad()<=prod.getPuntoped()){
-						produc.add(prod);
-					}
-				}
-			}
-		}
-		return produc;
-	}
+*/
 	
 //	Metodos que operan con Mozos
 //	-------------------------------------------------------------

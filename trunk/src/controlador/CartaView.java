@@ -2,6 +2,8 @@ package controlador;
 
 import java.util.Vector;
 
+import modelo.ItemDeCarta;
+
 public class CartaView {
 	private String dia;
 //	private boolean habilitada;

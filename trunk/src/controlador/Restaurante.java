@@ -3,6 +3,17 @@ package controlador;
 import java.util.Vector;
 //	import java.util.Date;
 
+import modelo.Bebida;
+import modelo.Carta;
+import modelo.Comanda;
+import modelo.ItemDeCarta;
+import modelo.Mesa;
+import modelo.Mozo;
+import modelo.OrdenDeCompra;
+import modelo.Plato;
+import modelo.Producto;
+import modelo.Proveedor;
+
 public class Restaurante {
 	static private Restaurante restaurante = null;
 
@@ -238,7 +249,7 @@ public class Restaurante {
 		}
 	}
 	
-	// BOORAR???
+	// BOORRAR???
 	public void listarItemsCarta (){
 		Vector <ItemDeCarta> itcart = this.getItemsCarta();
 		for (int i=0;i<itcart.size();i++){

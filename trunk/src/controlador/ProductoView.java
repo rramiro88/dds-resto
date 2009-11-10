@@ -2,6 +2,8 @@ package controlador;
 
 import java.util.Vector;
 
+import modelo.Proveedor;
+
 
 public class ProductoView {
 	private String nombre;

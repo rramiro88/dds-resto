@@ -1,4 +1,4 @@
-package controlador;
+package vista;
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import controlador.Restaurante;
 
 
 /**

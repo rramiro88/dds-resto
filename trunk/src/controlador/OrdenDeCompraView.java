@@ -2,6 +2,9 @@ package controlador;
 
 import java.util.Vector;
 
+import modelo.ItemDePedido;
+import modelo.Proveedor;
+
 public class OrdenDeCompraView {
 	private int numero;
 	private Vector <ItemDePedido> itemsDePedido;

@@ -2,6 +2,9 @@ package controlador;
 
 import java.util.Vector;
 
+import modelo.Comanda;
+import modelo.Mozo;
+
 
 public class MesaView {
 	private int nroMesa;

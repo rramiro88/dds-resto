@@ -2,6 +2,9 @@ package controlador;
 
 import java.util.Vector;
 
+import modelo.ItemComanda;
+import modelo.Mozo;
+
 public class ComandaView {
 	
 	private Vector<ItemComanda> itemsComanda;

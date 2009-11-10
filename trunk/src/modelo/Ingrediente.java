@@ -1,4 +1,5 @@
-package controlador;
+package modelo;
+
 
 
 public class Ingrediente {

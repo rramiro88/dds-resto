@@ -1,4 +1,4 @@
-package controlador;
+package vista;
 
 
 
@@ -22,6 +22,9 @@ import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
+import controlador.MozoView;
+import controlador.Restaurante;
 
 
 /**

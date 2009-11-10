@@ -2,6 +2,8 @@ package controlador;
 
 import java.util.Vector;
 
+import modelo.Ingrediente;
+
 public abstract class ItemDeCartaView {
 	private String name;
 	private float price;

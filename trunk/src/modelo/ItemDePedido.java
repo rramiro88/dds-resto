@@ -1,4 +1,5 @@
-package controlador;
+package modelo;
+
 
 /**
  * Esta clase hay que borrarla. La orden de compra guardará directamente

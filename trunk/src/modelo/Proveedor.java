@@ -1,4 +1,6 @@
-package controlador;
+package modelo;
+
+import controlador.ProveedorView;
 
 public class Proveedor {
 	private String cuit;

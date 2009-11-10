@@ -1,4 +1,4 @@
-package controlador;
+package modelo;
 
 
 public class Bebida extends ItemDeCarta{

@@ -1,4 +1,6 @@
-package controlador;
+package modelo;
+
+import controlador.ProductoView;
 
 
 

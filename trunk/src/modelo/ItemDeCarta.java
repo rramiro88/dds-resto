@@ -1,12 +1,14 @@
-package controlador;
+package modelo;
 
 import java.util.Vector;
+
+
 
 public abstract class ItemDeCarta {
 	protected String name;
 	protected float price;
 	protected Vector <Ingrediente> ingredientes;
-	boolean disponible;
+	public boolean disponible;
 	protected int nroItem;
 	protected static int ultimoNroItem = 0;
 

@@ -865,7 +865,7 @@ public class Restaurante {
 		if (prov == null){
 			prov = new Proveedor(cuit, razonsocial, domicilio);
 			proveedores.add(prov);
-			//System.out.println("Proveedor creado con exito.");
+			System.out.println("Proveedor creado con exito.");
 		}
 	}
 

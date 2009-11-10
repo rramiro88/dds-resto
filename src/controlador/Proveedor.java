@@ -1,3 +1,4 @@
+package controlador;
 
 public class Proveedor {
 	private String cuit;

@@ -1,4 +1,4 @@
-package controlador;
+package vista;
 
 import java.awt.event.ActionEvent;
 import java.util.Vector;
@@ -15,6 +15,9 @@ import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.SwingUtilities;
+
+import controlador.MozoView;
+import controlador.Restaurante;
 
 
 /**

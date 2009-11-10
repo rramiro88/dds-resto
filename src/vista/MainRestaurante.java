@@ -1,7 +1,14 @@
-package controlador;
+package vista;
 
 import java.io.*;
 import java.util.Vector;
+
+import controlador.Restaurante;
+
+import modelo.Carta;
+import modelo.ItemDeCarta;
+import modelo.Mesa;
+import modelo.Mozo;
 
 public class MainRestaurante {
 	private Restaurante restaurante;

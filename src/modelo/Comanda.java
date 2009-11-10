@@ -1,6 +1,7 @@
-package controlador;
+package modelo;
 
 import java.util.Vector;
+
 
 public class Comanda {
 	

@@ -1,6 +1,8 @@
-package controlador;
+package modelo;
 
 import java.util.Vector;
+
+import controlador.MozoView;
 
 public class Mozo {
 	private String nombre;

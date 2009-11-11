@@ -857,7 +857,7 @@ public class Restaurante {
 
 //	Metodos que operan con Proveedores
 //	-------------------------------------------------------------
-	 private Proveedor buscarProveedor (String cuit){
+	 public Proveedor buscarProveedor (String cuit){
 	 	for (int i=0; i<proveedores.size(); i++){
 	 		Proveedor prov = proveedores.elementAt(i);
 			if (prov.getCuit().equals(cuit)){

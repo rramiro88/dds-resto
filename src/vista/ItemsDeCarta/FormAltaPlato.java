@@ -1,4 +1,4 @@
-package vista;
+package vista.ItemsDeCarta;
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
@@ -11,32 +11,31 @@ import javax.swing.SwingUtilities;
 
 import controlador.*;
 
-public class FormAltaProveedor extends javax.swing.JFrame {
+
+public class FormAltaPlato extends javax.swing.JFrame {
 	private JButton btnCancel;
 	private JButton btnAceptar;
-	private JTextField txtRazonSocial;
 	private AbstractAction cancelarAccion;
 	private AbstractAction aceptarAccion;
 	private JLabel lblRazonSocial;
 	private JLabel jLabel2;
 	private JLabel jLabel1;
-	private JTextField txtDomicilio;
-	private JTextField txtCuit;
-
+	private JTextField txtPrecio;
+	private JTextField txtNombre;
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				FormAltaProveedor inst = new FormAltaProveedor();
+				FormAltaPlato inst = new FormAltaPlato();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public FormAltaProveedor() {
+	public FormAltaPlato() {
 		super();
 		initGUI();
 	}
@@ -45,7 +44,7 @@ public class FormAltaProveedor extends javax.swing.JFrame {
 		try {
 			getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			this.setTitle("Alta de Proveedores");
+			this.setTitle("Alta de Platos");
 			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
@@ -61,37 +60,26 @@ public class FormAltaProveedor extends javax.swing.JFrame {
 				btnAceptar.setAction(getAceptarAccion());
 			}
 			{
-				txtCuit = new JTextField();
-				getContentPane().add(txtCuit);
-				txtCuit.setBounds(134, 12, 244, 34);
+				txtNombre = new JTextField();
+				getContentPane().add(txtNombre);
+				txtNombre.setBounds(134, 12, 244, 34);
 			}
 			{
-				txtDomicilio = new JTextField();
-				getContentPane().add(txtDomicilio);
-				txtDomicilio.setBounds(134, 58, 244, 34);
-			}
-			{
-				txtRazonSocial = new JTextField();
-				getContentPane().add(txtRazonSocial);
-				txtRazonSocial.setBounds(134, 108, 244, 34);
+				txtPrecio = new JTextField();
+				getContentPane().add(txtPrecio);
+				txtPrecio.setBounds(134, 58, 244, 34);
 			}
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
-				jLabel1.setText("Cuit");
-				jLabel1.setBounds(12, 13, 110, 33);
+				jLabel1.setText("Nombre del Plato");
+				jLabel1.setBounds(12, 17, 110, 33);
 			}
 			{
 				jLabel2 = new JLabel();
 				getContentPane().add(jLabel2);
-				jLabel2.setText("Domicilio");
+				jLabel2.setText("Precio");
 				jLabel2.setBounds(12, 59, 110, 33);
-			}
-			{
-				lblRazonSocial = new JLabel();
-				getContentPane().add(lblRazonSocial);
-				lblRazonSocial.setText("Razon Social");
-				lblRazonSocial.setBounds(12, 109, 110, 33);
 			}
 			pack();
 			setSize(400, 300);
@@ -105,16 +93,15 @@ public class FormAltaProveedor extends javax.swing.JFrame {
 			aceptarAccion = new AbstractAction("ACEPTAR", null) {
 				public void actionPerformed(ActionEvent evt) {
 					//aca va el codigo de lo que hace el boton
-					Restaurante.getRestaurante().altaDeProveedor(txtCuit.getText(), txtRazonSocial.getText(), txtDomicilio.getText());
-					txtCuit.setText("");
-					txtRazonSocial.setText("");
-					txtDomicilio.setText("");
+					Restaurante.getRestaurante().altaDePlato(txtNombre.getText(), Integer.parseInt(txtPrecio.getText()));
+					txtNombre.setText("");
+					txtPrecio.setText("");
 				}
 			};
 		}
 		return aceptarAccion;
 	}
-	
+			
 	private AbstractAction getCancelarAccion() {
 		if(cancelarAccion == null) {
 			cancelarAccion = new AbstractAction("CANCELAR", null) {
@@ -126,5 +113,4 @@ public class FormAltaProveedor extends javax.swing.JFrame {
 		}
 		return cancelarAccion;
 	}
-
 }

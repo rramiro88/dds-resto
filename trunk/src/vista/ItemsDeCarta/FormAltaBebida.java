@@ -1,4 +1,4 @@
-package vista;
+package vista.ItemsDeCarta;
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;

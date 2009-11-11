@@ -1,4 +1,4 @@
-package vista;
+package vista.Mozos;
 
 import java.awt.event.ActionEvent;
 import java.util.Vector;

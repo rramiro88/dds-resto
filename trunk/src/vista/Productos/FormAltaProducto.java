@@ -1,4 +1,4 @@
-package vista;
+package vista.Productos;
 
 import java.awt.event.ActionEvent;
 

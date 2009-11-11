@@ -98,14 +98,14 @@ public class Restaurante {
 **	------------------------------------------------------------
 */	
 
-	//	SINGLETON de Restaurante para que halla una sola instancia
+//	SINGLETON de Restaurante para que halla una sola instancia
+//	-------------------------------------------------------------
 	static public Restaurante getRestaurante(){
 		if (restaurante == null){
 			restaurante = new Restaurante();
 		}
 		return restaurante;
 	}
-
 	
 //	Metodos sets y gets para los atributos de Restaurante
 //	-------------------------------------------------------------	
@@ -238,6 +238,7 @@ public class Restaurante {
 		ItemDeCarta itemc = buscarItemDeCarta(nombre);
 		if (itemc != null){
 			itemsCarta.remove(itemc);
+			System.out.println("Item eliminado con exito.");
 		}
 	}
 
@@ -246,6 +247,7 @@ public class Restaurante {
 		if (itcar != null){
 			itcar.setNombre(nombre);
 			itcar.setPrecio(precio);
+			System.out.println("Item modificado con exito.");
 		}
 	}
 	
@@ -304,8 +306,11 @@ public class Restaurante {
 									return false;
 	}
 	
-	public void altaDeCarta (String dia){
-		if (diaValido(dia)){
+	public boolean altaDeCarta (String dia){
+		boolean valido = diaValido(dia);
+		//	Revisa que el dia sea valido
+		if (valido){
+			//	Revisa que la carta no halla sido creada
 			Carta letter = buscarCarta(dia);
 			if (letter == null){
 				letter = new Carta (dia);
@@ -313,6 +318,7 @@ public class Restaurante {
 				System.out.println("Carta creada con exito.");
 			}
 		}
+		return valido;
 	}
 
 	public void bajaDeCarta (String dia){
@@ -344,6 +350,7 @@ public class Restaurante {
 		}
 	}
 
+	//	BORRAR ???
 	public void detalleCarta (String nombreCarta){
 		Carta letter = buscarCarta(nombreCarta);
 		if (letter != null){
@@ -367,9 +374,11 @@ public class Restaurante {
  		for (int i=0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getNombre().equals(nombre)){
+				System.out.println("Producto existente");
 				return prod;
 			}
 		}
+		System.out.println("Producto NO existe");
  		return null;
 	}
 	
@@ -396,7 +405,7 @@ public class Restaurante {
 		Producto prod = buscarProducto(nombre);
 		if (prod != null){
 			productos.remove(prod);
-			System.out.println("producto eliminado con exito.");
+			System.out.println("Producto eliminado con exito.");
 		}
 	}
 	
@@ -411,7 +420,7 @@ public class Restaurante {
 		}		
 	}
 
-	//	Actualizar stock cuando ingresa mercaderia nueva
+//	Actualizar stock cuando ingresa mercaderia nueva
 	public void ingresarMercaderia (String produc, float cantidad){
 		Producto prod = buscarProducto(produc);
 		if (prod != null){
@@ -471,7 +480,7 @@ public class Restaurante {
 	 		if (ord.getNumero().equals(cuitProv)){
 	 			//	Compara fechas
 				if(ord.getFecha().equals(date)){
-					System.out.println("Existe la orden de compra");
+					System.out.println("Orden de compra existente");
 					return ord;
 				}
 			}
@@ -494,7 +503,7 @@ public class Restaurante {
 				}
 			}
 		}
-		return produc;	//	Devuelve un vector con todos los productos bajos punto de pedido
+		return produc;	//	Devuelve un vector con todos los productos bajos en stock
 	}
 
 	public void altaDeOrdenDeCompra (String cuitProv, String date){

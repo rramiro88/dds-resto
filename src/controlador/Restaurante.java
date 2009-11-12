@@ -1,18 +1,9 @@
 package controlador;
 
 import java.util.Vector;
-//	import java.util.Date;
 
-import modelo.Bebida;
-import modelo.Carta;
-import modelo.Comanda;
-import modelo.ItemDeCarta;
-import modelo.Mesa;
-import modelo.Mozo;
-import modelo.OrdenDeCompra;
-import modelo.Plato;
-import modelo.Producto;
-import modelo.Proveedor;
+import modelo.*;
+
 
 public class Restaurante {
 	static private Restaurante restaurante = null;
@@ -25,25 +16,27 @@ public class Restaurante {
 	private Vector <ItemDeCarta>	itemsCarta;
 	private Vector <Carta> 			cartas;
 	private Vector <Mozo> 			mozos;
-	private Vector <Comanda> 		comandas;
 	private Vector <Mesa> 			mesas;
+	private Vector <Comanda> 		comandas;
 	private Vector <Proveedor> 		proveedores;
 	private Vector <OrdenDeCompra> 	ordenesCompra;
 	private Vector <Producto> 		productos;
 
+//	Constructor de instancia Restaurante
+//	-------------------------------------------------------------	
 	private Restaurante (){
 		itemsCarta 		= new Vector <ItemDeCarta>();
 		cartas 			= new Vector <Carta>();
 		mozos 			= new Vector <Mozo> ();
-		comandas 		= new Vector <Comanda> ();
 		mesas 			= new Vector <Mesa> ();
+		comandas 		= new Vector <Comanda> ();
 		proveedores 	= new Vector <Proveedor>();
 		ordenesCompra 	= new Vector <OrdenDeCompra>();
 		productos 		= new Vector <Producto>();
 
-/**		----------------------------------------------------
- **		Metodos que cargan datos - USAR EN LAS PRUEBAS Y BORRAR	!!!!
- **		----------------------------------------------------
+/**		-------------------------------------------------------------
+ **		Metodos que cargan datos - USAR EN LAS PRUEBAS Y BORRAR	!!!! 
+ **		-------------------------------------------------------------
  **/
 		//	Mesas
 		altaDeMesa();
@@ -51,7 +44,7 @@ public class Restaurante {
 		altaDeMesa();
 		//	Mozos
 		altaDeMozo("Cacho Garay", 15);
-		altaDeMozo("Cacho Buenaventua", 20);
+		altaDeMozo("Jorge Buenaventua", 20);
 
 		asignarMesas();
 
@@ -87,7 +80,6 @@ public class Restaurante {
 		vinoT.agregarIngrediente(buscarProducto("vinoTinto"), 1);
 		//	Cartas
 		altaDeCarta("lunes");
-		
 	}
 /**				BORRAR LOS DATOS INGRESADOS ARRIBA
  **	------------------------------------------------------------	**/	
@@ -181,13 +173,14 @@ public class Restaurante {
 		this.cartaActiva = cartaActiva;
 	}
 
-
-/** -----------------------------------------------------------
-  * ---------- ABM y BUSCAR de las clases del NEGOCIO ---------
-  * ----------------------------------------------------------- **/	
 	
-//	Metodos que operan con Items De Carta (platos o bebidas)
-//	-------------------------------------------------------------	
+
+/** -----------------------------------------------------------------------------
+  * ------------------  ABM - BUSCAR de las clases del NEGOCIO  -----------------
+  * ----------------------------------------------------------------------------- **/	
+	
+//	ABM - BUSCAR	Items De Carta (platos o bebidas)
+//	-----------------------------------------------------
 	private ItemDeCarta buscarItemDeCarta (String nombre){
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
@@ -199,7 +192,7 @@ public class Restaurante {
 		System.out.println("Item de Carta NO existe");
  		return null;
 	}
-	/*	Metodo que buscar items de carta segun un nro de identificación	- NO LO USAMOS	
+	/*	Metodo buscar items de carta segun un nro de identificacion	- NO LO USAMOS	
  	private ItemDeCarta buscarItemDeCarta (int nro){
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
@@ -245,25 +238,10 @@ public class Restaurante {
 			System.out.println("Item modificado con exito.");
 		}
 	}
-	
-	/*	BOORRAR???
-	public void listarItemsCarta (){
-		Vector <ItemDeCarta> itcart = this.getItemsCarta();
-		for (int i=0;i<itcart.size();i++){
-			ItemDeCarta c = (ItemDeCarta)itcart.elementAt(i);
-			//	Listar items de carta disponibles
-			if (c.disponible){
-				System.out.print("id: "+ c.getNroItem());
-				System.out.print("	Nombre: "+ c.getNombre());
-				System.out.println("	$ "+ c.getPrecio());
-				System.out.println("-----");
-			}
-		}
-	}	*/
 
 	
-//	Metodos que operan con Cartas
-//	-------------------------------------------------------------
+//	ABM - BUSCAR	Cartas
+//	-----------------------------------------------------
 	private Carta buscarCarta (String dia){
  		for (int i=0; i<cartas.size(); i++){
 			Carta car = cartas.elementAt(i);
@@ -351,7 +329,7 @@ public class Restaurante {
 		
 	}
 
-	//	Elimina un plato o bebida existentes en una carta
+	//	Elimina un plato o bebida existentes de una carta
 	public void descargarCarta (String nombreCarta, String nombreItem){
 		Carta letter = buscarCarta(nombreCarta);
 		if (letter != null){
@@ -363,26 +341,9 @@ public class Restaurante {
 		}
 	}
 
-	/*	//	BORRAR ???
-	public void detalleCarta (String nombreCarta){
-		Carta letter = buscarCarta(nombreCarta);
-		if (letter != null){
-			Vector <ItemDeCarta> it = letter.getItemsCarta();
-			System.out.println("");
-			System.out.println("Nombre: "+ letter.getDia());
-//			System.out.println("Activa: "+ letter.isHabilitada());
-			System.out.println("");
-			for (int i=0; i<it.size(); i++){
-				ItemDeCarta car = it.elementAt(i);
-				System.out.print("Item: "+ car.getNombre());
-				System.out.print("		Precio: "+ car.getPrecio());
-			}
-		}
-	}	*/
-
 	
-//	Metodos que operan con Productos
-//	-------------------------------------------------------------
+//	ABM - BUSCAR	Productos
+//	-----------------------------------------------------
 	private Producto buscarProducto (String nombre){
  		for (int i=0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
@@ -438,21 +399,19 @@ public class Restaurante {
 	public void ingresarMercaderia (String produc, float cantidad){
 		Producto prod = buscarProducto(produc);
 		if (prod != null){
-			//float viejaCantidad = prod.getCantidad();
-			//float nuevaCantidad = viejaCantidad + cantidad;
 			prod.setCantidad(prod.getCantidad()+cantidad);
 			System.out.println("Stock de producto actualizado con exito.");
 		}
 	}
 
 
-//	Metodos que operan con Ordenes de Compra
-//	-------------------------------------------------------------
+//	ABM - BUSCAR	Ordenes de Compra
+//	-----------------------------------------------------
 	private OrdenDeCompra buscarOrdenDeCompra (String cuitProv, String date){
 	 	for (int i=0; i<ordenesCompra.size(); i++){
 	 		OrdenDeCompra ord = ordenesCompra.elementAt(i);
 	 		//	Busca la orden de compra segun el Proveedor
-	 		if (ord.getNumero().equals(cuitProv)){
+	 		if (ord.getCuitProveedor().equals(cuitProv)){
 	 			//	Compara fechas
 				if(ord.getFecha().equals(date)){
 					System.out.println("Orden de compra existente");
@@ -464,8 +423,8 @@ public class Restaurante {
 		return null;
 	}
 
-	//	Metodo que genera un vector con productos bajo punto de pedido correspondientes
-	//	a un mismo proveedor. El vector generado se utiliza en altaDeOrdenDeCompra.
+	/*	Genera un vector con productos bajo punto de pedido, correspondientes
+		a un mismo proveedor. El vector se utiliza en altaDeOrdenDeCompra.		*/
 	public Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
 		Vector<Producto> produc = new Vector <Producto>();
 		for (int i= 0; i<productos.size(); i++){
@@ -476,14 +435,16 @@ public class Restaurante {
 				}
 			}
 		}
-		return produc;	//	Devuelve un vector con los productos (de un proveedor) bajos en stock. 
+		return produc;	//	Vector con los productos (de un proveedor) bajos en stock. 
 	}
 
+	/*	Genera las ordenes automaticamente para los productos
+		bajos en stock. Es UNA orden por proveedor, por dia.		*/
 	public void altaDeOrdenDeCompra (String cuitProv, String date){
 		Proveedor prov = buscarProveedor(cuitProv);
 		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
 		if (prov != null && ord == null){
-			//	Emplea el metodo productosBajoPuntoPedido para cargarlo en la orden de compra
+			//	Vector generado por productosBajoPuntoPedido para cargarlo en la orden de compra
 			Vector<Producto> itemsApedir = productosBajoPuntoPedido(prov);
 			ord = new OrdenDeCompra(prov, date, itemsApedir);
 			ordenesCompra.add(ord);
@@ -499,24 +460,19 @@ public class Restaurante {
 		}
 	}
 
-	/*	***********
-	***	No es necesario modificar ordenes de compra existentes, ya que el sistema
-	***	las genera automaticamente para los productos bajos de stock. El enunciado no requiere
-	***	ni pide poder modificar una orden de compra existente.
-	***********
 	public void modificarOrdenDeCompra(String cuitProv, String date){
+		//	Valida la existencia del proveedor
 		Proveedor prov = buscarProveedor(cuitProv);
+		//	Valida la existencia de la orden de compra
 		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
-		if (prov != null){
-			if (ord != null){
-				ord.setNumero(nro);
-				ord.setProveedor(prov);
+		if (prov != null && ord != null){
+				ord.setCuitProveedor(cuitProv);
+				ord.setFecha(date);
 				System.out.println("Orden de Compra modificada exitosamente.");
-			}
 		}
 	}
 
-	// ****************************
+/*	// ****************************
 	// ***** revisar todo esto. falta controlar si hay que pedirlo o no al producto.
 	//		LEO: GENERE VARIOS METODOS PARA CARGAR ORDENES DE COMPRA - PROBARLOS
 	// ****************************
@@ -547,7 +503,7 @@ public class Restaurante {
 	
 
 //	Metodos que operan con Mozos
-//	-------------------------------------------------------------
+//	-----------------------------------------------------
 	private Mozo buscarMozo (int id){
  		for (int i=0; i<mozos.size(); i++){
 			Mozo m = mozos.elementAt(i);
@@ -726,8 +682,8 @@ public class Restaurante {
 	}
 	
 	
-//	Metodos que operan con Mesas
-//	-------------------------------------------------------------
+//	ABM - BUSCAR	Mesas
+//	-----------------------------------------------------
 	private Mesa buscarMesa(int id){
 		int i = 0;
 		while (i < mesas.size()){
@@ -808,8 +764,8 @@ public class Restaurante {
 	}
 
 	
-//	Metodos que operan con Proveedores
-//	-------------------------------------------------------------
+//	ABM - BUSCAR	Proveedores
+//	-----------------------------------------------------
 	 public Proveedor buscarProveedor (String cuit){
 	 	for (int i=0; i<proveedores.size(); i++){
 	 		Proveedor prov = proveedores.elementAt(i);
@@ -851,7 +807,7 @@ public class Restaurante {
 
 	
 //	Metodos que operan con Vectores View
-//	-------------------------------------------------------------
+//	-----------------------------------------------------
 
 	//	PRODUCTOS
 	public Vector<ProductoView> getProductosView(){ 

@@ -1,7 +1,5 @@
 package modelo;
 
-
-
 public class Ingrediente {
 	private float cantidad;
 	private Producto producto;
@@ -37,18 +35,17 @@ public class Ingrediente {
 		this.isFabricable = isFabricable;
 	}*/
 	
-//	Metodos con productos - Preparar plato o bebida
+//	Metodos que operan con productos
 //	-------------------------------------------------------------	
-
-	//	Revisa que la cantidad total de producto alcance para preparar
-	//	el total de items de carta requeridos
+	//	Revisa que la cantidad total de producto alcance para
+	//	preparar el total de platos o bebidas requeridos.
 	public boolean esSuficiente(float cantidadTotal){
 		if (producto.getCantidad()>=cantidadTotal)
 			return true;
 		return false;
 	}
 
-	//	Ordena preparar el total de items de carta requeridos
+	//	Ordena al producto restarse la cantidad requerida para el plato-bebida
 	public void usar(float cantidadTotal){
 		this.producto.setCantidad(producto.getCantidad()-cantidadTotal);
 	}

@@ -4,17 +4,14 @@ import java.util.Vector;
 
 public class Carta {
 	private String dia;
-//	private boolean habilitada;
 	private Vector <ItemDeCarta> itemsCarta;
 
 //	Constructor de instancia Carta
 //	-------------------------------------------------------------	
 	public Carta (String day){
 		this.dia = day;
-//		this.habilitada = false;
 		itemsCarta = new Vector <ItemDeCarta>();
 	}
-
 
 //	Metodos sets y gets para los atributos de la clase ItemDeCarta
 //	-------------------------------------------------------------	
@@ -38,11 +35,11 @@ public class Carta {
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
 			if (idecarta.getNombre().equals(nombre)){
-				System.out.println("item existente");
+				System.out.println("Item existente en la carta");
 				return idecarta;
 			}
 		}
-		System.out.println("item NO existe");
+		System.out.println("El item NO existe en esta carta");
  		return null;
 	}
 

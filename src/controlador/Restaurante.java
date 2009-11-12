@@ -255,7 +255,7 @@ public class Restaurante {
 	}
 
 	//	Comprueba que el dia de semana sea válido
-	private boolean diaValido (String dia){
+	public boolean diaValido (String dia){
 		if (dia.equalsIgnoreCase("lunes"))
 			return true;
 		else
@@ -309,15 +309,21 @@ public class Restaurante {
 		return valido;
 	}
 
-	public void modificarCarta (String dia){
-		boolean valido = diaValido(dia);
-		//	Revisa que el dia sea valido
-		if (valido){
-			//	Revisa que la carta halla sido creada previamente
-			Carta letter = buscarCarta(dia);
-			if (letter != null){
-				letter.setDia(dia);
-				System.out.println("Carta modificada con exito.");
+	//	Se valido previamente que la carta a modificar ya existe
+	public void modificarCarta (String diaViejo, String diaNuevo){
+		boolean validoViejo = diaValido(diaViejo);
+		boolean validoNuevo = diaValido(diaNuevo);
+		//	Revisa que ambos dias sean validos
+		if (validoViejo && validoNuevo){
+			//	Revisa que no exista una carta con el mismo nombre a asignar
+			//	para que no pueda haber dos cartas del mismo dia.
+			Carta letterVieja = buscarCarta(diaViejo);
+			Carta letterNueva = buscarCarta(diaNuevo);
+			if (letterVieja != null && letterNueva == null ){
+				letterVieja.setDia(diaNuevo);
+				System.out.println("Dia de Carta modificado con exito.");
+			}else{
+				System.out.println("La Carta No puede modificarse. Carta inexistente.");
 			}
 		}
 	}

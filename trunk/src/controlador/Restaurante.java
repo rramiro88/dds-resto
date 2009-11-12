@@ -22,33 +22,29 @@ public class Restaurante {
 
 	private Carta cartaActiva;
 
-	private Vector <ItemDeCarta> itemsCarta;
-	private Vector <Carta> cartas;
-	private Vector<Mozo> mozos;
-	private Vector<Comanda> comandas;
-	private Vector<Mesa> mesas;
-	private Vector <Proveedor> proveedores;
-	private Vector <OrdenDeCompra> ordenesCompra;
-	private Vector <Producto> productos;
+	private Vector <ItemDeCarta>	itemsCarta;
+	private Vector <Carta> 			cartas;
+	private Vector <Mozo> 			mozos;
+	private Vector <Comanda> 		comandas;
+	private Vector <Mesa> 			mesas;
+	private Vector <Proveedor> 		proveedores;
+	private Vector <OrdenDeCompra> 	ordenesCompra;
+	private Vector <Producto> 		productos;
 
 	private Restaurante (){
-		itemsCarta = new Vector <ItemDeCarta>();
-		cartas = new Vector <Carta>();
-		mozos = new Vector <Mozo> ();
-		comandas = new Vector <Comanda> ();
-		mesas = new Vector <Mesa> ();
-		proveedores = new Vector <Proveedor>();
-		ordenesCompra = new Vector <OrdenDeCompra>();
-		productos = new Vector <Producto>();
-		
-/*		----------------------------------------------------
- **
- **		Metodos que cargan datos
- **
- **		Para usar en la prueba y borrar !!!!
- **
+		itemsCarta 		= new Vector <ItemDeCarta>();
+		cartas 			= new Vector <Carta>();
+		mozos 			= new Vector <Mozo> ();
+		comandas 		= new Vector <Comanda> ();
+		mesas 			= new Vector <Mesa> ();
+		proveedores 	= new Vector <Proveedor>();
+		ordenesCompra 	= new Vector <OrdenDeCompra>();
+		productos 		= new Vector <Producto>();
+
+/**		----------------------------------------------------
+ **		Metodos que cargan datos - USAR EN LAS PRUEBAS Y BORRAR	!!!!
  **		----------------------------------------------------
-*/
+ **/
 		//	Mesas
 		altaDeMesa();
 		altaDeMesa();
@@ -93,11 +89,10 @@ public class Restaurante {
 		altaDeCarta("lunes");
 		
 	}
-/*		
-**	------------------------------------------------------------
-**	------------------------------------------------------------
-*/	
+/**				BORRAR LOS DATOS INGRESADOS ARRIBA
+ **	------------------------------------------------------------	**/	
 
+	
 //	SINGLETON de Restaurante para que halla una sola instancia
 //	-------------------------------------------------------------
 	static public Restaurante getRestaurante(){
@@ -109,7 +104,6 @@ public class Restaurante {
 	
 //	Metodos sets y gets para los atributos de Restaurante
 //	-------------------------------------------------------------	
-	
 	public Vector<ItemDeCarta> getItemsCarta() {
 		return itemsCarta;
 	}
@@ -187,22 +181,25 @@ public class Restaurante {
 		this.cartaActiva = cartaActiva;
 	}
 
-//	Metodos que operan con platos o bebidas (Items De Carta)
+
+/** -----------------------------------------------------------
+  * ---------- ABM y BUSCAR de las clases del NEGOCIO ---------
+  * ----------------------------------------------------------- **/	
+	
+//	Metodos que operan con Items De Carta (platos o bebidas)
 //	-------------------------------------------------------------	
 	private ItemDeCarta buscarItemDeCarta (String nombre){
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
 			if (idecarta.getNombre().equals(nombre)){
-				System.out.println("item existente");
+				System.out.println("Item de Carta existente");
 				return idecarta;
 			}
 		}
-		System.out.println("item NO existe");
+		System.out.println("Item de Carta NO existe");
  		return null;
 	}
-	
-/*	Metodo que buscar items de carta segun un nro de identificación
- 	NO LO USAMOS	
+	/*	Metodo que buscar items de carta segun un nro de identificación	- NO LO USAMOS	
  	private ItemDeCarta buscarItemDeCarta (int nro){
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
@@ -213,9 +210,7 @@ public class Restaurante {
 		}
 		System.out.println("item NO existe");
  		return null;
-	}
-*/	
-
+	}	*/	
 	public void altaDePlato (String nombre, float precio){
 		ItemDeCarta itemc = buscarItemDeCarta(nombre);
 		if (itemc == null){
@@ -251,7 +246,7 @@ public class Restaurante {
 		}
 	}
 	
-	// BOORRAR???
+	/*	BOORRAR???
 	public void listarItemsCarta (){
 		Vector <ItemDeCarta> itcart = this.getItemsCarta();
 		for (int i=0;i<itcart.size();i++){
@@ -264,9 +259,10 @@ public class Restaurante {
 				System.out.println("-----");
 			}
 		}
-	}
+	}	*/
+
 	
-//	Metodos que operan con Carta
+//	Metodos que operan con Cartas
 //	-------------------------------------------------------------
 	private Carta buscarCarta (String dia){
  		for (int i=0; i<cartas.size(); i++){
@@ -280,8 +276,8 @@ public class Restaurante {
  		return null;
 	}
 
-	public boolean diaValido (String dia){
-		//	Comprueba que sea un dia de semana válido
+	//	Comprueba que el dia de semana sea válido
+	private boolean diaValido (String dia){
 		if (dia.equalsIgnoreCase("lunes"))
 			return true;
 		else
@@ -329,28 +325,45 @@ public class Restaurante {
 		}
 	}
 
+	public void modificarCarta (String dia){
+		boolean valido = diaValido(dia);
+		//	Revisa que el dia sea valido
+		if (valido){
+			//	Revisa que la carta halla sido creada previamente
+			Carta letter = buscarCarta(dia);
+			if (letter != null){
+				letter.setDia(dia);
+				System.out.println("Carta modificada con exito.");
+			}
+		}
+	}
+
+	//	Carga un plato o bebida en la carta
 	public void cargarCarta (String nombreCarta, String nombreItem){
 		Carta letter = buscarCarta(nombreCarta);
 		if (letter != null){
 			ItemDeCarta itemc = buscarItemDeCarta(nombreItem);
 			if (itemc != null){
 				letter.agregarItemCarta(itemc);
+				System.out.println("Carga de item en carta exitosa.");
 			}
 		}
 		
 	}
 
+	//	Elimina un plato o bebida existentes en una carta
 	public void descargarCarta (String nombreCarta, String nombreItem){
 		Carta letter = buscarCarta(nombreCarta);
 		if (letter != null){
 			ItemDeCarta itemc = buscarItemDeCarta(nombreItem);
 			if (itemc == null){
 				letter.eliminarItemCarta(itemc);
+				System.out.println("Item eliminado de la carta con exito.");
 			}
 		}
 	}
 
-	//	BORRAR ???
+	/*	//	BORRAR ???
 	public void detalleCarta (String nombreCarta){
 		Carta letter = buscarCarta(nombreCarta);
 		if (letter != null){
@@ -365,9 +378,9 @@ public class Restaurante {
 				System.out.print("		Precio: "+ car.getPrecio());
 			}
 		}
-	}
+	}	*/
 
-
+	
 //	Metodos que operan con Productos
 //	-------------------------------------------------------------
 	private Producto buscarProducto (String nombre){
@@ -409,7 +422,7 @@ public class Restaurante {
 		}
 	}
 	
-	public void modificarProducto (String name, int canti, int puntop, int puntor, Proveedor prov){
+	public void modificarProducto (String name, float canti, float puntop, float puntor, Proveedor prov){
 		Producto prod = buscarProducto(name);
 		if (prod != null){
 			prod.setNombre(name);
@@ -417,62 +430,24 @@ public class Restaurante {
 			prod.setPuntoped(puntop);
 			prod.setPuntoreab(puntor);
 			prod.setProveedor(prov);
+			System.out.println("Producto modificado con exito.");
 		}		
 	}
 
-//	Actualizar stock cuando ingresa mercaderia nueva
+	//	Actualizar stock cuando ingresa mercaderia nueva
 	public void ingresarMercaderia (String produc, float cantidad){
 		Producto prod = buscarProducto(produc);
 		if (prod != null){
-			float viejaCantidad = prod.getCantidad();
-			float nuevaCantidad = viejaCantidad + cantidad;
-			prod.setCantidad(nuevaCantidad);
+			//float viejaCantidad = prod.getCantidad();
+			//float nuevaCantidad = viejaCantidad + cantidad;
+			prod.setCantidad(prod.getCantidad()+cantidad);
+			System.out.println("Stock de producto actualizado con exito.");
 		}
 	}
-	
-	public Vector<ProductoView> getProductosView(){ 
-		Vector<ProductoView> mv = new Vector<ProductoView>();
-		for (int i= 0; i < productos.size(); i++)
-		{
-			mv.add(productos.elementAt(i).getProductoView());
-		}	
-		return mv;
-	}
-	
-	public Vector getProductosViewVector(){ 
-		Vector mv = new Vector();
-		for (int i= 0; i < productos.size(); i++)
-		{
-			mv.add(((Producto)productos.elementAt(i)).getProductoView().toVector());
-		}	
-		return mv;
-	}
-	
-//	Metodos que operan con vectores view
-//	-------------------------------------------------------------
-	
-	public Vector getProveedoresViewVector(){ 
-		Vector mv = new Vector();
-		for (int i= 0; i < proveedores.size(); i++)
-		{
-			mv.add(proveedores.elementAt(i).getProveedorView().toVector());
-		}
-		return mv;
-	}
-	
-	public Vector<ProveedorView> getProveedoresView(){ 
-		Vector<ProveedorView> mv = new Vector<ProveedorView>();
-		for (int i= 0; i < proveedores.size(); i++)
-		{
-			mv.add(proveedores.elementAt(i).getProveedorView());
-		}
-		return mv;
-	}
-	
+
 
 //	Metodos que operan con Ordenes de Compra
 //	-------------------------------------------------------------
-
 	private OrdenDeCompra buscarOrdenDeCompra (String cuitProv, String date){
 	 	for (int i=0; i<ordenesCompra.size(); i++){
 	 		OrdenDeCompra ord = ordenesCompra.elementAt(i);
@@ -489,10 +464,8 @@ public class Restaurante {
 		return null;
 	}
 
-/*	
- *	Metodo que genera un vector con productos bajo punto de pedido correspondientes   
- *	a un mismo proveedor. El vector generado se utiliza en altaDeOrdenDeCompra.	
- */
+	//	Metodo que genera un vector con productos bajo punto de pedido correspondientes
+	//	a un mismo proveedor. El vector generado se utiliza en altaDeOrdenDeCompra.
 	public Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
 		Vector<Producto> produc = new Vector <Producto>();
 		for (int i= 0; i<productos.size(); i++){
@@ -503,7 +476,7 @@ public class Restaurante {
 				}
 			}
 		}
-		return produc;	//	Devuelve un vector con todos los productos bajos en stock
+		return produc;	//	Devuelve un vector con los productos (de un proveedor) bajos en stock. 
 	}
 
 	public void altaDeOrdenDeCompra (String cuitProv, String date){
@@ -526,11 +499,11 @@ public class Restaurante {
 		}
 	}
 
-/*	***********
- *	***	No es necesario modificar ordenes de compra existentes, ya que el sistema
- *	***	las genera automaticamente para los productos bajos de stock. El enunciado no requiere
- *	***	ni pide poder modificar una orden de compra existente.
- *	***********
+	/*	***********
+	***	No es necesario modificar ordenes de compra existentes, ya que el sistema
+	***	las genera automaticamente para los productos bajos de stock. El enunciado no requiere
+	***	ni pide poder modificar una orden de compra existente.
+	***********
 	public void modificarOrdenDeCompra(String cuitProv, String date){
 		Proveedor prov = buscarProveedor(cuitProv);
 		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
@@ -570,10 +543,48 @@ public class Restaurante {
 			}
 		}
 	}
-*/
+ 	*/
 	
+
 //	Metodos que operan con Mozos
 //	-------------------------------------------------------------
+	private Mozo buscarMozo (int id){
+ 		for (int i=0; i<mozos.size(); i++){
+			Mozo m = mozos.elementAt(i);
+			if (m.getId()==id){
+				System.out.println("Mozo existente");
+				return m;
+			}
+		}
+		System.out.println("Mozo NO existe");
+ 		return null;
+	}
+
+	public void altaDeMozo (String nombre, int comision){
+		Mozo mozo = new Mozo (nombre, comision);
+		mozos.add(mozo);
+		System.out.println("Mozo creado con exito.");
+	}
+	
+	public void bajaDeMozo (int idMozo){
+		Mozo garzon = buscarMozo(idMozo);
+		if (garzon != null){
+			mozos.remove(garzon);
+			System.out.println("Mozo eliminado con exito.");
+		}
+	}
+
+	public void modificarMozo(int id, String nombre, int comision){
+		Mozo m = buscarMozo(id);
+		if (m != null){
+			m.setNombre(nombre);
+			m.setComision(comision);
+			System.out.println("Mozo modificado con exito.");
+
+		}
+	}
+	
+	//	METODOS CON MOZOS
 	public int cantidadMozos (){
  		//return (mozos.size());
 		int mozosOk = 0;
@@ -589,16 +600,7 @@ public class Restaurante {
 	public int mozosTotales(){
 		return (mozos.size());
 	}
-	
-	
-	public void altaDeMozo (String nombre, int comision){
-		Mozo mozo = new Mozo (nombre, comision);
-		mozos.add(mozo);
-		System.out.println("Mozo creado con exito.");
-	}
-	
-	/*
-		Mozo mozoNuevo = buscarMozo(idMozo);
+	/*Mozo mozoNuevo = buscarMozo(idMozo);
 		if (mozoNuevo == null){
 			Mozo pibenuevo = new Mozo (nombre, idMozo, comision);
 			mozos.add(pibenuevo);
@@ -606,8 +608,7 @@ public class Restaurante {
 		}else{
 			System.out.println("El id de Mozo ya existe.");
 		}
-	}
-	*/
+	}*/
 	public void habilitarMozo (int idMozo){
 		Mozo mozoHab = buscarMozo(idMozo);
 		if (mozoHab != null){
@@ -628,12 +629,12 @@ public class Restaurante {
 		}
 	}
 	
-	
 	/*public void asignarMesaMozo (int mesa, int mozo){
 		mesas.elementAt(mesa).setMozo(mozos.elementAt(mozo));
 		mesas.elementAt(mesa).setHabilitada();
 	}*/
-	
+
+	//	Asigna las mesas a cada mozo
 	public void asignarMesas(){
 		int indice=0;
 		int i=0, j=0;
@@ -669,9 +670,7 @@ public class Restaurante {
 			System.out.println("No hay mozos habilitados o mesas disponibles");
 		}
 	}
-	
-	
-	private Mozo buscarMozo(int id){
+	/*	private Mozo buscarMozo(int id){
 		int i = 0;
 		while (i < mozos.size()){
 			Mozo m = mozos.elementAt(i);
@@ -682,7 +681,7 @@ public class Restaurante {
 		}
 		System.out.println("El mozo " + id + " no existe");
 		return null;	
-	}
+	}	*/	
 	
 	private Vector<Comanda> buscarComandasMozo(Mozo mozo){
 		Vector<Comanda> comandasMozo = new Vector<Comanda>();
@@ -693,8 +692,6 @@ public class Restaurante {
 		}
 		return comandasMozo;
 	}
-	
-	
 	/*public void modificarComisionMozo(int id, int comision){
 		Mozo m = buscarMozo(id);
 		if (m != null)
@@ -706,30 +703,10 @@ public class Restaurante {
 		if (m != null)
 			m.setNombre(nombre);
 	}*/
-	
-	public void modificarMozo(int id, String nombre, int comision){
-		Mozo m = buscarMozo(id);
-		if (m != null){
-			m.setNombre(nombre);
-			m.setComision(comision);
-		}
-	}
-	
-	
-	public void bajaDeMozo (int idMozo){
-		Mozo garzon = buscarMozo(idMozo);
-		if (garzon != null){
-			mozos.remove(garzon);
-			System.out.println("Mozo eliminado con exito.");
-		}
-	}
-	
-	
 	public void pagarMozos(){
-		int cantMozos = mozosTotales();
+		int cantMozos = mozosTotales();	//	conviene reemplazar por (mozos.size()) y borrar el metodo mozosTotales (ver linea 580 de esta clase)
 		//Vector <Mozo> moz = getMozos();
-		for (int j=0;j<cantMozos;j++)
-		{
+		for (int j=0;j<cantMozos;j++){
 			float totalMozo = 0;
 			//Mozo mozo = restaurante.buscarMozo(j);
 			Mozo mozo = mozos.elementAt(j);
@@ -742,76 +719,15 @@ public class Restaurante {
 					totalMozo = totalMozo * (1 + mozo.getComision()); 
 				}
 			}
-			System.out.println("Mozo: " +mozo.getNombre());
+		/*	System.out.println("Mozo: " +mozo.getNombre());
 			System.out.println("A pagar: " +totalMozo);
-			System.out.println(" ");
+			System.out.println(" ");	*/		
 		}
 	}
 	
- 	public Vector getMozosViewVector(){ 
-		Vector mv = new Vector();
-		for (int i= 0; i < mozos.size(); i++)
-		{
-			mv.add(mozos.elementAt(i).getMozoView().toVector());
-		}
-		return mv;
-	}
-		
- 	public Vector<MozoView> getMozosView(){ 
-		Vector<MozoView> mv = new Vector<MozoView>();
-		for (int i= 0; i < mozos.size(); i++)
-		{
-			mv.add(mozos.elementAt(i).getMozoView());
-		}
-		return mv;
-	}
- 	
 	
 //	Metodos que operan con Mesas
 //	-------------------------------------------------------------
-	public int cantidadMesas (){
- 		return (mesas.size());
- 	}
-	
-	/*public void altaDeMesa (int numeroMesa){
-		Mesa mesaNueva = buscarMesa(numeroMesa);
-		if (mesaNueva == null){
-			Mesa mesaNew = new Mesa (numeroMesa);
-			mesas.add(mesaNew);
-			System.out.println("Mesa creada con exito.");
-		}else{
-			System.out.println("La Mesa ya existe.");
-		}
-	}*/
-	
-	public void altaDeMesa (){
-		Mesa mesaNew = new Mesa ();
-		mesas.add(mesaNew);
-		System.out.println("Mesa creada con exito.");
-	}
-	
-	/*
-	public void habilitarMesa (int idMesa){
-		Mesa mesaHab = buscarMesa(idMesa);
-		if (mesaHab != null){
-			mesaHab.setHabilitada();
-			System.out.println("Mesa " +idMesa+ "habilitada con exito.");
-		}else{
-			System.out.println("Mesa " +idMesa+ "NO habilitada Id no existente.");
-		}
-	}
-	
-	public void deshabilitarMesa (int idMesa){
-		Mesa mesaHab = buscarMesa(idMesa);
-		if (mesaHab != null){
-			mesaHab.setNoHabilitada();
-			System.out.println("Mesa" +idMesa+ "Inhabilitada con exito.");
-		}else{
-			System.out.println("Mesa" +idMesa+ "NO Inhabilitada. Id no existente.");
-		}
-	}
-	*/
-	
 	private Mesa buscarMesa(int id){
 		int i = 0;
 		while (i < mesas.size()){
@@ -824,29 +740,13 @@ public class Restaurante {
 		System.out.println("La mesa " + id + " no existe");
 		return null;
 	}
-	
-	public void abrirMesa (Mesa m){
-		Comanda c = m.abrirMesa();
-		comandas.add(c);	
+
+	public void altaDeMesa (){
+		Mesa mesaNew = new Mesa ();
+		mesas.add(mesaNew);
+		System.out.println("Mesa creada con exito.");
 	}
-	
-	
-	public void agregarItemComanda(int nroMesa, String nombreItemCarta, int cant){
-		Mesa m = buscarMesa(nroMesa);
-		if ((m != null) && (m.isOcupada())){
-			ItemDeCarta itemCarta = cartaActiva.buscarItemDeCarta(nombreItemCarta);
-			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
-				m.agregarItemComanda(cant, itemCarta);
-			}else{
-				System.out.println("En la carta del d�a no existe el �tem " + nombreItemCarta);
-			}
-		}else{
-			System.out.println("No existe la mesa " + nroMesa + " o no esta ocupada");
-		}
-		System.out.println("Agregado OK");
-	}
-	
-	
+
 	public void bajaDeMesa(int id){
 		Mesa table = buscarMesa(id);
 		if (table != null){
@@ -855,17 +755,70 @@ public class Restaurante {
 		}
 	}
 
+	public int cantidadMesas (){
+ 		return (mesas.size());
+ 	}
+	/*public void altaDeMesa (int numeroMesa){
+		Mesa mesaNueva = buscarMesa(numeroMesa);
+		if (mesaNueva == null){
+			Mesa mesaNew = new Mesa (numeroMesa);
+			mesas.add(mesaNew);
+			System.out.println("Mesa creada con exito.");
+		}else{
+			System.out.println("La Mesa ya existe.");
+		}
+	}
+	public void habilitarMesa (int idMesa){
+		Mesa mesaHab = buscarMesa(idMesa);
+		if (mesaHab != null){
+			mesaHab.setHabilitada();
+			System.out.println("Mesa " +idMesa+ "habilitada con exito.");
+		}else{
+			System.out.println("Mesa " +idMesa+ "NO habilitada Id no existente.");
+		}
+	}
+	public void deshabilitarMesa (int idMesa){
+		Mesa mesaHab = buscarMesa(idMesa);
+		if (mesaHab != null){
+			mesaHab.setNoHabilitada();
+			System.out.println("Mesa" +idMesa+ "Inhabilitada con exito.");
+		}else{
+			System.out.println("Mesa" +idMesa+ "NO Inhabilitada. Id no existente.");
+		}
+	}
+	*/
+	public void abrirMesa (Mesa m){
+		Comanda c = m.abrirMesa();
+		comandas.add(c);	
+	}
+	
+	public void agregarItemComanda(int nroMesa, String nombreItemCarta, int cant){
+		Mesa m = buscarMesa(nroMesa);
+		if ((m != null) && (m.isOcupada())){
+			ItemDeCarta itemCarta = cartaActiva.buscarItemDeCarta(nombreItemCarta);
+			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
+				m.agregarItemComanda(cant, itemCarta);
+			}else{
+				System.out.println("En la carta del dia no existe el item " + nombreItemCarta);
+			}
+		}else{
+			System.out.println("No existe la mesa " + nroMesa + " o no esta ocupada");
+		}
+		System.out.println("Agregado OK");
+	}
+
+	
 //	Metodos que operan con Proveedores
 //	-------------------------------------------------------------
 	 public Proveedor buscarProveedor (String cuit){
 	 	for (int i=0; i<proveedores.size(); i++){
 	 		Proveedor prov = proveedores.elementAt(i);
 			if (prov.getCuit().equals(cuit)){
-				//System.out.println("Existe el proveedor");
+				System.out.println("Proveedor existente");
 				return prov;
 			}
 		}
-		//System.out.println("El proveedor NO existe");
+		System.out.println("El proveedor NO existe");
 		return null;
 	}
 
@@ -895,5 +848,64 @@ public class Restaurante {
 			System.out.println("Proveedor modificado exitosamente.");
 		}
 	}
+
+	
+//	Metodos que operan con Vectores View
+//	-------------------------------------------------------------
+
+	//	PRODUCTOS
+	public Vector<ProductoView> getProductosView(){ 
+		Vector<ProductoView> mv = new Vector<ProductoView>();
+		for (int i= 0; i < productos.size(); i++)
+		{
+			mv.add(productos.elementAt(i).getProductoView());
+		}	
+		return mv;
+	}
+	public Vector getProductosViewVector(){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < productos.size(); i++)
+		{
+			mv.add(((Producto)productos.elementAt(i)).getProductoView().toVector());
+		}	
+		return mv;
+	}
+	
+	//	PROVEEDORES
+	public Vector<ProveedorView> getProveedoresView(){ 
+		Vector<ProveedorView> mv = new Vector<ProveedorView>();
+		for (int i= 0; i < proveedores.size(); i++)
+		{
+			mv.add(proveedores.elementAt(i).getProveedorView());
+		}
+		return mv;
+	}
+	public Vector getProveedoresViewVector(){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < proveedores.size(); i++)
+		{
+			mv.add(proveedores.elementAt(i).getProveedorView().toVector());
+		}
+		return mv;
+	}
+
+	//	MOZOS		
+ 	public Vector<MozoView> getMozosView(){ 
+		Vector<MozoView> mv = new Vector<MozoView>();
+		for (int i= 0; i < mozos.size(); i++)
+		{
+			mv.add(mozos.elementAt(i).getMozoView());
+		}
+		return mv;
+	}
+ 	public Vector getMozosViewVector(){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < mozos.size(); i++)
+		{
+			mv.add(mozos.elementAt(i).getMozoView().toVector());
+		}
+		return mv;
+	}
+
 
 }

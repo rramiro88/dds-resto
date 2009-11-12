@@ -2,14 +2,13 @@ package modelo;
 
 import java.util.Vector;
 
-
 public class Comanda {
-	
 	private Vector<ItemComanda> itemsComanda;
 	private Mozo mozo; //ver si hace falta
 	private float total;
 	
-	
+//	Constructor de instancia Comanda
+//	-------------------------------------------------------------	
 	public Comanda(Mozo mozo) {
 		super();
 		this.itemsComanda = new Vector<ItemComanda>();
@@ -17,6 +16,8 @@ public class Comanda {
 		this.total = 0;
 	}
 	
+//	Metodos que operan con Comandas
+//	-------------------------------------------------------------	
 	public void agregarItemComanda (int cant, ItemDeCarta itemCarta){
 		itemsComanda.add(new ItemComanda(cant, itemCarta));
 	}

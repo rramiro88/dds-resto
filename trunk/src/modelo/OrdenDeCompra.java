@@ -10,21 +10,17 @@ import java.util.Vector;
  * **/
 
 	public class OrdenDeCompra {
-		//	private int numero;
-		private String numero;
-		private Vector<Producto> itemsDePedido;
-		private Proveedor proveedor;
-		private String fecha;	//	La fecha se debe escribir en formato dd/mm/aaaa
+		private String 				cuitProveedor;
+		private Vector<Producto> 	itemsDePedido;
+		private Proveedor 			proveedor;
+		private String 				fecha;	//	La fecha se escribe en formato dd/mm/aaaa
 	
 //	Constructor de instancia OrdenDecompra
 //	-------------------------------------------------------------	
-/**	
-	La orden de compra recibe un proveedor y un vector de productos
-	bajo punto de pedido que corresponde a ESE proveedor.
-**/	
+/**	La orden de compra recibe un proveedor y un vector de productos
+	bajo punto de pedido que corresponde a ESE proveedor.			**/	
 	public OrdenDeCompra (Proveedor prov, String date, Vector <Producto> itemsApedir){
-//		this.numero = numero;
-		this.numero = prov.getCuit();
+		this.cuitProveedor = prov.getCuit();
 		itemsDePedido = itemsApedir;
 		this.proveedor = prov;
 		this.fecha = date;
@@ -32,11 +28,11 @@ import java.util.Vector;
 
 //	Metodos sets y gets para los atributos de la clase OrdenDecompra
 //	-------------------------------------------------------------	
-	public String getNumero() {
-		return numero;
+	public String getCuitProveedor() {
+		return cuitProveedor;
 	}
-	public void setNumero(String cuit) {
-		this.numero = cuit;
+	public void setCuitProveedor(String cuit) {
+		this.cuitProveedor = cuit;
 	}
 
 	public Vector<Producto> getItemsDePedido() {
@@ -60,20 +56,4 @@ import java.util.Vector;
 		this.fecha = fecha;
 	}
 
-/*	public int getNumero() {
-		return numero;
-	}
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-*/
-	
-//	Metodos que operan con items de pedido
-//	-------------------------------------------------------------
-
-/*	public void cargarItemPedido (Producto produ){
-		ItemDePedido itemp = new ItemDePedido(produ);
-		this.itemsDePedido.add(itemp);
-	}
-*/
 }

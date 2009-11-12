@@ -1,6 +1,6 @@
 package modelo;
 
-import java.util.Vector;
+//import java.util.Vector;
 
 import controlador.MozoView;
 

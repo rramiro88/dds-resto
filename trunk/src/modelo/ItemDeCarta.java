@@ -1,8 +1,5 @@
 package modelo;
-
 import java.util.Vector;
-
-
 
 public abstract class ItemDeCarta {
 	protected String name;
@@ -12,7 +9,6 @@ public abstract class ItemDeCarta {
 	protected int nroItem;
 	protected static int ultimoNroItem = 0;
 
-	
 //	Constructor de instancia ItemDeCarta
 //	-------------------------------------------------------------	
 	public ItemDeCarta (String nombre, float precio){
@@ -60,7 +56,7 @@ public abstract class ItemDeCarta {
 		this.disponible = disponible;
 	}
 
-//	Metodos con Ingredientes
+//	Metodos que operan con Ingredientes
 //	-------------------------------------------------------------	
 	private Ingrediente buscarIngrediente (Producto prod){
  		for (int i=0; i<ingredientes.size(); i++){
@@ -74,9 +70,8 @@ public abstract class ItemDeCarta {
 		return null;
 	}
 
+	//	El producto del ingrediente se valida en Restaurante.
 	public void agregarIngrediente(Producto prod, float cant){
-		//	La validación del Producto a cargar ya se hizo en el
-		//	Restaurante. El producto llega al método YA validado
 		Ingrediente com = buscarIngrediente (prod);
 		if (com == null){
 			com = new Ingrediente (prod, cant);
@@ -112,16 +107,21 @@ public abstract class ItemDeCarta {
 		}
 	}
 
+	
+//	Metodos para preparar items de carta (platos - bebidas)
+//	-------------------------------------------------------------	
+	//	Revisa que la cantidad total de ingrediente alcance para
+	//	preparar el total de items de carta requeridos.
 	public boolean esPreparable(int cantidadItemsDeCarta){
 		for (int i=0; i<ingredientes.size(); i++){
 			Ingrediente ing = ingredientes.elementAt(i);
-//			if (!ing.esSuficiente(ing.getCantidad()*cantidad)){
 			if (ing.esSuficiente(cantidadItemsDeCarta * ing.getCantidad()))
 				return false;
 		}
 		return true;
 	}
 	
+	//	Ordena al ingrediente preparar el total de items de carta requeridos
 	public void preparar (int cantidadItemsDeCarta){
 		for (int i=0; i<ingredientes.size(); i++){
 			Ingrediente ing = ingredientes.elementAt(i);

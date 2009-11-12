@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
@@ -109,6 +110,7 @@ public class FormAltaProveedor extends javax.swing.JFrame {
 					txtCuit.setText("");
 					txtRazonSocial.setText("");
 					txtDomicilio.setText("");
+					JOptionPane.showMessageDialog(null, "Proveedor creado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
 				}
 			};
 		}

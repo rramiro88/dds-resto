@@ -12,8 +12,9 @@ public class Mozo {
 	private boolean habilitado = false;
 	private static int ultimoMozo = 100;
 	
-	public Mozo (String nombre, int comision)
-	{
+//	Constructor de instancia Mozo
+//	-------------------------------------------------------------	
+	public Mozo (String nombre, int comision){
 		super();
 		this.nombre = nombre;
 		this.id = ++ultimoMozo;
@@ -22,11 +23,8 @@ public class Mozo {
 		this.habilitado = true;
 	}
 	
-	public MozoView getMozoView(){
-		MozoView mv = new MozoView(id, nombre, comision);
-		return mv;
-	}
-	
+//	Metodos sets y gets para los atributos de la clase Mozo
+//	-------------------------------------------------------------	
 	public String getNombre()
 	{
 		return nombre;
@@ -64,6 +62,12 @@ public class Mozo {
 	
 	public void setNombre (String Nombre){
 		nombre = Nombre;
+	}
+
+	//	Metodo get que devuelve un MozoView para pasar a la vista
+	public MozoView getMozoView(){
+		MozoView mv = new MozoView(id, nombre, comision);
+		return mv;
 	}
 	
 }

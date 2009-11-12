@@ -77,8 +77,8 @@ public class FormAltaCarta extends javax.swing.JFrame {
 				{
 					jLabel1 = new JLabel();
 					getContentPane().add(jLabel1);
-					jLabel1.setText("Dia de Carta");
-					jLabel1.setBounds(12, 17, 110, 33);
+					jLabel1.setText("Dia de Carta: ");
+					jLabel1.setBounds(12, 10, 110, 34);
 				}
 				pack();
 				setSize(400, 300);

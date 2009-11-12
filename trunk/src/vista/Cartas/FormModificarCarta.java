@@ -14,19 +14,6 @@ import javax.swing.SwingUtilities;
 import controlador.*;
 
 
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormModificarCarta extends javax.swing.JFrame {
 	private JButton btnCancel;
 	private JButton btnAceptar;
@@ -116,8 +103,6 @@ public class FormModificarCarta extends javax.swing.JFrame {
 						}else{
 							JOptionPane.showMessageDialog(null, "Ingrese un dia de la semana.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
 						}
-						txtNombreBuscar.setText("");
-						txtNuevaCarta.setText("");
 					}
 				};
 			}
@@ -128,9 +113,13 @@ public class FormModificarCarta extends javax.swing.JFrame {
 			if(aceptarAccion == null) {
 				aceptarAccion = new AbstractAction("ACEPTAR", null) {
 					public void actionPerformed(ActionEvent evt) {
-						Restaurante.getRestaurante().modificarCarta(txtNuevaCarta.getText());
-						txtNombreBuscar.setText("");
-						txtNuevaCarta.setText("");
+						if (Restaurante.getRestaurante().diaValido(txtNombreBuscar.getText()) && Restaurante.getRestaurante().diaValido(txtNuevaCarta.getText())){
+							Restaurante.getRestaurante().modificarCarta(txtNombreBuscar.getText(), txtNuevaCarta.getText());
+							txtNombreBuscar.setText("");
+							txtNuevaCarta.setText("");	
+						}else{
+							JOptionPane.showMessageDialog(null, "Dia invalido o la Carta no existe.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						}
 					}
 				};
 			}

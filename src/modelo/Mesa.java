@@ -1,7 +1,5 @@
 package modelo;
 
-
-
 public class Mesa {
 	private int nroMesa;
 	private Mozo mozo;
@@ -11,19 +9,16 @@ public class Mesa {
 	private static int ultimaMesa = 0;
 	
 	
-	public Mesa()
-	{
+	public Mesa(){
 		super();
 		this.nroMesa = ++ultimaMesa;
 	}
 	
-	public int getNroMesa()
-	{
+	public int getNroMesa(){
 		return nroMesa;
 	}
 	
-	public Mozo getMozo()
-	{
+	public Mozo getMozo(){
 		return mozo;
 	}
 	

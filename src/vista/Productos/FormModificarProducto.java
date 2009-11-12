@@ -76,7 +76,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			this.setTitle("Actualización de Productos");
+			this.setTitle("Actualizacion de Productos");
 			getContentPane().setLayout(null);
 			this.setPreferredSize(new java.awt.Dimension(400, 300));
 			{
@@ -220,7 +220,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 				modificarAction = new AbstractAction("Modificar", null) {
 					public void actionPerformed(ActionEvent evt) {
 						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(1,12);
-						Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Integer.parseInt(txtCantidad.getText()), Integer.parseInt((txtPtoPedido.getText())), Integer.parseInt(txtPtoRefill.getText()), Restaurante.getRestaurante().buscarProveedor(sProveedor));
+						Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Float.parseFloat(txtCantidad.getText()), Float.parseFloat((txtPtoPedido.getText())), Float.parseFloat(txtPtoRefill.getText()), Restaurante.getRestaurante().buscarProveedor(sProveedor));
 						JOptionPane.showMessageDialog(null, "Producto actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
 						txtIdBuscar.setText("");
 						txtNombre.setText("");

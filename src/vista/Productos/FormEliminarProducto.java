@@ -14,19 +14,6 @@ import javax.swing.SwingUtilities;
 
 import controlador.*;
 
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormEliminarProducto extends javax.swing.JFrame {
 	private JLabel lblProducto;
 	private AbstractAction eliminarAction;
@@ -96,7 +83,7 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					String nombre = cmbProductos.getSelectedItem().toString().substring(1,4);
+					String nombre = cmbProductos.getSelectedItem().toString().substring(1,5);
 					Restaurante.getRestaurante().bajaDeProducto(nombre);
 					cmbProductos.removeItemAt(cmbProductos.getSelectedIndex());
 					JOptionPane.showMessageDialog(null, "Producto eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);

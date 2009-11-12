@@ -2,17 +2,15 @@ package modelo;
 
 import controlador.ProductoView;
 
-
-
 public class Producto {
 	private String nombre;
 	private float cantidad;
-	private int puntoped;
-	private int puntoreab;
+	private float puntoped;
+	private float puntoreab;
 	private Proveedor proveedor;
 	//private boolean isDisponible;
 	
-	public Producto (String name, int canti, int puntop, int puntor, Proveedor prov){
+	public Producto (String name, float canti, float puntop, float puntor, Proveedor prov){
 		this.nombre = name;
 		this.cantidad = canti;
 		this.puntoped = puntop;
@@ -42,17 +40,17 @@ public class Producto {
 		this.cantidad = cantidad;
 	}
 
-	public int getPuntoped() {
+	public float getPuntoped() {
 		return puntoped;
 	}
-	public void setPuntoped(int puntoped) {
+	public void setPuntoped(float puntoped) {
 		this.puntoped = puntoped;
 	}
 
-	public int getPuntoreab() {
+	public float getPuntoreab() {
 		return puntoreab;
 	}
-	public void setPuntoreab(int puntoreab) {
+	public void setPuntoreab(float puntoreab) {
 		this.puntoreab = puntoreab;
 	}
 
@@ -70,7 +68,7 @@ public class Producto {
 		this.isDisponible = isDisponible;
 	}
 	
-	public boolean esReducible(int cantidadTotal){
+	public boolean esReducible(float cantidadTotal){
 		if (this.cantidad - cantidadTotal>=0){
 			return true;
 		}

@@ -284,8 +284,8 @@ public class Restaurante {
 		boolean valido = diaValido(dia);
 		//	Revisa que el dia sea valido
 		if (valido){
-			//	Revisa que la carta no halla sido creada
 			Carta letter = buscarCarta(dia);
+			//	Revisa que la carta no halla sido creada
 			if (letter == null){
 				letter = new Carta (dia);
 				cartas.add(letter);
@@ -295,12 +295,18 @@ public class Restaurante {
 		return valido;
 	}
 
-	public void bajaDeCarta (String dia){
-		Carta letter = buscarCarta(dia);
-		if (letter != null){
-			cartas.remove(letter);
-			System.out.println("Carta eliminada con exito.");
+	public boolean bajaDeCarta (String dia){
+		boolean valido = diaValido(dia);
+		//	Revisa que el dia sea valido
+		if (valido){
+			Carta letter = buscarCarta(dia);
+			//	Revisa que la carta exista
+			if (letter != null){
+				cartas.remove(letter);
+				System.out.println("Carta eliminada con exito.");
+			}
 		}
+		return valido;
 	}
 
 	public void modificarCarta (String dia){
@@ -809,19 +815,40 @@ public class Restaurante {
 //	Metodos que operan con Vectores View
 //	-----------------------------------------------------
 
+	//	CARTAS
+	public CartaView getCartaView(String dia){
+		Carta car = buscarCarta(dia);
+		if (car!=null)
+			return car.getCartaView();
+		return null;
+	}
+	
+	public Vector<CartaView> getCartasView(){
+		Vector<CartaView> cv = new Vector<CartaView>();
+		for (int i=0; i<cartas.size(); i++){
+			cv.add(cartas.elementAt(i).getCartaView());
+		}	
+		return cv;
+	}
+	public Vector getCartasViewVector(){ 
+		Vector cv = new Vector();
+		for (int i=0; i<cartas.size(); i++){
+			cv.add(((Carta)cartas.elementAt(i)).getCartaView().toVector());
+		}	
+		return cv;
+	}
+	
 	//	PRODUCTOS
-	public Vector<ProductoView> getProductosView(){ 
+	public Vector<ProductoView> getProductosView(){
 		Vector<ProductoView> mv = new Vector<ProductoView>();
-		for (int i= 0; i < productos.size(); i++)
-		{
+		for (int i= 0; i < productos.size(); i++){
 			mv.add(productos.elementAt(i).getProductoView());
 		}	
 		return mv;
 	}
 	public Vector getProductosViewVector(){ 
 		Vector mv = new Vector();
-		for (int i= 0; i < productos.size(); i++)
-		{
+		for (int i= 0; i < productos.size(); i++){
 			mv.add(((Producto)productos.elementAt(i)).getProductoView().toVector());
 		}	
 		return mv;
@@ -830,16 +857,14 @@ public class Restaurante {
 	//	PROVEEDORES
 	public Vector<ProveedorView> getProveedoresView(){ 
 		Vector<ProveedorView> mv = new Vector<ProveedorView>();
-		for (int i= 0; i < proveedores.size(); i++)
-		{
+		for (int i= 0; i < proveedores.size(); i++){
 			mv.add(proveedores.elementAt(i).getProveedorView());
 		}
 		return mv;
 	}
 	public Vector getProveedoresViewVector(){ 
 		Vector mv = new Vector();
-		for (int i= 0; i < proveedores.size(); i++)
-		{
+		for (int i= 0; i < proveedores.size(); i++){
 			mv.add(proveedores.elementAt(i).getProveedorView().toVector());
 		}
 		return mv;
@@ -856,8 +881,7 @@ public class Restaurante {
 	}
  	public Vector getMozosViewVector(){ 
 		Vector mv = new Vector();
-		for (int i= 0; i < mozos.size(); i++)
-		{
+		for (int i= 0; i < mozos.size(); i++){
 			mv.add(mozos.elementAt(i).getMozoView().toVector());
 		}
 		return mv;

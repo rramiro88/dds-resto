@@ -2,6 +2,8 @@ package modelo;
 
 import java.util.Vector;
 
+import controlador.CartaView;
+
 public class Carta {
 	private String dia;
 	private Vector <ItemDeCarta> itemsCarta;
@@ -29,6 +31,12 @@ public class Carta {
 		this.itemsCarta = itemsCartaCarta;
 	}
 
+	//	Metodo get que devuelve un CartaView para pasar a la vista
+	public CartaView getCartaView(){
+		CartaView cv = new CartaView(dia);
+		return cv;
+	}
+	
 //	Metodos que operan con Items de Carta
 //	-------------------------------------------------------------	
 	public ItemDeCarta buscarItemDeCarta (String nombre){

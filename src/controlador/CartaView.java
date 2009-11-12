@@ -6,20 +6,24 @@ import modelo.ItemDeCarta;
 
 public class CartaView {
 	private String dia;
-//	private boolean habilitada;
-	private Vector <ItemDeCarta> itemsCarta;
 
+//	Constructor de instancia Carta
+//	-------------------------------------------------------------	
 	public CartaView (String day){
 		this.dia = day;
-//		this.habilitada = false;
-		itemsCarta = new Vector <ItemDeCarta>();
 	}
 
+	//	REVISARLO - NO SE SI SIRVE
+	public Vector toVector(){
+		Vector v = new Vector();
+		v.add(dia);
+		return v;
+	}
+	
+//	Metodo get para los atributos de la clase ItemDeCarta
+//	-------------------------------------------------------------	
 	public String getDia() {
 		return dia;
-	}
-	public Vector<ItemDeCarta> getItemsCarta() {
-		return itemsCarta;
 	}
 
 }

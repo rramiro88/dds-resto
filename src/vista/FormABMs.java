@@ -13,7 +13,7 @@ import vista.Proveedores.FormABMProveedor;
 import vista.ItemsDeCarta.FormABMItemDeCarta;
 
 public class FormABMs extends javax.swing.JFrame {
-	private JButton btnCancel;
+//	private JButton btnCancel;
 	private JButton btnProv;
 	private JButton btnProd;
 	private JButton btnMozo;
@@ -29,9 +29,7 @@ public class FormABMs extends javax.swing.JFrame {
 	private AbstractAction getABMItemCartaAccion;
 	private AbstractAction cancelarAccion;
 	
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -41,7 +39,7 @@ public class FormABMs extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+*/
 	public FormABMs() {
 		super();
 		initGUI();
@@ -95,14 +93,14 @@ public class FormABMs extends javax.swing.JFrame {
 				btnItemCart.setAction(getABMItemCartaAccion());
 				btnItemCart.setBounds(160, 160, 125, 32);
 			}
-			{
+/*			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
 				btnCancel.setText("SALIR");
 				btnCancel.setAction(getCancelarAccion());
 				btnCancel.setBounds(285, 240, 100, 20);
 			}
-			pack();
+*/			pack();
 			setSize(400, 300);
 		} catch (Exception e) {
 			e.printStackTrace();

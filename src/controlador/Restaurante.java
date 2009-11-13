@@ -779,9 +779,13 @@ public class Restaurante {
 		comandas.add(c);	
 	}
 	
+	//Hay que ver que estamos haciendo con las mesas que no estan habilitadas. No listarlas en la vista.
+	//Hay que ver que hacemos cuando no podemos fabricar esa cantidad !!!!!!!
 	public void agregarItemComanda(int nroMesa, String nombreItemCarta, int cant){
 		Mesa m = buscarMesa(nroMesa);
-		if ((m != null) && (m.isOcupada())){
+		if (m != null){
+			if (! m.isOcupada())
+				m.abrirMesa();
 			ItemDeCarta itemCarta = cartaActiva.buscarItemDeCarta(nombreItemCarta);
 			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
 				m.agregarItemComanda(cant, itemCarta);
@@ -939,11 +943,13 @@ public class Restaurante {
 		}
 		return mv;
  	}
-		
+	
+ 	//Solo las habilitadas van a la vista (las no habilitadas no se atienden)
 	public Vector getMesasViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mesas.size(); i++){
-			mv.add(mesas.elementAt(i).getMesaView().toVector());
+			if (mesas.elementAt(i).isHabilitada())
+				mv.add(mesas.elementAt(i).getMesaView().toVector());
 		}
 		return mv;
 	}

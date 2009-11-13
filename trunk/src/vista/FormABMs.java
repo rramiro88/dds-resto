@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
-import vista.*;
 import vista.Cartas.FormABMCarta;
 import vista.Mozos.FormABMMozo;
 import vista.Productos.FormABMProducto;
@@ -18,11 +17,15 @@ public class FormABMs extends javax.swing.JFrame {
 	private JButton btnProd;
 	private JButton btnMozo;
 	private JButton btnCarta;
+	private JButton btnMesa;
+	private JButton btnItemCart;
 	
 	private AbstractAction getABMProveedorAccion;
 	private AbstractAction getABMProductoAccion;
 	private AbstractAction getABMMozoAccion;
+	private AbstractAction getABMMesaAccion;
 	private AbstractAction getABMCartaAccion;
+	private AbstractAction getABMItemCartaAccion;
 	private AbstractAction cancelarAccion;
 	
 	/**
@@ -53,38 +56,50 @@ public class FormABMs extends javax.swing.JFrame {
 				getContentPane().add(btnProv);
 				btnProv.setText("PROVEEDORES");
 				btnProv.setAction(getABMProveedorAccion());
-				btnProv.setBounds(37, 12, 200, 35);
-
+				btnProv.setBounds(15, 20, 125, 32);
 			}
 			{
 				btnProd = new JButton();
 				getContentPane().add(btnProd);
 				btnProd.setText("PRODUCTOS");
-				btnProd.setBounds(37, 57, 200, 35);
 				btnProd.setAction(getABMProductoAccion());
+				btnProd.setBounds(160, 20, 125, 32);
 			}
 			{
 				btnMozo = new JButton();
 				getContentPane().add(btnMozo);
 				btnMozo.setText("MOZOS");
 				btnMozo.setAction(getABMMozoAccion());
-				btnMozo.setBounds(37, 102, 200, 35);
-
+				btnMozo.setBounds(15, 90, 125, 32);
+			}
+			{
+				btnMesa = new JButton();
+				getContentPane().add(btnMesa);
+				btnMesa.setText("MESAS");
+				btnMesa.setAction(getABMMesaAccion());
+				btnMesa.setBounds(160, 90, 125, 32);
 			}
 			{
 				btnCarta = new JButton();
 				getContentPane().add(btnCarta);
 				btnCarta.setText("CARTAS");
 				btnCarta.setAction(getABMCartaAccion());
-				btnCarta.setBounds(37, 147, 200, 35);
+				btnCarta.setBounds(15, 160, 125, 32);
 
+			}
+			{
+				btnItemCart = new JButton();
+				getContentPane().add(btnItemCart);
+				btnItemCart.setText("ITEMS CARTA");
+				btnItemCart.setAction(getABMItemCartaAccion());
+				btnItemCart.setBounds(160, 160, 125, 32);
 			}
 			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
 				btnCancel.setText("SALIR");
-				btnCancel.setBounds(229, 224, 150, 35);
 				btnCancel.setAction(getCancelarAccion());
+				btnCancel.setBounds(250, 225, 100, 32);
 			}
 			pack();
 			setSize(400, 300);
@@ -143,6 +158,20 @@ public class FormABMs extends javax.swing.JFrame {
 		return getABMMozoAccion;
 	}
 
+//	FALTA CARGARLE EL MAIN DE MESAS ABM
+	private AbstractAction getABMMesaAccion() {
+		getABMMesaAccion = new AbstractAction("MESAS", null) {
+			public void actionPerformed(ActionEvent evt){
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+
+					}
+				});
+			}
+		};
+		return getABMMesaAccion;
+	}
+	
 	private AbstractAction getABMCartaAccion() {
 		getABMCartaAccion = new AbstractAction("CARTAS", null) {
 			public void actionPerformed(ActionEvent evt){
@@ -158,7 +187,21 @@ public class FormABMs extends javax.swing.JFrame {
 		return getABMCartaAccion;
 	}
 
-			
+//	FALTA CARGARLE EL MAIN DE ITEM DE CARTA ABM
+	private AbstractAction getABMItemCartaAccion() {
+		getABMItemCartaAccion = new AbstractAction("ITEMS CARTA", null) {
+			public void actionPerformed(ActionEvent evt){
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+
+					}
+				});
+			}
+		};
+		return getABMItemCartaAccion;
+	}
+
+	
 	private AbstractAction getCancelarAccion() {
 		if(cancelarAccion == null) {
 			cancelarAccion = new AbstractAction("CANCELAR", null) {
@@ -169,5 +212,6 @@ public class FormABMs extends javax.swing.JFrame {
 		}
 		return cancelarAccion;
 	}
+
 
 }

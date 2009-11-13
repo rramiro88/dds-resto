@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
@@ -15,18 +14,19 @@ import controlador.*;
 public class FormAltaProveedor extends javax.swing.JFrame {
 	private JButton btnCancel;
 	private JButton btnAceptar;
+
+	private JTextField txtDomicilio;
+	private JTextField txtCuit;
 	private JTextField txtRazonSocial;
+	
 	private AbstractAction cancelarAccion;
 	private AbstractAction aceptarAccion;
+	
 	private JLabel lblRazonSocial;
 	private JLabel jLabel2;
 	private JLabel jLabel1;
-	private JTextField txtDomicilio;
-	private JTextField txtCuit;
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -36,6 +36,7 @@ public class FormAltaProveedor extends javax.swing.JFrame {
 			}
 		});
 	}
+*/
 	
 	public FormAltaProveedor() {
 		super();
@@ -129,4 +130,5 @@ public class FormAltaProveedor extends javax.swing.JFrame {
 		return cancelarAccion;
 	}
 
+	
 }

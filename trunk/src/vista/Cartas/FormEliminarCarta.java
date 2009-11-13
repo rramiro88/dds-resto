@@ -7,10 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import javax.swing.SwingUtilities;
 
 import controlador.*;
-
 
 public class FormEliminarCarta extends javax.swing.JFrame {
 	private JButton btnCancel;
@@ -19,9 +17,9 @@ public class FormEliminarCarta extends javax.swing.JFrame {
 	private AbstractAction aceptarAccion;
 	private JLabel jLabel1;
 	private JTextField txtNombre;
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+
+/**
+//	Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -31,6 +29,7 @@ public class FormEliminarCarta extends javax.swing.JFrame {
 			}
 		});
 	}
+*/
 	
 	public FormEliminarCarta() {
 		super();

@@ -11,53 +11,39 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import javax.swing.WindowConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.SwingUtilities;
-
 import controlador.*;
 
 
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormModificarProducto extends javax.swing.JFrame {
 	private JLabel lblNombre;
 	private JLabel lblProveedores;
-	private JTextField txtIdBuscar;
-	private JTextField txtNombre;
 	private JLabel jLabel1;
-	private JPanel jPanel1;
-	private JTextField txtCantidad;
-	private JButton btnCancelar;
-	private AbstractAction modificarAction;
-	private AbstractAction buscarAction;
-	private AbstractAction cancelarAction;
-	private JButton btnModificar;
-	private JTextField txtPtoPedido;
 	private JLabel lblPtoPedido;
 	private JLabel lblCantidad;
 	private JLabel lblPtoRefill;
-	private JButton btnBuscar;
+
+	private JTextField txtPtoPedido;
 	private JTextField txtPtoRefill;
+	private JTextField txtIdBuscar;
+	private JTextField txtNombre;
+	private JTextField txtCantidad;
+
+	private JButton btnBuscar;
+	private JButton btnModificar;
+	private JButton btnCancelar;
+
+	private AbstractAction modificarAction;
+	private AbstractAction buscarAction;
+	private AbstractAction cancelarAction;
+
+	private JPanel jPanel1;
+
 	private JComboBox cmbProveedores;
 
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -67,7 +53,8 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			}
 		});
 	}
-		
+*/
+
 	public FormModificarProducto() {
 		super();
 		initGUI();

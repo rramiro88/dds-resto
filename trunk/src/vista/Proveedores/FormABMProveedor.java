@@ -18,9 +18,7 @@ public class FormABMProveedor extends javax.swing.JFrame {
 	private AbstractAction getEliminarProveedorAccion;
 	private AbstractAction cancelarAccion;
 	
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -30,6 +28,7 @@ public class FormABMProveedor extends javax.swing.JFrame {
 			}
 		});
 	}
+*/
 	
 	public FormABMProveedor() {
 		super();

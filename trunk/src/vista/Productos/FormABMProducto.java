@@ -12,15 +12,15 @@ public class FormABMProducto extends javax.swing.JFrame {
 	private JButton btnAlta;
 	private JButton btnModificar;
 	private JButton btnEliminar;
-
+	private JButton btnIngresar;
+	
 	private AbstractAction getAltaProductoAccion;
 	private AbstractAction getModificarProductoAccion;
 	private AbstractAction getEliminarProductoAccion;
+	private AbstractAction getIngresarMercaderiaAccion;
 	private AbstractAction cancelarAccion;
 	
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -30,6 +30,7 @@ public class FormABMProducto extends javax.swing.JFrame {
 			}
 		});
 	}
+*/
 	
 	public FormABMProducto() {
 		super();
@@ -64,6 +65,15 @@ public class FormABMProducto extends javax.swing.JFrame {
 				btnEliminar.setBounds(37, 102, 200, 35);
 
 			}
+			{
+				btnIngresar = new JButton();
+				getContentPane().add(btnIngresar);
+				btnIngresar.setText("INGRESAR MERCADERIA");
+				btnIngresar.setAction(getIngresarMercaderiaAccion());
+				btnIngresar.setBounds(37, 147, 200, 35);
+
+			}
+
 			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
@@ -133,7 +143,25 @@ public class FormABMProducto extends javax.swing.JFrame {
 		};
 		return getEliminarProductoAccion;
 	}
-			
+
+	private AbstractAction getIngresarMercaderiaAccion() {
+		getIngresarMercaderiaAccion = new AbstractAction("INGRESAR MERCADERIA", null) {
+			public void actionPerformed(ActionEvent evt){
+//				public static void main(String[] args) {
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							FormIngresarMercaderia inst = new FormIngresarMercaderia();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+						}
+					});
+				}
+			};
+		return getIngresarMercaderiaAccion;
+	}
+
+	
+	
 	private AbstractAction getCancelarAccion() {
 		if(cancelarAccion == null) {
 			cancelarAccion = new AbstractAction("CANCELAR", null) {
@@ -145,5 +173,5 @@ public class FormABMProducto extends javax.swing.JFrame {
 		return cancelarAccion;
 	}
 
-	
+
 }

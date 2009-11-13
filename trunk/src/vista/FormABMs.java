@@ -100,7 +100,7 @@ public class FormABMs extends javax.swing.JFrame {
 				getContentPane().add(btnCancel);
 				btnCancel.setText("SALIR");
 				btnCancel.setAction(getCancelarAccion());
-				btnCancel.setBounds(250, 225, 100, 32);
+				btnCancel.setBounds(285, 240, 100, 20);
 			}
 			pack();
 			setSize(400, 300);

@@ -70,7 +70,7 @@ public class FormABMProducto extends javax.swing.JFrame {
 				getContentPane().add(btnIngresar);
 				btnIngresar.setText("INGRESAR MERCADERIA");
 				btnIngresar.setAction(getIngresarMercaderiaAccion());
-				btnIngresar.setBounds(37, 147, 200, 35);
+				btnIngresar.setBounds(37, 200, 200, 35);
 
 			}
 

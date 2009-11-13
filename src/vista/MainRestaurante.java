@@ -1,4 +1,4 @@
-package vista;
+/**package vista;
 
 import java.io.*;
 import java.util.Vector;
@@ -35,10 +35,10 @@ public class MainRestaurante {
  * 	 --------------------------  MENU DE OPCIONES --------------------------
  *   -----------------------------------------------------------------------
 **/ 
-
+/**
 /*
 	-- Menu principal de opciones --
- */	
+ 	
 	public void menuPrincipal(){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println(" ");
@@ -80,7 +80,7 @@ public class MainRestaurante {
 
 /*
 	-- Menu de opciones sobre stock - proveedores - ordenes de compra - productos --
- */	
+	
 	public void menuCocina(){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println(" ");
@@ -121,12 +121,10 @@ public class MainRestaurante {
   * comandas e items de comanda.
   * 
   * 
-  **/
 
 
 /*
  	-- Menu de opciones sobre mozos - mesas - comandas - items de comanda --
- */	
 	public void menuAttpub(){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	 	
@@ -170,7 +168,6 @@ public class MainRestaurante {
 	  * a mozos, mesas comandas e items de comanda.
 	  * 
 	  * 
-	  **/
 	
 	
 	//Se llamaba abrirComanda() en la primer entrega. Creo que abrirMesa es m�s claro.
@@ -268,7 +265,7 @@ public class MainRestaurante {
 	
 /*
  	-- Menu de opciones sobre administracion de resto --
-*/	
+ 	
 	public void menuAdministracion(){
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	 	
@@ -334,7 +331,7 @@ public class MainRestaurante {
 			  	case '9' : {this.desHabilitarMesa();
 			  	break;
 				}
-				*/
+				 
 			  	case '8' : {this.pagarMozos();
 			  	break;
 				}
@@ -369,7 +366,7 @@ public class MainRestaurante {
 	  * pagar a los mozos
 	  * 
 	  * 
-**/
+* 
 	
 	public void abrirJornada(){
 		if (restaurante.isOpen()){
@@ -452,7 +449,7 @@ public class MainRestaurante {
 			System.out.print("Nombre del Mozo: ");
 			String nombre = reader.readLine();
 			/*System.out.print("Ingrese idMozo: ");
-			int idMozo = Integer.parseInt(reader.readLine());*/
+			int idMozo = Integer.parseInt(reader.readLine()); 
 			System.out.print("Ingrese Comision: ");
 			float comision = Float.parseFloat(reader.readLine());
 			//restaurante.altaDeMozo(nombre, idMozo, comision);
@@ -651,11 +648,11 @@ public class MainRestaurante {
 		}
 		menuAdministracion();
 	}
-	*/
+	 
 	
 /*
  	-- Menu de opciones sobre cartas - items de carta - ingredientes --
- */	
+  	
 	public void menuCarta() {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println(" ");
@@ -671,7 +668,7 @@ public class MainRestaurante {
 		System.out.println("8.- Descargar carta");
 		System.out.println("9.- Volver al menu principal");
 		System.out.println("a.- Listar ingredientes de plato o bebida");
-*/		System.out.println("	CARTAS ");
+ 		System.out.println("	CARTAS ");
 		System.out.println("1.- Crear carta");
 		System.out.println("7.- Cargar carta");
 		System.out.println("3.- Detallar carta");
@@ -776,7 +773,7 @@ public class MainRestaurante {
 		}
 		catch(Exception e){}
 	}
-*/	
+ 	
 	public void crearCarta() {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -889,7 +886,7 @@ public class MainRestaurante {
 				System.out.println("-----");
 			}
 		}
-*/		menuCarta();
+ 		menuCarta();
 	}
 
 	public void listarCarta (){
@@ -939,7 +936,7 @@ public class MainRestaurante {
 		}
 		catch(Exception e){}
 	}
-*/
+ 
 	public void descargarCarta(){
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -974,10 +971,12 @@ public class MainRestaurante {
  * ------------------------------------------------------------
  * ------------------ Fin de Menues y de main -----------------
  * ------------------------------------------------------------
- * **/
+ * * 
 	
 	public void salir(){
 		System.exit(0);
 	}
 
 }
+
+*/

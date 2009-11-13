@@ -41,13 +41,13 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 		try {
 			getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			this.setTitle("ABM de Items De Carta");
+			this.setTitle("ABM de Platos y Bebidas");
 			{
 				btnAltaBebida = new JButton();
 				getContentPane().add(btnAltaBebida);
-				btnAltaBebida.setText("ALTA BEBIDA");
+				btnAltaBebida.setText("ALTA de BEBIDA");
 				btnAltaBebida.setAction(getAltaBebidaAccion());
-				btnAltaBebida.setBounds(37, 12, 160, 35);
+				btnAltaBebida.setBounds(30, 12, 160, 35);
 
 			}
 			{
@@ -55,21 +55,21 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 				getContentPane().add(btnAltaPlato);
 				btnAltaPlato.setText("ALTA PLATO");
 				btnAltaPlato.setAction(getAltaPlatoAccion());
-				btnAltaPlato.setBounds(220, 12, 160, 35);
+				btnAltaPlato.setBounds(200, 12, 160, 35);
 			}
 			{
 				btnModificar = new JButton();
 				getContentPane().add(btnModificar);
 				btnModificar.setText("MODIFICAR BEBIDA/PLATO");
 				btnModificar.setAction(getModificarItemDeCartaAccion());
-				btnModificar.setBounds(37, 57, 160, 35);
+				btnModificar.setBounds(30, 57, 160, 35);
 			}
 			{
 				btnEliminar = new JButton();
 				getContentPane().add(btnEliminar);
 				btnEliminar.setText("ELIMINAR BEBIDA/PLATO");
 				btnEliminar.setAction(getEliminarItemDeCartaAccion());
-				btnEliminar.setBounds(37, 102, 160, 35);
+				btnEliminar.setBounds(30, 102, 160, 35);
 			}
 /*			{
 				btnCancel = new JButton();

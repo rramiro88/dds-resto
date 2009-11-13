@@ -27,7 +27,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 	private AbstractAction cancelarAction;
 	private AbstractAction aceptarAction;
 	
-	private JButton btnCancelar;
+//	private JButton btnCancelar;
 	private JButton btnAceptar;
 	
 	private JComboBox cmbProveedores;
@@ -124,7 +124,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 				btnAceptar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnAceptar.setAction(getAceptarAction());
 			}
-			{
+/*			{
 				btnCancelar = new JButton();
 				getContentPane().add(btnCancelar);
 				btnCancelar.setText("Cancelar");
@@ -132,7 +132,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCancelar.setAction(getCancelarAction());
 			}
-			this.pack();
+*/			this.pack();
 			this.setSize(480, 230);
 		} catch (Exception e) {
 			e.printStackTrace();

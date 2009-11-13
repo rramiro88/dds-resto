@@ -15,7 +15,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 	private JLabel lblMozo;
 	private AbstractAction eliminarAction;
 	private AbstractAction cerrarAction;
-	private JButton btnCerrar;
+//	private JButton btnCerrar;
 	private JButton btnEliminar;
 	private JComboBox cmbMozos;
 
@@ -62,7 +62,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 				btnEliminar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnEliminar.setAction(getEliminarAction());
 			}
-			{
+/*			{
 				btnCerrar = new JButton();
 				getContentPane().add(btnCerrar);
 				btnCerrar.setText("Cerrar");
@@ -70,7 +70,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 				btnCerrar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCerrar.setAction(getCerrarAction());
 			}
-			pack();
+*/			pack();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

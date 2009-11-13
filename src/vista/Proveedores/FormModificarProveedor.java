@@ -27,7 +27,7 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 	private JTextField txtRazonSocial;
 	private JTextField txtDomicilio;
 	
-	private JButton btnCancelar;
+//	private JButton btnCancelar;
 	private JButton btnModificar;
 	private JButton btnBuscar;
 
@@ -116,7 +116,7 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 				btnModificar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnModificar.setAction(getModificarAction());
 			}
-			{
+/*			{
 				btnCancelar = new JButton();
 				getContentPane().add(btnCancelar);
 				btnCancelar.setText("Cancelar");
@@ -124,7 +124,7 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCancelar.setAction(getCancelarAction());
 			}
-			pack();
+*/			pack();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -12,7 +12,7 @@ import javax.swing.SwingUtilities;
 import controlador.*;
 
 public class FormAltaProveedor extends javax.swing.JFrame {
-	private JButton btnCancel;
+//	private JButton btnCancel;
 	private JButton btnAceptar;
 
 	private JTextField txtDomicilio;
@@ -48,14 +48,14 @@ public class FormAltaProveedor extends javax.swing.JFrame {
 			getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Alta de Proveedores");
-			{
+/*			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
 				btnCancel.setText("CANCELAR");
 				btnCancel.setBounds(261, 225, 118, 34);
 				btnCancel.setAction(getCancelarAccion());
 			}
-			{
+*/			{
 				btnAceptar = new JButton();
 				getContentPane().add(btnAceptar);
 				btnAceptar.setText("ACEPTAR");

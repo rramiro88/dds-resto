@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 
 
 public class FormABMProveedor extends javax.swing.JFrame {
-	private JButton btnCancel;
+//	private JButton btnCancel;
 	private JButton btnAlta;
 	private JButton btnModificar;
 	private JButton btnEliminar;
@@ -63,14 +63,14 @@ public class FormABMProveedor extends javax.swing.JFrame {
 				btnEliminar.setBounds(37, 102, 200, 35);
 
 			}
-			{
+/*			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
 				btnCancel.setText("SALIR");
 				btnCancel.setBounds(229, 224, 150, 35);
 				btnCancel.setAction(getCancelarAccion());
 			}
-			pack();
+*/			pack();
 			setSize(400, 300);
 		} catch (Exception e) {
 			e.printStackTrace();

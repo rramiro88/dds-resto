@@ -11,7 +11,7 @@ import javax.swing.WindowConstants;
 import controlador.*;
 
 public class FormEliminarCarta extends javax.swing.JFrame {
-	private JButton btnCancel;
+//	private JButton btnCancel;
 	private JButton btnEliminar;
 	private AbstractAction cancelarAccion;
 	private AbstractAction aceptarAccion;
@@ -41,14 +41,14 @@ public class FormEliminarCarta extends javax.swing.JFrame {
 			getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Eliminar Cartas");
-			{
+/*			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
 				btnCancel.setText("CANCELAR");
 				btnCancel.setBounds(261, 225, 118, 34);
 				btnCancel.setAction(getCancelarAccion());
 			}
-			{
+*/			{
 				btnEliminar = new JButton();
 				getContentPane().add(btnEliminar);
 				btnEliminar.setText("ELIMINAR");

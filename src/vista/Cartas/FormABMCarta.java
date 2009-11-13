@@ -8,15 +8,15 @@ import javax.swing.SwingUtilities;
 
 
 public class FormABMCarta extends javax.swing.JFrame {
-	private JButton btnCancel;
 	private JButton btnModificar;
 	private JButton btnAlta;
 	private JButton btnEliminar;
+//	private JButton btnCancel;
 
 	private AbstractAction getAltaCartaAccion;
 	private AbstractAction getModificarCartaAccion;
 	private AbstractAction getEliminarCartaAccion;
-	private AbstractAction cancelarAccion;
+//	private AbstractAction cancelarAccion;
 	
 /**
 //	Auto-generated main method to display this JFrame
@@ -64,14 +64,14 @@ public class FormABMCarta extends javax.swing.JFrame {
 				btnEliminar.setBounds(37, 102, 160, 35);
 
 			}
-			{
+/*			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
 				btnCancel.setText("SALIR");
 				btnCancel.setBounds(229, 224, 150, 35);
 				btnCancel.setAction(getCancelarAccion());
 			}
-			pack();
+*/			pack();
 			setSize(400, 300);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,7 +134,7 @@ public class FormABMCarta extends javax.swing.JFrame {
 		return getEliminarCartaAccion;
 	}
 			
-	private AbstractAction getCancelarAccion() {
+/*	private AbstractAction getCancelarAccion() {
 		if(cancelarAccion == null) {
 			cancelarAccion = new AbstractAction("CANCELAR", null) {
 				public void actionPerformed(ActionEvent evt) {
@@ -144,6 +144,6 @@ public class FormABMCarta extends javax.swing.JFrame {
 		}
 		return cancelarAccion;
 	}
-
+*/
 	
 }

@@ -3,31 +3,15 @@ package vista.Proveedores;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import javax.swing.WindowConstants;
-import javax.swing.SwingUtilities;
 
 import controlador.*;
-import modelo.*;
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+
 public class FormEliminarProveedor extends javax.swing.JFrame {
 	private JLabel lblProveedor;
 	private AbstractAction eliminarAction;
@@ -36,9 +20,7 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 	private JButton btnEliminar;
 	private JComboBox cmbProveedores;
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -48,6 +30,7 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 			}
 		});
 	}
+*/
 	
 	public FormEliminarProveedor() {
 		super();
@@ -118,4 +101,5 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 		return cerrarAction;
 	}
 
+	
 }

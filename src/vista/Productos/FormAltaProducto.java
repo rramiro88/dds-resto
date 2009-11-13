@@ -3,40 +3,38 @@ package vista.Productos;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import javax.swing.WindowConstants;
-import javax.swing.SwingUtilities;
 
 import controlador.*;
 
-import java.util.Vector;
 
 public class FormAltaProducto extends javax.swing.JFrame {
 	private JLabel lblNombre;
 	private JLabel lblPtoPedido;
 	private JLabel lblPtoRefill;
 	private JLabel lblProveedores;
-	private AbstractAction cancelarAction;
+
 	private JTextField txtNombre;
-	private JButton btnCancelar;
-	private AbstractAction aceptarAction;
-	private JButton btnAceptar;
-	private JComboBox cmbProveedores;
 	private JTextField txtPtoRefill;
 	private JTextField txtPtoPedido;
 	private JTextField txtCantidad;
+
+	private AbstractAction cancelarAction;
+	private AbstractAction aceptarAction;
+	
+	private JButton btnCancelar;
+	private JButton btnAceptar;
+	
+	private JComboBox cmbProveedores;
+	
 	private JLabel lblCantidad;
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -46,6 +44,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 			}
 		});
 	}
+*/
 	
 	public FormAltaProducto() {
 		super();

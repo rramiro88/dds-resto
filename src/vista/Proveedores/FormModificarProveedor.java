@@ -2,7 +2,6 @@ package vista.Proveedores;
 
 import java.awt.event.ActionEvent;
 import java.util.Vector;
-
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -10,35 +9,33 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import javax.swing.WindowConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.SwingUtilities;
 
 import controlador.*;
 
 
 public class FormModificarProveedor extends javax.swing.JFrame {
 	private JLabel lblCuit;
-	private JTextField txtIdBuscar;
-	private JTextField txtCuit;
 	private JLabel jLabel1;
 	private JPanel jPanel1;
+	private JLabel lblDomicilio;
+	private JLabel lblRazonSocial;
+
+	private JTextField txtIdBuscar;
+	private JTextField txtCuit;
 	private JTextField txtRazonSocial;
+	private JTextField txtDomicilio;
+	
 	private JButton btnCancelar;
+	private JButton btnModificar;
+	private JButton btnBuscar;
+
 	private AbstractAction modificarAction;
 	private AbstractAction buscarAction;
 	private AbstractAction cancelarAction;
-	private JButton btnModificar;
-	private JTextField txtDomicilio;
-	private JLabel lblDomicilio;
-	private JLabel lblRazonSocial;
-	private JButton btnBuscar;
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -48,7 +45,8 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 			}
 		});
 	}
-		
+*/
+
 	public FormModificarProveedor() {
 		super();
 		initGUI();

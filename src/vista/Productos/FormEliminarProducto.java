@@ -2,13 +2,10 @@ package vista.Productos;
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
@@ -22,9 +19,7 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 	private JButton btnEliminar;
 	private JComboBox cmbProductos;
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+/** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -34,6 +29,7 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 			}
 		});
 	}
+*/
 	
 	public FormEliminarProducto() {
 		super();

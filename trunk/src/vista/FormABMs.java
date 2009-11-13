@@ -10,6 +10,7 @@ import vista.Cartas.FormABMCarta;
 import vista.Mozos.FormABMMozo;
 import vista.Productos.FormABMProducto;
 import vista.Proveedores.FormABMProveedor;
+import vista.ItemsDeCarta.FormABMItemDeCarta;
 
 public class FormABMs extends javax.swing.JFrame {
 	private JButton btnCancel;
@@ -193,7 +194,9 @@ public class FormABMs extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-
+						FormABMItemDeCarta inst = new FormABMItemDeCarta();
+						inst.setLocationRelativeTo(null);
+						inst.setVisible(true);
 					}
 				});
 			}

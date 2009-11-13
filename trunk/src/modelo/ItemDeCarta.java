@@ -1,5 +1,8 @@
 package modelo;
+
 import java.util.Vector;
+import controlador.ItemDeCartaView;
+
 
 public abstract class ItemDeCarta {
 	protected String name;
@@ -127,6 +130,12 @@ public abstract class ItemDeCarta {
 			Ingrediente ing = ingredientes.elementAt(i);
 			ing.usar((ing.getCantidad()*cantidadItemsDeCarta));
 		}
+	}
+	
+//	Metodo get que devuelve un ItemDeCartaView para pasar a la vista
+	public ItemDeCartaView getItemDeCartaView(){
+		ItemDeCartaView icv = new ItemDeCartaView(name, price, disponible, nroItem);
+		return icv;
 	}
 	
 }

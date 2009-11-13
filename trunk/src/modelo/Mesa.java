@@ -1,5 +1,7 @@
 package modelo;
 
+import controlador.MesaView;
+
 public class Mesa {
 	private int nroMesa;
 	private Mozo mozo;
@@ -70,6 +72,12 @@ public class Mesa {
 
 	public void setHabilitada(boolean hab) {
 		this.habilitada = hab;
+	}
+	
+//	Metodo get que devuelve un MesaView para pasar a la vista
+	public MesaView getMesaView(){
+		MesaView mv = new MesaView(nroMesa);
+		return mv;
 	}
 
 }

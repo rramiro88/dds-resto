@@ -80,12 +80,17 @@ public class Restaurante {
 		vinoT.agregarIngrediente(buscarProducto("vinoTinto"), 1);
 		//	Cartas
 		altaDeCarta("lunes");
+		Carta carta = buscarCarta("lunes");
+		carta.agregarItemCarta(vinoT);
+		carta.agregarItemCarta(raviolesTuco);
+		setCartaActiva(carta);
+		
 	}
 /**				BORRAR LOS DATOS INGRESADOS ARRIBA
  **	------------------------------------------------------------	**/	
 
 	
-//	SINGLETON de Restaurante para que halla una sola instancia
+//	SINGLETON Restaurante getRestaurante()
 //	-------------------------------------------------------------
 	static public Restaurante getRestaurante(){
 		if (restaurante == null){
@@ -836,13 +841,32 @@ public class Restaurante {
 		}	
 		return cv;
 	}
+	
 	public Vector getCartasViewVector(){ 
 		Vector cv = new Vector();
 		for (int i=0; i<cartas.size(); i++){
-			cv.add(((Carta)cartas.elementAt(i)).getCartaView().toVector());
+			cv.add(cartas.elementAt(i).getCartaView().toVector());
 		}	
 		return cv;
 	}
+	
+	// ITEMS DE CARTA ACTIVA
+	public Vector<ItemDeCartaView> getItemsDeCartaView(){
+		Vector<ItemDeCartaView> icv = new Vector<ItemDeCartaView>();
+		for (int i=0; i<cartaActiva.getItemsCarta().size(); i++){
+			icv.add(cartaActiva.getItemsCarta().elementAt(i).getItemDeCartaView());
+		}	
+		return icv;
+	}
+	
+	public Vector getItemsDeCartaViewVector(){
+		Vector icv = new Vector();
+		for (int i=0; i<cartaActiva.getItemsCarta().size(); i++){
+			icv.add(cartaActiva.getItemsCarta().elementAt(i).getItemDeCartaView().toVector());
+		}	
+		return icv;
+	}
+	
 	
 	//	PRODUCTOS
 	public Vector<ProductoView> getProductosView(){
@@ -855,7 +879,7 @@ public class Restaurante {
 	public Vector getProductosViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < productos.size(); i++){
-			mv.add(((Producto)productos.elementAt(i)).getProductoView().toVector());
+			mv.add(productos.elementAt(i).getProductoView().toVector());
 		}	
 		return mv;
 	}
@@ -893,5 +917,21 @@ public class Restaurante {
 		return mv;
 	}
 
+ 	//	MESAS
+ 	public Vector<MesaView> getMesasView(){ 
+		Vector<MesaView> mv = new Vector<MesaView>();
+		for (int i= 0; i < mesas.size(); i++){
+			mv.add(mesas.elementAt(i).getMesaView());
+		}
+		return mv;
+ 	}
+		
+	public Vector getMesasViewVector(){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < mesas.size(); i++){
+			mv.add(mesas.elementAt(i).getMesaView().toVector());
+		}
+		return mv;
+	}
 
 }

@@ -8,8 +8,8 @@ import modelo.Mozo;
 
 public class MesaView {
 	private int nroMesa;
-	private Mozo mozo;
-	private Comanda comandaActual;
+	//private Mozo mozo;
+	//private Comanda comandaActual;
 	static final String[] encabezados = {"NroMesa", "Mozo", "ComandaActual"};
 
 	
@@ -17,6 +17,15 @@ public class MesaView {
 	{
 		super();
 		this.nroMesa = nro;
+	}
+	
+	public Vector toVector()
+	{
+		Vector v = new Vector();
+		v.add(nroMesa);
+		//v.add(mozo);
+		//v.add(comandaActual);
+		return v;
 	}
 	
 	static public Vector getEncabezados() {
@@ -32,13 +41,12 @@ public class MesaView {
 		return nroMesa;
 	}
 	
-	public Mozo getMozo()
-	{
+	/*public Mozo getMozo(){
 		return mozo;
 	}
 	
 	public Comanda getComanda(){
 		return comandaActual;
 	}
-
+*/
 }

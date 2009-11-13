@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 
 import vista.Cartas.FormABMCarta;
 import vista.Mesas.FormGenerarComanda;
-import vista.Productos.FormIngresarMercaderia;
+import vista.OrdenesDeCompra.FormOrdenesDeCompra;
 import vista.ItemsDeCarta.FormABMItemDeCarta;
 
 public class FormMAIN extends javax.swing.JFrame {
@@ -22,7 +22,7 @@ public class FormMAIN extends javax.swing.JFrame {
 	
 	private AbstractAction getABM;
 	private AbstractAction getComandaAbrir;
-	private AbstractAction getIngresarMercaderiaAccion;
+	private AbstractAction getOrdenesDeCompra;
 	private AbstractAction getABMCartaAccion;
 	private AbstractAction getABMItemCartaAccion;
 	private AbstractAction cancelarAccion;
@@ -60,8 +60,8 @@ public class FormMAIN extends javax.swing.JFrame {
 			{
 				btnIngresar = new JButton();
 				getContentPane().add(btnIngresar);
-				btnIngresar.setText("INGRESAR MERCADERIA");
-				btnIngresar.setAction(getIngresarMercaderiaAccion());
+				btnIngresar.setText("ORDENES DE COMPRA");
+				btnIngresar.setAction(getOrdenesDeCompra());
 				btnIngresar.setBounds(205, 30, 180, 30);
 			}
 			{
@@ -124,20 +124,20 @@ public class FormMAIN extends javax.swing.JFrame {
 		}
 		return getABM;
 	}
-	private AbstractAction getIngresarMercaderiaAccion() {
-		getIngresarMercaderiaAccion = new AbstractAction("INGRESAR MERCADERIA", null) {
+	private AbstractAction getOrdenesDeCompra() {
+		getOrdenesDeCompra = new AbstractAction("ORDENES DE COMPRA", null) {
 			public void actionPerformed(ActionEvent evt){
 //				public static void main(String[] args) {
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							FormIngresarMercaderia inst = new FormIngresarMercaderia();
+							FormOrdenesDeCompra inst = new FormOrdenesDeCompra();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
 						}
 					});
 				}
 			};
-		return getIngresarMercaderiaAccion;
+		return getOrdenesDeCompra;
 	}
 
 

@@ -314,7 +314,7 @@ public class Restaurante {
 		return valido;
 	}
 
-	//	Se valido previamente que la carta a modificar ya existe
+	//	Ya se valido que la carta a modificar exista
 	public void modificarCarta (String diaViejo, String diaNuevo){
 		boolean validoViejo = diaValido(diaViejo);
 		boolean validoNuevo = diaValido(diaNuevo);
@@ -444,6 +444,9 @@ public class Restaurante {
 		a un mismo proveedor. El vector se utiliza en altaDeOrdenDeCompra.		*/
 	public Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
 		Vector<Producto> produc = new Vector <Producto>();
+/** SE PUEDE HACER NULL UN VECTOR ????*/
+/**	*/
+		produc = null;
 		for (int i= 0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getProveedor().equals(bajoProve)){
@@ -453,7 +456,7 @@ public class Restaurante {
 			}
 		}
 		return produc;	//	Vector con los productos (de un proveedor) bajos en stock. 
-	}
+	}					//	Devuelve null si no hay productos a pedir.
 
 	/*	Genera las ordenes automaticamente para los productos
 		bajos en stock. Es UNA orden por proveedor, por dia.		*/
@@ -463,9 +466,12 @@ public class Restaurante {
 		if (prov != null && ord == null){
 			//	Vector generado por productosBajoPuntoPedido para cargarlo en la orden de compra
 			Vector<Producto> itemsApedir = productosBajoPuntoPedido(prov);
-			ord = new OrdenDeCompra(prov, date, itemsApedir);
-			ordenesCompra.add(ord);
-			System.out.println("Orden de compra creada y cargada con exito.");
+			//	Revisa que el vector de productos a pedir no esté vacío.
+			if (itemsApedir!=null){
+				ord = new OrdenDeCompra(prov, date, itemsApedir);
+				ordenesCompra.add(ord);
+				System.out.println("Orden de compra creada y cargada con exito.");
+			}
 		}
 	}
 
@@ -489,6 +495,14 @@ public class Restaurante {
 		}
 	}
 
+	//	Genera todas las ordenes de compra para los productos bajos en stock
+	public void generarOrdenesDeCompra(String dia){
+		for (int i=0; i<proveedores.size(); i++){
+			Proveedor prov = proveedores.elementAt(i);
+			altaDeOrdenDeCompra (prov.getCuit(), dia);
+		}
+	}
+	
 /*	// ****************************
 	// ***** revisar todo esto. falta controlar si hay que pedirlo o no al producto.
 	//		LEO: GENERE VARIOS METODOS PARA CARGAR ORDENES DE COMPRA - PROBARLOS

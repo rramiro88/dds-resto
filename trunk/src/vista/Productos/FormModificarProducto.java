@@ -32,7 +32,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 
 	private JButton btnBuscar;
 	private JButton btnModificar;
-	private JButton btnCancelar;
+//	private JButton btnCancelar;
 
 	private AbstractAction modificarAction;
 	private AbstractAction buscarAction;
@@ -148,7 +148,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 					btnModificar.setFont(new java.awt.Font("Tahoma",1,11));
 					btnModificar.setAction(getModificarAction());
 				}
-				{
+/*				{
 					btnCancelar = new JButton();
 					getContentPane().add(btnCancelar);
 					btnCancelar.setText("Cancelar");
@@ -156,7 +156,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 					btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
 					btnCancelar.setAction(getCancelarAction());
 				}
-				pack();
+*/				pack();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

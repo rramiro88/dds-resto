@@ -12,11 +12,13 @@ import javax.swing.SwingUtilities;
 import controlador.*;
 
 public class FormEliminarProducto extends javax.swing.JFrame {
-	private JLabel lblProducto;
+//	private JButton btnCerrar;
+	private JButton btnEliminar;
+
 	private AbstractAction eliminarAction;
 	private AbstractAction cerrarAction;
-	private JButton btnCerrar;
-	private JButton btnEliminar;
+	
+	private JLabel lblProducto;
 	private JComboBox cmbProductos;
 
 /** Auto-generated main method to display this JFrame
@@ -61,7 +63,7 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 				btnEliminar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnEliminar.setAction(getEliminarAction());
 			}
-			{
+/*			{
 				btnCerrar = new JButton();
 				getContentPane().add(btnCerrar);
 				btnCerrar.setText("Cerrar");
@@ -69,7 +71,7 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 				btnCerrar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCerrar.setAction(getCerrarAction());
 			}
-			pack();
+*/			pack();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

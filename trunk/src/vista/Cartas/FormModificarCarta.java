@@ -13,7 +13,7 @@ import controlador.*;
 
 
 public class FormModificarCarta extends javax.swing.JFrame {
-	private JButton btnCancel;
+//	private JButton btnCancel;
 	private JButton btnAceptar;
 	private JButton btnBuscar;
 
@@ -58,14 +58,14 @@ public class FormModificarCarta extends javax.swing.JFrame {
 				btnBuscar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnBuscar.setAction(getBuscarAction());
 			}
-			{
+/*			{
 				btnCancel = new JButton();
 				getContentPane().add(btnCancel);
 				btnCancel.setText("CANCELAR");
 				btnCancel.setBounds(261, 225, 118, 34);
 				btnCancel.setAction(getCancelarAccion());
 			}
-			{
+*/			{
 				btnAceptar = new JButton();
 				getContentPane().add(btnAceptar);
 				btnAceptar.setText("ACEPTAR");

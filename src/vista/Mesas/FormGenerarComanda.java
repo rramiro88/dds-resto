@@ -6,10 +6,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 
 import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
 import javax.swing.SwingUtilities;
 
 import controlador.Restaurante;
@@ -21,7 +23,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 	private JLabel lblItem;
 	private JButton btnCancelar;
 	private JComboBox cmbItems;
-	private JSpinner jSpinner1;
+	private JSpinner spnCantidad;
 	private AbstractAction cancelarAction;
 	private AbstractAction agregarAction;
 	private JButton btnAgregar;
@@ -49,17 +51,31 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Generar Comanda");
 			getContentPane().setLayout(null);
-			this.setPreferredSize(new java.awt.Dimension(400, 300));
+			this.setPreferredSize(new java.awt.Dimension(400, 250));
 			{
 				lblMesa = new JLabel();
 				getContentPane().add(lblMesa);
 				lblMesa.setText("Seleccione Mesa: ");
-				lblMesa.setBounds(12, 12, 122, 14);
+				lblMesa.setBounds(12, 21, 122, 14);
 			}
 			{
 				cmbMesas = new JComboBox(Restaurante.getRestaurante().getMesasViewVector());
 				getContentPane().add(cmbMesas);
-				cmbMesas.setBounds(192, 9, 81, 21);
+				cmbMesas.setBounds(194, 18, 81, 21);
+			}
+			{
+				cmbItems = new JComboBox(Restaurante.getRestaurante().getItemsDeCartaViewVector());
+				getContentPane().add(cmbItems);
+				cmbItems.setBounds(194, 69, 174, 21);
+			}
+			{
+				SpinnerListModel jSpinner1Model = 
+					new SpinnerListModel(
+							new String[] { "1", "2" , "3" , "4" , "5" , "6" , "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" });
+				spnCantidad = new JSpinner();
+				spnCantidad.setModel(jSpinner1Model);
+				getContentPane().add(spnCantidad);
+				spnCantidad.setBounds(194, 101, 47, 21);
 			}
 			{
 				lblItem = new JLabel();
@@ -84,8 +100,6 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 			{
 				btnCancelar = new JButton();
 				getContentPane().add(btnCancelar);
-				getContentPane().add(getJSpinner1());
-				getContentPane().add(getCmbItems());
 				btnCancelar.setText("Cancelar");
 				btnCancelar.setBounds(233, 168, 113, 28);
 				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
@@ -101,6 +115,13 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 		if(agregarAction == null) {
 			agregarAction = new AbstractAction("Agregar", null) {
 				public void actionPerformed(ActionEvent evt) {
+					String sMesa = cmbMesas.getSelectedItem().toString();
+					sMesa = getPrimero(sMesa);
+					String sItem = cmbItems.getSelectedItem().toString();
+					sItem = getPrimero(sItem);
+					int iCant = Integer.valueOf(spnCantidad.getValue().toString());
+					Restaurante.getRestaurante().agregarItemComanda(Integer.valueOf(sMesa), sItem, iCant);
+					JOptionPane.showMessageDialog(null, "Comanda creada con exito.", "Generar Pedido", JOptionPane.INFORMATION_MESSAGE);
 				}
 			};
 		}
@@ -118,26 +139,16 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 		return cancelarAction;
 	}
 	
-	private JSpinner getJSpinner1() {
-		if(jSpinner1 == null) {
-			SpinnerListModel jSpinner1Model = 
-				new SpinnerListModel(
-						new String[] { "1", "2" , "3" , "4" , "5" , "6" , "7", "8", "9", "10" });
-			jSpinner1 = new JSpinner();
-			jSpinner1.setModel(jSpinner1Model);
-			jSpinner1.setBounds(194, 101, 47, 21);
-		}
-		return jSpinner1;
-	}
 	
-	private JComboBox getCmbItems() {
-		if(cmbItems == null) {
-			
-			cmbItems = new JComboBox(Restaurante.getRestaurante().getItemsDeCartaViewVector());
-			getContentPane().add(cmbItems);
-			cmbItems.setBounds(194, 69, 174, 21);
+	// Para parsear el string obtenido del combo y obtener el primer substring
+	// Hasta la ',' o ']'
+	public String getPrimero(String s){
+		int i = 1;
+		String sAux = new String("");
+		while ((s.charAt(i) != ',') && (s.charAt(i) != ']' )){
+			sAux = sAux + s.charAt(i); 
+			i++;
 		}
-		return cmbItems;
+		return sAux;
 	}
-
 }

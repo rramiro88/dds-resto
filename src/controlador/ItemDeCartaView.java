@@ -1,34 +1,30 @@
 package controlador;
 
 import java.util.Vector;
-
 import modelo.Ingrediente;
 
-public abstract class ItemDeCartaView {
+public class ItemDeCartaView {
 	private String name;
 	private float price;
 	private Vector <Ingrediente> ingredientes;
 	boolean disponible;
 	private int nroItem;
-	private static int ultimoNroItem = 0;
-	static final String[] encabezados = {"Nombre", "Precio", "Habilitar"};
+	//private static int ultimoNroItem = 0;
+	static final String[] encabezados = {"Nombre", "Precio", "Disponible"};
 
 	
-//	Constructor de instancia ItemDeCarta
+//	Constructor de instancia ItemDeCartaView
 //	-------------------------------------------------------------	
-	public ItemDeCartaView (String nombre, float precio){
+	public ItemDeCartaView (String nombre, float precio, boolean disp, int nro){
 		this.name = nombre;
 		this.price = precio;
-		ingredientes = new Vector<Ingrediente>();
-		this.disponible = true;
-		nroItem = getProximoNroItem();
+		//ingredientes = new Vector<Ingrediente>();
+		this.disponible = disp;
+		nroItem = nro;
 	}
 
-//	Metodos sets y gets para los atributos de la clase ItemDeCarta
+//	Metodos sets y gets para los atributos de la clase ItemDeCartaView
 //	-------------------------------------------------------------	
-	private int getProximoNroItem(){
-		return ++ultimoNroItem;		
-	}
 	public int getNroItem() {
 		return nroItem;
 	}
@@ -56,8 +52,7 @@ public abstract class ItemDeCartaView {
 		return v;
 	}
 	
-	public Vector toVector()
-	{
+	public Vector toVector(){
 		Vector v = new Vector();
 		v.add(name);
 		v.add(price);

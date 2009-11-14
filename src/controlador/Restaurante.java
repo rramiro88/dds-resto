@@ -796,7 +796,8 @@ public class Restaurante {
 	*/
 	public void abrirMesa (Mesa m){
 		Comanda c = m.abrirMesa();
-		comandas.add(c);	
+		comandas.add(c);
+		m.setOcupada();
 	}
 	
 	//Hay que ver que estamos haciendo con las mesas que no estan habilitadas. No listarlas en la vista.

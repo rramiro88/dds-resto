@@ -95,7 +95,7 @@ public class FormAltaOrdenDeCompra extends javax.swing.JFrame {
 		if(generarAccion == null) {
 			generarAccion = new AbstractAction("CREAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					Restaurante.getRestaurante().altaDeOrdenDeCompra(txtProveedor.getText(), txtFecha.getText());
+					Restaurante.getRestaurante().altaDeOrdenDeCompra(txtProveedor.getText());
 					txtFecha.setText("");
 					txtProveedor.setText("");
 				}

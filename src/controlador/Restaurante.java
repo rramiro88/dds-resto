@@ -11,6 +11,9 @@ public class Restaurante {
 	private boolean mesasAsignadas;
 	private boolean open;
 
+	//	La fecha se carga como String al inciciar el dia. 
+	private String fecha;
+	
 	private Carta cartaActiva;
 
 	private Vector <ItemDeCarta>	itemsCarta;
@@ -20,7 +23,6 @@ public class Restaurante {
 	private Vector <Comanda> 		comandas;
 	private Vector <Proveedor> 		proveedores;
 	private Vector <OrdenDeCompra> 	ordenesCompra;
-	private Vector <ItemDePedido>	itemsPedido;
 	private Vector <Producto> 		productos;
 
 //	Constructor de instancia Restaurante
@@ -33,7 +35,6 @@ public class Restaurante {
 		comandas 		= new Vector <Comanda> ();
 		proveedores 	= new Vector <Proveedor>();
 		ordenesCompra 	= new Vector <OrdenDeCompra>();
-		itemsPedido		= new Vector <ItemDePedido>();
 		productos 		= new Vector <Producto>();
 
 /**		-------------------------------------------------------------
@@ -49,7 +50,8 @@ public class Restaurante {
 		altaDeMozo("Jorge Buenaventua", 20);
 
 		asignarMesas();
-
+		// Restaurante abierto
+		this.open = true;
 		//	Proveedores
 		altaDeProveedor("99999999995", "La Vaca Loca", "Lavalle 111");
 		altaDeProveedor("21636582139", "La Botilleria de Jose", "Alsina 888");
@@ -159,6 +161,13 @@ public class Restaurante {
 		this.productos = productos;
 	}
 
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+	public String getFecha() {
+		return fecha;
+	}
+
 	public boolean isMesasAsignadas() {
 		return mesasAsignadas;
 	}
@@ -182,9 +191,12 @@ public class Restaurante {
 
 	
 
-/** -----------------------------------------------------------------------------
+/**
+  * -----------------------------------------------------------------------------
   * ------------------  ABM - BUSCAR de las clases del NEGOCIO  -----------------
-  * ----------------------------------------------------------------------------- **/	
+  * ----------------------------------------------------------------------------- 
+  * 
+  **/	
 	
 //	ABM - BUSCAR	Items De Carta (platos o bebidas)
 //	-----------------------------------------------------
@@ -261,7 +273,7 @@ public class Restaurante {
  		return null;
 	}
 
-	//	Comprueba que el dia de semana sea vÃ¡lido
+	//	Comprueba que el dia de semana sea valido
 	public boolean diaValido (String dia){
 		if (dia.equalsIgnoreCase("lunes"))
 			return true;
@@ -317,6 +329,7 @@ public class Restaurante {
 	}
 
 	//	Ya se valido que la carta a modificar exista
+	//	La modificacion consiste en cambiar una carta de un dia a otro.
 	public void modificarCarta (String diaViejo, String diaNuevo){
 		boolean validoViejo = diaValido(diaViejo);
 		boolean validoNuevo = diaValido(diaNuevo);
@@ -446,13 +459,12 @@ public class Restaurante {
 		a un mismo proveedor. El vector se utiliza en altaDeOrdenDeCompra.		*/
 	public Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
 		Vector<Producto> produc = new Vector <Producto>();
-/** SE PUEDE HACER NULL UN VECTOR ????*/
-/**	*/
 		produc = null;
 		for (int i= 0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getProveedor().equals(bajoProve)){
 				if (prod.getCantidad()<=prod.getPuntoped()){
+					//	Aca hay un warning, pero no entiendo por que
 					produc.add(prod);
 				}
 			}
@@ -462,15 +474,21 @@ public class Restaurante {
 
 	/*	Genera las ordenes automaticamente para los productos
 		bajos en stock. Es UNA orden por proveedor, por dia.		*/
-	public void altaDeOrdenDeCompra (String cuitProv, String date){
+	public void altaDeOrdenDeCompra (String cuitProv){
 		Proveedor prov = buscarProveedor(cuitProv);
-		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
+		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, fecha);
 		if (prov != null && ord == null){
-			//	Vector generado por productosBajoPuntoPedido para cargarlo en la orden de compra
+			//	Vector generado por productosBajoPuntoPedido
 			Vector<Producto> itemsApedir = productosBajoPuntoPedido(prov);
 			//	Revisa que el vector de productos a pedir no esté vacío.
 			if (itemsApedir!=null){
-				ord = new OrdenDeCompra(prov, date, itemsApedir);
+				ord = new OrdenDeCompra(prov, fecha);
+				//	Carga los items de pedido
+				for (int i= 0; i<itemsApedir.size(); i++){
+					Producto prod = itemsApedir.elementAt(i);
+					ord.agregarItemDePedido(prod, prod.getPuntoreab());
+				}
+				//	Agrega la orden de compra al vector de ordenes de compra
 				ordenesCompra.add(ord);
 				System.out.println("Orden de compra creada y cargada con exito.");
 			}
@@ -498,10 +516,10 @@ public class Restaurante {
 	}
 
 	//	Genera todas las ordenes de compra para los productos bajos en stock
-	public void generarOrdenesDeCompra(String dia){
+	public void generarOrdenesDeCompra(){
 		for (int i=0; i<proveedores.size(); i++){
 			Proveedor prov = proveedores.elementAt(i);
-			altaDeOrdenDeCompra (prov.getCuit(), dia);
+			altaDeOrdenDeCompra (prov.getCuit());
 		}
 	}
 	

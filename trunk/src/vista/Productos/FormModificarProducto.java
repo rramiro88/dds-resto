@@ -181,6 +181,9 @@ public class FormModificarProducto extends javax.swing.JFrame {
 							txtNombre.setText(txtIdBuscar.getText());
 							Vector vmv = Restaurante.getRestaurante().getProductosView();
 							int i = 0;
+							txtCantidad.setText("");
+							txtPtoPedido.setText("");
+							txtPtoRefill.setText("");
 							do{
 								ProductoView mv = ((ProductoView)vmv.elementAt(i));
 								if (mv.getNombre().equals(txtIdBuscar.getText())){

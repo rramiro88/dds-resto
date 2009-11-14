@@ -1,23 +1,18 @@
 package modelo;
 
-
-/**
- * Esta clase hay que borrarla. La orden de compra guardar· directamente
- * el producto a comprar. Para saber la cantidad a pedir se consulta
- * el atributo punto de pedido dentro el objeto PRODUCTO.
- * 
- * **/
-
 public class ItemDePedido {
     private Producto producto;
 	private float cantidad;
 	
 //	Constructor de instancia ItemDePedido
 //	-------------------------------------------------------------	
-	public ItemDePedido (Producto producto){
+	public ItemDePedido (Producto producto, float cantidadPedir){
 		this.producto = producto;
-		//	la cantidad a pedir previamente asignada en la creaci√≥n del Producto
-		this.cantidad = producto.getPuntoreab();	
+	/*	La cantidad a pedir sera la que se asigno en la creacion
+		del Producto. Se pasa como parametro al crear el item de pedido.
+		La forma de asignar cantidades puede modificarse en el futuro.	*/
+		this.cantidad = cantidadPedir;
+	//	this.cantidad = producto.getPuntoreab();
 	}
 
 //	Metodos sets y gets para los atributos de la clase ItemDePedido

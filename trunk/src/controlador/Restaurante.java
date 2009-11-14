@@ -20,6 +20,7 @@ public class Restaurante {
 	private Vector <Comanda> 		comandas;
 	private Vector <Proveedor> 		proveedores;
 	private Vector <OrdenDeCompra> 	ordenesCompra;
+	private Vector <ItemDePedido>	itemsPedido;
 	private Vector <Producto> 		productos;
 
 //	Constructor de instancia Restaurante
@@ -32,6 +33,7 @@ public class Restaurante {
 		comandas 		= new Vector <Comanda> ();
 		proveedores 	= new Vector <Proveedor>();
 		ordenesCompra 	= new Vector <OrdenDeCompra>();
+		itemsPedido		= new Vector <ItemDePedido>();
 		productos 		= new Vector <Producto>();
 
 /**		-------------------------------------------------------------

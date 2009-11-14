@@ -29,7 +29,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 	private JButton btnAgregar;
 	private JLabel lblCantidad;
 
-/** Auto-generated main method to display this JFrame
+/***/// Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -39,7 +39,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 			}
 		});
 	}
-*/
+
 	
 	public FormGenerarComanda() {
 		super();

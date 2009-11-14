@@ -1,3 +1,11 @@
+/**	
+  * La cantidad a pedir se asigno previamente al crear el producto.
+  *	La misma se lee desde producto.getPuntoreab() y se pasa como parametro al 
+  *	crear el item de pedido. 
+  * La forma de asignar cantidades podria modificarse en el futuro.
+  *
+  **/
+
 package modelo;
 
 public class ItemDePedido {
@@ -8,9 +16,6 @@ public class ItemDePedido {
 //	-------------------------------------------------------------	
 	public ItemDePedido (Producto producto, float cantidadPedir){
 		this.producto = producto;
-	/*	La cantidad a pedir sera la que se asigno en la creacion
-		del Producto. Se pasa como parametro al crear el item de pedido.
-		La forma de asignar cantidades puede modificarse en el futuro.	*/
 		this.cantidad = cantidadPedir;
 	//	this.cantidad = producto.getPuntoreab();
 	}
@@ -30,5 +35,6 @@ public class ItemDePedido {
 	public void setProducto(Producto producto) {
 		this.producto = producto;
 	}
+
 	
 }

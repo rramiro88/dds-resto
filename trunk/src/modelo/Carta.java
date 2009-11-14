@@ -1,3 +1,9 @@
+/**
+  *	El restaurante administra siete (7) cartas: una para cada dia.
+  *	Cada carta se identifica por el dia de la semana al que corresponde.
+  *	La validacion del dia se hace en Restaurante.java.
+  **/
+
 package modelo;
 
 import java.util.Vector;

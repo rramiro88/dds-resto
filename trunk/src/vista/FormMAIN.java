@@ -3,8 +3,11 @@ package vista;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import controlador.Restaurante;
 
 import vista.Cartas.FormABMCarta;
 import vista.Mesas.FormGenerarComanda;
@@ -114,9 +117,15 @@ public class FormMAIN extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							FormABMs inst = new FormABMs();
-							inst.setLocationRelativeTo(null);
-							inst.setVisible(true);
+							//	Revisa que el dia no halla sido abierto
+							if (!Restaurante.getRestaurante().isOpen()){
+								FormABMs inst = new FormABMs();
+								inst.setLocationRelativeTo(null);
+								inst.setVisible(true);
+							}else{
+								//	Si el dia esta abierto, no permite modificar los objetos
+								JOptionPane.showMessageDialog(null, "Negocio abierto. No se puede modificar.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+							}
 						}
 					});
 				}

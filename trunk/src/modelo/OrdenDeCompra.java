@@ -1,30 +1,29 @@
+/**
+  * Las ordenes de compra se identifican por el n° de CUIT del proveedor.
+  * Para diferenciar entre ordenes a nombre de un mismo proveedor se 
+  * utiliza la fecha dia-mes-año (formato: dd/mm/aaaa) en que fueron generadas.
+  * La fecha se carga como string y la recibe desde el atributo fecha del sistema
+  * al momento de cerrar el día y generar las ordenes de compra.
+  * 
+  **/
+
 package modelo;
 
 import java.util.Vector;
 
-/**
- * Las ordenes de compra se identifican por el n° de CUIT del proveedor.
- * Para diferenciar entre ordenes a nombre de un mismo proveedor se 
- * utiliza la fecha dia-mes-año (formato: dd/mm/aaaa) en que fueron generadas.
- * La fecha se carga como string. 
- * **/
-
-	public class OrdenDeCompra {
-		private String 					cuitProveedor;
-		private Vector<ItemDePedido> 	itemsDePedido;
-		private Proveedor 				proveedor;
-		private String 					fecha;	//	La fecha se escribe en formato dd/mm/aaaa
+public class OrdenDeCompra {
+	private String 					cuitProveedor;
+	private Vector<ItemDePedido> 	itemsDePedido;
+	private Proveedor 				proveedor;
+	private String 					fecha;	//	La fecha se escribe en formato dd/mm/aaaa
 
 //	Constructor de instancia OrdenDecompra
 //	-------------------------------------------------------------	
-/**	La orden de compra recibe un proveedor y un vector de
-	items de pedido que corresponden a ESE proveedor.		
- **/	
-	public OrdenDeCompra (Proveedor prov, String date, Vector <ItemDePedido> itemsApedir){
+	public OrdenDeCompra (Proveedor prov, String date){
 		this.cuitProveedor = prov.getCuit();
-		itemsDePedido = itemsApedir;
-		this.proveedor = prov;
 		this.fecha = date;
+		this.proveedor = prov;
+		itemsDePedido = new Vector<ItemDePedido>();
 	}
 
 //	Metodos sets y gets para los atributos de la clase OrdenDecompra

@@ -110,7 +110,7 @@ public class FormOrdenesDeCompra extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							Restaurante.getRestaurante().generarOrdenesDeCompra(txtFecha.getText());
+							Restaurante.getRestaurante().generarOrdenesDeCompra();
 						}
 					});
 				}

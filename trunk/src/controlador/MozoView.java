@@ -7,23 +7,24 @@ public class MozoView {
 	private int id;
 	private int comision;
 	private float liquidacion;
-	static final String[] encabezados = {"ID", "Nombre", "Comision"};
+	private boolean habilitado = false;
+	static final String[] encabezados = {"ID", "Nombre", "Comision", "Habilitado"};
 	//private boolean habilitado = false;
 	
-	public MozoView (int id, String nombre, int comision)
-	{
+	public MozoView (int id, String nombre, int comision, boolean habilitado){
 		super();
 		this.id = id;
 		this.nombre = nombre;	
 		this.comision = comision;
+		this.habilitado = habilitado;
 	}
 	
-	public Vector toVector()
-	{
+	public Vector toVector(){
 		Vector v = new Vector();
 		v.add(id);
 		v.add(nombre);
 		v.add(comision);
+		v.add(habilitado);
 		return v;
 	}
 	
@@ -35,22 +36,21 @@ public class MozoView {
 		return v;
 	}
 	
-	public String getNombre()
-	{
+	public String getNombre(){
 		return nombre;
 	}
 	
-	public int getId()
-	{
+	public int getId(){
 		return id;
 	}
 	
-/*	public float getLiquidacion()
+	public int getComision() {
+		return comision;
+	}
+	
+	/*	public float getLiquidacion()
 	{
 		return liquidacion;
 	}
 */
-	public int getComision() {
-		return comision;
-	}
 }

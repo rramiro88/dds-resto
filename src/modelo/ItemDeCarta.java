@@ -100,7 +100,7 @@ public abstract class ItemDeCarta {
 		}
 	}
 
-	public void listarIngredientes (){
+/*	public void listarIngredientes (){
 		Vector <Ingrediente> ingreList = this.getIngredientes();
 		for (int i=0; i<ingreList.size(); i++){
  			Ingrediente ingred = ingreList.elementAt(i);
@@ -109,16 +109,18 @@ public abstract class ItemDeCarta {
  			System.out.println(" ");
 		}
 	}
-
+*/
 	
 //	Metodos para preparar items de carta (platos - bebidas)
 //	-------------------------------------------------------------	
 	//	Revisa que la cantidad total de ingrediente alcance para
 	//	preparar el total de items de carta requeridos.
 	public boolean esPreparable(int cantidadItemsDeCarta){
+		//	Recorre todos los ingredientes del plato o bebida
 		for (int i=0; i<ingredientes.size(); i++){
 			Ingrediente ing = ingredientes.elementAt(i);
-			if (ing.esSuficiente(cantidadItemsDeCarta * ing.getCantidad()))
+			// Revisa que el ingrediente pueda prepararse
+			if (!ing.esSuficiente(cantidadItemsDeCarta * ing.getCantidad()))
 				return false;
 		}
 		return true;
@@ -132,7 +134,7 @@ public abstract class ItemDeCarta {
 		}
 	}
 	
-//	Metodo get que devuelve un ItemDeCartaView para pasar a la vista
+	//	Metodo get que devuelve un ItemDeCartaView para pasar a la vista
 	public ItemDeCartaView getItemDeCartaView(){
 		ItemDeCartaView icv = new ItemDeCartaView(name, price, disponible, nroItem);
 		return icv;

@@ -486,7 +486,7 @@ public class Restaurante {
 		a un mismo proveedor. El vector se utiliza en altaDeOrdenDeCompra.		*/
 	public Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
 		Vector<Producto> produc = new Vector <Producto>();
-		produc = null;
+//		produc = null;
 		for (int i= 0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getProveedor().equals(bajoProve)){
@@ -508,7 +508,7 @@ public class Restaurante {
 			//	Vector generado por productosBajoPuntoPedido
 			Vector<Producto> itemsApedir = productosBajoPuntoPedido(prov);
 			//	Revisa que el vector de productos a pedir no esté vacío.
-			if (itemsApedir!=null){
+			if (!itemsApedir.isEmpty()){
 				ord = new OrdenDeCompra(prov, fecha);
 				//	Carga los items de pedido
 				for (int i= 0; i<itemsApedir.size(); i++){

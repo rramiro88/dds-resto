@@ -87,14 +87,14 @@ public class Restaurante {
 		ItemDeCarta vinoT = buscarItemDeCarta ("vino tinto");
 		vinoT.agregarIngrediente(buscarProducto("vinoTinto"), 1);
 		//	Cartas
-		altaDeCarta("lunes");
-		Carta carta = buscarCarta("lunes");
+		altaDeCarta("domingo");
+		Carta carta = buscarCarta("domingo");
 		carta.agregarItemCarta(vinoT);
 		carta.agregarItemCarta(raviolesTuco);
 		setCartaActiva(carta);
 		
 		// Abrir Resto
-		abrirJornada();
+		//abrirJornada();
 
 		
 	}
@@ -176,6 +176,12 @@ public class Restaurante {
 		return fecha;
 	}
 
+	public String getDia() {
+		return dia;
+	}
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
 	public boolean isMesasAsignadas() {
 		return mesasAsignadas;
 	}

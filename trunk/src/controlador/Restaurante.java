@@ -93,7 +93,7 @@ public class Restaurante {
 		setCartaActiva(carta);
 		
 		// Abrir Resto
-		abrirJornada();
+		// abrirJornada();
 	
 		
 	}

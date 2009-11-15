@@ -8,44 +8,28 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
 import controlador.Restaurante;
-
-import vista.Cartas.FormABMCarta;
 import vista.Mesas.FormGenerarComanda;
-import vista.OrdenesDeCompra.FormOrdenesDeCompra;
-import vista.ItemsDeCarta.FormABMItemDeCarta;
+import vista.Productos.FormIngresarMercaderia;
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormMAIN extends javax.swing.JFrame {
-	private JButton btnCancel;
+	private JButton btnIniciarDia;
+	private JButton btnCerrarDia;
+	private JButton btnComandas;
 	private JButton btnABM;
-	private JButton btnIngresar;
-	private JButton btnComandaAbrir;
-	private JButton btnCarta;
-	private JButton btnComandaCerrar;
-	private JButton btnItemCart;
-	
+	private JButton btnIngMerca;
+	private JButton btnGenerar;	
+	private JButton btnSalir;
+
+	private AbstractAction getAbrirDia;
+	private AbstractAction getCerrarDia;
+	private AbstractAction getComandas;
 	private AbstractAction getABM;
-	private AbstractAction getComandaAbrir;
-	private AbstractAction getOrdenesDeCompra;
-	private AbstractAction getABMCartaAccion;
-	private AbstractAction getABMItemCartaAccion;
-	private AbstractAction cancelarAccion;
-	
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
+	private AbstractAction getIngresarMercaderia;	
+	private AbstractAction getGenerarOrdenesDeCompra;
+	private AbstractAction getSalirAccion;
+
+/** //	Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -55,6 +39,7 @@ public class FormMAIN extends javax.swing.JFrame {
 			}
 		});
 	}
+*/
 	
 	public FormMAIN() {
 		super();
@@ -67,62 +52,106 @@ public class FormMAIN extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Restaurante");
 			{
+				btnIniciarDia = new JButton();
+				getContentPane().add(btnIniciarDia);
+				btnIniciarDia.setText("INICIAR DIA");
+				btnIniciarDia.setAction(getAbrirDia());
+				btnIniciarDia.setBounds(12, 19, 120, 30);
+			}
+			{
+				btnCerrarDia = new JButton();
+				getContentPane().add(btnCerrarDia);
+				btnCerrarDia.setText("CERRAR DIA");
+				btnCerrarDia.setAction(getCerrarDia());
+				btnCerrarDia.setBounds(12, 60, 120, 30);
+			}
+			{
+				btnComandas = new JButton();
+				getContentPane().add(btnComandas);
+				btnComandas.setText("COMANDAS");
+				btnComandas.setAction(getComandas());
+				btnComandas.setBounds(12, 113, 140, 30);
+			}
+			{
 				btnABM = new JButton();
 				getContentPane().add(btnABM);
 				btnABM.setText("ABM");
 				btnABM.setAction(getABM());
-				btnABM.setBounds(10, 30, 180, 30);
+				btnABM.setBounds(301, 42, 100, 30);
 			}
 			{
-				btnIngresar = new JButton();
-				getContentPane().add(btnIngresar);
-				btnIngresar.setText("ORDENES DE COMPRA");
-				btnIngresar.setAction(getOrdenesDeCompra());
-				btnIngresar.setBounds(205, 30, 180, 30);
+				btnIngMerca = new JButton();
+				getContentPane().add(btnIngMerca);
+				btnIngMerca.setText("INGRESAR MERCADERIA");
+				btnIngMerca.setAction(getIngresarMercaderia());
+				btnIngMerca.setBounds(221, 83, 180, 30);
 			}
 			{
-				btnComandaAbrir = new JButton();
-				getContentPane().add(btnComandaAbrir);
-				btnComandaAbrir.setText("ABRIR COMANDA");
-				btnComandaAbrir.setAction(getComandaAbrir());
-				btnComandaAbrir.setBounds(10, 90, 180, 30);
+				btnGenerar = new JButton();
+				getContentPane().add(btnGenerar);
+				btnGenerar.setText("GENERAR ORDENES");
+				btnGenerar.setAction(getGenerarOrdenesDeCompra());
+				btnGenerar.setBounds(221, 120, 180, 30);
 			}
-			{
-				btnComandaCerrar = new JButton();
-				getContentPane().add(btnComandaCerrar);
-				btnComandaCerrar.setText("CERRAR COMANDA");
-				//btnComandaCerrar.setAction(getABMMesaAccion());
-				btnComandaCerrar.setBounds(205, 90, 180, 30);
-			}
-			{
-				btnCarta = new JButton();
-				getContentPane().add(btnCarta);
-				btnCarta.setText("sin asignar");
-				//btnCarta.setAction(getABMCartaAccion());
-				btnCarta.setBounds(10, 150, 180, 30);
 
-			}
 			{
-				btnItemCart = new JButton();
-				getContentPane().add(btnItemCart);
-				btnItemCart.setText("sin asignar");
-				//btnItemCart.setAction(getABMItemCartaAccion());
-				btnItemCart.setBounds(205, 150, 180, 30);
-			}
-			{
-				btnCancel = new JButton();
-				getContentPane().add(btnCancel);
-				btnCancel.setText("SALIR");
-				btnCancel.setAction(getCancelarAccion());
-				btnCancel.setBounds(205, 240, 175, 25);
+				btnSalir = new JButton();
+				getContentPane().add(btnSalir);
+				btnSalir.setText("SALIR");
+				btnSalir.setAction(getSalirAccion());
+				btnSalir.setBounds(321, 177, 80, 25);
 			}
 			pack();
-			this.setSize(400, 350);
+			this.setSize(420, 240);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+
+	private AbstractAction getAbrirDia() {
+		if(getAbrirDia == null) {
+			getAbrirDia = new AbstractAction("INICIAR DIA", null) {
+				public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							//	Revisa que la jornada halla sido abierta
+							if (!Restaurante.getRestaurante().isOpen()){
+								Restaurante.getRestaurante().abrirJornada();
+							}else{
+							//	Jornada ya abierta
+							JOptionPane.showMessageDialog(null, "La jornada ya ha sido abierta / No hay mozos o mesas", "ATENCION", JOptionPane.WARNING_MESSAGE);
+							}
+						}
+					});
+				}
+			};
+		}
+		return getAbrirDia;
+	}
+
+	
+	private AbstractAction getCerrarDia() {
+		if(getCerrarDia == null) {
+			getCerrarDia = new AbstractAction("CERRAR DIA", null) {
+				public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							//	Revisa que la jornada halla sido abierta
+							if (Restaurante.getRestaurante().isOpen()){
+								//	Llama al metodo que cierra el dia
+								}else{
+							//	Jornada cerrada
+							JOptionPane.showMessageDialog(null, "La jornada no ha sido abierta.", "ATENCION", JOptionPane.WARNING_MESSAGE);
+							}
+						}
+					});
+				}
+			};
+		}
+		return getCerrarDia;
+	}
+	
 	
 	private AbstractAction getABM() {
 		if(getABM == null) {
@@ -130,14 +159,14 @@ public class FormMAIN extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							//	Revisa que el dia no halla sido abierto
+							//	Revisa que la jornada no este abierta
 							if (!Restaurante.getRestaurante().isOpen()){
 								FormABMs inst = new FormABMs();
 								inst.setLocationRelativeTo(null);
 								inst.setVisible(true);
 							}else{
-								//	Si el dia esta abierto, no permite modificar los objetos
-								JOptionPane.showMessageDialog(null, "Negocio abierto. No se puede modificar.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+							//	Con jornada abierta no permite modificar los objetos
+							JOptionPane.showMessageDialog(null, "Jornada en curso. No se puede modificar.", "Prohibido", JOptionPane.WARNING_MESSAGE);
 							}
 						}
 					});
@@ -146,25 +175,44 @@ public class FormMAIN extends javax.swing.JFrame {
 		}
 		return getABM;
 	}
-	private AbstractAction getOrdenesDeCompra() {
-		getOrdenesDeCompra = new AbstractAction("ORDENES DE COMPRA", null) {
-			public void actionPerformed(ActionEvent evt){
-//				public static void main(String[] args) {
+	private AbstractAction getIngresarMercaderia() {
+		if(getIngresarMercaderia== null) {
+			getIngresarMercaderia= new AbstractAction("INGRESAR MERCADERIA", null) {
+				public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							FormOrdenesDeCompra inst = new FormOrdenesDeCompra();
+							FormIngresarMercaderia inst = new FormIngresarMercaderia();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
 						}
 					});
 				}
 			};
-		return getOrdenesDeCompra;
+		}
+		return getIngresarMercaderia;
 	}
 
+	private AbstractAction getGenerarOrdenesDeCompra() {
+		getGenerarOrdenesDeCompra = new AbstractAction("GENERAR ORDENES", null) {
+			public void actionPerformed(ActionEvent evt){
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						//	Revisa que el dia no halla sido abierto
+						if (!Restaurante.getRestaurante().isOpen()){
+							Restaurante.getRestaurante().generarOrdenesDeCompra();
+						}else{
+							//	Si el dia esta abierto, no permite generar las ordenes de compra
+							JOptionPane.showMessageDialog(null, "Negocio abierto. No se puede generar ordenes de compra.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+						}
+					}
+				});
+			}
+		};
+	return getGenerarOrdenesDeCompra;
+	}
 
-	private AbstractAction getComandaAbrir() {
-		getComandaAbrir = new AbstractAction("ABRIR COMANDA", null) {
+	private AbstractAction getComandas() {
+		getComandas = new AbstractAction("COMANDAS", null) {
 			public void actionPerformed(ActionEvent evt){
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
@@ -175,49 +223,18 @@ public class FormMAIN extends javax.swing.JFrame {
 				});
 			}
 		};
-		return getComandaAbrir;
+		return getComandas;
 	}
-
-	private AbstractAction getABMCartaAccion() {
-		getABMCartaAccion = new AbstractAction("CARTAS", null) {
-			public void actionPerformed(ActionEvent evt){
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						FormABMCarta inst = new FormABMCarta();
-						inst.setLocationRelativeTo(null);
-						inst.setVisible(true);
-					}
-				});
-			}
-		};
-		return getABMCartaAccion;
-	}
-
-	private AbstractAction getABMItemCartaAccion() {
-		getABMItemCartaAccion = new AbstractAction("ITEMS CARTA", null) {
-			public void actionPerformed(ActionEvent evt){
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						FormABMItemDeCarta inst = new FormABMItemDeCarta();
-						inst.setLocationRelativeTo(null);
-						inst.setVisible(true);
-					}
-				});
-			}
-		};
-		return getABMItemCartaAccion;
-	}
-
 	
-	private AbstractAction getCancelarAccion() {
-		if(cancelarAccion == null) {
-			cancelarAccion = new AbstractAction("SALIR", null) {
+	private AbstractAction getSalirAccion() {
+		if(getSalirAccion == null) {
+			getSalirAccion = new AbstractAction("SALIR", null) {
 				public void actionPerformed(ActionEvent evt) {
 					System.exit(0);
 				}
 			};
 		}
-		return cancelarAccion;
+		return getSalirAccion;
 	}
 
 

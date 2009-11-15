@@ -93,15 +93,8 @@ public class FormABMs extends javax.swing.JFrame {
 				btnItemCart.setAction(getABMItemCartaAccion());
 				btnItemCart.setBounds(160, 160, 125, 32);
 			}
-/*			{
-				btnCancel = new JButton();
-				getContentPane().add(btnCancel);
-				btnCancel.setText("SALIR");
-				btnCancel.setAction(getCancelarAccion());
-				btnCancel.setBounds(285, 240, 100, 20);
-			}
-*/			pack();
-			setSize(400, 300);
+			pack();
+			setSize(320, 240);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

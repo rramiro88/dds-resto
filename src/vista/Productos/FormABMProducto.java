@@ -8,17 +8,13 @@ import javax.swing.SwingUtilities;
 
 
 public class FormABMProducto extends javax.swing.JFrame {
-//	private JButton btnCancel;
 	private JButton btnAlta;
 	private JButton btnModificar;
 	private JButton btnEliminar;
-	private JButton btnIngresar;
 	
 	private AbstractAction getAltaProductoAccion;
 	private AbstractAction getModificarProductoAccion;
 	private AbstractAction getEliminarProductoAccion;
-	private AbstractAction getIngresarMercaderiaAccion;
-	private AbstractAction cancelarAccion;
 	
 /** Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
@@ -65,24 +61,9 @@ public class FormABMProducto extends javax.swing.JFrame {
 				btnEliminar.setBounds(37, 102, 200, 35);
 
 			}
-			{
-				btnIngresar = new JButton();
-				getContentPane().add(btnIngresar);
-				btnIngresar.setText("INGRESAR MERCADERIA");
-				btnIngresar.setAction(getIngresarMercaderiaAccion());
-				btnIngresar.setBounds(37, 200, 200, 35);
 
-			}
-
-/*			{
-				btnCancel = new JButton();
-				getContentPane().add(btnCancel);
-				btnCancel.setText("SALIR");
-				btnCancel.setBounds(229, 224, 150, 35);
-				btnCancel.setAction(getCancelarAccion());
-			}
-*/			pack();
-			setSize(400, 300);
+			pack();
+			setSize(274, 200);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -92,7 +73,6 @@ public class FormABMProducto extends javax.swing.JFrame {
 		if(getAltaProductoAccion == null) {
 			getAltaProductoAccion = new AbstractAction("ALTA DE PRODUCTO", null) {
 				public void actionPerformed(ActionEvent evt){
-//					public static void main(String[] args) {
 						SwingUtilities.invokeLater(new Runnable() {
 							public void run() {
 								FormAltaProducto inst = new FormAltaProducto();
@@ -102,7 +82,6 @@ public class FormABMProducto extends javax.swing.JFrame {
 						});
 					}
 
-//				}
 			};
 		}
 		return getAltaProductoAccion;
@@ -112,7 +91,6 @@ public class FormABMProducto extends javax.swing.JFrame {
 		if(getModificarProductoAccion== null) {
 			getModificarProductoAccion= new AbstractAction("MODIFICAR PRODUCTO", null) {
 				public void actionPerformed(ActionEvent evt){
-//					public static void main(String[] args) {
 						SwingUtilities.invokeLater(new Runnable() {
 							public void run() {
 								FormModificarProducto inst = new FormModificarProducto();
@@ -121,7 +99,6 @@ public class FormABMProducto extends javax.swing.JFrame {
 							}
 						});
 					}
-//				}
 			};
 		}
 		return getModificarProductoAccion;
@@ -130,7 +107,6 @@ public class FormABMProducto extends javax.swing.JFrame {
 	private AbstractAction getEliminarProductoAccion() {
 		getEliminarProductoAccion = new AbstractAction("ELIMINAR PRODUCTO", null) {
 			public void actionPerformed(ActionEvent evt){
-//				public static void main(String[] args) {
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							FormEliminarProducto inst = new FormEliminarProducto();
@@ -139,39 +115,9 @@ public class FormABMProducto extends javax.swing.JFrame {
 						}
 					});
 				}
-//			}
 		};
 		return getEliminarProductoAccion;
 	}
 
-	private AbstractAction getIngresarMercaderiaAccion() {
-		getIngresarMercaderiaAccion = new AbstractAction("INGRESAR MERCADERIA", null) {
-			public void actionPerformed(ActionEvent evt){
-//				public static void main(String[] args) {
-					SwingUtilities.invokeLater(new Runnable() {
-						public void run() {
-							FormIngresarMercaderia inst = new FormIngresarMercaderia();
-							inst.setLocationRelativeTo(null);
-							inst.setVisible(true);
-						}
-					});
-				}
-			};
-		return getIngresarMercaderiaAccion;
-	}
-
 	
-	
-	private AbstractAction getCancelarAccion() {
-		if(cancelarAccion == null) {
-			cancelarAccion = new AbstractAction("CANCELAR", null) {
-				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
-				}
-			};
-		}
-		return cancelarAccion;
-	}
-
-
 }

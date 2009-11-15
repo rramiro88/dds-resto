@@ -11,12 +11,10 @@ public class FormABMCarta extends javax.swing.JFrame {
 	private JButton btnModificar;
 	private JButton btnAlta;
 	private JButton btnEliminar;
-//	private JButton btnCancel;
 
 	private AbstractAction getAltaCartaAccion;
 	private AbstractAction getModificarCartaAccion;
 	private AbstractAction getEliminarCartaAccion;
-//	private AbstractAction cancelarAccion;
 	
 /**
 //	Auto-generated main method to display this JFrame
@@ -64,15 +62,8 @@ public class FormABMCarta extends javax.swing.JFrame {
 				btnEliminar.setBounds(37, 102, 160, 35);
 
 			}
-/*			{
-				btnCancel = new JButton();
-				getContentPane().add(btnCancel);
-				btnCancel.setText("SALIR");
-				btnCancel.setBounds(229, 224, 150, 35);
-				btnCancel.setAction(getCancelarAccion());
-			}
-*/			pack();
-			setSize(400, 300);
+			pack();
+			setSize(250, 200);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -82,17 +73,14 @@ public class FormABMCarta extends javax.swing.JFrame {
 		if(getAltaCartaAccion == null) {
 			getAltaCartaAccion = new AbstractAction("ALTA DE CARTA", null) {
 				public void actionPerformed(ActionEvent evt){
-//					public static void main(String[] args) {
-						SwingUtilities.invokeLater(new Runnable() {
-							public void run() {
-								FormAltaCarta inst = new FormAltaCarta();
-								inst.setLocationRelativeTo(null);
-								inst.setVisible(true);
-							}
-						});
-					}
-
-//				}
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							FormAltaCarta inst = new FormAltaCarta();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+						}
+					});
+				}
 			};
 		}
 		return getAltaCartaAccion;
@@ -101,17 +89,15 @@ public class FormABMCarta extends javax.swing.JFrame {
 	private AbstractAction getModificarCartaAccion() {
 		if(getModificarCartaAccion== null) {
 			getModificarCartaAccion= new AbstractAction("MODIFICAR CARTA", null) {
-				public void actionPerformed(ActionEvent evt){
-//					public static void main(String[] args) {
-						SwingUtilities.invokeLater(new Runnable() {
-							public void run() {
-								FormModificarCarta inst = new FormModificarCarta();
-								inst.setLocationRelativeTo(null);
-								inst.setVisible(true);
-							}
-						});
-					}
-//				}
+			public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							FormModificarCarta inst = new FormModificarCarta();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+						}
+					});
+				}
 			};
 		}
 		return getModificarCartaAccion;
@@ -120,7 +106,6 @@ public class FormABMCarta extends javax.swing.JFrame {
 	private AbstractAction getEliminarCartaAccion() {
 		getEliminarCartaAccion = new AbstractAction("ELIMINAR CARTA", null) {
 			public void actionPerformed(ActionEvent evt){
-//				public static void main(String[] args) {
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							FormEliminarCarta inst = new FormEliminarCarta();
@@ -129,21 +114,9 @@ public class FormABMCarta extends javax.swing.JFrame {
 						}
 					});
 				}
-//			}
 		};
 		return getEliminarCartaAccion;
 	}
 			
-/*	private AbstractAction getCancelarAccion() {
-		if(cancelarAccion == null) {
-			cancelarAccion = new AbstractAction("CANCELAR", null) {
-				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
-				}
-			};
-		}
-		return cancelarAccion;
-	}
-*/
 	
 }

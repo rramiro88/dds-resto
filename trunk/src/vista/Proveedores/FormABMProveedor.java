@@ -71,7 +71,7 @@ public class FormABMProveedor extends javax.swing.JFrame {
 				btnCancel.setAction(getCancelarAccion());
 			}
 */			pack();
-			setSize(400, 300);
+			setSize(274, 200);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

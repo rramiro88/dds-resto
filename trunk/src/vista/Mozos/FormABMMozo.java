@@ -8,7 +8,6 @@ import javax.swing.SwingUtilities;
 
 
 public class FormABMMozo extends javax.swing.JFrame {
-//	private JButton btnCancel;
 	private JButton btnAlta;
 	private JButton btnModificar;
 	private JButton btnEliminar;
@@ -64,15 +63,8 @@ public class FormABMMozo extends javax.swing.JFrame {
 				btnEliminar.setBounds(37, 102, 160, 35);
 
 			}
-/*			{
-				btnCancel = new JButton();
-				getContentPane().add(btnCancel);
-				btnCancel.setText("SALIR");
-				btnCancel.setBounds(229, 224, 150, 35);
-				btnCancel.setAction(getCancelarAccion());
-			}
-*/			pack();
-			setSize(400, 300);
+			pack();
+			setSize(274, 200);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -82,7 +74,6 @@ public class FormABMMozo extends javax.swing.JFrame {
 		if(getAltaMozoAccion == null) {
 			getAltaMozoAccion = new AbstractAction("ALTA DE MOZO", null) {
 				public void actionPerformed(ActionEvent evt){
-//					public static void main(String[] args) {
 						SwingUtilities.invokeLater(new Runnable() {
 							public void run() {
 								FormAltaMozo inst = new FormAltaMozo();
@@ -91,8 +82,6 @@ public class FormABMMozo extends javax.swing.JFrame {
 							}
 						});
 					}
-
-//				}
 			};
 		}
 		return getAltaMozoAccion;
@@ -102,7 +91,6 @@ public class FormABMMozo extends javax.swing.JFrame {
 		if(getModificarMozoAccion== null) {
 			getModificarMozoAccion= new AbstractAction("MODIFICAR MOZO", null) {
 				public void actionPerformed(ActionEvent evt){
-//					public static void main(String[] args) {
 						SwingUtilities.invokeLater(new Runnable() {
 							public void run() {
 								FormModificarMozo inst = new FormModificarMozo();
@@ -111,7 +99,6 @@ public class FormABMMozo extends javax.swing.JFrame {
 							}
 						});
 					}
-//				}
 			};
 		}
 		return getModificarMozoAccion;
@@ -120,7 +107,6 @@ public class FormABMMozo extends javax.swing.JFrame {
 	private AbstractAction getEliminarMozoAccion() {
 		getEliminarMozoAccion = new AbstractAction("ELIMINAR MOZO", null) {
 			public void actionPerformed(ActionEvent evt){
-//				public static void main(String[] args) {
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							FormEliminarMozo inst = new FormEliminarMozo();
@@ -129,20 +115,8 @@ public class FormABMMozo extends javax.swing.JFrame {
 						}
 					});
 				}
-//			}
 		};
 		return getEliminarMozoAccion;
-	}
-			
-	private AbstractAction getCancelarAccion() {
-		if(cancelarAccion == null) {
-			cancelarAccion = new AbstractAction("CANCELAR", null) {
-				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
-				}
-			};
-		}
-		return cancelarAccion;
 	}
 
 	

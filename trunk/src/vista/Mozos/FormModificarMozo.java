@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,9 +18,23 @@ import controlador.MozoView;
 import controlador.Restaurante;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormModificarMozo extends javax.swing.JFrame {
 	private JTextField txtIdBuscar;
 	private JTextField txtId;
+	private JCheckBox chkHabilitado;
 	private JTextField txtNombre;
 	private JTextField txtComision;
 
@@ -29,7 +44,7 @@ public class FormModificarMozo extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JPanel jPanel1;
 
-//	private JButton btnCancelar;
+	private JButton btnCancelar;
 	private JButton btnModificar;
 	private JButton btnBuscar;
 
@@ -108,6 +123,7 @@ public class FormModificarMozo extends javax.swing.JFrame {
 					jPanel1.add(txtComision);
 					jPanel1.add(getJLabel1());
 					jPanel1.add(getTxtId());
+					jPanel1.add(getChkHabilitado());
 					txtComision.setBounds(124, 82, 62, 21);
 				}
 			}
@@ -115,19 +131,19 @@ public class FormModificarMozo extends javax.swing.JFrame {
 				btnModificar = new JButton();
 				getContentPane().add(btnModificar);
 				btnModificar.setText("Modificar");
-				btnModificar.setBounds(93, 217, 91, 21);
+				btnModificar.setBounds(93, 217, 91, 28);
 				btnModificar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnModificar.setAction(getModificarAction());
 			}
-/*			{
+			{
 				btnCancelar = new JButton();
 				getContentPane().add(btnCancelar);
 				btnCancelar.setText("Cancelar");
-				btnCancelar.setBounds(212, 217, 91, 21);
+				btnCancelar.setBounds(212, 217, 91, 28);
 				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCancelar.setAction(getCancelarAction());
 			}
-*/			pack();
+			pack();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -137,7 +153,7 @@ public class FormModificarMozo extends javax.swing.JFrame {
 		if(cancelarAction == null) {
 			cancelarAction = new AbstractAction("Cancelar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
+					dispose();
 				}
 			};
 		}
@@ -157,6 +173,10 @@ public class FormModificarMozo extends javax.swing.JFrame {
 							if (Integer.toString(mv.getId()).equals(txtIdBuscar.getText())){
 								txtNombre.setText(mv.getNombre());
 								txtComision.setText(Integer.toString(mv.getComision()));
+								if (mv.isHabilitado())
+									chkHabilitado.setSelected(true);
+								else
+									chkHabilitado.setSelected(false);
 								break;
 							}else
 								++i;
@@ -182,6 +202,7 @@ public class FormModificarMozo extends javax.swing.JFrame {
 					txtId.setText("");
 					txtNombre.setText("");
 					txtComision.setText("");
+					chkHabilitado.setSelected(false);
 				}
 			};
 		}
@@ -205,6 +226,14 @@ public class FormModificarMozo extends javax.swing.JFrame {
 		}
 		return txtId;
 	}
-
 	
+	private JCheckBox getChkHabilitado() {
+		if(chkHabilitado == null) {
+			chkHabilitado = new JCheckBox();
+			chkHabilitado.setText("HABILITADO");
+			chkHabilitado.setBounds(244, 83, 108, 18);
+		}
+		return chkHabilitado;
+	}
+
 }

@@ -6,14 +6,26 @@ public class Mesa {
 	private int nroMesa;
 	private Mozo mozo;
 	private Comanda comandaActual;
-	private boolean ocupada = false;
-	private boolean habilitada = false;
+	private boolean habilitada;
+	private boolean asignada;
+	private boolean ocupada;
 	private static int ultimaMesa = 0;
 	
 	
-	public Mesa(){
+	public Mesa(boolean habilitada){
 		super();
 		this.nroMesa = ++ultimaMesa;
+		this.habilitada = habilitada;
+		this.asignada = false;
+		this.ocupada = false;
+	}
+	
+	public boolean isAsignada() {
+		return asignada;
+	}
+
+	public void setAsignada(boolean asignada) {
+		this.asignada = asignada;
 	}
 	
 	public int getNroMesa(){

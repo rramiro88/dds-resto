@@ -9,18 +9,18 @@ public class Mozo {
 	private int id;
 	private int comision; //o la guardamos como entero
 	private float liquidacion;	//ultima liquidacion de esta mozo (lo que hay que pagarle)
-	private boolean habilitado = false;
+	private boolean habilitado;
 	private static int ultimoMozo = 100;
 	
 //	Constructor de instancia Mozo
 //	-------------------------------------------------------------	
-	public Mozo (String nombre, int comision){
+	public Mozo (String nombre, int comision, boolean habilitado){
 		super();
 		this.nombre = nombre;
 		this.id = ++ultimoMozo;
 		this.comision = comision;
 		this.liquidacion = 0;
-		this.habilitado = true;
+		this.habilitado = habilitado;
 	}
 	
 //	Metodos sets y gets para los atributos de la clase Mozo
@@ -52,7 +52,7 @@ public class Mozo {
 		habilitado = true;
 	}
 	
-	public boolean getHabilitado (){
+	public boolean isHabilitado (){
 		return habilitado;
 	}
 	
@@ -66,7 +66,7 @@ public class Mozo {
 
 	//	Metodo get que devuelve un MozoView para pasar a la vista
 	public MozoView getMozoView(){
-		MozoView mv = new MozoView(id, nombre, comision);
+		MozoView mv = new MozoView(id, nombre, comision, habilitado);
 		return mv;
 	}
 	

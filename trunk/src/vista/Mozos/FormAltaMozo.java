@@ -7,6 +7,7 @@ import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,10 +26,24 @@ import controlador.MozoView;
 import controlador.Restaurante;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormAltaMozo extends javax.swing.JFrame {
 	private JButton closeButton;
 	private JTable jTable1;
 	private JScrollPane jScrollPane1;
+	private JCheckBox chkHabilitado;
 	private AbstractAction agregarAction;
 	private AbstractAction closeAction;
 	private JLabel jLabel3;
@@ -111,35 +126,35 @@ public class FormAltaMozo extends javax.swing.JFrame {
 					.addGroup(jPanel1Layout.createParallelGroup()
 					    .addComponent(jLabel3, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
 					    .addGroup(GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-					        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					        .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
 					        .addGap(17)))
-					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+					.addGap(24)
 					.addGroup(jPanel1Layout.createParallelGroup()
 					    .addGroup(GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
 					        .addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-					        .addGap(0, 150, Short.MAX_VALUE))
+					        .addGap(25)
+					        .addComponent(getChkHabilitado(), GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
 					    .addGroup(jPanel1Layout.createSequentialGroup()
-					        .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
-					        .addGap(0, 0, Short.MAX_VALUE)))
-					.addContainerGap(87, 87));
+					        .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(75, Short.MAX_VALUE));
 				jPanel1Layout.setVerticalGroup(jPanel1Layout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-					    .addComponent(jTextField2, GroupLayout.Alignment.BASELINE, 0, 23, Short.MAX_VALUE)
+					    .addComponent(jTextField2, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 					    .addComponent(jLabel2, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 					    .addComponent(jTextField3, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					    .addComponent(getChkHabilitado(), GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
 					    .addComponent(jLabel3, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap());
+					.addContainerGap(30, 30));
 				jPanel1Layout.linkSize(SwingConstants.VERTICAL, new Component[] {jTextField2, jTextField3});
 			}
 			thisLayout.setVerticalGroup(thisLayout.createSequentialGroup()
 				.addContainerGap()
 				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
-				.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+				.addComponent(jPanel1, 0, 107, Short.MAX_VALUE)
 				.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 				.addGroup(thisLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 				    .addComponent(aceptButton, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -151,11 +166,11 @@ public class FormAltaMozo extends javax.swing.JFrame {
 				    .addComponent(jScrollPane1, GroupLayout.Alignment.LEADING, 0, 373, Short.MAX_VALUE)
 				    .addComponent(jPanel1, GroupLayout.Alignment.LEADING, 0, 373, Short.MAX_VALUE)
 				    .addGroup(GroupLayout.Alignment.LEADING, thisLayout.createSequentialGroup()
-				        .addGap(86)
+				        .addGap(87)
 				        .addComponent(aceptButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-				        .addGap(0, 19, Short.MAX_VALUE)
+				        .addGap(0, 20, Short.MAX_VALUE)
 				        .addComponent(closeButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-				        .addGap(0, 76, GroupLayout.PREFERRED_SIZE)))
+				        .addGap(74)))
 				.addContainerGap());
 			thisLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {aceptButton, closeButton});
 			pack();
@@ -169,7 +184,7 @@ public class FormAltaMozo extends javax.swing.JFrame {
 		if(closeAction == null) {
 			closeAction = new AbstractAction("Cerrar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
+					dispose();
 				}
 			};
 		}
@@ -181,13 +196,18 @@ public class FormAltaMozo extends javax.swing.JFrame {
 			agregarAction = new AbstractAction("Agregar", null) {
 				public void actionPerformed(ActionEvent evt) {
 					try{
-					
-						Restaurante.getRestaurante().altaDeMozo(jTextField2.getText(), Integer.parseInt(jTextField3.getText()));
-						Vector datos = Restaurante.getRestaurante().getMozosViewVector();
-						TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
-						jTable1.setModel(dtm);
-						jTextField2.setText("");
-						jTextField3.setText("");
+						int comision = Integer.parseInt(jTextField3.getText());
+						if (comision < 0 || comision > 100){
+							JOptionPane.showMessageDialog(null, "La comisión debe estar entre 0 y 100 porciento.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+							jTextField3.setText("");
+						}else{
+							Restaurante.getRestaurante().altaDeMozo(jTextField2.getText(), Integer.parseInt(jTextField3.getText()), chkHabilitado.isSelected());
+							Vector datos = Restaurante.getRestaurante().getMozosViewVector();
+							TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
+							jTable1.setModel(dtm);
+							jTextField2.setText("");
+							jTextField3.setText("");
+						}
 					}
 					catch  (Exception e){
 						JOptionPane.showMessageDialog(null, "La comisión debe ser un valor numérico entero.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
@@ -197,6 +217,13 @@ public class FormAltaMozo extends javax.swing.JFrame {
 			};
 		}
 		return agregarAction;
+	}
+
+	private JCheckBox getChkHabilitado() {
+		if(chkHabilitado == null) {
+			chkHabilitado = new JCheckBox("HABILITADO", true);
+		}
+		return chkHabilitado;
 	}
 
 }

@@ -214,12 +214,21 @@ public class Restaurante {
 				setOpen(true);
 				//	Para abrir la jornada tambien hay que asignar la carta activa del dia
 				setCartaActiva(buscarCarta(dia));
-				System.out.println("Restaurant ABIERTO!!!");
+				System.out.println("Restaurante ABIERTO!!!");
 				return true;
 			}
 		}
 	}
 	
+	public boolean cerrarJornada(){
+		if (!isOpen()){
+			System.out.println("El restaurant ya se encuentra cerrado");
+			return false;
+		}else{
+			setOpen(false);
+			return true;
+		}
+	}
 
 /**
   * -----------------------------------------------------------------------------

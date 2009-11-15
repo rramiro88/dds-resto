@@ -1,4 +1,4 @@
-package vista.Mesas;
+package vista.Comandas;
 
 import java.awt.event.ActionEvent;
 import java.util.Vector;
@@ -12,6 +12,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.WindowConstants;
 
+import controlador.ItemDeCartaView;
 import controlador.MesaView;
 import controlador.Restaurante;
 
@@ -77,7 +78,8 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 				cmbMesas.setBounds(194, 18, 81, 21);
 			}
 			{
-				cmbItems = new JComboBox(Restaurante.getRestaurante().getItemsDeCartaViewVector());
+				Vector platosBebidas = getPlatosBebidas(Restaurante.getRestaurante().getItemsDeCartaView());
+				cmbItems = new JComboBox(platosBebidas);
 				getContentPane().add(cmbItems);
 				cmbItems.setBounds(194, 69, 174, 21);
 			}
@@ -129,9 +131,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 			agregarAction = new AbstractAction("Agregar", null) {
 				public void actionPerformed(ActionEvent evt) {
 					String sMesa = cmbMesas.getSelectedItem().toString();
-					sMesa = getPrimero(sMesa);
 					String sItem = cmbItems.getSelectedItem().toString();
-					sItem = getPrimero(sItem);
 					int iCant = Integer.valueOf(spnCantidad.getValue().toString());
 					Restaurante.getRestaurante().agregarItemComanda(Integer.valueOf(sMesa), sItem, iCant);
 					JOptionPane.showMessageDialog(null, "Comanda creada con exito.", "Generar Pedido", JOptionPane.INFORMATION_MESSAGE);
@@ -169,11 +169,19 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 	
 	
 	public Vector getMesasAsignadas (Vector<MesaView> v){
-		Vector mv = new Vector();
+		Vector asignadas = new Vector();
 		for (int i= 0; i < v.size(); i++){
 			if (v.elementAt(i).isAsignada())
-				mv.add(v.elementAt(i).getNroMesa());
+				asignadas.add(v.elementAt(i).getNroMesa());
 		}
-		return mv;
+		return asignadas;
+	}
+	
+	public Vector getPlatosBebidas (Vector<ItemDeCartaView> v){
+		Vector items = new Vector();
+		for (int i= 0; i < v.size(); i++){
+			items.add(v.elementAt(i).getNombre());
+		}
+		return items;
 	}
 }

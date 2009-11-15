@@ -14,6 +14,19 @@ import vista.Mesas.FormGenerarComanda;
 import vista.OrdenesDeCompra.FormOrdenesDeCompra;
 import vista.ItemsDeCarta.FormABMItemDeCarta;
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormMAIN extends javax.swing.JFrame {
 	private JButton btnCancel;
 	private JButton btnABM;
@@ -101,10 +114,10 @@ public class FormMAIN extends javax.swing.JFrame {
 				getContentPane().add(btnCancel);
 				btnCancel.setText("SALIR");
 				btnCancel.setAction(getCancelarAccion());
-				btnCancel.setBounds(280, 240, 100, 25);
+				btnCancel.setBounds(205, 240, 175, 25);
 			}
 			pack();
-			setSize(400, 300);
+			this.setSize(400, 350);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -198,7 +211,7 @@ public class FormMAIN extends javax.swing.JFrame {
 	
 	private AbstractAction getCancelarAccion() {
 		if(cancelarAccion == null) {
-			cancelarAccion = new AbstractAction("CANCELAR", null) {
+			cancelarAccion = new AbstractAction("SALIR", null) {
 				public void actionPerformed(ActionEvent evt) {
 					System.exit(0);
 				}

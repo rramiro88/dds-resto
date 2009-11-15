@@ -7,9 +7,8 @@ public class MozoView {
 	private int id;
 	private int comision;
 	private float liquidacion;
-	private boolean habilitado = false;
+	private boolean habilitado;
 	static final String[] encabezados = {"ID", "Nombre", "Comision", "Habilitado"};
-	//private boolean habilitado = false;
 	
 	public MozoView (int id, String nombre, int comision, boolean habilitado){
 		super();
@@ -47,6 +46,16 @@ public class MozoView {
 	public int getComision() {
 		return comision;
 	}
+
+	public boolean isHabilitado() {
+		return habilitado;
+	}
+
+	public void setHabilitado(boolean habilitado) {
+		this.habilitado = habilitado;
+	}
+	
+	
 	
 	/*	public float getLiquidacion()
 	{

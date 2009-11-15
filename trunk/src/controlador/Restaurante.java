@@ -42,8 +42,12 @@ public class Restaurante {
  **		Metodos que cargan datos - USAR EN LAS PRUEBAS Y BORRAR	!!!! 
  **		-------------------------------------------------------------
  **/
-		//	Mesas 12
-		for (int i=0; i<12; i++)
+		//	Mesas 12 (10 habilitadas, 2 deshabilitadas)
+		for (int i=0; i<5; i++)
+			altaDeMesa(true);
+		for (int i=0; i<2; i++)
+			altaDeMesa(false);
+		for (int i=0; i<5; i++)
 			altaDeMesa(true);
 		//	Mozos
 		altaDeMozo("Cacho Garay", 15, true);
@@ -89,7 +93,7 @@ public class Restaurante {
 		setCartaActiva(carta);
 		
 		// Abrir Resto
-		// abrirJornada();
+		abrirJornada();
 	
 		
 	}
@@ -206,7 +210,7 @@ public class Restaurante {
 				return false;
 			}else{
 				asignarMesas();
-				restaurante.setOpen(true);
+				setOpen(true);
 				System.out.println("Restaurant ABIERTO!!!");
 				return true;
 			}
@@ -855,7 +859,6 @@ public class Restaurante {
 		m.setOcupada();
 	}
 	
-	//Hay que ver que estamos haciendo con las mesas que no estan habilitadas. No listarlas en la vista.
 	//Hay que ver que hacemos cuando no podemos fabricar esa cantidad !!!!!!!
 	public void agregarItemComanda(int nroMesa, String nombreItemCarta, int cant){
 		Mesa m = buscarMesa(nroMesa);
@@ -866,7 +869,7 @@ public class Restaurante {
 			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
 				m.agregarItemComanda(cant, itemCarta);
 			}else{
-				System.out.println("En la carta del dia no existe el item " + nombreItemCarta);
+				System.out.println("En la carta del dia no existe el item o no faltan materias primas." + nombreItemCarta);
 			}
 		}else{
 			System.out.println("No existe la mesa " + nroMesa + " o no esta ocupada");
@@ -1024,7 +1027,7 @@ public class Restaurante {
 	public Vector getMesasViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mesas.size(); i++){
-			if (mesas.elementAt(i).isHabilitada())
+			if (mesas.elementAt(i).isAsignada())
 				mv.add(mesas.elementAt(i).getMesaView().toVector());
 		}
 		return mv;

@@ -218,7 +218,7 @@ public class FormMAIN extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-						FormGenerarComanda inst = new FormGenerarComanda();
+						FormVender inst = new FormVender();
 						inst.setLocationRelativeTo(null);
 						inst.setVisible(true);
 					}

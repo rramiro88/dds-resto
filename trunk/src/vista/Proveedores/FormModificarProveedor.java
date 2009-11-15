@@ -147,6 +147,8 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 					public void actionPerformed(ActionEvent evt) {
 						try{
 							txtCuit.setText(txtIdBuscar.getText());
+							txtRazonSocial.setText("");
+							txtDomicilio.setText("");
 							Vector vmv = Restaurante.getRestaurante().getProveedoresView();
 							int i = 0;
 							do{
@@ -173,8 +175,10 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 			if(modificarAction == null) {
 				modificarAction = new AbstractAction("Modificar", null) {
 					public void actionPerformed(ActionEvent evt) {
-						Restaurante.getRestaurante().modificarProveedor((txtCuit.getText()), txtRazonSocial.getText(), (txtDomicilio.getText()));
-						JOptionPane.showMessageDialog(null, "Proveedor actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
+						if (Restaurante.getRestaurante().modificarProveedor((txtCuit.getText()), txtRazonSocial.getText(), (txtDomicilio.getText())))
+							JOptionPane.showMessageDialog(null, "Proveedor actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
+						else
+							JOptionPane.showMessageDialog(null, "CUIT incorrecto.", "Error en los Datos", JOptionPane.INFORMATION_MESSAGE);							
 						txtIdBuscar.setText("");
 						txtCuit.setText("");
 						txtRazonSocial.setText("");

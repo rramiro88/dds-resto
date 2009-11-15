@@ -977,14 +977,14 @@ public class Restaurante {
 		return icv;
 	}
 	
-	public Vector getItemsDeCartaViewVector(){
+	/*public Vector getItemsDeCartaViewVector(){
 		Vector icv = new Vector();
 		if (cartaActiva != null){
 			for (int i=0; i<cartaActiva.getItemsCarta().size(); i++)
 				icv.add(cartaActiva.getItemsCarta().elementAt(i).getItemDeCartaView().toVector());
 		}	
 		return icv;
-	}
+	}*/
 	
 	
 	//	PRODUCTOS

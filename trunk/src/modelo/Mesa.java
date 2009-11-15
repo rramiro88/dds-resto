@@ -66,12 +66,15 @@ public class Mesa {
 		return comandaActual;
 	}
 	
-	
-	public float cerrarMesa(){
+	public float getTotal()
+	{
 		float total = comandaActual.getTotal(); //ver como llamamos el metodo
+		return total;
+	}
+	
+	public void cerrarMesa(){
 		ocupada = false;
 		comandaActual = null;
-		return total;
 	}
 
 	public void setMozo(Mozo mozo) {
@@ -88,7 +91,7 @@ public class Mesa {
 	
 //	Metodo get que devuelve un MesaView para pasar a la vista
 	public MesaView getMesaView(){
-		MesaView mv = new MesaView(nroMesa);
+		MesaView mv = new MesaView(nroMesa, asignada, ocupada);
 		return mv;
 	}
 

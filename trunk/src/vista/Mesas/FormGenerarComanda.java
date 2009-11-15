@@ -1,6 +1,8 @@
 package vista.Mesas;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
+
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,11 +11,24 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.WindowConstants;
-import javax.swing.SwingUtilities;
 
+import controlador.MesaView;
 import controlador.Restaurante;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormGenerarComanda extends javax.swing.JFrame {
 	private JLabel lblMesa;
 	private JComboBox cmbMesas;
@@ -55,7 +70,9 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 				lblMesa.setBounds(12, 21, 122, 14);
 			}
 			{
-				cmbMesas = new JComboBox(Restaurante.getRestaurante().getMesasViewVector());
+				// Aca solo queremos mesas asignadas. Las que no fueron asigandas no se atienden.
+				Vector mesasAsignadas = getMesasAsignadas(Restaurante.getRestaurante().getMesasView());
+				cmbMesas = new JComboBox(mesasAsignadas);
 				getContentPane().add(cmbMesas);
 				cmbMesas.setBounds(194, 18, 81, 21);
 			}
@@ -89,7 +106,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 				btnAgregar = new JButton();
 				getContentPane().add(btnAgregar);
 				btnAgregar.setText("Agregar");
-				btnAgregar.setBounds(79, 168, 113, 28);
+				btnAgregar.setBounds(81, 182, 113, 28);
 				btnAgregar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnAgregar.setAction(getAgregarAction());
 			}
@@ -97,7 +114,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 				btnCancelar = new JButton();
 				getContentPane().add(btnCancelar);
 				btnCancelar.setText("Cancelar");
-				btnCancelar.setBounds(233, 168, 113, 28);
+				btnCancelar.setBounds(234, 182, 113, 28);
 				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCancelar.setAction(getCancelarAction());
 			}
@@ -139,12 +156,24 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 	// Para parsear el string obtenido del combo y obtener el primer substring
 	// Hasta la ',' o ']'
 	public String getPrimero(String s){
-		int i = 1;
+		int i = 0;
 		String sAux = new String("");
+		if (s.charAt(i) == '[')
+			i++;
 		while ((s.charAt(i) != ',') && (s.charAt(i) != ']' )){
 			sAux = sAux + s.charAt(i); 
 			i++;
 		}
 		return sAux;
+	}
+	
+	
+	public Vector getMesasAsignadas (Vector<MesaView> v){
+		Vector mv = new Vector();
+		for (int i= 0; i < v.size(); i++){
+			if (v.elementAt(i).isAsignada())
+				mv.add(v.elementAt(i).getNroMesa());
+		}
+		return mv;
 	}
 }

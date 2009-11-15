@@ -66,23 +66,23 @@ public class FormInicioSistema extends javax.swing.JFrame {
 				lblFecha = new JLabel();
 				getContentPane().add(lblFecha);
 				lblFecha.setText("Fecha (dd/mm/aaaa):");
-				lblFecha.setBounds(12, 85, 110, 35);
+				lblFecha.setBounds(12, 85, 120, 35);
 			}
 			{
 				txtFecha = new JTextField();
 				getContentPane().add(txtFecha);
-				txtFecha.setBounds(135, 85, 160, 35);
+				txtFecha.setBounds(150, 85, 150, 35);
 			}
 			{
 				lblDia = new JLabel();
 				getContentPane().add(lblDia);
 				lblDia.setText("Dia Actual:");
-				lblDia.setBounds(12, 130, 110, 35);
+				lblDia.setBounds(12, 130, 120, 35);
 			}
 			{
 				txtDiaActual = new JTextField();
 				getContentPane().add(txtDiaActual);
-				txtDiaActual.setBounds(135, 130, 160, 35);
+				txtDiaActual.setBounds(150, 130, 150, 35);
 			}
 			pack();
 			setSize(350, 300);
@@ -103,7 +103,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 					}else{
 						JOptionPane.showMessageDialog(null, "Dia actual no es un dia de la semana.", "ERROR", JOptionPane.WARNING_MESSAGE);
 						txtDiaActual.setText("");
-						txtFecha.setText("");
+						//	txtFecha.setText("");
 					}
 				}
 			};

@@ -30,7 +30,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 	private JLabel lblCantidad;
 
 /***/// Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				FormGenerarComanda inst = new FormGenerarComanda();
@@ -38,7 +38,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 				inst.setVisible(true);
 			}
 		});
-	}
+	}*/
 
 	
 	public FormGenerarComanda() {
@@ -132,7 +132,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 		if(cancelarAction == null) {
 			cancelarAction = new AbstractAction("Cancelar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
+					dispose();
 				}
 			};
 		}

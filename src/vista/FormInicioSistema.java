@@ -42,11 +42,13 @@ public class FormInicioSistema extends javax.swing.JFrame {
 		});
 	}
 	
-	//	Metodo que genera la fecha actual en texto
+	//	Metodo que genera la fecha y dia actual en texto
+	//	Para cargarlos al inicio en Restaurante.java.
 	Date date = Calendar.getInstance().getTime();
 	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	String fecha = formatter.format(date);
-//	String dia = new SimpleDateFormat;
+	DateFormat formatterDia = new SimpleDateFormat("EEEE");
+	String dia = formatterDia.format(date);
 	
 	public FormInicioSistema() {
 		super();
@@ -94,6 +96,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 				txtDiaActual = new JTextField();
 				getContentPane().add(txtDiaActual);
 				txtDiaActual.setBounds(150, 130, 150, 35);
+				txtDiaActual.setText(dia);
 			}
 			pack();
 			setSize(350, 300);
@@ -107,6 +110,8 @@ public class FormInicioSistema extends javax.swing.JFrame {
 			ingresarAccion = new AbstractAction("INGRESAR", null) {
 				public void actionPerformed(ActionEvent evt) {
 					if (Restaurante.getRestaurante().diaValido(txtDiaActual.getText())){
+						Restaurante.getRestaurante().setFecha(fecha);
+						Restaurante.getRestaurante().setDia(dia);
 						JOptionPane.showMessageDialog(null, "Bienvenido al Restaurante.", "Hola!", JOptionPane.WARNING_MESSAGE);
 						FormMAIN inst = new FormMAIN();
 						inst.setLocationRelativeTo(null);

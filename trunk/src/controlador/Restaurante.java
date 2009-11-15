@@ -94,7 +94,7 @@ public class Restaurante {
 		
 		// Abrir Resto
 		// abrirJornada();
-	
+
 		
 	}
 /**				BORRAR LOS DATOS INGRESADOS ARRIBA
@@ -200,7 +200,7 @@ public class Restaurante {
 
 //	Metodos de jornada (apertura y cierre)
 //	-------------------------------------------------------------		
-	public boolean abrirJornada(){
+	public boolean abrirJornada(String diaSemana){
 		if (isOpen()){
 			System.out.println("El restaurant ya se encuentra abierto");
 			return true;
@@ -211,6 +211,8 @@ public class Restaurante {
 			}else{
 				asignarMesas();
 				setOpen(true);
+				//	Para abrir la jornada tambien hay que asignar la carta activa del dia
+				setCartaActiva(buscarCarta(diaSemana));
 				System.out.println("Restaurant ABIERTO!!!");
 				return true;
 			}

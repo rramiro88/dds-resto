@@ -236,7 +236,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			if(txtNombre == null) {
 				txtNombre = new JTextField();
 				txtNombre.setBounds(178, 28, 179, 21);
-				txtNombre.setEditable(false);
+//				txtNombre.setEditable(false);
 			}
 			return txtNombre;
 		}

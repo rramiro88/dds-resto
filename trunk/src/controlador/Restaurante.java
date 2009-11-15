@@ -11,8 +11,9 @@ public class Restaurante {
 	private boolean mesasAsignadas;
 	private boolean open;
 
-	//	La fecha se carga como String al inciciar el dia. 
-	private String fecha;	//	dd/mm/aaaa
+	//	La fecha y el dia se cargan como String al inciciar el Sistema.
+	//	Se leen desde la hora y fecha configurada en el sistema operativo.
+	private String fecha;	//	Formato dd/mm/aaaa
 	private String dia;		//	lunes - martes - miercoles - jueves - viernes - sabado - domingo
 	
 	private Carta cartaActiva;

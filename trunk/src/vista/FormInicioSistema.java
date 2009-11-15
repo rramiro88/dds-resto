@@ -1,6 +1,6 @@
 package vista;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -8,6 +8,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import controlador.*;
 
@@ -36,7 +41,11 @@ public class FormInicioSistema extends javax.swing.JFrame {
 			}
 		});
 	}
-
+	
+	//	Metodo que genera la fecha actual en texto
+	Date date = Calendar.getInstance().getTime();
+	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	String fecha = formatter.format(date);
 	
 	public FormInicioSistema() {
 		super();
@@ -72,6 +81,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 				txtFecha = new JTextField();
 				getContentPane().add(txtFecha);
 				txtFecha.setBounds(150, 85, 150, 35);
+				txtFecha.setText(fecha);
 			}
 			{
 				lblDia = new JLabel();

@@ -220,13 +220,12 @@ public class Restaurante {
 		}
 	}
 	
-	public boolean cerrarJornada(){
+	public void cerrarJornada(){
 		if (!isOpen()){
 			System.out.println("El restaurant ya se encuentra cerrado");
-			return false;
 		}else{
 			setOpen(false);
-			return true;
+			this.generarOrdenesDeCompra();
 		}
 	}
 

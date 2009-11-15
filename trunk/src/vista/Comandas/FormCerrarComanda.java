@@ -72,18 +72,20 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 				Vector mesasAbiertas = getMesasAbiertas(Restaurante.getRestaurante().getMesasView());
 				cmbMesas = new JComboBox(mesasAbiertas);
 				getContentPane().add(cmbMesas);
-				cmbMesas.setBounds(170, 9, 81, 21);
+				cmbMesas.setBounds(170, 9, 54, 21);
 			}
 			{
 				lblTotal = new JLabel();
 				getContentPane().add(lblTotal);
-				lblTotal.setText("TOTAL: ");
-				lblTotal.setBounds(191, 54, 78, 14);
+				lblTotal.setText("TOTAL MESA: ");
+				lblTotal.setBounds(78, 54, 146, 14);
+				lblTotal.setFont(new java.awt.Font("Tahoma",1,11));
+				lblTotal.setForeground(new java.awt.Color(0,0,255));
 			}
 			{
 				txtTotal = new JTextField();
 				getContentPane().add(txtTotal);
-				txtTotal.setBounds(274, 51, 96, 21);
+				txtTotal.setBounds(255, 51, 125, 21);
 				txtTotal.setEditable(false);
 				txtTotal.setFont(new java.awt.Font("Tahoma",1,11));
 				txtTotal.setForeground(new java.awt.Color(255,0,0));
@@ -92,7 +94,7 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 				btnTotal = new JButton();
 				getContentPane().add(btnTotal);
 				btnTotal.setText("Calcular Total");
-				btnTotal.setBounds(12, 47, 146, 29);
+				btnTotal.setBounds(255, 9, 126, 21);
 				btnTotal.setFont(new java.awt.Font("Tahoma",1,11));
 				btnTotal.setAction(getCalcTotalAction());
 			}
@@ -100,7 +102,7 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 				btnCerrarMesa = new JButton();
 				getContentPane().add(btnCerrarMesa);
 				btnCerrarMesa.setText("Cerrar Mesa");
-				btnCerrarMesa.setBounds(224, 105, 146, 29);
+				btnCerrarMesa.setBounds(78, 100, 303, 29);
 				btnCerrarMesa.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCerrarMesa.setAction(getCerrarMesaAction());
 			}

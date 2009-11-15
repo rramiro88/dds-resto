@@ -46,6 +46,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 	Date date = Calendar.getInstance().getTime();
 	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	String fecha = formatter.format(date);
+//	String dia = new SimpleDateFormat;
 	
 	public FormInicioSistema() {
 		super();

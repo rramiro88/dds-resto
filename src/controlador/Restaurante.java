@@ -94,7 +94,7 @@ public class Restaurante {
 		setCartaActiva(carta);
 		
 		// Abrir Resto
-		// abrirJornada();
+		abrirJornada();
 
 		
 	}
@@ -673,13 +673,15 @@ public class Restaurante {
 			}else{
 				int mesasXmozo = mesasHab / mozosHab;
 				for (i=0; i<mozos.size(); i++){
+					j=0;
 					Mozo mozo = mozos.elementAt (i);
 					if (mozo.isHabilitado()){
-						for (j=0; j<mesasXmozo; j++){
+						while (j<mesasXmozo){
 							if (mesas.elementAt(indice).isHabilitada()){
 								mesas.elementAt(indice).setMozo(mozos.elementAt(i));
 								mesas.elementAt(indice).setAsignada(true);
 								indice++;
+								j++;
 							}else
 								indice++;
 						}
@@ -971,8 +973,9 @@ public class Restaurante {
 	
 	public Vector getItemsDeCartaViewVector(){
 		Vector icv = new Vector();
-		for (int i=0; i<cartaActiva.getItemsCarta().size(); i++){
-			icv.add(cartaActiva.getItemsCarta().elementAt(i).getItemDeCartaView().toVector());
+		if (cartaActiva != null){
+			for (int i=0; i<cartaActiva.getItemsCarta().size(); i++)
+				icv.add(cartaActiva.getItemsCarta().elementAt(i).getItemDeCartaView().toVector());
 		}	
 		return icv;
 	}
@@ -1037,13 +1040,23 @@ public class Restaurante {
  	}
 	
  	//Solo las habilitadas van a la vista (las no habilitadas no se atienden)
-	public Vector getMesasViewVector(){ 
+	/*public Vector getMesasViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mesas.size(); i++){
 			if (mesas.elementAt(i).isAsignada())
 				mv.add(mesas.elementAt(i).getMesaView().toVector());
 		}
 		return mv;
-	}
-
+	}*/
+ 	
+ 	public float getTotalComanda(int nroMesa){
+ 		float totalMesa = 0;
+ 		Mesa m = buscarMesa(nroMesa);
+ 		if ((m != null) && (m.isOcupada())){
+ 			totalMesa = m.getTotal();
+ 		}else
+ 			System.out.println("Si llegamos aca estamos en problemas");
+ 		return totalMesa;
+ 	}
+ 		
 }

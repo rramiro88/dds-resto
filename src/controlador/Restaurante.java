@@ -12,7 +12,8 @@ public class Restaurante {
 	private boolean open;
 
 	//	La fecha se carga como String al inciciar el dia. 
-	private String fecha;
+	private String fecha;	//	dd/mm/aaaa
+	private String dia;		//	lunes - martes - miercoles - jueves - viernes - sabado - domingo
 	
 	private Carta cartaActiva;
 
@@ -200,7 +201,7 @@ public class Restaurante {
 
 //	Metodos de jornada (apertura y cierre)
 //	-------------------------------------------------------------		
-	public boolean abrirJornada(String diaSemana){
+	public boolean abrirJornada(){
 		if (isOpen()){
 			System.out.println("El restaurant ya se encuentra abierto");
 			return true;
@@ -212,7 +213,7 @@ public class Restaurante {
 				asignarMesas();
 				setOpen(true);
 				//	Para abrir la jornada tambien hay que asignar la carta activa del dia
-				setCartaActiva(buscarCarta(diaSemana));
+				setCartaActiva(buscarCarta(dia));
 				System.out.println("Restaurant ABIERTO!!!");
 				return true;
 			}

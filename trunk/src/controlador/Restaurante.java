@@ -909,14 +909,16 @@ public class Restaurante {
 		}
 	}
 
-	public void modificarProveedor(String cuit, String razonsocial, String domicilio){
+	public boolean modificarProveedor(String cuit, String razonsocial, String domicilio){
 		Proveedor prov = buscarProveedor(cuit);
 		if (prov != null){
 			prov.setCuit(cuit);
 			prov.setDomicilio(domicilio);
 			prov.setRazonsocial(razonsocial);
 			System.out.println("Proveedor modificado exitosamente.");
+			return true;
 		}
+		return false;
 	}
 
 	

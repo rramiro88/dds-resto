@@ -133,6 +133,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 		if(salirAccion == null) {
 			salirAccion = new AbstractAction("SALIR", null) {
 				public void actionPerformed(ActionEvent evt) {
+					JOptionPane.showMessageDialog(null, "Se cerrará el sistema. Que tenga un buen dia.", "ADIOS", JOptionPane.WARNING_MESSAGE);
 					System.exit(0);
 				}
 			};

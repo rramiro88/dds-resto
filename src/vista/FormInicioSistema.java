@@ -85,6 +85,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 				getContentPane().add(txtFecha);
 				txtFecha.setBounds(150, 85, 150, 35);
 				txtFecha.setText(fecha);
+				txtFecha.setEditable(false);
 			}
 			{
 				lblDia = new JLabel();
@@ -97,6 +98,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 				getContentPane().add(txtDiaActual);
 				txtDiaActual.setBounds(150, 130, 150, 35);
 				txtDiaActual.setText(dia);
+				txtDiaActual.setEditable(false);
 			}
 			pack();
 			setSize(350, 300);

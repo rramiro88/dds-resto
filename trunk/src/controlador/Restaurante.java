@@ -227,13 +227,18 @@ public class Restaurante {
 		}
 	}
 	
-	public void cerrarJornada(){
-		if (!isOpen()){
-			System.out.println("El restaurant ya se encuentra cerrado");
-		}else{
-			setOpen(false);
-			this.generarOrdenesDeCompra();
+	public boolean cerrarJornada(){
+		for (int i = 0; i<mesas.size(); i++){
+			if (mesas.elementAt(i).getComanda() != null){
+				System.out.println("Hay mesa/s con comandas en curso. Se deben cerrar previamente.");
+				return false;
+			}else{
+				pagarMozos();
+				generarOrdenesDeCompra();
+				setOpen(false);
+			}
 		}
+		return true;
 	}
 
 /**
@@ -791,10 +796,11 @@ public class Restaurante {
 			m.setNombre(nombre);
 	}*/
 	public void pagarMozos(){
+		float totalMozo;
 		int cantMozos = mozos.size();
 		//Vector <Mozo> moz = getMozos();
-		for (int j=0;j<cantMozos;j++){
-			float totalMozo = 0;
+		for (int j=0; j<cantMozos; j++){
+			totalMozo = 0;
 			//Mozo mozo = restaurante.buscarMozo(j);
 			Mozo mozo = mozos.elementAt(j);
 			if (mozo != null){
@@ -803,12 +809,10 @@ public class Restaurante {
 					for (int i=0; i<comandasMozo.size(); i++){
 						totalMozo = totalMozo + comandasMozo.elementAt(i).getTotal();
 					}
-					totalMozo = totalMozo * (1 + mozo.getComision()); 
+					totalMozo = (totalMozo * mozo.getComision()) / 100; 
 				}
 			}
-		/*	System.out.println("Mozo: " +mozo.getNombre());
-			System.out.println("A pagar: " +totalMozo);
-			System.out.println(" ");	*/		
+			System.out.println("Mozo: " + mozo.getNombre() + " $ " + Float.toString(totalMozo));		
 		}
 	}
 	
@@ -880,7 +884,6 @@ public class Restaurante {
 		m.setOcupada();
 	}
 	
-	//Hay que ver que hacemos cuando no podemos fabricar esa cantidad !!!!!!!
 	public void agregarItemComanda(int nroMesa, String nombreItemCarta, int cant){
 		Mesa m = buscarMesa(nroMesa);
 		if (m != null){

@@ -12,6 +12,6 @@ public class ItemComanda {
 	}
 	
 	public float getSubtotal(){
-		return cantidad * itemCarta.getPrecio();
+		return (cantidad * itemCarta.getPrecio());
 	}
 }

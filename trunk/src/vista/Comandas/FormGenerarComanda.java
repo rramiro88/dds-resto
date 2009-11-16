@@ -37,7 +37,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 	private JButton btnCancelar;
 	private JComboBox cmbItems;
 	private JSpinner spnCantidad;
-	private AbstractAction cancelarAction;
+	private AbstractAction cerrarAction;
 	private AbstractAction agregarAction;
 	private JButton btnAgregar;
 	private JLabel lblCantidad;
@@ -118,7 +118,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 				btnCancelar.setText("Cancelar");
 				btnCancelar.setBounds(234, 182, 113, 28);
 				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
-				btnCancelar.setAction(getCancelarAction());
+				btnCancelar.setAction(getCerrarAction());
 			}
 			pack();
 		} catch (Exception e) {
@@ -146,15 +146,15 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 		return agregarAction;
 	}
 	
-	private AbstractAction getCancelarAction() {
-		if(cancelarAction == null) {
-			cancelarAction = new AbstractAction("Cancelar", null) {
+	private AbstractAction getCerrarAction() {
+		if(cerrarAction == null) {
+			cerrarAction = new AbstractAction("Cerrar", null) {
 				public void actionPerformed(ActionEvent evt) {
 					dispose();
 				}
 			};
 		}
-		return cancelarAction;
+		return cerrarAction;
 	}
 	
 	

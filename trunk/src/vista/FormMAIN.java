@@ -120,7 +120,7 @@ public class FormMAIN extends javax.swing.JFrame {
 								JOptionPane.showMessageDialog(null, "Jornada abierta con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
 							}else{
 							//	Jornada ya abierta
-							JOptionPane.showMessageDialog(null, "La jornada ya ha sido abierta", "ATENCION", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "La jornada ya se encuentra abierta", "ATENCION", JOptionPane.WARNING_MESSAGE);
 							}
 						}
 					});
@@ -240,7 +240,7 @@ public class FormMAIN extends javax.swing.JFrame {
 		if(getSalirAccion == null) {
 			getSalirAccion = new AbstractAction("CERRAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					dispose();
+					System.exit(0);
 				}
 			};
 		}

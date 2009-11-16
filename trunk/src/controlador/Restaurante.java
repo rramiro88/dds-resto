@@ -626,11 +626,12 @@ public class Restaurante {
 		}
 	}
 
-	public void modificarMozo(int id, String nombre, int comision){
+	public void modificarMozo(int id, String nombre, int comision, boolean habilitado){
 		Mozo m = buscarMozo(id);
 		if (m != null){
 			m.setNombre(nombre);
 			m.setComision(comision);
+			m.setHabilitado(habilitado);
 			System.out.println("Mozo modificado con exito.");
 
 		}
@@ -733,7 +734,7 @@ public class Restaurante {
 	public void habilitarMozo (int idMozo){
 		Mozo mozoHab = buscarMozo(idMozo);
 		if (mozoHab != null){
-			mozoHab.setHabilitado();
+			mozoHab.setHabilitado(true);
 			System.out.println("Mozo" +idMozo+ "habilitado con exito.");
 		}else{
 			System.out.println("Mozo" +idMozo+ "NO habilitado. Id no existente.");
@@ -743,7 +744,7 @@ public class Restaurante {
 	public void deshabilitarMozo (int idMozo){
 		Mozo mozoHab = buscarMozo(idMozo);
 		if (mozoHab != null){
-			mozoHab.setNoHabilitado();
+			mozoHab.setHabilitado(false);
 			System.out.println("Mozo" +idMozo+ "Inhabilitado con exito.");
 		}else{
 			System.out.println("Mozo" +idMozo+ "NO Inhabilitado. Id no existente.");
@@ -961,13 +962,13 @@ public class Restaurante {
 		return cv;
 	}
 	
-	public Vector getCartasViewVector(){ 
+	/*public Vector getCartasViewVector(){ 
 		Vector cv = new Vector();
 		for (int i=0; i<cartas.size(); i++){
 			cv.add(cartas.elementAt(i).getCartaView().toVector());
 		}	
 		return cv;
-	}
+	}*/
 	
 	// ITEMS DE CARTA ACTIVA
 	public Vector<ItemDeCartaView> getItemsDeCartaView(){
@@ -1029,13 +1030,14 @@ public class Restaurante {
 		}
 		return mv;
 	}
- 	public Vector getMozosViewVector(){ 
+ 	
+ 	/*public Vector getMozosViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mozos.size(); i++){
 			mv.add(mozos.elementAt(i).getMozoView().toVector());
 		}
 		return mv;
-	}
+	}*/
 
  	//	MESAS
  	public Vector<MesaView> getMesasView(){ 
@@ -1044,6 +1046,11 @@ public class Restaurante {
 			mv.add(mesas.elementAt(i).getMesaView());
 		}
 		return mv;
+ 	}
+ 	
+ 	public void cerrarMesa (int nroMesa){
+ 		Mesa mesa = buscarMesa(nroMesa);
+ 		mesa.cerrarMesa();
  	}
 	
  	//Solo las habilitadas van a la vista (las no habilitadas no se atienden)

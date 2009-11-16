@@ -1,6 +1,8 @@
 package vista.Mozos;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
+
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -8,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
+import controlador.MozoView;
 import controlador.Restaurante;
 
 
@@ -15,7 +18,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 	private JLabel lblMozo;
 	private AbstractAction eliminarAction;
 	private AbstractAction cerrarAction;
-//	private JButton btnCerrar;
+	private JButton btnCerrar;
 	private JButton btnEliminar;
 	private JComboBox cmbMozos;
 
@@ -50,7 +53,9 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 				lblMozo.setBounds(12, 22, 132, 14);
 			}
 			{
-				cmbMozos = new JComboBox(Restaurante.getRestaurante().getMozosViewVector());
+				Vector<MozoView> mozos = Restaurante.getRestaurante().getMozosView();
+				Vector mv = getMozosViewVector(mozos);
+				cmbMozos = new JComboBox(mv);
 				getContentPane().add(cmbMozos);
 				cmbMozos.setBounds(156, 19, 224, 21);
 			}
@@ -62,7 +67,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 				btnEliminar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnEliminar.setAction(getEliminarAction());
 			}
-/*			{
+			{
 				btnCerrar = new JButton();
 				getContentPane().add(btnCerrar);
 				btnCerrar.setText("Cerrar");
@@ -70,7 +75,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 				btnCerrar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCerrar.setAction(getCerrarAction());
 			}
-*/			pack();
+			pack();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,7 +85,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					int id = Integer.parseInt(cmbMozos.getSelectedItem().toString().substring(1,4));
+					int id = getId(cmbMozos.getSelectedItem().toString());
 					Restaurante.getRestaurante().bajaDeMozo(id);
 					cmbMozos.removeItemAt(cmbMozos.getSelectedIndex());
 					JOptionPane.showMessageDialog(null, "Mozo eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
@@ -94,11 +99,31 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 		if(cerrarAction == null) {
 			cerrarAction = new AbstractAction("Cerrar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
+					dispose();
 				}
 			};
 		}
 		return cerrarAction;
+	}
+	
+	public Vector getMozosViewVector(Vector<MozoView> mozos){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < mozos.size(); i++){
+			//mv.add(mozos.elementAt(i).toVector());
+			String aux = String.valueOf(mozos.elementAt(i).getId()) + "   " + mozos.elementAt(i).getNombre(); 
+			mv.add(aux);
+		}
+		return mv;
+	}
+	
+	public Integer getId(String s){
+		int i = 0;
+		String sAux = new String("");
+		while ((s.charAt(i) != ' ') && (i<s.length())){
+			sAux = sAux + s.charAt(i); 
+			i++;
+		}
+		return Integer.valueOf(sAux);
 	}
 
 	

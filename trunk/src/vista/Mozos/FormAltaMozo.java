@@ -87,8 +87,9 @@ public class FormAltaMozo extends javax.swing.JFrame {
 			{
 				jScrollPane1 = new JScrollPane();
 				{
-					Vector datos = Restaurante.getRestaurante().getMozosViewVector();
-					TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
+					Vector<MozoView> datos  = Restaurante.getRestaurante().getMozosView();
+					Vector datosView = getMozosViewVector(datos);
+					TableModel dtm = new DefaultTableModel(datosView, MozoView.getEncabezados());
 					jTable1 = new JTable();
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(dtm);
@@ -202,8 +203,9 @@ public class FormAltaMozo extends javax.swing.JFrame {
 							jTextField3.setText("");
 						}else{
 							Restaurante.getRestaurante().altaDeMozo(jTextField2.getText(), Integer.parseInt(jTextField3.getText()), chkHabilitado.isSelected());
-							Vector datos = Restaurante.getRestaurante().getMozosViewVector();
-							TableModel dtm = new DefaultTableModel(datos, MozoView.getEncabezados());
+							Vector<MozoView> datos  = Restaurante.getRestaurante().getMozosView();
+							Vector datosView = getMozosViewVector(datos);
+							TableModel dtm = new DefaultTableModel(datosView, MozoView.getEncabezados());
 							jTable1.setModel(dtm);
 							jTextField2.setText("");
 							jTextField3.setText("");
@@ -224,6 +226,14 @@ public class FormAltaMozo extends javax.swing.JFrame {
 			chkHabilitado = new JCheckBox("HABILITADO", true);
 		}
 		return chkHabilitado;
+	}
+	
+	public Vector getMozosViewVector(Vector<MozoView> mozos){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < mozos.size(); i++){
+			mv.add(mozos.elementAt(i).toVector());
+		}
+		return mv;
 	}
 
 }

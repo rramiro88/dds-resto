@@ -7,6 +7,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
@@ -117,8 +118,14 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 		if(calcTotalAction == null) {
 			calcTotalAction = new AbstractAction("Calcular Total", null) {
 				public void actionPerformed(ActionEvent evt) {
-					float total = Restaurante.getRestaurante().getTotalComanda(Integer.parseInt(cmbMesas.getSelectedItem().toString()));
-					txtTotal.setText(String.valueOf(total));
+					try{
+						float total = Restaurante.getRestaurante().getTotalComanda(Integer.parseInt(cmbMesas.getSelectedItem().toString()));
+						txtTotal.setText(String.valueOf(total));
+					}
+					catch (Exception e){
+						JOptionPane.showMessageDialog(null, "No se pudo calcular el total de la mesa seleccionada.", "Error en el calculo del total", JOptionPane.WARNING_MESSAGE);
+					}
+					
 				}
 			};
 		}
@@ -129,6 +136,13 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 		if(cerrarMesaAction == null) {
 			cerrarMesaAction = new AbstractAction("Cerrar Mesa", null) {
 				public void actionPerformed(ActionEvent evt) {
+					try{
+						Restaurante.getRestaurante().cerrarMesa(Integer.parseInt(cmbMesas.getSelectedItem().toString()));
+					}
+					catch (Exception e){
+						JOptionPane.showMessageDialog(null, "No se pudo cerrar la mesa seleccionada.", "Error en el cierre de la mesa", JOptionPane.WARNING_MESSAGE);
+					}
+					
 				}
 			};
 		}

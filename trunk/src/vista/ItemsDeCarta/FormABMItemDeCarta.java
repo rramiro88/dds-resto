@@ -17,17 +17,6 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 	private AbstractAction getEliminarItemDeCartaAccion;
 	
 
-/*//	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormABMItemDeCarta inst = new FormABMItemDeCarta();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/	
 	public FormABMItemDeCarta() {
 		super();
 		initGUI();

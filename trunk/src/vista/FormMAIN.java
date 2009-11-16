@@ -97,9 +97,9 @@ public class FormMAIN extends javax.swing.JFrame {
 			{
 				btnSalir = new JButton();
 				getContentPane().add(btnSalir);
-				btnSalir.setText("SALIR");
+				btnSalir.setText("CERRAR");
 				btnSalir.setAction(getSalirAccion());
-				btnSalir.setBounds(321, 177, 80, 25);
+				btnSalir.setBounds(320, 180, 90, 25);
 			}
 			pack();
 			this.setSize(420, 240);
@@ -115,7 +115,7 @@ public class FormMAIN extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							//	Revisa que la jornada halla sido abierta
+							//	Revisa que la jornada no este abierta
 							if (!Restaurante.getRestaurante().isOpen()){
 								Restaurante.getRestaurante().abrirJornada();
 								JOptionPane.showMessageDialog(null, "Jornada abierta con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
@@ -218,9 +218,15 @@ public class FormMAIN extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-						FormVender inst = new FormVender();
-						inst.setLocationRelativeTo(null);
-						inst.setVisible(true);
+						//	Revisa que la jornada halla sido abierta para poder vender.
+						if (Restaurante.getRestaurante().isOpen()){
+							FormVender inst = new FormVender();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+						}else{
+							//	Con la jornada cerrada no permite vernder
+							JOptionPane.showMessageDialog(null, "Jornada cerrada. No se puede vender.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+						}
 					}
 				});
 			}
@@ -230,7 +236,7 @@ public class FormMAIN extends javax.swing.JFrame {
 	
 	private AbstractAction getSalirAccion() {
 		if(getSalirAccion == null) {
-			getSalirAccion = new AbstractAction("SALIR", null) {
+			getSalirAccion = new AbstractAction("CERRAR", null) {
 				public void actionPerformed(ActionEvent evt) {
 					dispose();
 				}

@@ -130,11 +130,16 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 		if(agregarAction == null) {
 			agregarAction = new AbstractAction("Agregar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					String sMesa = cmbMesas.getSelectedItem().toString();
-					String sItem = cmbItems.getSelectedItem().toString();
-					int iCant = Integer.valueOf(spnCantidad.getValue().toString());
-					Restaurante.getRestaurante().agregarItemComanda(Integer.valueOf(sMesa), sItem, iCant);
-					JOptionPane.showMessageDialog(null, "Comanda creada con exito.", "Generar Pedido", JOptionPane.INFORMATION_MESSAGE);
+					try{
+						String sMesa = cmbMesas.getSelectedItem().toString();
+						String sItem = cmbItems.getSelectedItem().toString();
+						int iCant = Integer.valueOf(spnCantidad.getValue().toString());
+						Restaurante.getRestaurante().agregarItemComanda(Integer.valueOf(sMesa), sItem, iCant);
+						JOptionPane.showMessageDialog(null, "Comanda creada con exito.", "Generar Pedido", JOptionPane.INFORMATION_MESSAGE);
+					}
+					catch (Exception e){
+						JOptionPane.showMessageDialog(null, "No es posible vender " + spnCantidad.getValue().toString() + " unidades de " + cmbItems.getSelectedItem().toString() + ".", "Error en el calculo del total", JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			};
 		}

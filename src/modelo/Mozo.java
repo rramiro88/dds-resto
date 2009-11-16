@@ -48,16 +48,12 @@ public class Mozo {
 		this.comision = comision;
 	}
 	
-	public void setHabilitado (){
-		habilitado = true;
+	public void setHabilitado (boolean hab){
+		habilitado = hab;
 	}
 	
 	public boolean isHabilitado (){
 		return habilitado;
-	}
-	
-	public void setNoHabilitado (){
-		habilitado = false;
 	}
 	
 	public void setNombre (String Nombre){

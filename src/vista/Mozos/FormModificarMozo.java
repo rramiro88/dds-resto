@@ -181,10 +181,16 @@ public class FormModificarMozo extends javax.swing.JFrame {
 							}else
 								++i;
 						}while (i<vmv.size());
+						if (i==vmv.size()){
+							JOptionPane.showMessageDialog(null, "No se encontro mozo con ID = " + txtIdBuscar.getText(), "Dato no encontrado", JOptionPane.WARNING_MESSAGE);
+							txtIdBuscar.setText("");
+							txtId.setText("");
+						}
 					}
 					catch (Exception e){
 						JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero como ID de mozo a buscar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
 						txtIdBuscar.setText("");
+						txtId.setText("");
 					}
 				}
 			};
@@ -196,7 +202,7 @@ public class FormModificarMozo extends javax.swing.JFrame {
 		if(modificarAction == null) {
 			modificarAction = new AbstractAction("Modificar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					Restaurante.getRestaurante().modificarMozo(Integer.parseInt(txtId.getText()), txtNombre.getText(), Integer.parseInt(txtComision.getText()));
+					Restaurante.getRestaurante().modificarMozo(Integer.parseInt(txtId.getText()), txtNombre.getText(), Integer.parseInt(txtComision.getText()), chkHabilitado.isSelected());
 					JOptionPane.showMessageDialog(null, "Mozo actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
 					txtIdBuscar.setText("");
 					txtId.setText("");

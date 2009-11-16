@@ -17,6 +17,19 @@ import java.util.Date;
 import controlador.*;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormInicioSistema extends javax.swing.JFrame {
 	private JButton btnIngresar;
 	private JButton btnSalir;
@@ -65,25 +78,26 @@ public class FormInicioSistema extends javax.swing.JFrame {
 				getContentPane().add(btnIngresar);
 				btnIngresar.setText("INGRESAR");
 				btnIngresar.setAction(ingresarAccion());
-				btnIngresar.setBounds(40, 230, 120, 35);
+				btnIngresar.setBounds(40, 167, 120, 35);
 			}			
 			{
 				btnSalir = new JButton();
 				getContentPane().add(btnSalir);
 				btnSalir.setText("SALIR");
 				btnSalir.setAction(salirAccion());
-				btnSalir.setBounds(190, 230, 120, 35);
+				btnSalir.setBounds(190, 167, 120, 35);
 			}
 			{
 				lblFecha = new JLabel();
 				getContentPane().add(lblFecha);
 				lblFecha.setText("Fecha (dd/mm/aaaa):");
-				lblFecha.setBounds(12, 85, 120, 35);
+				lblFecha.setBounds(12, 22, 150, 35);
+				lblFecha.setFont(new java.awt.Font("Tahoma",1,11));
 			}
 			{
 				txtFecha = new JTextField();
 				getContentPane().add(txtFecha);
-				txtFecha.setBounds(150, 85, 150, 35);
+				txtFecha.setBounds(180, 22, 150, 35);
 				txtFecha.setText(fecha);
 				txtFecha.setEditable(false);
 			}
@@ -91,12 +105,13 @@ public class FormInicioSistema extends javax.swing.JFrame {
 				lblDia = new JLabel();
 				getContentPane().add(lblDia);
 				lblDia.setText("Dia Actual:");
-				lblDia.setBounds(12, 130, 120, 35);
+				lblDia.setBounds(12, 67, 150, 35);
+				lblDia.setFont(new java.awt.Font("Tahoma",1,11));
 			}
 			{
 				txtDiaActual = new JTextField();
 				getContentPane().add(txtDiaActual);
-				txtDiaActual.setBounds(150, 130, 150, 35);
+				txtDiaActual.setBounds(180, 67, 150, 35);
 				txtDiaActual.setText(dia);
 				txtDiaActual.setEditable(false);
 			}

@@ -109,7 +109,6 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 	public Vector getMozosViewVector(Vector<MozoView> mozos){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mozos.size(); i++){
-			//mv.add(mozos.elementAt(i).toVector());
 			String aux = String.valueOf(mozos.elementAt(i).getId()) + "   " + mozos.elementAt(i).getNombre(); 
 			mv.add(aux);
 		}

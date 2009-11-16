@@ -241,5 +241,14 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			}
 			return txtNombre;
 		}
+		
+		public Vector getIngredientesViewVector(Vector<IngredienteView> viv){ 
+			Vector mv = new Vector();
+			for (int i= 0; i < viv.size(); i++){
+				String aux = String.valueOf(viv.elementAt(i).getProducto().getNombre() + " - " + viv.elementAt(i).getProducto().getCantidad()); 
+				mv.add(aux);
+			}
+			return mv;
+		}
 
 	}

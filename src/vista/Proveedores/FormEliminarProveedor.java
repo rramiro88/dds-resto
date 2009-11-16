@@ -1,6 +1,7 @@
 package vista.Proveedores;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -13,7 +14,7 @@ import controlador.*;
 
 
 public class FormEliminarProveedor extends javax.swing.JFrame {
-//	private JButton btnCerrar;
+	private JButton btnCerrar;
 	private JButton btnEliminar;
 
 	private AbstractAction eliminarAction;
@@ -52,7 +53,8 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 				lblProveedor.setBounds(6, 22, 138, 14);
 			}
 			{
-				cmbProveedores = new JComboBox(Restaurante.getRestaurante().getProveedoresViewVector());
+				Vector vp = getProveedoresViewVector(Restaurante.getRestaurante().getProveedoresView());
+				cmbProveedores = new JComboBox(vp);
 				getContentPane().add(cmbProveedores);
 				cmbProveedores.setBounds(156, 19, 225, 21);
 			}
@@ -64,7 +66,7 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 				btnEliminar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnEliminar.setAction(getEliminarAction());
 			}
-/*			{
+			{
 				btnCerrar = new JButton();
 				getContentPane().add(btnCerrar);
 				btnCerrar.setText("Cerrar");
@@ -72,7 +74,7 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 				btnCerrar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCerrar.setAction(getCerrarAction());
 			}
-*/			pack();
+			pack();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -96,11 +98,20 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 		if(cerrarAction == null) {
 			cerrarAction = new AbstractAction("Cerrar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
+					dispose();
 				}
 			};
 		}
 		return cerrarAction;
+	}
+	
+	public Vector getProveedoresViewVector(Vector<ProveedorView> vpv){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < vpv.size(); i++){
+			String aux = String.valueOf(vpv.elementAt(i).getCuit()) + "   " + vpv.elementAt(i).getRazonsocial(); 
+			mv.add(aux);
+		}
+		return mv;
 	}
 
 	

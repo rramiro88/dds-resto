@@ -16,6 +16,19 @@ import javax.swing.border.TitledBorder;
 import controlador.*;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormModificarProducto extends javax.swing.JFrame {
 	private JLabel lblNombre;
 	private JLabel lblProveedores;
@@ -32,11 +45,11 @@ public class FormModificarProducto extends javax.swing.JFrame {
 
 	private JButton btnBuscar;
 	private JButton btnModificar;
-//	private JButton btnCancelar;
+	private JButton btnCancelar;
 
 	private AbstractAction modificarAction;
 	private AbstractAction buscarAction;
-	private AbstractAction cancelarAction;
+	private AbstractAction cerrarAction;
 
 	private JPanel jPanel1;
 
@@ -126,7 +139,8 @@ public class FormModificarProducto extends javax.swing.JFrame {
 					txtPtoRefill.setBounds(178, 109, 86, 21);
 				}
 				{
-					cmbProveedores = new JComboBox(Restaurante.getRestaurante().getProveedoresViewVector());
+					Vector vp = getProveedoresViewVector(Restaurante.getRestaurante().getProveedoresView());
+					cmbProveedores = new JComboBox(vp);
 					jPanel1.add(cmbProveedores);
 					cmbProveedores.setBounds(91, 136, 266, 21);
 				}
@@ -148,29 +162,29 @@ public class FormModificarProducto extends javax.swing.JFrame {
 					btnModificar.setFont(new java.awt.Font("Tahoma",1,11));
 					btnModificar.setAction(getModificarAction());
 				}
-/*				{
+				{
 					btnCancelar = new JButton();
 					getContentPane().add(btnCancelar);
 					btnCancelar.setText("Cancelar");
 					btnCancelar.setBounds(212, 234, 91, 21);
 					btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
-					btnCancelar.setAction(getCancelarAction());
+					btnCancelar.setAction(getCerrarAction());
 				}
-*/				pack();
+				pack();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
-		private AbstractAction getCancelarAction() {
-			if(cancelarAction == null) {
-				cancelarAction = new AbstractAction("Cancelar", null) {
+		private AbstractAction getCerrarAction() {
+			if(cerrarAction == null) {
+				cerrarAction = new AbstractAction("Cerrar", null) {
 					public void actionPerformed(ActionEvent evt) {
-						System.exit(0);
+						dispose();
 					}
 				};
 			}
-			return cancelarAction;
+			return cerrarAction;
 		}
 		
 		private AbstractAction getBuscarAction() {
@@ -239,6 +253,15 @@ public class FormModificarProducto extends javax.swing.JFrame {
 //				txtNombre.setEditable(false);
 			}
 			return txtNombre;
+		}
+		
+		public Vector getProveedoresViewVector(Vector<ProveedorView> vpv){ 
+			Vector mv = new Vector();
+			for (int i= 0; i < vpv.size(); i++){
+				String aux = String.valueOf(vpv.elementAt(i).getCuit()) + " - " + vpv.elementAt(i).getRazonsocial(); 
+				mv.add(aux);
+			}
+			return mv;
 		}
 
 	}

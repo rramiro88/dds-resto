@@ -961,14 +961,6 @@ public class Restaurante {
 		return cv;
 	}
 	
-	/*public Vector getCartasViewVector(){ 
-		Vector cv = new Vector();
-		for (int i=0; i<cartas.size(); i++){
-			cv.add(cartas.elementAt(i).getCartaView().toVector());
-		}	
-		return cv;
-	}*/
-	
 	// ITEMS DE CARTA ACTIVA
 	public Vector<ItemDeCartaView> getItemsDeCartaView(){
 		Vector<ItemDeCartaView> icv = new Vector<ItemDeCartaView>();
@@ -978,16 +970,6 @@ public class Restaurante {
 		return icv;
 	}
 	
-	/*public Vector getItemsDeCartaViewVector(){
-		Vector icv = new Vector();
-		if (cartaActiva != null){
-			for (int i=0; i<cartaActiva.getItemsCarta().size(); i++)
-				icv.add(cartaActiva.getItemsCarta().elementAt(i).getItemDeCartaView().toVector());
-		}	
-		return icv;
-	}*/
-	
-	
 	//	PRODUCTOS
 	public Vector<ProductoView> getProductosView(){
 		Vector<ProductoView> mv = new Vector<ProductoView>();
@@ -996,6 +978,7 @@ public class Restaurante {
 		}	
 		return mv;
 	}
+	// Falta mover
 	public Vector getProductosViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < productos.size(); i++){
@@ -1012,13 +995,6 @@ public class Restaurante {
 		}
 		return mv;
 	}
-	public Vector getProveedoresViewVector(){ 
-		Vector mv = new Vector();
-		for (int i= 0; i < proveedores.size(); i++){
-			mv.add(proveedores.elementAt(i).getProveedorView().toVector());
-		}
-		return mv;
-	}
 
 	//	MOZOS		
  	public Vector<MozoView> getMozosView(){ 
@@ -1029,14 +1005,6 @@ public class Restaurante {
 		}
 		return mv;
 	}
- 	
- 	/*public Vector getMozosViewVector(){ 
-		Vector mv = new Vector();
-		for (int i= 0; i < mozos.size(); i++){
-			mv.add(mozos.elementAt(i).getMozoView().toVector());
-		}
-		return mv;
-	}*/
 
  	//	MESAS
  	public Vector<MesaView> getMesasView(){ 
@@ -1051,16 +1019,6 @@ public class Restaurante {
  		Mesa mesa = buscarMesa(nroMesa);
  		mesa.cerrarMesa();
  	}
-	
- 	//Solo las habilitadas van a la vista (las no habilitadas no se atienden)
-	/*public Vector getMesasViewVector(){ 
-		Vector mv = new Vector();
-		for (int i= 0; i < mesas.size(); i++){
-			if (mesas.elementAt(i).isAsignada())
-				mv.add(mesas.elementAt(i).getMesaView().toVector());
-		}
-		return mv;
-	}*/
  	
  	public float getTotalComanda(int nroMesa){
  		float totalMesa = 0;

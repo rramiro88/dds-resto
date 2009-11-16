@@ -7,28 +7,19 @@ public class ItemDeCartaView {
 	private String name;
 	private float price;
 	private Vector <Ingrediente> ingredientes;
-	boolean disponible;
-	private int nroItem;
-	//private static int ultimoNroItem = 0;
-	static final String[] encabezados = {"Nombre", "Precio", "Disponible"};
+	static final String[] encabezados = {"Nombre", "Precio"};
 
 	
 //	Constructor de instancia ItemDeCartaView
 //	-------------------------------------------------------------	
-	public ItemDeCartaView (String nombre, float precio, boolean disp, int nro){
+	public ItemDeCartaView (String nombre, float precio){
 		this.name = nombre;
 		this.price = precio;
 		//ingredientes = new Vector<Ingrediente>();
-		this.disponible = disp;
-		nroItem = nro;
 	}
 
 //	Metodos sets y gets para los atributos de la clase ItemDeCartaView
 //	-------------------------------------------------------------	
-	public int getNroItem() {
-		return nroItem;
-	}
-
 	public String getNombre() {
 		return name;
 	}

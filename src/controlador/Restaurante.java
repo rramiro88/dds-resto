@@ -88,15 +88,12 @@ public class Restaurante {
 		ItemDeCarta vinoT = buscarItemDeCarta ("vino tinto");
 		vinoT.agregarIngrediente(buscarProducto("vinoTinto"), 1);
 		//	Cartas
-		altaDeCarta("domingo");
-		Carta carta = buscarCarta("domingo");
+		altaDeCarta("lunes");
+		Carta carta = buscarCarta("lunes");
 		carta.agregarItemCarta(vinoT);
 		carta.agregarItemCarta(raviolesTuco);
 		setCartaActiva(carta);
 		
-		// Abrir Resto
-		//abrirJornada();
-
 		
 	}
 /**				BORRAR LOS DATOS INGRESADOS ARRIBA
@@ -509,18 +506,16 @@ public class Restaurante {
 		a un mismo proveedor. El vector se utiliza en altaDeOrdenDeCompra.		*/
 	public Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
 		Vector<Producto> produc = new Vector <Producto>();
-//		produc = null;
 		for (int i= 0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getProveedor().equals(bajoProve)){
 				if (prod.getCantidad()<=prod.getPuntoped()){
-					//	Aca hay un warning, pero no entiendo por que
 					produc.add(prod);
 				}
 			}
 		}
 		return produc;	//	Vector con los productos (de un proveedor) bajos en stock. 
-	}					//	Devuelve null si no hay productos a pedir.
+	}
 
 	/*	Genera las ordenes automaticamente para los productos
 		bajos en stock. Es UNA orden por proveedor, por dia.		*/

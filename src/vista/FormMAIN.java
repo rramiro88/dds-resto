@@ -8,7 +8,6 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
 import controlador.Restaurante;
-import vista.Comandas.FormGenerarComanda;
 import vista.Productos.FormIngresarMercaderia;
 
 

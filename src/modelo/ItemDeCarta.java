@@ -113,8 +113,8 @@ public abstract class ItemDeCarta {
 	
 //	Metodos para preparar items de carta (platos - bebidas)
 //	-------------------------------------------------------------	
-	//	Revisa que la cantidad total de ingrediente alcance para
-	//	preparar el total de items de carta requeridos.
+	/*	Revisa que la cantidad total de ingrediente alcance para
+		preparar el total de items de carta requeridos.				*/
 	public boolean esPreparable(int cantidadItemsDeCarta){
 		//	Recorre todos los ingredientes del plato o bebida
 		for (int i=0; i<ingredientes.size(); i++){
@@ -136,7 +136,7 @@ public abstract class ItemDeCarta {
 	
 	//	Metodo get que devuelve un ItemDeCartaView para pasar a la vista
 	public ItemDeCartaView getItemDeCartaView(){
-		ItemDeCartaView icv = new ItemDeCartaView(name, price, disponible, nroItem);
+		ItemDeCartaView icv = new ItemDeCartaView(name, price);
 		return icv;
 	}
 	

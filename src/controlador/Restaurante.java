@@ -70,7 +70,7 @@ public class Restaurante {
 		altaDeProducto("papa", 800, 100, 1200, prov3);
 		altaDeProducto("ravioles", 1000, 550, 1000, prov2);
 		altaDeProducto("tomate", 1000, 550, 1000, prov3);		
-		altaDeProducto("vino tinto", 20, 4, 8, prov2);
+		altaDeProducto("vino tinto", 20, 18, 8, prov2);
 		altaDeProducto("gaseosa naranja", 20, 4, 8, prov2);		
 		//	Items de Carta		
 		altaDePlato("pollo con papas", 18);
@@ -86,10 +86,12 @@ public class Restaurante {
 		gaseosa.agregarIngrediente(buscarProducto("gaseosa naranja"), 1);
 		altaDeBebida("vino tinto", 16);
 		ItemDeCarta vinoT = buscarItemDeCarta ("vino tinto");
-		vinoT.agregarIngrediente(buscarProducto("vinoTinto"), 1);
+		vinoT.agregarIngrediente(buscarProducto("vino tinto"), 1);
 		//	Cartas
-		altaDeCarta("lunes");
-		Carta carta = buscarCarta("lunes");
+		altaDeCarta("martes");
+		Carta carta = buscarCarta("martes");
+		//ltaDeCarta("lunes");
+		//Carta carta = buscarCarta("lunes");
 		carta.agregarItemCarta(vinoT);
 		carta.agregarItemCarta(raviolesTuco);
 		setCartaActiva(carta);
@@ -876,14 +878,13 @@ public class Restaurante {
 	public void abrirMesa (Mesa m){
 		Comanda c = m.abrirMesa();
 		comandas.add(c);
-		m.setOcupada();
 	}
 	
 	public void agregarItemComanda(int nroMesa, String nombreItemCarta, int cant){
 		Mesa m = buscarMesa(nroMesa);
 		if (m != null){
 			if (! m.isOcupada())
-				m.abrirMesa();
+				abrirMesa(m);
 			ItemDeCarta itemCarta = cartaActiva.buscarItemDeCarta(nombreItemCarta);
 			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
 				m.agregarItemComanda(cant, itemCarta);

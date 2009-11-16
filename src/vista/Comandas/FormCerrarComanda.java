@@ -118,8 +118,9 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 		if(calcTotalAction == null) {
 			calcTotalAction = new AbstractAction("Calcular Total", null) {
 				public void actionPerformed(ActionEvent evt) {
+					float total = 0;
 					try{
-						float total = Restaurante.getRestaurante().getTotalComanda(Integer.parseInt(cmbMesas.getSelectedItem().toString()));
+						total = Restaurante.getRestaurante().getTotalComanda(Integer.parseInt(cmbMesas.getSelectedItem().toString()));
 						txtTotal.setText(String.valueOf(total));
 					}
 					catch (Exception e){
@@ -138,6 +139,7 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt) {
 					try{
 						Restaurante.getRestaurante().cerrarMesa(Integer.parseInt(cmbMesas.getSelectedItem().toString()));
+						JOptionPane.showMessageDialog(null, "Mesa cerrada correctamente. Se esta imprimiendo el ticket fiscal.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 					}
 					catch (Exception e){
 						JOptionPane.showMessageDialog(null, "No se pudo cerrar la mesa seleccionada.", "Error en el cierre de la mesa", JOptionPane.WARNING_MESSAGE);

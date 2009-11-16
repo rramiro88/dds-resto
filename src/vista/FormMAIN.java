@@ -140,11 +140,14 @@ public class FormMAIN extends javax.swing.JFrame {
 						public void run() {
 							//	Revisa que la jornada halla sido abierta
 							if (Restaurante.getRestaurante().isOpen()){
-								Restaurante.getRestaurante().cerrarJornada();
-								JOptionPane.showMessageDialog(null, "Jornada cerrada con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
+								if (Restaurante.getRestaurante().cerrarJornada()){
+									JOptionPane.showMessageDialog(null, "Jornada cerrada con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
 								}else{
-							//	Jornada cerrada
-							JOptionPane.showMessageDialog(null, "La jornada no ha sido abierta.", "ATENCION", JOptionPane.WARNING_MESSAGE);
+									JOptionPane.showMessageDialog(null, "No se pudo cerrar. Mesa/s con comanda/s en curso.", "ATENCION", JOptionPane.WARNING_MESSAGE);
+								}
+							}else{
+								//	Jornada cerrada
+								JOptionPane.showMessageDialog(null, "La jornada no ha sido abierta.", "ATENCION", JOptionPane.WARNING_MESSAGE);
 							}
 						}
 					});

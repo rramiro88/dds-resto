@@ -66,9 +66,8 @@ public class Mesa {
 		return comandaActual;
 	}
 	
-	public float getTotal()
-	{
-		float total = comandaActual.getTotal(); //ver como llamamos el metodo
+	public float getTotal(){
+		float total = comandaActual.getTotal();
 		return total;
 	}
 	

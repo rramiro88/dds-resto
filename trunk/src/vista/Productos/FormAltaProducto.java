@@ -1,6 +1,7 @@
 package vista.Productos;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -13,6 +14,19 @@ import javax.swing.WindowConstants;
 import controlador.*;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormAltaProducto extends javax.swing.JFrame {
 	private JLabel lblNombre;
 	private JLabel lblPtoPedido;
@@ -24,10 +38,10 @@ public class FormAltaProducto extends javax.swing.JFrame {
 	private JTextField txtPtoPedido;
 	private JTextField txtCantidad;
 
-	private AbstractAction cancelarAction;
+	private AbstractAction cerrarAction;
 	private AbstractAction aceptarAction;
 	
-//	private JButton btnCancelar;
+	private JButton btnCancelar;
 	private JButton btnAceptar;
 	
 	private JComboBox cmbProveedores;
@@ -108,11 +122,8 @@ public class FormAltaProducto extends javax.swing.JFrame {
 				txtPtoRefill.setBounds(223, 78, 86, 21);
 			}
 			{
-				cmbProveedores = new JComboBox(Restaurante.getRestaurante().getProveedoresViewVector());
-				/*Vector vpv = Restaurante.getRestaurante().getProveedoresView();
-				for (int i=0; i<vpv.size(); i++){
-					cmbProveedores.addItem(vpv.elementAt(i).toString());
-				}*/
+				Vector vp = getProveedoresViewVector(Restaurante.getRestaurante().getProveedoresView());
+				cmbProveedores = new JComboBox(vp);
 				getContentPane().add(cmbProveedores);
 				cmbProveedores.setBounds(223, 101, 237, 21);
 			}
@@ -124,15 +135,15 @@ public class FormAltaProducto extends javax.swing.JFrame {
 				btnAceptar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnAceptar.setAction(getAceptarAction());
 			}
-/*			{
+			{
 				btnCancelar = new JButton();
 				getContentPane().add(btnCancelar);
 				btnCancelar.setText("Cancelar");
 				btnCancelar.setBounds(253, 151, 96, 25);
 				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
-				btnCancelar.setAction(getCancelarAction());
+				btnCancelar.setAction(getCerrarAction());
 			}
-*/			this.pack();
+			this.pack();
 			this.setSize(480, 230);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -161,15 +172,24 @@ public class FormAltaProducto extends javax.swing.JFrame {
 		return aceptarAction;
 	}
 	
-	private AbstractAction getCancelarAction() {
-		if(cancelarAction == null) {
-			cancelarAction = new AbstractAction("Cancelar", null) {
+	private AbstractAction getCerrarAction() {
+		if(cerrarAction == null) {
+			cerrarAction = new AbstractAction("Cerrar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
+					dispose();
 				}
 			};
 		}
-		return cancelarAction;
+		return cerrarAction;
+	}
+	
+	public Vector getProveedoresViewVector(Vector<ProveedorView> vpv){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < vpv.size(); i++){
+			String aux = String.valueOf(vpv.elementAt(i).getCuit()) + " - " + vpv.elementAt(i).getRazonsocial(); 
+			mv.add(aux);
+		}
+		return mv;
 	}
 
 }

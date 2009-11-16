@@ -1,6 +1,8 @@
 package vista.Productos;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
+
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -11,8 +13,21 @@ import javax.swing.SwingUtilities;
 
 import controlador.*;
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormEliminarProducto extends javax.swing.JFrame {
-//	private JButton btnCerrar;
+	private JButton btnCerrar;
 	private JButton btnEliminar;
 
 	private AbstractAction eliminarAction;
@@ -48,30 +63,31 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 				lblProducto = new JLabel();
 				getContentPane().add(lblProducto);
 				lblProducto.setText("SELECCIONAR PRODUCTO: ");
-				lblProducto.setBounds(6, 22, 144, 14);
+				lblProducto.setBounds(12, 22, 176, 14);
 			}
 			{
-				cmbProductos = new JComboBox(Restaurante.getRestaurante().getProductosViewVector());
+				Vector vp = getProductosViewVector(Restaurante.getRestaurante().getProductosView());
+				cmbProductos = new JComboBox(vp);
 				getContentPane().add(cmbProductos);
-				cmbProductos.setBounds(150, 19, 230, 21);
+				cmbProductos.setBounds(200, 19, 180, 21);
 			}
 			{
 				btnEliminar = new JButton();
 				getContentPane().add(btnEliminar);
 				btnEliminar.setText("Eliminar");
-				btnEliminar.setBounds(76, 66, 92, 33);
+				btnEliminar.setBounds(82, 66, 92, 33);
 				btnEliminar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnEliminar.setAction(getEliminarAction());
 			}
-/*			{
+			{
 				btnCerrar = new JButton();
 				getContentPane().add(btnCerrar);
 				btnCerrar.setText("Cerrar");
-				btnCerrar.setBounds(194, 67, 92, 32);
+				btnCerrar.setBounds(219, 67, 92, 32);
 				btnCerrar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnCerrar.setAction(getCerrarAction());
 			}
-*/			pack();
+			pack();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -95,11 +111,20 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 		if(cerrarAction == null) {
 			cerrarAction = new AbstractAction("Cerrar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
+					dispose();
 				}
 			};
 		}
 		return cerrarAction;
+	}
+	
+	public Vector getProductosViewVector(Vector<ProductoView> vpv){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < vpv.size(); i++){
+			String aux = String.valueOf(vpv.elementAt(i).getNombre()) + "  "; 
+			mv.add(aux);
+		}
+		return mv;
 	}
 
 }

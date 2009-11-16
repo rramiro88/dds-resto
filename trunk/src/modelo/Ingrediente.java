@@ -1,5 +1,7 @@
 package modelo;
 
+import controlador.IngredienteView;
+
 public class Ingrediente {
 	private float cantidad;
 	private Producto producto;
@@ -10,6 +12,11 @@ public class Ingrediente {
 		this.producto = product;
 		this.cantidad = cant;
 		//this.isFabricable = true;
+	}
+	
+	public IngredienteView getIngredienteView(){
+		IngredienteView iv = new IngredienteView(producto, cantidad);
+		return iv;
 	}
 
 //	Metodos sets y Gets para los atributos de Ingrediente	

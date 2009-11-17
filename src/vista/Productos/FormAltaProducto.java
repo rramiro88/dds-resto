@@ -155,7 +155,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 			aceptarAction = new AbstractAction("Aceptar", null) {
 				public void actionPerformed(ActionEvent evt) {
 					try{
-						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(1,12);
+						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(0,11);
 						Restaurante.getRestaurante().altaDeProductoFromView(txtNombre.getText(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtPtoPedido.getText()), Integer.parseInt(txtPtoRefill.getText()), sProveedor);
 						JOptionPane.showMessageDialog(null, "Producto creado con exito.", "Alta de Producto", JOptionPane.INFORMATION_MESSAGE);
 						txtNombre.setText("");

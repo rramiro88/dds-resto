@@ -14,19 +14,6 @@ import controlador.*;
 
 
 
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormModificarCarta extends javax.swing.JFrame {
 	private JButton btnEliminar;
 	private AbstractAction aceptarAccion;
@@ -49,7 +36,7 @@ public class FormModificarCarta extends javax.swing.JFrame {
 			{
 				btnEliminar = new JButton();
 				getContentPane().add(btnEliminar);
-				btnEliminar.setText("ELIMINAR");
+				btnEliminar.setText("MODIFICAR");
 				btnEliminar.setBounds(86, 108, 118, 34);
 				btnEliminar.setAction(getAceptarAccion());
 			}
@@ -83,7 +70,7 @@ public class FormModificarCarta extends javax.swing.JFrame {
 
 	private AbstractAction getAceptarAccion() {
 		if(aceptarAccion == null) {
-			aceptarAccion = new AbstractAction("ELIMINAR", null) {
+			aceptarAccion = new AbstractAction("MODIFICAR", null) {
 				public void actionPerformed(ActionEvent evt) {
 					if(Restaurante.getRestaurante().modificarCarta(cmbDiaViejo.getSelectedItem().toString(), cmbDiaNuevo.getSelectedItem().toString())){
 						JOptionPane.showMessageDialog(null, "Cartas modificadas con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);

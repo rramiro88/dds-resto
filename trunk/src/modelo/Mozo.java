@@ -7,8 +7,8 @@ import controlador.MozoView;
 public class Mozo {
 	private String nombre;
 	private int id;
-	private int comision; //o la guardamos como entero
-	private float liquidacion;	//ultima liquidacion de esta mozo (lo que hay que pagarle)
+	private int comision;
+	private float liquidacion;
 	private boolean habilitado;
 	private static int ultimoMozo = 100;
 	
@@ -44,6 +44,10 @@ public class Mozo {
 		return comision;
 	}
 
+	public void setLiquidacion(float liquidacion) {
+		this.liquidacion = liquidacion;
+	}
+
 	public void setComision(int comision) {
 		this.comision = comision;
 	}
@@ -62,7 +66,7 @@ public class Mozo {
 
 	//	Metodo get que devuelve un MozoView para pasar a la vista
 	public MozoView getMozoView(){
-		MozoView mv = new MozoView(id, nombre, comision, habilitado);
+		MozoView mv = new MozoView(id, nombre, comision, habilitado, liquidacion);
 		return mv;
 	}
 	

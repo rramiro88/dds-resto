@@ -180,12 +180,18 @@ public class FormIngresarMercaderia extends javax.swing.JFrame {
 			if(modificarAction == null) {
 				modificarAction = new AbstractAction("Modificar", null) {
 					public void actionPerformed(ActionEvent evt) {
-						Restaurante.getRestaurante().ingresarMercaderia((txtNombre.getText()), Float.parseFloat((txtCantIng.getText())));
-						JOptionPane.showMessageDialog(null, "Mercaderia ingresada con exito.", "Actualizacion de Stock", JOptionPane.INFORMATION_MESSAGE);
-						txtIdBuscar.setText("");
-						txtNombre.setText("");
-						txtCantidad.setText("");
-						txtCantIng.setText("");
+						try{
+							Restaurante.getRestaurante().ingresarMercaderia((txtNombre.getText()), Float.parseFloat((txtCantIng.getText())));
+							JOptionPane.showMessageDialog(null, "Mercaderia ingresada con exito.", "Actualizacion de Stock", JOptionPane.INFORMATION_MESSAGE);
+							txtIdBuscar.setText("");
+							txtNombre.setText("");
+							txtCantidad.setText("");
+							txtCantIng.setText("");
+						}
+						catch  (Exception e){
+							JOptionPane.showMessageDialog(null, "La cantidad debe ser un valor numérico.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+							txtCantIng.setText("");
+						}
 					}
 				};
 			}

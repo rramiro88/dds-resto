@@ -208,10 +208,15 @@ public class Restaurante {
 //	Metodos de jornada (apertura y cierre)
 //	-------------------------------------------------------------		
 	public boolean abrirJornada(){
+/*		Esto lo comenté porque el isOpen se valido previamente en el FormMAIN (linea 87)
 		if (isOpen()){
 			System.out.println("El restaurant ya se encuentra abierto");
 			return true;
 		}else{
+*/			if (buscarCarta(cartaActiva.getDia())==null){
+				System.out.println("No hay carta activa. Crearla!!!");				
+				return false;
+			}
 			if ((mozos == null) || (mesas == null)){
 				System.out.println("No hay mozos para atender o mesas para servir. Crearlos!!!");
 				return false;
@@ -224,7 +229,6 @@ public class Restaurante {
 				return true;
 			}
 		}
-	}
 	
 	public boolean cerrarJornada(){
 		for (int i = 0; i<mesas.size(); i++){

@@ -45,7 +45,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 	private JComboBox cmbProveedores;
 
 
-// Auto-generated main method to display this JFrame
+/* Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -55,7 +55,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			}
 		});
 	}
-
+*/
 	public FormModificarProducto() {
 		super();
 		initGUI();

@@ -1,7 +1,6 @@
 package vista.Cartas;
 
 import java.awt.event.ActionEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -9,10 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import controlador.*;
+
 
 
 
@@ -29,34 +28,14 @@ import controlador.*;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class FormModificarCarta extends javax.swing.JFrame {
-//	private JButton btnCancel;
-	private JButton btnAceptar;
-	private JButton btnBuscar;
-
-	private AbstractAction cancelarAccion;
-	private JComboBox jDias;
+	private JButton btnEliminar;
 	private AbstractAction aceptarAccion;
-	private AbstractAction buscarAction;
-
-	private JLabel jLabel1;
+	private JComboBox cmbDiaNuevo;
 	private JLabel jLabel2;
+	private JComboBox cmbDiaViejo;
+	private JLabel jLabel1;
 
-	private JTextField txtNombreBuscar;
-	private JTextField txtNuevaCarta;
-
-/**
-//	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormModificarCarta inst = new FormModificarCarta();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
-		
+	
 	public FormModificarCarta() {
 		super();
 		initGUI();
@@ -64,124 +43,78 @@ public class FormModificarCarta extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
-			getContentPane().setLayout(null);
+		getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			this.setTitle("Modificar Cartas");
+			this.setTitle("Modificar Dia de Carta");
 			{
-				btnBuscar = new JButton();
-				getContentPane().add(btnBuscar);
-				btnBuscar.setText("Buscar");
-				btnBuscar.setBounds(297, 10, 84, 34);
-				btnBuscar.setFont(new java.awt.Font("Tahoma",1,11));
-				btnBuscar.setAction(getBuscarAction());
-			}
-/*			{
-				btnCancel = new JButton();
-				getContentPane().add(btnCancel);
-				btnCancel.setText("CANCELAR");
-				btnCancel.setBounds(261, 225, 118, 34);
-				btnCancel.setAction(getCancelarAccion());
-			}
-*/			{
-				btnAceptar = new JButton();
-				getContentPane().add(btnAceptar);
-				btnAceptar.setText("ACEPTAR");
-				btnAceptar.setBounds(132, 225, 118, 34);
-				btnAceptar.setAction(getAceptarAccion());
-			}
-			{
-				txtNombreBuscar = new JTextField();
-				getContentPane().add(txtNombreBuscar);
-				txtNombreBuscar.setBounds(134, 10, 120, 34);
+				btnEliminar = new JButton();
+				getContentPane().add(btnEliminar);
+				btnEliminar.setText("ELIMINAR");
+				btnEliminar.setBounds(86, 108, 118, 34);
+				btnEliminar.setAction(getAceptarAccion());
 			}
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
-				getContentPane().add(getJLabel2());
-				getContentPane().add(getJTextField1());
 				getContentPane().add(getJDias());
-				jLabel1.setText("Dia de Carta: ");
-				jLabel1.setBounds(12, 10, 110, 34);
-
-			
+				getContentPane().add(getJComboBox1());
+				getContentPane().add(getJLabel2());
+				jLabel1.setText("Carta Original:");
+				jLabel1.setBounds(12, 12, 119, 34);
 			}
 			pack();
-			setSize(400, 300);
+			setSize(300, 180);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	private AbstractAction getBuscarAction() {
-		if(buscarAction == null) {
-			buscarAction = new AbstractAction("Buscar", null) {
-				public void actionPerformed(ActionEvent evt) {
-					CartaView cv = Restaurante.getRestaurante().getCartaView(txtNombreBuscar.getText());
-					if (cv!=null){
-						txtNuevaCarta.setText(cv.getDia());
-					}else{
-						JOptionPane.showMessageDialog(null, "Ingrese un dia de la semana.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
-					}
-				}
-			};
-		}
-		return buscarAction;
-	}
 	
+	private JComboBox getJDias() {
+		if(cmbDiaViejo == null) {
+			ComboBoxModel jDiasModel = 
+				new DefaultComboBoxModel(
+						new String[] { "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"});
+			cmbDiaViejo = new JComboBox();
+			cmbDiaViejo.setModel(jDiasModel);
+			cmbDiaViejo.setBounds(149, 12, 131, 34);
+		}
+		return cmbDiaViejo;
+	}
+
 	private AbstractAction getAceptarAccion() {
 		if(aceptarAccion == null) {
-			aceptarAccion = new AbstractAction("ACEPTAR", null) {
+			aceptarAccion = new AbstractAction("ELIMINAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					if (Restaurante.getRestaurante().diaValido(txtNombreBuscar.getText()) && Restaurante.getRestaurante().diaValido(txtNuevaCarta.getText())){
-						Restaurante.getRestaurante().modificarCarta(txtNombreBuscar.getText(), txtNuevaCarta.getText());
-						txtNombreBuscar.setText("");
-						txtNuevaCarta.setText("");	
+					if(Restaurante.getRestaurante().modificarCarta(cmbDiaViejo.getSelectedItem().toString(), cmbDiaNuevo.getSelectedItem().toString())){
+						JOptionPane.showMessageDialog(null, "Cartas modificadas con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);
 					}else{
-						JOptionPane.showMessageDialog(null, "Dia invalido o la Carta no existe.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El dia original NO posee carta o el dia destino YA posee carta asignada", "Prohibido", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 			};
 		}
 		return aceptarAccion;
 	}
-			
-	private AbstractAction getCancelarAccion() {
-		if(cancelarAccion == null) {
-			cancelarAccion = new AbstractAction("CANCELAR", null) {
-				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
-				}
-			};
+	
+	private JComboBox getJComboBox1() {
+		if(cmbDiaNuevo == null) {
+			ComboBoxModel jComboBox1Model = 
+				new DefaultComboBoxModel(
+						new String[] { "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"});
+			cmbDiaNuevo = new JComboBox();
+			cmbDiaNuevo.setModel(jComboBox1Model);
+			cmbDiaNuevo.setBounds(149, 58, 131, 34);
 		}
-		return cancelarAccion;
+		return cmbDiaNuevo;
 	}
 	
 	private JLabel getJLabel2() {
 		if(jLabel2 == null) {
 			jLabel2 = new JLabel();
-			jLabel2.setText("Nuevo Dia de Carta: ");
-			jLabel2.setBounds(12, 56, 110, 34);
+			jLabel2.setText("Carta Destino: ");
+			jLabel2.setBounds(12, 58, 119, 34);
 		}
 		return jLabel2;
-	}
-	
-	private JTextField getJTextField1() {
-		if(txtNuevaCarta == null) {
-			txtNuevaCarta = new JTextField();
-			txtNuevaCarta.setBounds(134, 57, 120, 34);
-		}
-		return txtNuevaCarta;
-	}
-	
-	private JComboBox getJDias() {
-		if(jDias == null) {
-			ComboBoxModel jDiasModel = 
-				new DefaultComboBoxModel(
-						new String[] { "lunes", "martes", "miercoles", "jueves", "viernes" });
-			jDias = new JComboBox();
-			jDias.setModel(jDiasModel);
-			jDias.setBounds(134, 103, 246, 21);
-		}
-		return jDias;
 	}
 
 }

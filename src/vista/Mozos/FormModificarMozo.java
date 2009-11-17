@@ -50,7 +50,7 @@ public class FormModificarMozo extends javax.swing.JFrame {
 
 	private AbstractAction modificarAction;
 	private AbstractAction buscarAction;
-	private AbstractAction cancelarAction;
+	private AbstractAction cerrarAction;
 
 /**
 	Auto-generated main method to display this JFrame
@@ -141,7 +141,7 @@ public class FormModificarMozo extends javax.swing.JFrame {
 				btnCancelar.setText("Cancelar");
 				btnCancelar.setBounds(212, 217, 91, 28);
 				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
-				btnCancelar.setAction(getCancelarAction());
+				btnCancelar.setAction(getCerrarAction());
 			}
 			pack();
 		} catch (Exception e) {
@@ -149,15 +149,15 @@ public class FormModificarMozo extends javax.swing.JFrame {
 		}
 	}
 	
-	private AbstractAction getCancelarAction() {
-		if(cancelarAction == null) {
-			cancelarAction = new AbstractAction("Cancelar", null) {
+	private AbstractAction getCerrarAction() {
+		if(cerrarAction == null) {
+			cerrarAction = new AbstractAction("Cerrar", null) {
 				public void actionPerformed(ActionEvent evt) {
 					dispose();
 				}
 			};
 		}
-		return cancelarAction;
+		return cerrarAction;
 	}
 	
 	private AbstractAction getBuscarAction() {

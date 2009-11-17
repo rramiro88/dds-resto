@@ -10,12 +10,13 @@ public class MozoView {
 	private boolean habilitado;
 	static final String[] encabezados = {"ID", "Nombre", "Comision", "Habilitado"};
 	
-	public MozoView (int id, String nombre, int comision, boolean habilitado){
+	public MozoView (int id, String nombre, int comision, boolean habilitado, float liquidacion){
 		super();
 		this.id = id;
 		this.nombre = nombre;	
 		this.comision = comision;
 		this.habilitado = habilitado;
+		this.liquidacion = liquidacion;
 	}
 	
 	public Vector toVector(){
@@ -24,6 +25,7 @@ public class MozoView {
 		v.add(nombre);
 		v.add(comision);
 		v.add(habilitado);
+		v.add(liquidacion);
 		return v;
 	}
 	
@@ -55,11 +57,7 @@ public class MozoView {
 		this.habilitado = habilitado;
 	}
 	
-	
-	
-	/*	public float getLiquidacion()
-	{
+	public float getLiquidacion(){
 		return liquidacion;
 	}
-*/
 }

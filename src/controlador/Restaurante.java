@@ -700,18 +700,6 @@ public class Restaurante {
 		return mozosOk;
  	}
 	
-	/*public int mozosTotales(){
-		return (mozos.size());
-	}*/
-	/*Mozo mozoNuevo = buscarMozo(idMozo);
-		if (mozoNuevo == null){
-			Mozo pibenuevo = new Mozo (nombre, idMozo, comision);
-			mozos.add(pibenuevo);
-			System.out.println("Mozo creado con exito.");
-		}else{
-			System.out.println("El id de Mozo ya existe.");
-		}
-	}*/
 	public void habilitarMozo (int idMozo){
 		Mozo mozoHab = buscarMozo(idMozo);
 		if (mozoHab != null){
@@ -732,25 +720,6 @@ public class Restaurante {
 		}
 	}
 	
-	/*public void asignarMesaMozo (int mesa, int mozo){
-		mesas.elementAt(mesa).setMozo(mozos.elementAt(mozo));
-		mesas.elementAt(mesa).setHabilitada();
-	}*/
-
-	
-	/*	private Mozo buscarMozo(int id){
-		int i = 0;
-		while (i < mozos.size()){
-			Mozo m = mozos.elementAt(i);
-			if (m.getId() == id)
-				return m;
-			else
-				i++;
-		}
-		System.out.println("El mozo " + id + " no existe");
-		return null;	
-	}	*/	
-	
 	private Vector<Comanda> buscarComandasMozo(Mozo mozo){
 		Vector<Comanda> comandasMozo = new Vector<Comanda>();
 		for (int i = 0; i<comandas.size(); i++){
@@ -760,17 +729,7 @@ public class Restaurante {
 		}
 		return comandasMozo;
 	}
-	/*public void modificarComisionMozo(int id, int comision){
-		Mozo m = buscarMozo(id);
-		if (m != null)
-			m.setComision(comision);
-	}
 	
-	public void modificarNombreMozo(int id, String nombre){
-		Mozo m = buscarMozo(id);
-		if (m != null)
-			m.setNombre(nombre);
-	}*/
 	public void pagarMozos(){
 		float totalMozo;
 		int cantMozos = mozos.size();
@@ -785,10 +744,10 @@ public class Restaurante {
 					for (int i=0; i<comandasMozo.size(); i++){
 						totalMozo = totalMozo + comandasMozo.elementAt(i).getTotal();
 					}
-					totalMozo = (totalMozo * mozo.getComision()) / 100; 
+					totalMozo = (totalMozo * mozo.getComision()) / 100;
+					mozo.setLiquidacion(totalMozo);
 				}
-			}
-			System.out.println("Mozo: " + mozo.getNombre() + " $ " + Float.toString(totalMozo));		
+			}		
 		}
 	}
 	

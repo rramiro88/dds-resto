@@ -10,6 +10,7 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
 import controlador.Restaurante;
+import vista.Mozos.FormRendicionMozo;
 import vista.Productos.FormIngresarMercaderia;
 
 
@@ -70,7 +71,7 @@ public class FormMAIN extends javax.swing.JFrame {
 			getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Restaurante");
-			this.setPreferredSize(new java.awt.Dimension(450, 400));
+			this.setPreferredSize(new java.awt.Dimension(520, 400));
 
 			{
 				btnSalir = new JButton();
@@ -81,7 +82,7 @@ public class FormMAIN extends javax.swing.JFrame {
 				getJPanel1();
 			}
 			pack();
-			this.setSize(427, 381);
+			this.setSize(520, 381);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -120,6 +121,9 @@ public class FormMAIN extends javax.swing.JFrame {
 							//	Revisa que la jornada halla sido abierta
 							if (Restaurante.getRestaurante().isOpen()){
 								if (Restaurante.getRestaurante().cerrarJornada()){
+									FormRendicionMozo inst = new FormRendicionMozo();
+									inst.setLocationRelativeTo(null);
+									inst.setVisible(true);
 									JOptionPane.showMessageDialog(null, "Jornada cerrada con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
 								}else{
 									JOptionPane.showMessageDialog(null, "No se pudo cerrar. Mesa/s con comanda/s en curso.", "ATENCION", JOptionPane.WARNING_MESSAGE);
@@ -258,7 +262,7 @@ public class FormMAIN extends javax.swing.JFrame {
 	private JPanel getJPanel2() {
 		if(jPanel2 == null) {
 			jPanel2 = new JPanel();
-			jPanel2.setBounds(219, 120, 188, 73);
+			jPanel2.setBounds(12, 205, 188, 73);
 			jPanel2.setBorder(BorderFactory.createTitledBorder("ABMs GENERALES"));
 			jPanel2.setLayout(null);
 			{
@@ -294,15 +298,15 @@ public class FormMAIN extends javax.swing.JFrame {
 	private JPanel getJPanel4() {
 		if(jPanel4 == null) {
 			jPanel4 = new JPanel();
-			jPanel4.setBounds(12, 199, 188, 73);
+			jPanel4.setBounds(224, 120, 276, 73);
 			jPanel4.setBorder(BorderFactory.createTitledBorder("COMPRAS"));
 			jPanel4.setLayout(null);
 			{
 				btnGenerar = new JButton();
 				jPanel4.add(btnGenerar);
-				btnGenerar.setText("GENERAR ORDENES");
+				btnGenerar.setText("GENERAR ORDENES DE COMPRA");
 				btnGenerar.setAction(getGenerarOrdenesDeCompra());
-				btnGenerar.setBounds(28, 24, 135, 28);
+				btnGenerar.setBounds(28, 24, 222, 28);
 			}
 		}
 		return jPanel4;
@@ -311,7 +315,7 @@ public class FormMAIN extends javax.swing.JFrame {
 	private JPanel getJPanel5() {
 		if(jPanel5 == null) {
 			jPanel5 = new JPanel();
-			jPanel5.setBounds(219, 199, 188, 73);
+			jPanel5.setBounds(224, 205, 276, 73);
 			jPanel5.setBorder(BorderFactory.createTitledBorder("STOCK"));
 			jPanel5.setLayout(null);
 			{
@@ -320,7 +324,7 @@ public class FormMAIN extends javax.swing.JFrame {
 				getContentPane().add(getJPanel4());
 				btnIngMerca.setText("INGRESAR MERCADERIA");
 				btnIngMerca.setAction(getIngresarMercaderia());
-				btnIngMerca.setBounds(26, 25, 135, 28);
+				btnIngMerca.setBounds(26, 25, 223, 28);
 			}
 		}
 		return jPanel5;

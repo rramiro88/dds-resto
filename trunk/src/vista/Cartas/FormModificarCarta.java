@@ -3,7 +3,10 @@ package vista.Cartas;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -12,12 +15,26 @@ import javax.swing.WindowConstants;
 import controlador.*;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormModificarCarta extends javax.swing.JFrame {
 //	private JButton btnCancel;
 	private JButton btnAceptar;
 	private JButton btnBuscar;
 
 	private AbstractAction cancelarAccion;
+	private JComboBox jDias;
 	private AbstractAction aceptarAccion;
 	private AbstractAction buscarAction;
 
@@ -82,6 +99,7 @@ public class FormModificarCarta extends javax.swing.JFrame {
 				getContentPane().add(jLabel1);
 				getContentPane().add(getJLabel2());
 				getContentPane().add(getJTextField1());
+				getContentPane().add(getJDias());
 				jLabel1.setText("Dia de Carta: ");
 				jLabel1.setBounds(12, 10, 110, 34);
 
@@ -153,6 +171,17 @@ public class FormModificarCarta extends javax.swing.JFrame {
 		}
 		return txtNuevaCarta;
 	}
-
 	
+	private JComboBox getJDias() {
+		if(jDias == null) {
+			ComboBoxModel jDiasModel = 
+				new DefaultComboBoxModel(
+						new String[] { "lunes", "martes", "miercoles", "jueves", "viernes" });
+			jDias = new JComboBox();
+			jDias.setModel(jDiasModel);
+			jDias.setBounds(134, 103, 246, 21);
+		}
+		return jDias;
+	}
+
 }

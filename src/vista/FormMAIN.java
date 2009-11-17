@@ -241,7 +241,7 @@ public class FormMAIN extends javax.swing.JFrame {
 		if(getSalirAccion == null) {
 			getSalirAccion = new AbstractAction("CERRAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
+					dispose();
 				}
 			};
 		}

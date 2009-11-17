@@ -15,18 +15,6 @@ import vista.Productos.FormIngresarMercaderia;
 
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormMAIN extends javax.swing.JFrame {
 	private JButton btnIniciarDia;
 	private JButton btnCerrarDia;
@@ -191,7 +179,7 @@ public class FormMAIN extends javax.swing.JFrame {
 							JOptionPane.showMessageDialog(null, "Ordenes de compra generadas: " +ord+"", "Atencion", JOptionPane.WARNING_MESSAGE);
 						}else{
 							//	Si el dia esta abierto, no permite generar las ordenes de compra
-							JOptionPane.showMessageDialog(null, "Negocio abierto. No se puede generar ordenes de compra.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Jornada abierta. No se pueden generar ordenes de compra.", "Prohibido", JOptionPane.WARNING_MESSAGE);
 						}
 					}
 				});

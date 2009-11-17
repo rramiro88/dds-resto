@@ -372,9 +372,10 @@ public class Restaurante {
 			if (letter != null){
 				cartas.remove(letter);
 				System.out.println("Carta eliminada con exito.");
+				return true;
 			}
 		}
-		return valido;
+		return false;
 	}
 
 	//	Ya se valido que la carta a modificar exista

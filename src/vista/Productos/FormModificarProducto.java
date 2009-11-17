@@ -11,24 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import controlador.*;
 
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormModificarProducto extends javax.swing.JFrame {
 	private JLabel lblNombre;
 	private JLabel lblProveedores;
@@ -56,7 +45,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 	private JComboBox cmbProveedores;
 
 
-/** Auto-generated main method to display this JFrame
+// Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -66,7 +55,6 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			}
 		});
 	}
-*/
 
 	public FormModificarProducto() {
 		super();
@@ -223,9 +211,13 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			if(modificarAction == null) {
 				modificarAction = new AbstractAction("Modificar", null) {
 					public void actionPerformed(ActionEvent evt) {
-						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(1,12);
-						Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Float.parseFloat(txtCantidad.getText()), Float.parseFloat((txtPtoPedido.getText())), Float.parseFloat(txtPtoRefill.getText()), Restaurante.getRestaurante().buscarProveedor(sProveedor));
-						JOptionPane.showMessageDialog(null, "Producto actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
+						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(2,12);
+						if (Restaurante.getRestaurante().buscarProveedor(sProveedor) == null){
+							JOptionPane.showMessageDialog(null, "EL PROVEEDOR NO SIRVE!", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
+						}else{
+							Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Float.parseFloat(txtCantidad.getText()), Float.parseFloat((txtPtoPedido.getText())), Float.parseFloat(txtPtoRefill.getText()), Restaurante.getRestaurante().buscarProveedor(sProveedor));
+							JOptionPane.showMessageDialog(null, "Producto actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
+						}
 						txtIdBuscar.setText("");
 						txtNombre.setText("");
 						txtCantidad.setText("");

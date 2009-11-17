@@ -362,9 +362,10 @@ public class Restaurante {
 				letter = new Carta (dia);
 				cartas.add(letter);
 				System.out.println("Carta creada con exito.");
+				return true;
 			}
 		}
-		return valido;
+		return false;
 	}
 
 	public boolean bajaDeCarta (String dia){
@@ -382,9 +383,8 @@ public class Restaurante {
 		return false;
 	}
 
-	//	Ya se valido que la carta a modificar exista
 	//	La modificacion consiste en cambiar una carta de un dia a otro.
-	public void modificarCarta (String diaViejo, String diaNuevo){
+	public boolean modificarCarta (String diaViejo, String diaNuevo){
 		boolean validoViejo = diaValido(diaViejo);
 		boolean validoNuevo = diaValido(diaNuevo);
 		//	Revisa que ambos dias sean validos
@@ -393,13 +393,19 @@ public class Restaurante {
 			//	para que no pueda haber dos cartas del mismo dia.
 			Carta letterVieja = buscarCarta(diaViejo);
 			Carta letterNueva = buscarCarta(diaNuevo);
-			if (letterVieja != null && letterNueva == null ){
-				letterVieja.setDia(diaNuevo);
-				System.out.println("Dia de Carta modificado con exito.");
+			if (letterVieja != null){
+				if (letterNueva == null ){
+					letterVieja.setDia(diaNuevo);
+					System.out.println("Dia de Carta modificado con exito.");
+					return true;
+				}else{
+					System.out.println("La Carta Destino YA existe.");
+				}
 			}else{
-				System.out.println("La Carta No puede modificarse. Carta inexistente.");
+				System.out.println("La Carta Original NO existe.");
 			}
 		}
+		return false;
 	}
 
 	//	Carga un plato o bebida en la carta

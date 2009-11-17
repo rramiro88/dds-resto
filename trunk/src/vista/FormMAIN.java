@@ -84,12 +84,18 @@ public class FormMAIN extends javax.swing.JFrame {
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							//	Revisa que la jornada no este abierta
-							if (!Restaurante.getRestaurante().isOpen()){
-								Restaurante.getRestaurante().abrirJornada();
-								JOptionPane.showMessageDialog(null, "Jornada abierta con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
+							if (Restaurante.getRestaurante().isOpen()){
+								//	Jornada ya abierta y en curso
+								JOptionPane.showMessageDialog(null, "La jornada ya se encuentra abierta", "ATENCION", JOptionPane.WARNING_MESSAGE);
 							}else{
-							//	Jornada ya abierta
-							JOptionPane.showMessageDialog(null, "La jornada ya se encuentra abierta", "ATENCION", JOptionPane.WARNING_MESSAGE);
+								//	Revisa que se pueda abrir la jornada
+								if (Restaurante.getRestaurante().abrirJornada())
+									JOptionPane.showMessageDialog(null, "Jornada abierta con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
+								else{
+									//	Notifica que faltan mesas, mozos o que no hay carta activa
+									JOptionPane.showMessageDialog(null, "No puede abrise la jornada ¿Carta? / ¿Mesas? / ¿Mozos?", "ATENCION", JOptionPane.WARNING_MESSAGE);
+								}
+									
 							}
 						}
 					});

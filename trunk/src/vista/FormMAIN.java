@@ -203,7 +203,8 @@ public class FormMAIN extends javax.swing.JFrame {
 					public void run() {
 						//	Revisa que el dia no halla sido abierto
 						if (!Restaurante.getRestaurante().isOpen()){
-							Restaurante.getRestaurante().generarOrdenesDeCompra();
+							int ord = Restaurante.getRestaurante().generarOrdenesDeCompra();
+							JOptionPane.showMessageDialog(null, "Ordenes de compra generadas: " +ord+"", "Atencion", JOptionPane.WARNING_MESSAGE);
 						}else{
 							//	Si el dia esta abierto, no permite generar las ordenes de compra
 							JOptionPane.showMessageDialog(null, "Negocio abierto. No se puede generar ordenes de compra.", "Prohibido", JOptionPane.WARNING_MESSAGE);

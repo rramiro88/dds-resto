@@ -521,7 +521,7 @@ public class Restaurante {
 
 	/*	Genera las ordenes automaticamente para los productos
 		bajos en stock. Es UNA orden por proveedor, por dia.		*/
-	public void altaDeOrdenDeCompra (String cuitProv){
+	public int altaDeOrdenDeCompra (String cuitProv){
 		Proveedor prov = buscarProveedor(cuitProv);
 		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, fecha);
 		if (prov != null && ord == null){
@@ -538,8 +538,12 @@ public class Restaurante {
 				//	Agrega la orden de compra al vector de ordenes de compra
 				ordenesCompra.add(ord);
 				System.out.println("Orden de compra creada y cargada con exito.");
+				// Devuelve uno para contabilizar las ordenes de compra creadas.
+				return 1;
 			}
 		}
+		//	Devuelve cero si no se creo la orden de compra.
+		return 0;
 	}
 
 	public void bajaDeOrdenDeCompra (String cuitProv, String date){
@@ -563,44 +567,19 @@ public class Restaurante {
 	}
 
 	//	Genera todas las ordenes de compra para los productos bajos en stock
-	public void generarOrdenesDeCompra(){
+	public int generarOrdenesDeCompra(){
+		int ord = 0;
 		for (int i=0; i<proveedores.size(); i++){
 			Proveedor prov = proveedores.elementAt(i);
-			altaDeOrdenDeCompra (prov.getCuit());
+			int ord1 = altaDeOrdenDeCompra (prov.getCuit());
+			ord = ord + ord1;
 		}
+		return ord;
 	}
-	
-/*	// ****************************
-	// ***** revisar todo esto. falta controlar si hay que pedirlo o no al producto.
-	//		LEO: GENERE VARIOS METODOS PARA CARGAR ORDENES DE COMPRA - PROBARLOS
-	// ****************************
-	
-	public void cargarOrdenCompra (int nro){
-		OrdenDeCompra ord = buscarOrdenDeCompra(nro);
-		if (ord != null){
-			for (int i=0; i<productos.size();i++){
-				Producto prod = productos.elementAt(i);
-				if (prod.getProveedor().equals(ord.getProveedor())){
-					ord.cargarItemPedido(prod);
-				}
-			}
-		}
-	}
-
-	public void generarOrdenDeCompra(String cuitProveedor, String fecha){
-		Proveedor prov = buscarProveedor(cuitProveedor);
-		if (prov != null){
-			for (int i=0; i<productos.size();i++){
-				Producto prod = productos.elementAt(i);
-				if (prod.getProveedor().equals(prov) && prod.getCantidad()<=prod.getPuntoped());
-					
-			}
-		}
-	}
- 	*/
 	
 
-//	Metodos que operan con Mozos
+	
+//	ABM - BUSCAR	Mozos
 //	-----------------------------------------------------
 	private Mozo buscarMozo (int id){
  		for (int i=0; i<mozos.size(); i++){

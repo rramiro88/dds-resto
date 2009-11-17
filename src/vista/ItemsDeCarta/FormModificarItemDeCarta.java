@@ -149,15 +149,7 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 					btnModificar.setFont(new java.awt.Font("Tahoma",1,11));
 					btnModificar.setAction(getModificarAction());
 				}
-/*				{
-					btnCancelar = new JButton();
-					getContentPane().add(btnCancelar);
-					btnCancelar.setText("Cancelar");
-					btnCancelar.setBounds(212, 234, 91, 21);
-					btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
-					btnCancelar.setAction(getCancelarAction());
-				}
-*/				pack();
+				pack();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

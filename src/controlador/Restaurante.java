@@ -95,7 +95,7 @@ public class Restaurante {
 		carta.agregarItemCarta(vinoT);
 		carta.agregarItemCarta(raviolesTuco);
 		setCartaActiva(carta);
-		
+
 		
 	}
 /**				BORRAR LOS DATOS INGRESADOS ARRIBA
@@ -213,22 +213,26 @@ public class Restaurante {
 			System.out.println("El restaurant ya se encuentra abierto");
 			return true;
 		}else{
-*/			if (buscarCarta(cartaActiva.getDia())==null){
+*/
+		//	Revisa que exista una carta creada para asignar al presente dia
+		if (buscarCarta(dia)==null){
 				System.out.println("No hay carta activa. Crearla!!!");				
 				return false;
 			}
-			if ((mozos == null) || (mesas == null)){
+		// Revisa que halla mozos y mesas disponibles para iniciar la jornada
+		if ((mozos == null) || (mesas == null)){
 				System.out.println("No hay mozos para atender o mesas para servir. Crearlos!!!");
 				return false;
-			}else{
-				asignarMesas();
-				setOpen(true);
-				//	Para abrir la jornada tambien hay que asignar la carta activa del dia
-				setCartaActiva(buscarCarta(dia));
-				System.out.println("Restaurante ABIERTO!!!");
-				return true;
-			}
+		}else{
+			//	Hay carta del dia, hay mozos y hay mesas; ergo, abre la jornada.
+			asignarMesas();
+			setOpen(true);
+			//	Asignar la carta activa del dia
+			setCartaActiva(buscarCarta(dia));
+			System.out.println("Restaurante ABIERTO!!!");
+			return true;
 		}
+	}
 	
 	public boolean cerrarJornada(){
 		for (int i = 0; i<mesas.size(); i++){

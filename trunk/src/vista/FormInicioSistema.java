@@ -114,8 +114,8 @@ public class FormInicioSistema extends javax.swing.JFrame {
 			ingresarAccion = new AbstractAction("INGRESAR", null) {
 				public void actionPerformed(ActionEvent evt) {
 					if (Restaurante.getRestaurante().diaValido(txtDiaActual.getText())){
-						Restaurante.getRestaurante().setFecha(fecha);
-						Restaurante.getRestaurante().setDia(dia);
+						Restaurante.getRestaurante().setFecha(txtFecha.getText());
+						Restaurante.getRestaurante().setDia(txtDiaActual.getText());
 						JOptionPane.showMessageDialog(null, "Bienvenido al Restaurante.", "Hola!", JOptionPane.WARNING_MESSAGE);
 						FormMAIN inst = new FormMAIN();
 						inst.setLocationRelativeTo(null);
@@ -123,7 +123,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 					}else{
 						JOptionPane.showMessageDialog(null, "Dia actual no es un dia de la semana.", "ERROR", JOptionPane.WARNING_MESSAGE);
 						txtDiaActual.setText("");
-						//	txtFecha.setText("");
+						txtFecha.setText("");
 					}
 				}
 			};

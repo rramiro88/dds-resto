@@ -97,7 +97,7 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					String nombre = cmbProductos.getSelectedItem().toString().substring(1,5);
+					String nombre = getNombreProducto(cmbProductos.getSelectedItem().toString());
 					Restaurante.getRestaurante().bajaDeProducto(nombre);
 					cmbProductos.removeItemAt(cmbProductos.getSelectedIndex());
 					JOptionPane.showMessageDialog(null, "Producto eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
@@ -125,6 +125,18 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 			mv.add(aux);
 		}
 		return mv;
+	}
+	
+	public String getNombreProducto(String s){
+		int i = 0;
+		String sAux = new String("");
+		if (s.charAt(i) == '[')
+			i++;
+		while ((s.charAt(i) != ',') && (s.charAt(i) != ']' ) && (s.charAt(i) != ' ' ) && (s.charAt(i) != '-' )){
+			sAux = sAux + s.charAt(i); 
+			i++;
+		}
+		return sAux;
 	}
 
 }

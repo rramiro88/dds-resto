@@ -89,14 +89,20 @@ public class Restaurante {
 		vinoT.agregarIngrediente(buscarProducto("vino tinto"), 1);
 		//	Cartas
 		altaDeCarta("lunes");
-		Carta carTemp = buscarCarta("lunes");
-		carTemp.agregarItemCarta(gaseosa);
-		carTemp.agregarItemCarta(polloPapas);
+		Carta carta1 = buscarCarta("lunes");
+		carta1.agregarItemCarta(gaseosa);
+		carta1.agregarItemCarta(polloPapas);
 
 		altaDeCarta("miércoles");
-		Carta carta = buscarCarta("miércoles");
+		Carta carta2 = buscarCarta("miércoles");
+		carta2.agregarItemCarta(vinoT);
+		carta2.agregarItemCarta(raviolesTuco);
+		
+		altaDeCarta("jueves");
+		Carta carta = buscarCarta("jueves");
+		carta.agregarItemCarta(gaseosa);
 		carta.agregarItemCarta(vinoT);
-		carta.agregarItemCarta(raviolesTuco);
+		carta.agregarItemCarta(polloPapas);
 
 		setCartaActiva(carta);
 

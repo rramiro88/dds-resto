@@ -46,7 +46,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 
 
 /* Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				FormModificarProducto inst = new FormModificarProducto();
@@ -54,8 +54,8 @@ public class FormModificarProducto extends javax.swing.JFrame {
 				inst.setVisible(true);
 			}
 		});
-	}
-*/
+	}*/
+	
 	public FormModificarProducto() {
 		super();
 		initGUI();
@@ -181,17 +181,18 @@ public class FormModificarProducto extends javax.swing.JFrame {
 					public void actionPerformed(ActionEvent evt) {
 						try{
 							txtNombre.setText(txtIdBuscar.getText());
-							Vector vmv = Restaurante.getRestaurante().getProductosView();
+							Vector<ProductoView> vmv = Restaurante.getRestaurante().getProductosView();
 							int i = 0;
 							txtCantidad.setText("");
 							txtPtoPedido.setText("");
 							txtPtoRefill.setText("");
 							do{
-								ProductoView mv = ((ProductoView)vmv.elementAt(i));
+								ProductoView mv = (vmv.elementAt(i));
 								if (mv.getNombre().equals(txtIdBuscar.getText())){
 									txtCantidad.setText(Float.toString(mv.getCantidad()));
 									txtPtoPedido.setText(Float.toString(mv.getPuntoped()));
 									txtPtoRefill.setText(Float.toString(mv.getPuntoreab()));
+									//cmbProveedores.setSelectedItem(mv.getProveedor());
 									break;
 								}else
 									++i;

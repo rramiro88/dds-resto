@@ -78,7 +78,7 @@ public class FormGenerarComanda extends javax.swing.JFrame {
 				cmbMesas.setBounds(194, 18, 81, 21);
 			}
 			{
-				Vector platosBebidas = getPlatosBebidas(Restaurante.getRestaurante().getItemsDeCartaView());
+				Vector platosBebidas = getPlatosBebidas(Restaurante.getRestaurante().getItemsDeCartaActivaView());
 				cmbItems = new JComboBox(platosBebidas);
 				getContentPane().add(cmbItems);
 				cmbItems.setBounds(194, 69, 174, 21);

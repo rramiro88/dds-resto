@@ -88,8 +88,8 @@ public class Restaurante {
 		ItemDeCarta vinoT = buscarItemDeCarta ("vino tinto");
 		vinoT.agregarIngrediente(buscarProducto("vino tinto"), 1);
 		//	Cartas
-		altaDeCarta("martes");
-		Carta carta = buscarCarta("martes");
+		altaDeCarta("miércoles");
+		Carta carta = buscarCarta("miércoles");
 		//ltaDeCarta("lunes");
 		//Carta carta = buscarCarta("lunes");
 		carta.agregarItemCarta(vinoT);
@@ -318,7 +318,7 @@ public class Restaurante {
 	
 //	ABM - BUSCAR	Cartas
 //	-----------------------------------------------------
-	private Carta buscarCarta (String dia){
+	public Carta buscarCarta (String dia){
  		for (int i=0; i<cartas.size(); i++){
 			Carta car = cartas.elementAt(i);
 			if (car.getDia().equals(dia)){
@@ -915,13 +915,32 @@ public class Restaurante {
 	}
 	
 	// ITEMS DE CARTA ACTIVA
-	public Vector<ItemDeCartaView> getItemsDeCartaView(){
+	public Vector<ItemDeCartaView> getItemsDeCartaActivaView(){
 		Vector<ItemDeCartaView> icv = new Vector<ItemDeCartaView>();
 		for (int i=0; i<cartaActiva.getItemsCarta().size(); i++){
 			icv.add(cartaActiva.getItemsCarta().elementAt(i).getItemDeCartaView());
 		}	
 		return icv;
 	}
+
+	// ITEMS DE OTRAS CARTA
+	public Vector<ItemDeCartaView> getItemsDeCartaView(String carta){
+		Vector<ItemDeCartaView> icv = new Vector<ItemDeCartaView>();
+		Carta car = buscarCarta (carta);
+		for (int i=0; i<car.getItemsCarta().size(); i++){
+			icv.add((buscarCarta(carta)).getItemsCarta().elementAt(i).getItemDeCartaView());
+		}	
+		return icv;
+	}
+	
+	public Vector getItemsDeCartaViewVector(){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < productos.size(); i++){
+			mv.add(productos.elementAt(i).getProductoView().toVector());
+		}	
+		return mv;
+	}
+
 	
 	//	PRODUCTOS
 	public Vector<ProductoView> getProductosView(){

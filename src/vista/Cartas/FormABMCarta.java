@@ -11,10 +11,14 @@ public class FormABMCarta extends javax.swing.JFrame {
 	private JButton btnModificar;
 	private JButton btnAlta;
 	private JButton btnEliminar;
-
+	private JButton btnCargar;
+	private JButton btnDescargar;
+	
 	private AbstractAction getAltaCartaAccion;
 	private AbstractAction getModificarCartaAccion;
 	private AbstractAction getEliminarCartaAccion;
+	private AbstractAction getCargarCartaAccion;
+	private AbstractAction getDescargarCartaAccion;
 	
 /**
 //	Auto-generated main method to display this JFrame
@@ -44,14 +48,14 @@ public class FormABMCarta extends javax.swing.JFrame {
 				getContentPane().add(btnAlta);
 				btnAlta.setText("CREAR CARTA");
 				btnAlta.setAction(getAltaCartaAccion());
-				btnAlta.setBounds(37, 12, 160, 35);
+				btnAlta.setBounds(40, 10, 160, 35);
 
 			}
 			{
 				btnModificar = new JButton();
 				getContentPane().add(btnModificar);
 				btnModificar.setText("MODIFICAR CARTA");
-				btnModificar.setBounds(37, 57, 160, 35);
+				btnModificar.setBounds(40, 50, 160, 35);
 				btnModificar.setAction(getModificarCartaAccion());
 			}
 			{
@@ -59,11 +63,25 @@ public class FormABMCarta extends javax.swing.JFrame {
 				getContentPane().add(btnEliminar);
 				btnEliminar.setText("ELIMINAR CARTA");
 				btnEliminar.setAction(getEliminarCartaAccion());
-				btnEliminar.setBounds(37, 102, 160, 35);
+				btnEliminar.setBounds(40, 90, 160, 35);
 
 			}
+			{
+				btnCargar = new JButton();
+				getContentPane().add(btnCargar);
+				btnCargar.setText("CARGAR CARTA");
+				btnCargar.setAction(getCargarCartaAccion());
+				btnCargar.setBounds(40, 160, 160, 35);
+			}
+			{
+				btnDescargar = new JButton();
+				getContentPane().add(btnDescargar);
+				btnDescargar.setText("DESCARGAR CARTA");
+				btnDescargar.setAction(getDescargarCartaAccion());
+				btnDescargar.setBounds(40, 200, 160, 35);
+			}
 			pack();
-			setSize(250, 200);
+			setSize(250, 280);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,5 +136,33 @@ public class FormABMCarta extends javax.swing.JFrame {
 		return getEliminarCartaAccion;
 	}
 			
+	private AbstractAction getCargarCartaAccion() {
+		getCargarCartaAccion = new AbstractAction("CARGAR CARTA", null) {
+			public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							
+						}
+					});
+				}
+		};
+		return getCargarCartaAccion;
+	}
+
+	private AbstractAction getDescargarCartaAccion() {
+		getDescargarCartaAccion = new AbstractAction("DESCARGAR CARTA", null) {
+			public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							FormDescargarCarta inst = new FormDescargarCarta();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+						}
+					});
+				}
+		};
+		return getDescargarCartaAccion;
+	}
+	
 	
 }

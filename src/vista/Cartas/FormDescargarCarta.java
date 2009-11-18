@@ -18,21 +18,8 @@ import controlador.*;
 
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormDescargarCarta extends javax.swing.JFrame {
 	private JButton btnEliminar;
-	private JButton btnElegir;
 	private JComboBox cmbItemCarta;
 	private JComboBox cmbCarta;
 
@@ -40,10 +27,9 @@ public class FormDescargarCarta extends javax.swing.JFrame {
 	private JLabel lblCartaEliminar;
 
 	private AbstractAction aceptarAccion;
-	private AbstractAction getElegirAccion;
 
 	
-	//	Auto-generated main method to display this JFrame
+/*	//	Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -53,8 +39,7 @@ public class FormDescargarCarta extends javax.swing.JFrame {
 			}
 		});
 	}
-
-
+*/
 	
 	public FormDescargarCarta() {
 		super();
@@ -63,7 +48,7 @@ public class FormDescargarCarta extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
-		getContentPane().setLayout(null);
+	getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Eliminar Plato / Bebida de Carta");
 			{
@@ -72,13 +57,6 @@ public class FormDescargarCarta extends javax.swing.JFrame {
 				btnEliminar.setText("ELIMINAR");
 				btnEliminar.setBounds(115, 120, 120, 35);
 				btnEliminar.setAction(getAceptarAccion());
-			}
-			{
-				btnElegir = new JButton();
-				getContentPane().add(btnElegir);
-				btnElegir.setText("ok");
-				btnElegir.setBounds(275, 20, 50, 30);
-				btnElegir.setAction(getElegirAccion());
 			}
 			{
 				lblCartaEliminar = new JLabel();
@@ -93,9 +71,9 @@ public class FormDescargarCarta extends javax.swing.JFrame {
 				lblItemEliminar.setBounds(5, 60, 151, 30);
 			}
 			{
-				cmbCarta = new JComboBox(new String[] { "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"});
+				cmbCarta = new JComboBox(new String[] { " ", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"});
 				getContentPane().add(cmbCarta);
-				cmbCarta.setBounds(175, 20, 90, 30);
+				cmbCarta.setBounds(175, 20, 150, 30);
 			}
 			{
 				cmbItemCarta = new JComboBox();
@@ -118,21 +96,9 @@ public class FormDescargarCarta extends javax.swing.JFrame {
 					JOptionPane.showMessageDialog(null, "El dia no posee carta asignada", "ATENCION", JOptionPane.WARNING_MESSAGE);
 				}
 			}
-	});
+		});
 	}
 
-	
-	private AbstractAction getElegirAccion() {
-		if(getElegirAccion == null) {
-			getElegirAccion = new AbstractAction("ok", null) {
-				public void actionPerformed(ActionEvent evt) {
-				}
-			};
-		}
-		return getElegirAccion;
-	}
-	
-	
 	private AbstractAction getAceptarAccion() {
 		if(aceptarAccion == null) {
 			aceptarAccion = new AbstractAction("ELIMINAR", null) {

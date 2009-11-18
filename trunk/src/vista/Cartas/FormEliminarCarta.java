@@ -14,6 +14,19 @@ import controlador.*;
 
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormEliminarCarta extends javax.swing.JFrame {
 	private JButton btnEliminar;
 	private AbstractAction aceptarAccion;
@@ -35,18 +48,18 @@ public class FormEliminarCarta extends javax.swing.JFrame {
 				btnEliminar = new JButton();
 				getContentPane().add(btnEliminar);
 				btnEliminar.setText("ELIMINAR");
-				btnEliminar.setBounds(86, 108, 118, 34);
+				btnEliminar.setBounds(95, 105, 120, 35);
 				btnEliminar.setAction(getAceptarAccion());
 			}
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
 				getContentPane().add(getJDias());
-				jLabel1.setText("Dia de Carta a eliminar: ");
-				jLabel1.setBounds(12, 31, 119, 34);
+				jLabel1.setText("Dia de Carta a Eliminar: ");
+				jLabel1.setBounds(15, 30, 150, 35);
 			}
 			pack();
-			setSize(300, 180);
+			setSize(340, 180);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -56,10 +69,10 @@ public class FormEliminarCarta extends javax.swing.JFrame {
 		if(jDias == null) {
 			ComboBoxModel jDiasModel = 
 				new DefaultComboBoxModel(
-						new String[] { "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"});
+						new String[] { "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"});
 			jDias = new JComboBox();
 			jDias.setModel(jDiasModel);
-			jDias.setBounds(149, 31, 131, 34);
+			jDias.setBounds(175, 30, 140, 35);
 		}
 		return jDias;
 	}

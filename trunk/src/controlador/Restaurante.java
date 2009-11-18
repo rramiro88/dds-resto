@@ -14,7 +14,7 @@ public class Restaurante {
 	//	La fecha y el dia se cargan como String al inciciar el Sistema.
 	//	Se leen desde la hora y fecha configurada en el sistema operativo.
 	private String fecha;	//	Formato dd/mm/aaaa
-	private String dia;		//	lunes - martes - miercoles - jueves - viernes - sabado - domingo
+	private String dia;		//	lunes - martes - miércoles - jueves - viernes - sábado - domingo
 	
 	private Carta cartaActiva;
 
@@ -338,7 +338,7 @@ public class Restaurante {
 			if (dia.equalsIgnoreCase("martes"))
 				return true;
 			else
-				if (dia.equalsIgnoreCase("miercoles"))
+				if (dia.equalsIgnoreCase("miércoles"))
 					return true;
 				else
 					if (dia.equalsIgnoreCase("jueves"))
@@ -347,7 +347,7 @@ public class Restaurante {
 						if (dia.equalsIgnoreCase("viernes"))
 							return true;
 						else
-							if (dia.equalsIgnoreCase("sabado"))
+							if (dia.equalsIgnoreCase("sábado"))
 								return true;
 							else
 								if (dia.equalsIgnoreCase("domingo"))

@@ -88,12 +88,16 @@ public class Restaurante {
 		ItemDeCarta vinoT = buscarItemDeCarta ("vino tinto");
 		vinoT.agregarIngrediente(buscarProducto("vino tinto"), 1);
 		//	Cartas
+		altaDeCarta("lunes");
+		Carta carTemp = buscarCarta("lunes");
+		carTemp.agregarItemCarta(gaseosa);
+		carTemp.agregarItemCarta(polloPapas);
+
 		altaDeCarta("miércoles");
 		Carta carta = buscarCarta("miércoles");
-		//ltaDeCarta("lunes");
-		//Carta carta = buscarCarta("lunes");
 		carta.agregarItemCarta(vinoT);
 		carta.agregarItemCarta(raviolesTuco);
+
 		setCartaActiva(carta);
 
 		

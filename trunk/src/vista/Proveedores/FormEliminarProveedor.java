@@ -84,7 +84,7 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					String cuit = cmbProveedores.getSelectedItem().toString().substring(1,12);
+					String cuit = cmbProveedores.getSelectedItem().toString().substring(0,11);
 					Restaurante.getRestaurante().bajaDeProveedor(cuit);
 					cmbProveedores.removeItemAt(cmbProveedores.getSelectedIndex());
 					JOptionPane.showMessageDialog(null, "Proveedor eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);

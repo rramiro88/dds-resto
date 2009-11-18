@@ -60,7 +60,7 @@ public class FormModificarCarta extends javax.swing.JFrame {
 		if(cmbDiaViejo == null) {
 			ComboBoxModel jDiasModel = 
 				new DefaultComboBoxModel(
-						new String[] { "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"});
+						new String[] { "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"});
 			cmbDiaViejo = new JComboBox();
 			cmbDiaViejo.setModel(jDiasModel);
 			cmbDiaViejo.setBounds(149, 12, 131, 34);
@@ -87,7 +87,7 @@ public class FormModificarCarta extends javax.swing.JFrame {
 		if(cmbDiaNuevo == null) {
 			ComboBoxModel jComboBox1Model = 
 				new DefaultComboBoxModel(
-						new String[] { "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"});
+						new String[] { "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"});
 			cmbDiaNuevo = new JComboBox();
 			cmbDiaNuevo.setModel(jComboBox1Model);
 			cmbDiaNuevo.setBounds(149, 58, 131, 34);

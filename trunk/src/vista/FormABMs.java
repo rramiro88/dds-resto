@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 
 import vista.Cartas.FormABMCarta;
 import vista.Mozos.FormABMMozo;
+import vista.Mesas.FormABMMesa;
 import vista.Productos.FormABMProducto;
 import vista.Proveedores.FormABMProveedor;
 import vista.ItemsDeCarta.FormABMItemDeCarta;
@@ -89,7 +90,8 @@ public class FormABMs extends javax.swing.JFrame {
 			{
 				btnItemCart = new JButton();
 				getContentPane().add(btnItemCart);
-				btnItemCart.setText("ITEMS CARTA");
+				btnItemCart.setText("PLATOS / BEBIDAS");
+				btnItemCart.setFont(new java.awt.Font("Tahoma",1,8));
 				btnItemCart.setAction(getABMItemCartaAccion());
 				btnItemCart.setBounds(160, 160, 125, 32);
 			}
@@ -156,6 +158,9 @@ public class FormABMs extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
+						FormABMMesa inst = new FormABMMesa();
+						inst.setLocationRelativeTo(null);
+						inst.setVisible(true);
 
 					}
 				});
@@ -181,7 +186,7 @@ public class FormABMs extends javax.swing.JFrame {
 
 //	FALTA CARGARLE EL MAIN DE ITEM DE CARTA ABM
 	private AbstractAction getABMItemCartaAccion() {
-		getABMItemCartaAccion = new AbstractAction("ITEMS CARTA", null) {
+		getABMItemCartaAccion = new AbstractAction("PLATOS / BEBIDAS", null) {
 			public void actionPerformed(ActionEvent evt){
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
@@ -195,17 +200,6 @@ public class FormABMs extends javax.swing.JFrame {
 		return getABMItemCartaAccion;
 	}
 
-	
-	private AbstractAction getCancelarAccion() {
-		if(cancelarAccion == null) {
-			cancelarAccion = new AbstractAction("CANCELAR", null) {
-				public void actionPerformed(ActionEvent evt) {
-					System.exit(0);
-				}
-			};
-		}
-		return cancelarAccion;
-	}
 
 
 }

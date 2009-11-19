@@ -6,15 +6,21 @@ import javax.swing.JButton;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+import vista.Cartas.FormDescargarCarta;
+
 
 public class FormABMItemDeCarta extends javax.swing.JFrame {
 	private JButton btnAltaItem;
 	private JButton btnModificarItem;
 	private JButton btnEliminarItem;
+	private JButton btnCargar;
+	private JButton btnDescargar;
 
 	private AbstractAction getAltaItemDeCartaAccion;
 	private AbstractAction getModificarItemDeCartaAccion;
 	private AbstractAction getEliminarItemDeCartaAccion;
+	private AbstractAction getCargarItemAccion;
+	private AbstractAction getDescargarItemAccion;
 	
 
 	public FormABMItemDeCarta() {
@@ -30,35 +36,49 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 			{
 				btnAltaItem = new JButton();
 				getContentPane().add(btnAltaItem);
-				btnAltaItem.setText("ALTA de ITEM");
+				btnAltaItem.setText("Alta de Plato/Bebida");
 				btnAltaItem.setAction(getAltaItemDeCartaAccion());
-				btnAltaItem.setBounds(30, 12, 160, 35);
+				btnAltaItem.setBounds(35, 10, 170, 35);
 
 			}
 			{
 				btnModificarItem = new JButton();
 				getContentPane().add(btnModificarItem);
-				btnModificarItem.setText("MODIFICAR BEBIDA/PLATO");
+				btnModificarItem.setText("Modificar Plato/Bebida");
 				btnModificarItem.setAction(getModificarItemDeCartaAccion());
-				btnModificarItem.setBounds(30, 57, 160, 35);
+				btnModificarItem.setBounds(35, 50, 170, 35);
 			}
 			{
 				btnEliminarItem = new JButton();
 				getContentPane().add(btnEliminarItem);
-				btnEliminarItem.setText("ELIMINAR BEBIDA/PLATO");
+				btnEliminarItem.setText("Eliminar Plato/Bebida");
 				btnEliminarItem.setAction(getEliminarItemDeCartaAccion());
-				btnEliminarItem.setBounds(30, 102, 160, 35);
+				btnEliminarItem.setBounds(35, 90, 170, 35);
+			}
+			{
+				btnCargar = new JButton();
+				getContentPane().add(btnCargar);
+				btnCargar.setText("Agregar Ingrediente");
+				btnCargar.setAction(getCargarItemAccion());
+				btnCargar.setBounds(35, 160, 170, 35);
+			}
+			{
+				btnDescargar = new JButton();
+				getContentPane().add(btnDescargar);
+				btnDescargar.setText("Borrar Ingrediente");
+				btnDescargar.setAction(getDescargarItemAccion());
+				btnDescargar.setBounds(35, 200, 170, 35);
 			}
 			pack();
-			setSize(250, 200);
+			setSize(250, 280);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private AbstractAction getAltaItemDeCartaAccion() {
 		if(getAltaItemDeCartaAccion == null) {
-			getAltaItemDeCartaAccion = new AbstractAction("ALTA ITEM", null) {
+			getAltaItemDeCartaAccion = new AbstractAction("Alta de Plato/Bebida", null) {
 				public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
@@ -76,7 +96,7 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 
 	private AbstractAction getModificarItemDeCartaAccion() {
 		if(getModificarItemDeCartaAccion== null) {
-			getModificarItemDeCartaAccion= new AbstractAction("MODIFICAR ITEM", null) {
+			getModificarItemDeCartaAccion= new AbstractAction("Modificar Plato/Bebida", null) {
 				public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
@@ -90,7 +110,7 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 	}
 
 	private AbstractAction getEliminarItemDeCartaAccion() {
-		getEliminarItemDeCartaAccion = new AbstractAction("ELIMINAR ITEM", null) {
+		getEliminarItemDeCartaAccion = new AbstractAction("Eliminar Plato/Bebida", null) {
 			public void actionPerformed(ActionEvent evt){
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
@@ -103,6 +123,37 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 		};
 		return getEliminarItemDeCartaAccion;
 	}
-			
+
+	
+	private AbstractAction getCargarItemAccion() {
+		getCargarItemAccion = new AbstractAction("Agregar Ingrediente", null) {
+			public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+/*							FormCargarItem inst = new FormCargarItem();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+*/						}
+					});
+				}
+		};
+		return getCargarItemAccion;
+	}
+
+	private AbstractAction getDescargarItemAccion() {
+		getDescargarItemAccion = new AbstractAction("Borrar Ingrediente", null) {
+			public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+/*							FormDescargarItem inst = new FormDescargarItem();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+*/						}
+					});
+				}
+		};
+		return getDescargarItemAccion;
+	}
+
 	
 }

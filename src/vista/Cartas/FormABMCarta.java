@@ -69,14 +69,14 @@ public class FormABMCarta extends javax.swing.JFrame {
 			{
 				btnCargar = new JButton();
 				getContentPane().add(btnCargar);
-				btnCargar.setText("CARGAR CARTA");
+				btnCargar.setText("Agregar Plato/Bebida");
 				btnCargar.setAction(getCargarCartaAccion());
 				btnCargar.setBounds(40, 160, 160, 35);
 			}
 			{
 				btnDescargar = new JButton();
 				getContentPane().add(btnDescargar);
-				btnDescargar.setText("DESCARGAR CARTA");
+				btnDescargar.setText("Borrar Plato/Bebida");
 				btnDescargar.setAction(getDescargarCartaAccion());
 				btnDescargar.setBounds(40, 200, 160, 35);
 			}
@@ -135,9 +135,9 @@ public class FormABMCarta extends javax.swing.JFrame {
 		};
 		return getEliminarCartaAccion;
 	}
-			
+
 	private AbstractAction getCargarCartaAccion() {
-		getCargarCartaAccion = new AbstractAction("CARGAR CARTA", null) {
+		getCargarCartaAccion = new AbstractAction("Agregar Plato/Bebida", null) {
 			public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
@@ -150,7 +150,7 @@ public class FormABMCarta extends javax.swing.JFrame {
 	}
 
 	private AbstractAction getDescargarCartaAccion() {
-		getDescargarCartaAccion = new AbstractAction("DESCARGAR CARTA", null) {
+		getDescargarCartaAccion = new AbstractAction("Borrar Plato/Bebida", null) {
 			public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {

@@ -87,24 +87,21 @@ public class Restaurante {
 		altaDeBebida("vino tinto", 16);
 		ItemDeCarta vinoT = buscarItemDeCarta ("vino tinto");
 		vinoT.agregarIngrediente(buscarProducto("vino tinto"), 1);
-		//	Cartas
-		altaDeCarta("viernes");
-		Carta carta1 = buscarCarta("viernes");
-		carta1.agregarItemCarta(gaseosa);
-		carta1.agregarItemCarta(polloPapas);
 
+		//	Cartas
 		altaDeCarta("miércoles");
 		Carta carta2 = buscarCarta("miércoles");
 		carta2.agregarItemCarta(vinoT);
 		carta2.agregarItemCarta(raviolesTuco);
-		
 		altaDeCarta("jueves");
 		Carta carta = buscarCarta("jueves");
 		carta.agregarItemCarta(gaseosa);
 		carta.agregarItemCarta(vinoT);
 		carta.agregarItemCarta(polloPapas);
-
-		setCartaActiva(carta);
+		altaDeCarta("viernes");
+		Carta carta1 = buscarCarta("viernes");
+		carta1.agregarItemCarta(gaseosa);
+		carta1.agregarItemCarta(polloPapas);
 
 		
 	}
@@ -218,12 +215,6 @@ public class Restaurante {
 //	Metodos de jornada (apertura y cierre)
 //	-------------------------------------------------------------		
 	public boolean abrirJornada(){
-/*		Esto lo comenté porque el isOpen se valido previamente en el FormMAIN (linea 87)
-		if (isOpen()){
-			System.out.println("El restaurant ya se encuentra abierto");
-			return true;
-		}else{
-*/
 		//	Revisa que exista una carta creada para asignar al presente dia
 		if (buscarCarta(dia)==null){
 				System.out.println("No hay carta activa. Crearla!!!");				
@@ -278,18 +269,7 @@ public class Restaurante {
 		System.out.println("Item de Carta NO existe");
  		return null;
 	}
-	/*	Metodo buscar items de carta segun un nro de identificacion	- NO LO USAMOS	
- 	private ItemDeCarta buscarItemDeCarta (int nro){
- 		for (int i=0; i<itemsCarta.size(); i++){
-			ItemDeCarta idecarta = itemsCarta.elementAt(i);
-			if (idecarta.getNroItem() == nro){
-				System.out.println("item existente");
-				return idecarta;
-			}
-		}
-		System.out.println("item NO existe");
- 		return null;
-	}	*/	
+
 	public void altaDePlato (String nombre, float precio){
 		ItemDeCarta itemc = buscarItemDeCarta(nombre);
 		if (itemc == null){
@@ -325,6 +305,28 @@ public class Restaurante {
 		}
 	}
 
+	//	Carga un producto en un plato/bebida
+	public boolean cargarIngrediente (String nombreItem, String nombreProducto, float cantidad){
+		//	Revisa que existan el plato/bebida y el producto
+		ItemDeCarta itemc = buscarItemDeCarta(nombreItem);
+		Producto prod = buscarProducto (nombreProducto);
+		if (prod != null && itemc != null){
+			return (itemc.agregarIngrediente(prod, cantidad));
+		}
+		return false;
+	}
+
+	//	Elimina un producto existente de un plato/bebida
+	public boolean descargarIngrediente (String nombreItem, String nombreProducto){
+		//	Revisa que existan el plato/bebida y el producto
+		ItemDeCarta itemc = buscarItemDeCarta(nombreItem);
+		Producto prod = buscarProducto (nombreProducto);
+		if (prod != null && itemc != null){
+			return (itemc.eliminarIngrediente(prod));
+		}
+		return false;
+	}
+	
 	
 //	ABM - BUSCAR	Cartas
 //	-----------------------------------------------------

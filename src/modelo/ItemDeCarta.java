@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.Vector;
+
 import controlador.ItemDeCartaView;
 
 
@@ -74,42 +75,39 @@ public abstract class ItemDeCarta {
 	}
 
 	//	El producto del ingrediente se valida en Restaurante.
-	public void agregarIngrediente(Producto prod, float cant){
+	public boolean agregarIngrediente(Producto prod, float cant){
 		Ingrediente com = buscarIngrediente (prod);
 		if (com == null){
 			com = new Ingrediente (prod, cant);
 			ingredientes.add(com);
 			System.out.println("Ingrediente agregado con exito.");
+			return true;
 		}
+		return false;
 	}
 	
-	public void eliminarIngrediente(Producto prod){
+	//	El producto del ingrediente se valida en Restaurante.
+	public boolean eliminarIngrediente(Producto prod){
 		Ingrediente com = buscarIngrediente (prod);
 		if (com != null){
 			ingredientes.remove(com);
-			System.out.println("Ingrediente eliminado con exito.");
+			System.out.println("Ingrediente eliminado del plato/bebida con exito.");
+			return true;
 		}
+		return false;
 	}
 
-	public void modificarIngrediente(Producto prod, float cant){
+	public boolean modificarIngrediente(Producto prod, float cant){
 		Ingrediente com = buscarIngrediente (prod);
 		if (com != null){
 			com.setProducto(prod);
 			com.setCantidad(cant);
 			System.out.println("Ingrediente modificado exitosamente.");
+			return true;
 		}
+		return false;
 	}
 
-/*	public void listarIngredientes (){
-		Vector <Ingrediente> ingreList = this.getIngredientes();
-		for (int i=0; i<ingreList.size(); i++){
- 			Ingrediente ingred = ingreList.elementAt(i);
- 			System.out.println("Producto: "+ ingred.getProducto());
- 			System.out.println("Cantidad: "+ ingred.getCantidad());
- 			System.out.println(" ");
-		}
-	}
-*/
 	
 //	Metodos para preparar items de carta (platos - bebidas)
 //	-------------------------------------------------------------	

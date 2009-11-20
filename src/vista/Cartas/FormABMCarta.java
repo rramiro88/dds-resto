@@ -141,7 +141,10 @@ public class FormABMCarta extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							
+							FormCargarCarta inst = new FormCargarCarta();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+
 						}
 					});
 				}

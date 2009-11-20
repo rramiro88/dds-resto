@@ -423,28 +423,25 @@ public class Restaurante {
 	}
 
 	//	Carga un plato o bebida en la carta
-	public void cargarCarta (String nombreCarta, String nombreItem){
+	public boolean cargarCarta (String nombreCarta, String nombreItem){
+		//	Revisa que existan la carta y el plato/bebida
 		Carta letter = buscarCarta(nombreCarta);
-		if (letter != null){
-			ItemDeCarta itemc = buscarItemDeCarta(nombreItem);
-			if (itemc != null){
-				letter.agregarItemCarta(itemc);
-				System.out.println("Carga de item en carta exitosa.");
-			}
+		ItemDeCarta itemc = buscarItemDeCarta(nombreItem);
+		if (letter != null && itemc != null){
+			return (letter.agregarItemCarta(itemc));
 		}
-		
+		return false;
 	}
 
 	//	Elimina un plato o bebida existentes de una carta
-	public void descargarCarta (String nombreCarta, String nombreItem){
+	public boolean descargarCarta (String nombreCarta, String nombreItem){
+		//	Revisa que existan la carta y el plato/bebida
 		Carta letter = buscarCarta(nombreCarta);
-		if (letter != null){
-			ItemDeCarta itemc = buscarItemDeCarta(nombreItem);
-			if (itemc == null){
-				letter.eliminarItemCarta(itemc);
-				System.out.println("Item eliminado de la carta con exito.");
-			}
+		ItemDeCarta itemc = buscarItemDeCarta(nombreItem);
+		if (letter != null && itemc != null){
+			return (letter.eliminarItemCarta(itemc));
 		}
+		return false;
 	}
 
 	

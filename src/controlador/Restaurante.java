@@ -932,22 +932,13 @@ public class Restaurante {
 		return icv;
 	}
 
-	// ITEMS DE OTRAS CARTA
-	public Vector<ItemDeCartaView> getItemsDeCartaView(String carta){
+	// PLATOS / BEBIDAS
+	public Vector<ItemDeCartaView> getItemsDeCartaView(){
 		Vector<ItemDeCartaView> icv = new Vector<ItemDeCartaView>();
-		Carta car = buscarCarta (carta);
-		for (int i=0; i<car.getItemsCarta().size(); i++){
-			icv.add((buscarCarta(carta)).getItemsCarta().elementAt(i).getItemDeCartaView());
+		for (int i=0; i<itemsCarta.size(); i++){
+			icv.add(itemsCarta.elementAt(i).getItemDeCartaView());
 		}	
 		return icv;
-	}
-	
-	public Vector getItemsDeCartaViewVector(){ 
-		Vector mv = new Vector();
-		for (int i= 0; i < productos.size(); i++){
-			mv.add(productos.elementAt(i).getProductoView().toVector());
-		}	
-		return mv;
 	}
 
 	

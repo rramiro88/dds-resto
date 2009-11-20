@@ -17,15 +17,28 @@ import controlador.*;
 
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormAgregarIngrediente extends javax.swing.JFrame {
-	private JButton btnBuscar;
 	private JButton btnAgregar;
 
 	private JTextField txtItem;
 	private JTextField txtCanti;
 
 	private JComboBox cmbProductos;
-
+	private JComboBox cmbItems;
+	
 	private JLabel lblCanti;
 	private JLabel lblItem;
 	private JLabel lblProd;
@@ -41,16 +54,9 @@ public class FormAgregarIngrediente extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
-		getContentPane().setLayout(null);
+	getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Agregar Ingrediente");
-			{
-				btnBuscar = new JButton();
-				getContentPane().add(btnBuscar);
-				btnBuscar.setText("BUSCAR");
-				btnBuscar.setBounds(260, 15, 65, 25);
-//				btnBuscar.setAction(buscarAccion());
-			}
 			{
 				btnAgregar = new JButton();
 				getContentPane().add(btnAgregar);
@@ -62,7 +68,7 @@ public class FormAgregarIngrediente extends javax.swing.JFrame {
 				lblItem = new JLabel();
 				getContentPane().add(lblItem);
 				lblItem.setText("Plato/Bebida:");
-				lblItem.setBounds(10, 15, 70, 25);
+				lblItem.setBounds(10, 20, 70, 25);
 			}
 			{
 				lblProd = new JLabel();
@@ -77,23 +83,24 @@ public class FormAgregarIngrediente extends javax.swing.JFrame {
 				lblCanti.setBounds(10, 100, 70, 25);
 			}
 			{
-				txtItem = new JTextField();
-				getContentPane().add(txtItem);
-				txtItem.setBounds(100, 15, 150, 25);
+				Vector it = getProductosViewVector(Restaurante.getRestaurante().getProductosView());
+				cmbProductos = new JComboBox(it);
+				getContentPane().add(cmbProductos);
+				cmbProductos.setBounds(100, 65, 180, 25);
+			}
+			{
+				Vector vp = getItemsViewVector(Restaurante.getRestaurante().getItemsDeCartaView());
+				cmbItems = new JComboBox(vp);
+				getContentPane().add(cmbItems);
+				cmbItems.setBounds(100, 20, 180, 25);
 			}
 			{
 				txtCanti = new JTextField();
 				getContentPane().add(txtCanti);
 				txtCanti.setBounds(100, 100, 40, 25);
 			}
-			{
-				Vector vp = getProductosViewVector(Restaurante.getRestaurante().getProductosView());
-				cmbProductos = new JComboBox(vp);
-				getContentPane().add(cmbProductos);
-				cmbProductos.setBounds(100, 65, 225, 25);
-			}
 			pack();
-			setSize(350, 200);
+			setSize(300, 200);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -104,11 +111,12 @@ public class FormAgregarIngrediente extends javax.swing.JFrame {
 		if(agregarAccion == null) {
 			agregarAccion = new AbstractAction("AGREGAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					String nombre = getNombreProducto(cmbProductos.getSelectedItem().toString());
-					if( Restaurante.getRestaurante().cargarIngrediente( (txtItem.getText()), nombre , Integer.parseInt(txtCanti.getText()) ) ){
+					String plabeb = getNombreItem(cmbProductos.getSelectedItem().toString());
+					String producto = getNombreProducto(cmbProductos.getSelectedItem().toString());
+					if( Restaurante.getRestaurante().cargarIngrediente( plabeb, producto , Integer.parseInt(txtCanti.getText()) ) ){
 						JOptionPane.showMessageDialog(null, "Ingrediente agregado con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);
 					}else{
-						JOptionPane.showMessageDialog(null, "NO existe el Plato/Bebida o ya posee el ingrediente", "Prohibido", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El Plato/Bebida ya posee el ingrediente", "Prohibido", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 			};
@@ -126,6 +134,28 @@ public class FormAgregarIngrediente extends javax.swing.JFrame {
 		return mv;
 	}
 	
+	public Vector getItemsViewVector(Vector<ItemDeCartaView> vpv){ 
+		Vector mv = new Vector();
+		for (int i= 0; i < vpv.size(); i++){
+			String aux = String.valueOf(vpv.elementAt(i).getNombre()) + "  "; 
+			mv.add(aux);
+		}
+		return mv;
+	}
+
+	
+	public String getNombreItem(String s){
+		int i = 0;
+		String sAux = new String("");
+		if (s.charAt(i) == '[')
+			i++;
+		while ((s.charAt(i) != ',') && (s.charAt(i) != ']' ) && (s.charAt(i) != '-' )){
+			sAux = sAux + s.charAt(i); 
+			i++;
+		}
+		return sAux;
+	}
+
 	public String getNombreProducto(String s){
 		int i = 0;
 		String sAux = new String("");

@@ -130,10 +130,10 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-/*							FormCargarItem inst = new FormCargarItem();
+							FormAgregarIngrediente inst = new FormAgregarIngrediente();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
-*/						}
+						}
 					});
 				}
 		};
@@ -145,7 +145,7 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-/*							FormDescargarItem inst = new FormDescargarItem();
+/*							FormEliminarIngrediente inst = new FormEliminarIngrediente();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
 */						}

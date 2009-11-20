@@ -19,6 +19,7 @@ public class FormCargarCarta extends javax.swing.JFrame {
 	private JComboBox cmbCarta;
 	private JTextField txtItem;
 	private JLabel lblCarta;
+	private JLabel lblItem;
 	private AbstractAction agregarAccion;
 
 	
@@ -46,10 +47,10 @@ public class FormCargarCarta extends javax.swing.JFrame {
 				lblCarta.setBounds(10, 15, 90, 35);
 			}
 			{
-				lblCarta = new JLabel();
-				getContentPane().add(lblCarta);
-				lblCarta.setText("Plato/Bebida:");
-				lblCarta.setBounds(10, 60, 90, 35);
+				lblItem = new JLabel();
+				getContentPane().add(lblItem);
+				lblItem.setText("Plato/Bebida:");
+				lblItem.setBounds(10, 60, 90, 35);
 			}
 			{
 				String[] n = { "", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"};

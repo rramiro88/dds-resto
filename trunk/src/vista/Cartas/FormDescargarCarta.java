@@ -1,9 +1,6 @@
 package vista.Cartas;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Vector;
-
 import javax.swing.AbstractAction;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -11,35 +8,19 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import controlador.*;
 
 
-
 public class FormDescargarCarta extends javax.swing.JFrame {
 	private JButton btnEliminar;
-	private JComboBox cmbItemCarta;
 	private JComboBox cmbCarta;
+	private JTextField txtItem;
+	private JLabel lblCarta;
+	private AbstractAction eliminarAccion;
 
-	private JLabel lblItemEliminar;
-	private JLabel lblCartaEliminar;
-
-	private AbstractAction aceptarAccion;
-
-	
-/*	//	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormDescargarCarta inst = new FormDescargarCarta();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormDescargarCarta() {
 		super();
@@ -48,78 +29,60 @@ public class FormDescargarCarta extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
-	getContentPane().setLayout(null);
+		getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			this.setTitle("Eliminar Plato / Bebida de Carta");
+			this.setTitle("Eliminar Plato/Bebida");
 			{
 				btnEliminar = new JButton();
 				getContentPane().add(btnEliminar);
 				btnEliminar.setText("ELIMINAR");
-				btnEliminar.setBounds(115, 120, 120, 35);
-				btnEliminar.setAction(getAceptarAccion());
+				btnEliminar.setBounds(86, 108, 118, 34);
+				btnEliminar.setAction(eliminarAccion());
 			}
 			{
-				lblCartaEliminar = new JLabel();
-				getContentPane().add(lblCartaEliminar);
-				lblCartaEliminar.setText("Dia de Carta: ");
-				lblCartaEliminar.setBounds(5, 20, 130, 30);
+				lblCarta = new JLabel();
+				getContentPane().add(lblCarta);
+				lblCarta.setText("Dia de Carta:");
+				lblCarta.setBounds(10, 15, 90, 35);
 			}
 			{
-				lblItemEliminar = new JLabel();
-				getContentPane().add(lblItemEliminar);
-				lblItemEliminar.setText("Plato / Bebida a Eliminar: ");
-				lblItemEliminar.setBounds(5, 60, 151, 30);
+				lblCarta = new JLabel();
+				getContentPane().add(lblCarta);
+				lblCarta.setText("Plato/Bebida:");
+				lblCarta.setBounds(10, 60, 90, 35);
 			}
 			{
-				cmbCarta = new JComboBox(new String[] { " ", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"});
+				String[] n = { "", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"};
+				cmbCarta = new JComboBox(n);
 				getContentPane().add(cmbCarta);
-				cmbCarta.setBounds(175, 20, 150, 30);
+				cmbCarta.setBounds(120, 15, 90, 35);
 			}
 			{
-				cmbItemCarta = new JComboBox();
-				getContentPane().add(cmbItemCarta);
-				cmbItemCarta.setBounds(175, 60, 150, 30);
+				txtItem = new JTextField();
+				getContentPane().add(txtItem);
+				txtItem.setBounds(120, 60, 150, 35);
 			}
 			pack();
-			setSize(350, 200);
+			setSize(300, 180);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-	cmbCarta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (Restaurante.getRestaurante().buscarCarta(cmbCarta.getSelectedItem().toString()) != null){
-					Vector platosBebidas = getPlatosBebidas(Restaurante.getRestaurante().getItemsDeCartaView(cmbCarta.getSelectedItem().toString()));
-					cmbItemCarta.removeAllItems();
-					cmbItemCarta = new JComboBox(platosBebidas);
-				}else{
-					JOptionPane.showMessageDialog(null, "El dia no posee carta asignada", "ATENCION", JOptionPane.WARNING_MESSAGE);
-				}
-			}
-		});
 	}
+	
 
-	private AbstractAction getAceptarAccion() {
-		if(aceptarAccion == null) {
-			aceptarAccion = new AbstractAction("ELIMINAR", null) {
+	private AbstractAction eliminarAccion() {
+		if(eliminarAccion == null) {
+			eliminarAccion = new AbstractAction("ELIMINAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-/*					if(Restaurante.getRestaurante().bajaDeCarta(jDias.getSelectedItem().toString())){
-						JOptionPane.showMessageDialog(null, "Carta eliminada con exito.", "ATENCION", JOptionPane.WARNING_MESSAGE);
+					if( Restaurante.getRestaurante().descargarCarta( (cmbCarta.getSelectedItem().toString()) , (txtItem.getText()) ) ){
+						JOptionPane.showMessageDialog(null, "Plato/Bebida eliminado de la carta", "MENSAJE", JOptionPane.WARNING_MESSAGE);
 					}else{
-						JOptionPane.showMessageDialog(null, "El dia no posee carta asignada", "Prohibido", JOptionPane.WARNING_MESSAGE);
-					}*/
+						JOptionPane.showMessageDialog(null, "El dia NO posee carta asignada o NO existe el Plato/Bebida", "Prohibido", JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			};
 		}
-		return aceptarAccion;
-	}
-
-	public Vector getPlatosBebidas (Vector<ItemDeCartaView> v){
-		Vector items = new Vector();
-		for (int i= 0; i < v.size(); i++){
-			items.add(v.elementAt(i).getNombre());
-		}
-		return items;
+		return eliminarAccion;
 	}
 
 	

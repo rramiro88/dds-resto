@@ -55,7 +55,7 @@ public class FormCargarCarta extends javax.swing.JFrame {
 				String[] n = { "", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"};
 				cmbCarta = new JComboBox(n);
 				getContentPane().add(cmbCarta);
-				cmbCarta.setBounds(120, 15, 100, 35);
+				cmbCarta.setBounds(120, 15, 90, 35);
 			}
 			{
 				txtItem = new JTextField();
@@ -74,11 +74,10 @@ public class FormCargarCarta extends javax.swing.JFrame {
 		if(agregarAccion == null) {
 			agregarAccion = new AbstractAction("AGREGAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					if(Restaurante.getRestaurante().buscarCarta(cmbCarta.getSelectedItem().toString()) != null){
-						Restaurante.getRestaurante().cargarCarta(cmbCarta.getSelectedItem().toString(), txtItem.getText()); 
+					if( Restaurante.getRestaurante().cargarCarta( (cmbCarta.getSelectedItem().toString()) , (txtItem.getText()) ) ){
 						JOptionPane.showMessageDialog(null, "Plato/Bebida agregado con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);
 					}else{
-						JOptionPane.showMessageDialog(null, "El dia elegido NO posee carta asignada", "Prohibido", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El dia NO posee carta asignada o NO existe el Plato/Bebida", "Prohibido", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 			};

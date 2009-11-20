@@ -43,11 +43,11 @@ public class Carta {
 		return cv;
 	}
 	
-//	Metodos que operan con Items de Carta
+//	Metodos que operan con Platos/Bebidas de la Carta
 //	-------------------------------------------------------------	
 	public ItemDeCarta buscarItemDeCarta (String nombre){
- 		for (int i=0; i<itemsCarta.size(); i++){
-			ItemDeCarta idecarta = itemsCarta.elementAt(i);
+ 		for (int i=0; i<this.itemsCarta.size(); i++){
+			ItemDeCarta idecarta = this.itemsCarta.elementAt(i);
 			if (idecarta.getNombre().equals(nombre)){
 				System.out.println("Item existente en la carta");
 				return idecarta;
@@ -57,12 +57,23 @@ public class Carta {
  		return null;
 	}
 
-	public void agregarItemCarta (ItemDeCarta itdc){
-		this.itemsCarta.add(itdc);
+	public boolean agregarItemCarta (ItemDeCarta itdc){
+		if (buscarItemDeCarta (itdc.getNombre()) == null){
+			this.itemsCarta.add(itdc);
+			System.out.println("Carga de item en carta exitosa.");
+			return true;
+		}
+		return false;
 	}
 	
-	public void eliminarItemCarta (ItemDeCarta itdc){
-		this.itemsCarta.remove(itdc);
+	public boolean eliminarItemCarta (ItemDeCarta itdc){
+		if (buscarItemDeCarta (itdc.getNombre()) != null){
+			this.itemsCarta.remove(itdc);
+			System.out.println("Item eliminado de la carta con exito.");
+			return true;
+		}
+		return false;
 	}
 
+	
 }

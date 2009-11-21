@@ -212,9 +212,8 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			if(modificarAction == null) {
 				modificarAction = new AbstractAction("Modificar", null) {
 					public void actionPerformed(ActionEvent evt) {
-
 						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(0,11);
-						Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Float.parseFloat(txtCantidad.getText()), Float.parseFloat((txtPtoPedido.getText())), Float.parseFloat(txtPtoRefill.getText()), Restaurante.getRestaurante().buscarProveedor(sProveedor));
+						Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Float.parseFloat(txtCantidad.getText()), Float.parseFloat((txtPtoPedido.getText())), Float.parseFloat(txtPtoRefill.getText()), sProveedor);
 						JOptionPane.showMessageDialog(null, "Producto actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
 
 						/*String sProveedor = cmbProveedores.getSelectedItem().toString().substring(2,12);

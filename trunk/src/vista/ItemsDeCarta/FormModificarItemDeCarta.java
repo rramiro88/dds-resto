@@ -18,30 +18,39 @@ import javax.swing.border.TitledBorder;
 import controlador.*;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormModificarItemDeCarta extends javax.swing.JFrame {
 	private JLabel lblNombre;
 	private JLabel lblProveedores;
+	private JButton btnCerrar;
 	private JLabel jLabel1;
-	private JLabel lblPtoPedido;
-	private JLabel lblPrecio;
-	private JLabel lblPtoRefill;
-
-	private JTextField txtPtoPedido;
-	private JTextField txtPtoRefill;
-	private JTextField txtIdBuscar;
 	private JTextField txtNombre;
-	private JTextField txtCantidad;
+	private JLabel lblPrecio;
+
+	private JTextField txtIdBuscar;
+	private JTextField txtPrecio;
 
 	private JButton btnBuscar;
 	private JButton btnModificar;
 
 	private AbstractAction modificarAction;
 	private AbstractAction buscarAction;
-	private AbstractAction cancelarAction;
+	private AbstractAction cerrarAction;
 
 	private JPanel jPanel1;
 
-	private JComboBox cmbProductos;
 
 
 /** */	//	Auto-generated main method to display this JFrame
@@ -66,7 +75,7 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Actualizacion de Plato/Bebida");
 			getContentPane().setLayout(null);
-			this.setPreferredSize(new java.awt.Dimension(400, 300));
+			this.setPreferredSize(new java.awt.Dimension(400, 250));
 			{
 				lblNombre = new JLabel();
 				getContentPane().add(lblNombre);
@@ -89,7 +98,7 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			{
 				jPanel1 = new JPanel();
 				getContentPane().add(jPanel1);
-				jPanel1.setBounds(12, 44, 368, 178);
+				jPanel1.setBounds(12, 48, 368, 103);
 				jPanel1.setLayout(null);
 				jPanel1.setBorder(BorderFactory.createTitledBorder(null, "DATOS de PLATO/BEBIDA", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma",1,11), new java.awt.Color(0,0,255)));
 				{
@@ -99,53 +108,25 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 					lblPrecio.setBounds(17, 55, 149, 21);
 				}
 				{
-					txtCantidad = new JTextField();
-					jPanel1.add(txtCantidad);
-					txtCantidad.setBounds(178, 55, 86, 21);
-				}
-				{
-					lblPtoPedido = new JLabel();
-					jPanel1.add(lblPtoPedido);
-					lblPtoPedido.setText("PUNTO DE PEDIDO: ");
-					lblPtoPedido.setBounds(17, 82, 149, 21);
+					txtPrecio = new JTextField();
+					jPanel1.add(txtPrecio);
+					{
+						txtNombre = new JTextField();
+						jPanel1.add(txtNombre);
+						jPanel1.add(getJLabel1());
+						txtNombre.setBounds(178, 26, 173, 21);
+					}
+					txtPrecio.setBounds(178, 55, 86, 21);
 				}
 
-				{
-					txtPtoPedido = new JTextField();
-					jPanel1.add(txtPtoPedido);
-					jPanel1.add(getJLabel1());
-					jPanel1.add(getTxtId());
-				{
-					lblPtoRefill = new JLabel();
-					jPanel1.add(lblPtoRefill);
-					lblPtoRefill.setText("PUNTO REABASTECIMIENTO: ");
-					lblPtoRefill.setBounds(17, 109, 149, 21);
-				}
-				{
-					txtPtoRefill = new JTextField();
-					jPanel1.add(txtPtoRefill);
-					txtPtoRefill.setBounds(178, 109, 86, 21);
-				}
-				{
-					cmbProductos = new JComboBox(Restaurante.getRestaurante().getProductosViewVector());
-					jPanel1.add(cmbProductos);
-					cmbProductos.setBounds(91, 136, 266, 21);
-				}
-				{
-					lblProveedores = new JLabel();
-					jPanel1.add(lblProveedores);
-					lblProveedores.setText("PRODUCTOS: ");
-					lblProveedores.setBounds(17, 136, 68, 21);
-				}
-					txtPtoPedido.setBounds(178, 82, 86, 21);
-				}
 				}
 
 				{
 					btnModificar = new JButton();
 					getContentPane().add(btnModificar);
+					getContentPane().add(getBtnCerrar());
 					btnModificar.setText("Modificar");
-					btnModificar.setBounds(93, 234, 91, 21);
+					btnModificar.setBounds(92, 173, 91, 21);
 					btnModificar.setFont(new java.awt.Font("Tahoma",1,11));
 					btnModificar.setAction(getModificarAction());
 				}
@@ -155,15 +136,15 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			}
 		}
 		
-		private AbstractAction getCancelarAction() {
-			if(cancelarAction == null) {
-				cancelarAction = new AbstractAction("Cancelar", null) {
+		private AbstractAction getCerrarAction() {
+			if(cerrarAction == null) {
+				cerrarAction = new AbstractAction("Cerrar", null) {
 					public void actionPerformed(ActionEvent evt) {
-						System.exit(0);
+						dispose();
 					}
 				};
 			}
-			return cancelarAction;
+			return cerrarAction;
 		}
 		
 		private AbstractAction getBuscarAction() {
@@ -171,25 +152,24 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 				buscarAction = new AbstractAction("Buscar", null) {
 					public void actionPerformed(ActionEvent evt) {
 						try{
-							txtNombre.setText(txtIdBuscar.getText());
-							Vector vmv = Restaurante.getRestaurante().getProductosView();
+							Vector icv = Restaurante.getRestaurante().getItemsDeCartaView();
 							int i = 0;
-							txtCantidad.setText("");
-							txtPtoPedido.setText("");
-							txtPtoRefill.setText("");
+							txtNombre.setText("");
+							txtPrecio.setText("");
 							do{
-								ProductoView mv = ((ProductoView)vmv.elementAt(i));
-								if (mv.getNombre().equals(txtIdBuscar.getText())){
-									txtCantidad.setText(Float.toString(mv.getCantidad()));
-									txtPtoPedido.setText(Float.toString(mv.getPuntoped()));
-									txtPtoRefill.setText(Float.toString(mv.getPuntoreab()));
+								ItemDeCartaView iv = ((ItemDeCartaView)icv.elementAt(i));
+								if (iv.getNombre().equals(txtIdBuscar.getText())){
+									txtNombre.setText(txtIdBuscar.getText());
+									txtPrecio.setText(Float.toString(iv.getPrecio()));
 									break;
 								}else
 									++i;
-							}while (i<vmv.size());
+							}while (i<icv.size());
+							if (i==icv.size())
+								JOptionPane.showMessageDialog(null, "No se encontro el plato/bebida.", "Atencion", JOptionPane.WARNING_MESSAGE);
 						}
 						catch (Exception e){
-							JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del producto a buscar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del plato/bebida a buscar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
 							txtIdBuscar.setText("");
 						}
 					}
@@ -202,39 +182,43 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			if(modificarAction == null) {
 				modificarAction = new AbstractAction("Modificar", null) {
 					public void actionPerformed(ActionEvent evt) {
-						String sProveedor = cmbProductos.getSelectedItem().toString().substring(1,12);
-						Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Float.parseFloat(txtCantidad.getText()), Float.parseFloat((txtPtoPedido.getText())), Float.parseFloat(txtPtoRefill.getText()), Restaurante.getRestaurante().buscarProveedor(sProveedor));
-						JOptionPane.showMessageDialog(null, "Producto actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
-						txtIdBuscar.setText("");
-						txtNombre.setText("");
-						txtCantidad.setText("");
-						txtPtoPedido.setText("");
-						txtPtoRefill.setText("");
+						try{
+							Restaurante.getRestaurante().modificarItemDeCarta(txtNombre.getText(), Float.parseFloat(txtPrecio.getText()));
+							JOptionPane.showMessageDialog(null, "Plato/bebida actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
+							txtIdBuscar.setText("");
+							txtNombre.setText("");
+							txtPrecio.setText("");
+						}catch (Exception e){
+							JOptionPane.showMessageDialog(null, "No se pudo actualizar. Llame al admin del sistema.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+							txtIdBuscar.setText("");
+						}
 					}
 				};
 			}
 			return modificarAction;
 		}
 		
+		private JButton getBtnCerrar() {
+			if(btnCerrar == null) {
+				btnCerrar = new JButton();
+				btnCerrar.setText("Cerrar");
+				btnCerrar.setBounds(204, 173, 91, 21);
+				btnCerrar.setFont(new java.awt.Font("Tahoma",1,11));
+				btnCerrar.setAction(getCerrarAction());
+			}
+			return btnCerrar;
+		}
+		
 		private JLabel getJLabel1() {
 			if(jLabel1 == null) {
 				jLabel1 = new JLabel();
 				jLabel1.setText("NOMBRE: ");
-				jLabel1.setBounds(17, 28, 149, 21);
+				jLabel1.setBounds(17, 29, 143, 14);
 			}
 			return jLabel1;
 		}
 
-		private JTextField getTxtId() {
-			if(txtNombre == null) {
-				txtNombre = new JTextField();
-				txtNombre.setBounds(178, 28, 145, 21);
-//				txtNombre.setEditable(false);
-			}
-			return txtNombre;
-		}
-		
-		public Vector getIngredientesViewVector(Vector<IngredienteView> viv){ 
+		/*public Vector getIngredientesViewVector(Vector<IngredienteView> viv){ 
 			Vector mv = new Vector();
 			for (int i= 0; i < viv.size(); i++){
 				String aux = String.valueOf(viv.elementAt(i).getProducto().getNombre() + " - " + viv.elementAt(i).getProducto().getCantidad()); 
@@ -242,5 +226,6 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			}
 			return mv;
 		}
+*/
 
 	}

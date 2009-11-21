@@ -108,7 +108,7 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 				btnCerrarMesa.setAction(getCerrarMesaAction());
 			}
 			pack();
-			setSize(400, 300);
+			this.setSize(400, 200);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

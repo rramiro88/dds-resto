@@ -99,7 +99,12 @@ public class Restaurante {
 		carta.agregarItemCarta(vinoT);
 		carta.agregarItemCarta(polloPapas);
 		altaDeCarta("viernes");
-		Carta carta1 = buscarCarta("viernes");
+		Carta carta3 = buscarCarta("viernes");
+		carta3.agregarItemCarta(gaseosa);
+		carta3.agregarItemCarta(vinoT);
+		carta3.agregarItemCarta(polloPapas);
+		altaDeCarta("sábado");
+		Carta carta1 = buscarCarta("sábado");
 		carta1.agregarItemCarta(gaseosa);
 		carta1.agregarItemCarta(polloPapas);
 
@@ -240,12 +245,11 @@ public class Restaurante {
 			if (mesas.elementAt(i).getComanda() != null){
 				System.out.println("Hay mesa/s con comandas en curso. Se deben cerrar previamente.");
 				return false;
-			}else{
-				pagarMozos();
-				generarOrdenesDeCompra();
-				setOpen(false);
 			}
 		}
+		pagarMozos();
+		generarOrdenesDeCompra();
+		setOpen(false);
 		return true;
 	}
 
@@ -330,7 +334,7 @@ public class Restaurante {
 	
 //	ABM - BUSCAR	Cartas
 //	-----------------------------------------------------
-	public Carta buscarCarta (String dia){
+	private Carta buscarCarta (String dia){
  		for (int i=0; i<cartas.size(); i++){
 			Carta car = cartas.elementAt(i);
 			if (car.getDia().equals(dia)){
@@ -488,8 +492,9 @@ public class Restaurante {
 		}
 	}
 	
-	public void modificarProducto (String name, float canti, float puntop, float puntor, Proveedor prov){
+	public void modificarProducto (String name, float canti, float puntop, float puntor, String cuitProv){
 		Producto prod = buscarProducto(name);
+		Proveedor prov = buscarProveedor(cuitProv);
 		if (prod != null){
 			prod.setNombre(name);
 			prod.setCantidad(canti);
@@ -862,7 +867,7 @@ public class Restaurante {
 	
 //	ABM - BUSCAR	Proveedores
 //	-----------------------------------------------------
-	 public Proveedor buscarProveedor (String cuit){
+	 private Proveedor buscarProveedor (String cuit){
 	 	for (int i=0; i<proveedores.size(); i++){
 	 		Proveedor prov = proveedores.elementAt(i);
 			if (prov.getCuit().equals(cuit)){
@@ -951,13 +956,13 @@ public class Restaurante {
 		return mv;
 	}
 	// Falta mover
-	public Vector getProductosViewVector(){ 
+	/*public Vector getProductosViewVector(){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < productos.size(); i++){
 			mv.add(productos.elementAt(i).getProductoView().toVector());
 		}	
 		return mv;
-	}
+	}*/
 	
 	//	PROVEEDORES
 	public Vector<ProveedorView> getProveedoresView(){ 

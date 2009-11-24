@@ -5,8 +5,8 @@ import controlador.IngredienteView;
 public class Ingrediente {
 	private float cantidad;
 	private Producto producto;
-	//private boolean isFabricable;
 
+	
 //	Constructor de instancia ingrediente 
 	public Ingrediente (Producto product, float cant){
 		this.producto = product;
@@ -19,6 +19,7 @@ public class Ingrediente {
 		return iv;
 	}
 
+	
 //	Metodos sets y Gets para los atributos de Ingrediente	
 //	-------------------------------------------------------------	
 	public float getCantidad() {
@@ -34,13 +35,6 @@ public class Ingrediente {
 	public void setProducto(Producto product) {
 		this.producto = product;
 	}	
-
-	/*public boolean isFabricable() {
-		return isFabricable;
-	}
-	public void setFabricable(boolean isFabricable) {
-		this.isFabricable = isFabricable;
-	}*/
 	
 //	Metodos que operan con productos
 //	-------------------------------------------------------------	

@@ -28,19 +28,8 @@ public class FormABMs extends javax.swing.JFrame {
 	private AbstractAction getABMMesaAccion;
 	private AbstractAction getABMCartaAccion;
 	private AbstractAction getABMItemCartaAccion;
-	private AbstractAction cancelarAccion;
 	
-/** Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormABMs inst = new FormABMs();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
+
 	public FormABMs() {
 		super();
 		initGUI();
@@ -184,7 +173,6 @@ public class FormABMs extends javax.swing.JFrame {
 		return getABMCartaAccion;
 	}
 
-//	FALTA CARGARLE EL MAIN DE ITEM DE CARTA ABM
 	private AbstractAction getABMItemCartaAccion() {
 		getABMItemCartaAccion = new AbstractAction("PLATOS / BEBIDAS", null) {
 			public void actionPerformed(ActionEvent evt){
@@ -199,7 +187,6 @@ public class FormABMs extends javax.swing.JFrame {
 		};
 		return getABMItemCartaAccion;
 	}
-
 
 
 }

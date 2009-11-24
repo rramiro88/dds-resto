@@ -2,8 +2,6 @@ package vista.Cartas;
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -14,7 +12,7 @@ import javax.swing.WindowConstants;
 import controlador.*;
 
 
-public class FormCargarCarta extends javax.swing.JFrame {
+public class FormAgregarPlatoBebida extends javax.swing.JFrame {
 	private JButton btnAgregar;
 	private JComboBox cmbCarta;
 	private JTextField txtItem;
@@ -23,7 +21,7 @@ public class FormCargarCarta extends javax.swing.JFrame {
 	private AbstractAction agregarAccion;
 
 	
-	public FormCargarCarta() {
+	public FormAgregarPlatoBebida() {
 		super();
 		initGUI();
 	}

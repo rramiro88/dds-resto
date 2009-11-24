@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
 import controlador.*;
@@ -45,17 +44,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 	private JComboBox cmbProveedores;
 
 
-/* Auto-generated main method to display this JFrame
-	/*public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormModificarProducto inst = new FormModificarProducto();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}*/
-	
+
 	public FormModificarProducto() {
 		super();
 		initGUI();
@@ -163,7 +152,26 @@ public class FormModificarProducto extends javax.swing.JFrame {
 				e.printStackTrace();
 			}
 		}
-		
+
+	private JLabel getJLabel1() {
+		if(jLabel1 == null) {
+			jLabel1 = new JLabel();
+			jLabel1.setText("NOMBRE: ");
+			jLabel1.setBounds(17, 28, 149, 21);
+		}
+		return jLabel1;
+	}
+
+	private JTextField getTxtId() {
+		if(txtNombre == null) {
+			txtNombre = new JTextField();
+			txtNombre.setBounds(178, 28, 179, 21);
+		}
+		return txtNombre;
+	}
+
+
+	
 		private AbstractAction getCerrarAction() {
 			if(cerrarAction == null) {
 				cerrarAction = new AbstractAction("Cerrar", null) {
@@ -174,6 +182,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			}
 			return cerrarAction;
 		}
+
 		
 		private AbstractAction getBuscarAction() {
 			if(buscarAction == null) {
@@ -207,6 +216,7 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			}
 			return buscarAction;
 		}
+
 		
 		private AbstractAction getModificarAction() {
 			if(modificarAction == null) {
@@ -226,23 +236,6 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			return modificarAction;
 		}
 		
-		private JLabel getJLabel1() {
-			if(jLabel1 == null) {
-				jLabel1 = new JLabel();
-				jLabel1.setText("NOMBRE: ");
-				jLabel1.setBounds(17, 28, 149, 21);
-			}
-			return jLabel1;
-		}
-
-		private JTextField getTxtId() {
-			if(txtNombre == null) {
-				txtNombre = new JTextField();
-				txtNombre.setBounds(178, 28, 179, 21);
-//				txtNombre.setEditable(false);
-			}
-			return txtNombre;
-		}
 		
 		public Vector getProveedoresViewVector(Vector<ProveedorView> vpv){ 
 			Vector mv = new Vector();
@@ -253,4 +246,5 @@ public class FormModificarProducto extends javax.swing.JFrame {
 			return mv;
 		}
 
-	}
+		
+}

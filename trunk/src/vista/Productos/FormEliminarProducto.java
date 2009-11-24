@@ -9,23 +9,11 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
-import javax.swing.SwingUtilities;
 
 import controlador.*;
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+
 public class FormEliminarProducto extends javax.swing.JFrame {
 	private JButton btnCerrar;
 	private JButton btnEliminar;
@@ -36,17 +24,6 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 	private JLabel lblProducto;
 	private JComboBox cmbProductos;
 
-/** Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormEliminarProducto inst = new FormEliminarProducto();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormEliminarProducto() {
 		super();
@@ -93,6 +70,8 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 		}
 	}
 	
+	
+	
 	private AbstractAction getEliminarAction() {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
@@ -107,6 +86,7 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 		return eliminarAction;
 	}
 	
+	
 	private AbstractAction getCerrarAction() {
 		if(cerrarAction == null) {
 			cerrarAction = new AbstractAction("Cerrar", null) {
@@ -117,6 +97,7 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 		}
 		return cerrarAction;
 	}
+	
 	
 	public Vector getProductosViewVector(Vector<ProductoView> vpv){ 
 		Vector mv = new Vector();
@@ -139,4 +120,5 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 		return sAux;
 	}
 
+	
 }

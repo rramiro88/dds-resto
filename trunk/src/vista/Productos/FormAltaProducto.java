@@ -15,23 +15,12 @@ import controlador.*;
 
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormAltaProducto extends javax.swing.JFrame {
 	private JLabel lblNombre;
 	private JLabel lblPtoPedido;
 	private JLabel lblPtoRefill;
 	private JLabel lblProveedores;
+	private JLabel lblCantidad;
 
 	private JTextField txtNombre;
 	private JTextField txtPtoRefill;
@@ -46,19 +35,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 	
 	private JComboBox cmbProveedores;
 	
-	private JLabel lblCantidad;
 
-/** Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormAltaProducto inst = new FormAltaProducto();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormAltaProducto() {
 		super();
@@ -150,6 +127,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 		}
 	}
 	
+	
 	private AbstractAction getAceptarAction() {
 		if(aceptarAction == null) {
 			aceptarAction = new AbstractAction("Aceptar", null) {
@@ -172,6 +150,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 		return aceptarAction;
 	}
 	
+	
 	private AbstractAction getCerrarAction() {
 		if(cerrarAction == null) {
 			cerrarAction = new AbstractAction("Cerrar", null) {
@@ -183,6 +162,7 @@ public class FormAltaProducto extends javax.swing.JFrame {
 		return cerrarAction;
 	}
 	
+	
 	public Vector getProveedoresViewVector(Vector<ProveedorView> vpv){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < vpv.size(); i++){
@@ -192,4 +172,5 @@ public class FormAltaProducto extends javax.swing.JFrame {
 		return mv;
 	}
 
+	
 }

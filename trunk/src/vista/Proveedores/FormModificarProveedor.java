@@ -27,7 +27,6 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 	private JTextField txtRazonSocial;
 	private JTextField txtDomicilio;
 	
-//	private JButton btnCancelar;
 	private JButton btnModificar;
 	private JButton btnBuscar;
 
@@ -35,17 +34,6 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 	private AbstractAction buscarAction;
 	private AbstractAction cancelarAction;
 
-/** Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormModificarProveedor inst = new FormModificarProveedor();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 
 	public FormModificarProveedor() {
 		super();
@@ -116,95 +104,91 @@ public class FormModificarProveedor extends javax.swing.JFrame {
 				btnModificar.setFont(new java.awt.Font("Tahoma",1,11));
 				btnModificar.setAction(getModificarAction());
 			}
-/*			{
-				btnCancelar = new JButton();
-				getContentPane().add(btnCancelar);
-				btnCancelar.setText("Cancelar");
-				btnCancelar.setBounds(212, 217, 91, 21);
-				btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
-				btnCancelar.setAction(getCancelarAction());
-			}
-*/			pack();
+			pack();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 		
-		private AbstractAction getCancelarAction() {
-			if(cancelarAction == null) {
-				cancelarAction = new AbstractAction("Cancelar", null) {
-					public void actionPerformed(ActionEvent evt) {
-						System.exit(0);
-					}
-				};
-			}
-			return cancelarAction;
+	private JLabel getJLabel1() {
+		if(jLabel1 == null) {
+			jLabel1 = new JLabel();
+			jLabel1.setText("CUIT: ");
+			jLabel1.setBounds(34, 28, 78, 21);
 		}
-		
-		private AbstractAction getBuscarAction() {
-			if(buscarAction == null) {
-				buscarAction = new AbstractAction("Buscar", null) {
-					public void actionPerformed(ActionEvent evt) {
-						try{
-							txtCuit.setText(txtIdBuscar.getText());
-							txtRazonSocial.setText("");
-							txtDomicilio.setText("");
-							Vector vmv = Restaurante.getRestaurante().getProveedoresView();
-							int i = 0;
-							do{
-								ProveedorView mv = ((ProveedorView)vmv.elementAt(i));
-								if (mv.getCuit().equals(txtIdBuscar.getText())){
-									txtRazonSocial.setText(mv.getRazonsocial() );
-									txtDomicilio.setText(mv.getDomicilio());
-									break;
-								}else
-									++i;
-							}while (i<vmv.size());
-						}
-						catch (Exception e){
-							JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero como CUIT de proveedor a buscar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
-							txtIdBuscar.setText("");
-						}
-					}
-				};
-			}
-			return buscarAction;
+		return jLabel1;
+	}
+
+	private JTextField getTxtId() {
+		if(txtCuit == null) {
+			txtCuit = new JTextField();
+			txtCuit.setBounds(124, 28, 124, 21);
+			txtCuit.setEditable(false);
 		}
-		
-		private AbstractAction getModificarAction() {
-			if(modificarAction == null) {
-				modificarAction = new AbstractAction("Modificar", null) {
-					public void actionPerformed(ActionEvent evt) {
-						if (Restaurante.getRestaurante().modificarProveedor((txtCuit.getText()), txtRazonSocial.getText(), (txtDomicilio.getText())))
-							JOptionPane.showMessageDialog(null, "Proveedor actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
-						else
-							JOptionPane.showMessageDialog(null, "CUIT incorrecto.", "Error en los Datos", JOptionPane.INFORMATION_MESSAGE);							
-						txtIdBuscar.setText("");
-						txtCuit.setText("");
+		return txtCuit;
+	}
+
+	
+	private AbstractAction getCancelarAction() {
+		if(cancelarAction == null) {
+			cancelarAction = new AbstractAction("Cancelar", null) {
+				public void actionPerformed(ActionEvent evt) {
+					System.exit(0);
+				}
+			};
+		}
+		return cancelarAction;
+	}
+	
+	
+	private AbstractAction getBuscarAction() {
+		if(buscarAction == null) {
+			buscarAction = new AbstractAction("Buscar", null) {
+				public void actionPerformed(ActionEvent evt) {
+					try{
+						txtCuit.setText(txtIdBuscar.getText());
 						txtRazonSocial.setText("");
 						txtDomicilio.setText("");
+						Vector vmv = Restaurante.getRestaurante().getProveedoresView();
+						int i = 0;
+						do{
+							ProveedorView mv = ((ProveedorView)vmv.elementAt(i));
+							if (mv.getCuit().equals(txtIdBuscar.getText())){
+								txtRazonSocial.setText(mv.getRazonsocial() );
+								txtDomicilio.setText(mv.getDomicilio());
+								break;
+							}else
+								++i;
+						}while (i<vmv.size());
 					}
-				};
-			}
-			return modificarAction;
+					catch (Exception e){
+						JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero como CUIT de proveedor a buscar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						txtIdBuscar.setText("");
+					}
+				}
+			};
 		}
-		
-		private JLabel getJLabel1() {
-			if(jLabel1 == null) {
-				jLabel1 = new JLabel();
-				jLabel1.setText("CUIT: ");
-				jLabel1.setBounds(34, 28, 78, 21);
-			}
-			return jLabel1;
-		}
-
-		private JTextField getTxtId() {
-			if(txtCuit == null) {
-				txtCuit = new JTextField();
-				txtCuit.setBounds(124, 28, 124, 21);
-				txtCuit.setEditable(false);
-			}
-			return txtCuit;
-		}
-
+		return buscarAction;
 	}
+	
+	
+	private AbstractAction getModificarAction() {
+		if(modificarAction == null) {
+			modificarAction = new AbstractAction("Modificar", null) {
+				public void actionPerformed(ActionEvent evt) {
+					if (Restaurante.getRestaurante().modificarProveedor((txtCuit.getText()), txtRazonSocial.getText(), (txtDomicilio.getText())))
+						JOptionPane.showMessageDialog(null, "Proveedor actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
+					else
+						JOptionPane.showMessageDialog(null, "CUIT incorrecto.", "Error en los Datos", JOptionPane.INFORMATION_MESSAGE);							
+					txtIdBuscar.setText("");
+					txtCuit.setText("");
+					txtRazonSocial.setText("");
+					txtDomicilio.setText("");
+				}
+			};
+		}
+		return modificarAction;
+	}
+
+
+}

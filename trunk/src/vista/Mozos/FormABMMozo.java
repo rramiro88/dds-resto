@@ -15,20 +15,7 @@ public class FormABMMozo extends javax.swing.JFrame {
 	private AbstractAction getAltaMozoAccion;
 	private AbstractAction getModificarMozoAccion;
 	private AbstractAction getEliminarMozoAccion;
-	private AbstractAction cancelarAccion;
 	
-/**
-//	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormABMMozo inst = new FormABMMozo();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormABMMozo() {
 		super();
@@ -70,6 +57,7 @@ public class FormABMMozo extends javax.swing.JFrame {
 		}
 	}
 	
+	
 	private AbstractAction getAltaMozoAccion() {
 		if(getAltaMozoAccion == null) {
 			getAltaMozoAccion = new AbstractAction("ALTA DE MOZO", null) {
@@ -87,6 +75,7 @@ public class FormABMMozo extends javax.swing.JFrame {
 		return getAltaMozoAccion;
 	}
 
+	
 	private AbstractAction getModificarMozoAccion() {
 		if(getModificarMozoAccion== null) {
 			getModificarMozoAccion= new AbstractAction("MODIFICAR MOZO", null) {
@@ -104,6 +93,7 @@ public class FormABMMozo extends javax.swing.JFrame {
 		return getModificarMozoAccion;
 	}
 
+	
 	private AbstractAction getEliminarMozoAccion() {
 		getEliminarMozoAccion = new AbstractAction("ELIMINAR MOZO", null) {
 			public void actionPerformed(ActionEvent evt){

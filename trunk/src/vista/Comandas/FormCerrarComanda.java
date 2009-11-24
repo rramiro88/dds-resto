@@ -1,34 +1,20 @@
 package vista.Comandas;
-import java.util.Vector;
-import javax.swing.AbstractAction;
 
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
+import java.util.Vector;
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import javax.swing.WindowConstants;
-import javax.swing.SwingUtilities;
 
 import controlador.MesaView;
 import controlador.Restaurante;
-import java.awt.event.ActionEvent;
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+
 public class FormCerrarComanda extends javax.swing.JFrame {
 	private JLabel lblMesa;
 	private JComboBox cmbMesas;
@@ -39,18 +25,7 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 	private JButton btnTotal;
 	private JTextField txtTotal;
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
-	/*public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormCerrarComanda inst = new FormCerrarComanda();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}*/
+
 	
 	public FormCerrarComanda() {
 		super();
@@ -114,6 +89,7 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 		}
 	}
 	
+	
 	private AbstractAction getCalcTotalAction() {
 		if(calcTotalAction == null) {
 			calcTotalAction = new AbstractAction("Calcular Total", null) {
@@ -132,6 +108,7 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 		}
 		return calcTotalAction;
 	}
+
 	
 	private AbstractAction getCerrarMesaAction() {
 		if(cerrarMesaAction == null) {
@@ -151,6 +128,7 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 		return cerrarMesaAction;
 	}
 
+	
 	public Vector getMesasAbiertas (Vector<MesaView> v){
 		Vector mv = new Vector();
 		for (int i= 0; i < v.size(); i++){
@@ -159,4 +137,6 @@ public class FormCerrarComanda extends javax.swing.JFrame {
 		}
 		return mv;
 	}
+
+
 }

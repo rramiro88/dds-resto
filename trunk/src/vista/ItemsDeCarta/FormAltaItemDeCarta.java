@@ -23,17 +23,6 @@ public class FormAltaItemDeCarta extends javax.swing.JFrame {
 	private JTextField txtPrecio;
 	private JTextField txtNombre;
 
-/**  //Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormAltaItemDeCarta inst = new FormAltaItemDeCarta();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormAltaItemDeCarta() {
 		super();
@@ -88,6 +77,7 @@ public class FormAltaItemDeCarta extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
+
 	
 	private AbstractAction getBebidaAccion() {
 		if(getBebidaAccion == null) {
@@ -102,6 +92,7 @@ public class FormAltaItemDeCarta extends javax.swing.JFrame {
 		return getBebidaAccion;
 	}
 			
+	
 	private AbstractAction getPlatoAccion() {
 		if(getPlatoAccion == null) {
 			getPlatoAccion = new AbstractAction("es PLATO", null) {

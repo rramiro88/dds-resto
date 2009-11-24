@@ -20,18 +20,6 @@ public class FormABMCarta extends javax.swing.JFrame {
 	private AbstractAction getCargarCartaAccion;
 	private AbstractAction getDescargarCartaAccion;
 	
-/**
-//	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormABMCarta inst = new FormABMCarta();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormABMCarta() {
 		super();
@@ -87,6 +75,7 @@ public class FormABMCarta extends javax.swing.JFrame {
 		}
 	}
 	
+	
 	private AbstractAction getAltaCartaAccion() {
 		if(getAltaCartaAccion == null) {
 			getAltaCartaAccion = new AbstractAction("ALTA DE CARTA", null) {
@@ -104,6 +93,7 @@ public class FormABMCarta extends javax.swing.JFrame {
 		return getAltaCartaAccion;
 	}
 
+	
 	private AbstractAction getModificarCartaAccion() {
 		if(getModificarCartaAccion== null) {
 			getModificarCartaAccion= new AbstractAction("MODIFICAR CARTA", null) {
@@ -121,6 +111,7 @@ public class FormABMCarta extends javax.swing.JFrame {
 		return getModificarCartaAccion;
 	}
 
+	
 	private AbstractAction getEliminarCartaAccion() {
 		getEliminarCartaAccion = new AbstractAction("ELIMINAR CARTA", null) {
 			public void actionPerformed(ActionEvent evt){
@@ -136,12 +127,13 @@ public class FormABMCarta extends javax.swing.JFrame {
 		return getEliminarCartaAccion;
 	}
 
+	
 	private AbstractAction getCargarCartaAccion() {
 		getCargarCartaAccion = new AbstractAction("Agregar Plato/Bebida", null) {
 			public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							FormCargarCarta inst = new FormCargarCarta();
+							FormAgregarPlatoBebida inst = new FormAgregarPlatoBebida();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
 
@@ -152,12 +144,13 @@ public class FormABMCarta extends javax.swing.JFrame {
 		return getCargarCartaAccion;
 	}
 
+	
 	private AbstractAction getDescargarCartaAccion() {
 		getDescargarCartaAccion = new AbstractAction("Borrar Plato/Bebida", null) {
 			public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							FormDescargarCarta inst = new FormDescargarCarta();
+							FormEliminarPlatoBebida inst = new FormEliminarPlatoBebida();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
 						}

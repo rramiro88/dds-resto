@@ -6,8 +6,6 @@ import javax.swing.JButton;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
-import vista.Cartas.FormDescargarCarta;
-
 
 public class FormABMItemDeCarta extends javax.swing.JFrame {
 	private JButton btnAltaItem;
@@ -76,6 +74,7 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 		}
 	}
 
+	
 	private AbstractAction getAltaItemDeCartaAccion() {
 		if(getAltaItemDeCartaAccion == null) {
 			getAltaItemDeCartaAccion = new AbstractAction("Alta de Plato/Bebida", null) {
@@ -101,6 +100,8 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							FormModificarItemDeCarta inst = new FormModificarItemDeCarta();
+//							inst.setLocationRelativeTo(null);
+//							inst.setVisible(true);						
 						}
 					});
 				}
@@ -114,7 +115,7 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-//						FormEliminarItemDeCarta inst = new FormEliminarItemDeCarta();
+						FormEliminarItemDeCarta inst = new FormEliminarItemDeCarta();
 //						inst.setLocationRelativeTo(null);
 //						inst.setVisible(true);
 					}

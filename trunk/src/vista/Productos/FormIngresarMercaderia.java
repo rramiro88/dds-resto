@@ -10,10 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import javax.swing.WindowConstants;
 import javax.swing.border.TitledBorder;
-import javax.swing.SwingUtilities;
 
 import controlador.*;
 
@@ -33,24 +31,13 @@ public class FormIngresarMercaderia extends javax.swing.JFrame {
 	private AbstractAction buscarAction;
 	private AbstractAction cancelarAction;
 	
-//	private JButton btnCancelar;
 	private JButton btnModificar;
 	private JButton btnBuscar;
 
 	private JPanel jPanel1;
 
-/** Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormIngresarMercaderia inst = new FormIngresarMercaderia();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
-		
+
+	
 	public FormIngresarMercaderia() {
 		super();
 		initGUI();
@@ -123,97 +110,93 @@ public class FormIngresarMercaderia extends javax.swing.JFrame {
 					btnModificar.setFont(new java.awt.Font("Tahoma",1,11));
 					btnModificar.setAction(getModificarAction());
 				}
-/*				{
-					btnCancelar = new JButton();
-					getContentPane().add(btnCancelar);
-					btnCancelar.setText("Cancelar");
-					btnCancelar.setBounds(212, 234, 91, 21);
-					btnCancelar.setFont(new java.awt.Font("Tahoma",1,11));
-					btnCancelar.setAction(getCancelarAction());
-				}
-*/				pack();
+				pack();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
-		private AbstractAction getCancelarAction() {
-			if(cancelarAction == null) {
-				cancelarAction = new AbstractAction("Cancelar", null) {
-					public void actionPerformed(ActionEvent evt) {
-						System.exit(0);
-					}
-				};
-			}
-			return cancelarAction;
-		}
-		
-		private AbstractAction getBuscarAction() {
-			if(buscarAction == null) {
-				buscarAction = new AbstractAction("Buscar", null) {
-					public void actionPerformed(ActionEvent evt) {
-						try{
-							txtNombre.setText(txtIdBuscar.getText());
-							Vector vmv = Restaurante.getRestaurante().getProductosView();
-							int i = 0;
-							do{
-								ProductoView mv = ((ProductoView)vmv.elementAt(i));
-								if (mv.getNombre().equals(txtIdBuscar.getText())){
-									txtCantidad.setText(Float.toString(mv.getCantidad()));
-									txtCantIng.setText("");
-									break;
-								}else
-									++i;
-							}while (i<vmv.size());
-						}
-						catch (Exception e){
-							JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del producto a buscar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
-							txtIdBuscar.setText("");
-						}
-					}
-				};
-			}
-			return buscarAction;
-		}
-		
-		private AbstractAction getModificarAction() {
-			if(modificarAction == null) {
-				modificarAction = new AbstractAction("Modificar", null) {
-					public void actionPerformed(ActionEvent evt) {
-						try{
-							Restaurante.getRestaurante().ingresarMercaderia((txtNombre.getText()), Float.parseFloat((txtCantIng.getText())));
-							JOptionPane.showMessageDialog(null, "Mercaderia ingresada con exito.", "Actualizacion de Stock", JOptionPane.INFORMATION_MESSAGE);
-							txtIdBuscar.setText("");
-							txtNombre.setText("");
-							txtCantidad.setText("");
-							txtCantIng.setText("");
-						}
-						catch  (Exception e){
-							JOptionPane.showMessageDialog(null, "La cantidad debe ser un valor numérico.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
-							txtCantIng.setText("");
-						}
-					}
-				};
-			}
-			return modificarAction;
-		}
-		
-		private JLabel getJLabel1() {
-			if(jLabel1 == null) {
-				jLabel1 = new JLabel();
-				jLabel1.setText("NOMBRE: ");
-				jLabel1.setBounds(17, 28, 149, 21);
-			}
-			return jLabel1;
-		}
 
-		private JTextField getTxtId() {
-			if(txtNombre == null) {
-				txtNombre = new JTextField();
-				txtNombre.setBounds(184, 26, 167, 21);
-				txtNombre.setEditable(false);
-			}
-			return txtNombre;
+	private JLabel getJLabel1() {
+		if(jLabel1 == null) {
+			jLabel1 = new JLabel();
+			jLabel1.setText("NOMBRE: ");
+			jLabel1.setBounds(17, 28, 149, 21);
 		}
-
+		return jLabel1;
 	}
+
+	private JTextField getTxtId() {
+		if(txtNombre == null) {
+			txtNombre = new JTextField();
+			txtNombre.setBounds(184, 26, 167, 21);
+			txtNombre.setEditable(false);
+		}
+		return txtNombre;
+	}
+
+	
+	private AbstractAction getCancelarAction() {
+		if(cancelarAction == null) {
+			cancelarAction = new AbstractAction("Cancelar", null) {
+				public void actionPerformed(ActionEvent evt) {
+					System.exit(0);
+				}
+			};
+		}
+		return cancelarAction;
+	}
+		
+		
+	private AbstractAction getBuscarAction() {
+		if(buscarAction == null) {
+			buscarAction = new AbstractAction("Buscar", null) {
+				public void actionPerformed(ActionEvent evt) {
+					try{
+						txtNombre.setText(txtIdBuscar.getText());
+						Vector vmv = Restaurante.getRestaurante().getProductosView();
+						int i = 0;
+						do{
+							ProductoView mv = ((ProductoView)vmv.elementAt(i));
+							if (mv.getNombre().equals(txtIdBuscar.getText())){
+								txtCantidad.setText(Float.toString(mv.getCantidad()));
+								txtCantIng.setText("");
+								break;
+							}else
+								++i;
+						}while (i<vmv.size());
+					}
+					catch (Exception e){
+						JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del producto a buscar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						txtIdBuscar.setText("");
+					}
+				}
+			};
+		}
+		return buscarAction;
+	}
+	
+		
+	private AbstractAction getModificarAction() {
+		if(modificarAction == null) {
+			modificarAction = new AbstractAction("Modificar", null) {
+				public void actionPerformed(ActionEvent evt) {
+					try{
+						Restaurante.getRestaurante().ingresarMercaderia((txtNombre.getText()), Float.parseFloat((txtCantIng.getText())));
+						JOptionPane.showMessageDialog(null, "Mercaderia ingresada con exito.", "Actualizacion de Stock", JOptionPane.INFORMATION_MESSAGE);
+						txtIdBuscar.setText("");
+						txtNombre.setText("");
+						txtCantidad.setText("");
+						txtCantIng.setText("");
+					}
+					catch  (Exception e){
+						JOptionPane.showMessageDialog(null, "La cantidad debe ser un valor numérico.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						txtCantIng.setText("");
+					}
+				}
+			};
+		}
+		return modificarAction;
+	}
+		
+
+}

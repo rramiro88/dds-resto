@@ -6,7 +6,6 @@ import java.util.Vector;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -19,50 +18,26 @@ import controlador.*;
 
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+
 public class FormModificarItemDeCarta extends javax.swing.JFrame {
 	private JLabel lblNombre;
-	private JLabel lblProveedores;
-	private JButton btnCerrar;
 	private JLabel jLabel1;
-	private JTextField txtNombre;
 	private JLabel lblPrecio;
 
-	private JTextField txtIdBuscar;
-	private JTextField txtPrecio;
+	private JPanel jPanel1;
 
+	private JButton btnCerrar;
 	private JButton btnBuscar;
 	private JButton btnModificar;
+
+	private JTextField txtNombre;
+	private JTextField txtIdBuscar;
+	private JTextField txtPrecio;
 
 	private AbstractAction modificarAction;
 	private AbstractAction buscarAction;
 	private AbstractAction cerrarAction;
 
-	private JPanel jPanel1;
-
-
-
-/** */	//	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormModificarItemDeCarta inst = new FormModificarItemDeCarta();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
 
 
 	public FormModificarItemDeCarta() {
@@ -118,9 +93,7 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 					}
 					txtPrecio.setBounds(178, 55, 86, 21);
 				}
-
-				}
-
+			}
 				{
 					btnModificar = new JButton();
 					getContentPane().add(btnModificar);
@@ -136,6 +109,27 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			}
 		}
 		
+		private JLabel getJLabel1() {
+			if(jLabel1 == null) {
+				jLabel1 = new JLabel();
+				jLabel1.setText("NOMBRE: ");
+				jLabel1.setBounds(17, 29, 143, 14);
+			}
+			return jLabel1;
+		}
+
+		private JButton getBtnCerrar() {
+			if(btnCerrar == null) {
+				btnCerrar = new JButton();
+				btnCerrar.setText("Cerrar");
+				btnCerrar.setBounds(204, 173, 91, 21);
+				btnCerrar.setFont(new java.awt.Font("Tahoma",1,11));
+				btnCerrar.setAction(getCerrarAction());
+			}
+			return btnCerrar;
+		}
+
+
 		private AbstractAction getCerrarAction() {
 			if(cerrarAction == null) {
 				cerrarAction = new AbstractAction("Cerrar", null) {
@@ -146,7 +140,7 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			}
 			return cerrarAction;
 		}
-		
+
 		private AbstractAction getBuscarAction() {
 			if(buscarAction == null) {
 				buscarAction = new AbstractAction("Buscar", null) {
@@ -198,34 +192,5 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			return modificarAction;
 		}
 		
-		private JButton getBtnCerrar() {
-			if(btnCerrar == null) {
-				btnCerrar = new JButton();
-				btnCerrar.setText("Cerrar");
-				btnCerrar.setBounds(204, 173, 91, 21);
-				btnCerrar.setFont(new java.awt.Font("Tahoma",1,11));
-				btnCerrar.setAction(getCerrarAction());
-			}
-			return btnCerrar;
-		}
-		
-		private JLabel getJLabel1() {
-			if(jLabel1 == null) {
-				jLabel1 = new JLabel();
-				jLabel1.setText("NOMBRE: ");
-				jLabel1.setBounds(17, 29, 143, 14);
-			}
-			return jLabel1;
-		}
 
-		/*public Vector getIngredientesViewVector(Vector<IngredienteView> viv){ 
-			Vector mv = new Vector();
-			for (int i= 0; i < viv.size(); i++){
-				String aux = String.valueOf(viv.elementAt(i).getProducto().getNombre() + " - " + viv.elementAt(i).getProducto().getCantidad()); 
-				mv.add(aux);
-			}
-			return mv;
-		}
-*/
-
-	}
+}

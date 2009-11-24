@@ -16,18 +16,7 @@ public class FormABMProducto extends javax.swing.JFrame {
 	private AbstractAction getModificarProductoAccion;
 	private AbstractAction getEliminarProductoAccion;
 	
-/** Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormABMProducto inst = new FormABMProducto();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
-	
+
 	public FormABMProducto() {
 		super();
 		initGUI();
@@ -69,6 +58,7 @@ public class FormABMProducto extends javax.swing.JFrame {
 		}
 	}
 	
+	
 	private AbstractAction getAltaProductoAccion() {
 		if(getAltaProductoAccion == null) {
 			getAltaProductoAccion = new AbstractAction("ALTA DE PRODUCTO", null) {
@@ -87,6 +77,7 @@ public class FormABMProducto extends javax.swing.JFrame {
 		return getAltaProductoAccion;
 	}
 
+	
 	private AbstractAction getModificarProductoAccion() {
 		if(getModificarProductoAccion== null) {
 			getModificarProductoAccion= new AbstractAction("MODIFICAR PRODUCTO", null) {
@@ -104,6 +95,7 @@ public class FormABMProducto extends javax.swing.JFrame {
 		return getModificarProductoAccion;
 	}
 
+	
 	private AbstractAction getEliminarProductoAccion() {
 		getEliminarProductoAccion = new AbstractAction("ELIMINAR PRODUCTO", null) {
 			public void actionPerformed(ActionEvent evt){

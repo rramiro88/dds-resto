@@ -59,8 +59,14 @@ public class FormEliminarMesa extends javax.swing.JFrame {
 		if(aceptarAccion == null) {
 			aceptarAccion = new AbstractAction("ELIMINAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					Restaurante.getRestaurante().bajaDeMesa(Integer.parseInt(txtMesas.getText()));
-					JOptionPane.showMessageDialog(null, "Mesa nro "+txtMesas.getText().toString()+" eliminada", "Mensaje", JOptionPane.WARNING_MESSAGE);
+					try{
+						Restaurante.getRestaurante().bajaDeMesa(Integer.parseInt(txtMesas.getText()));
+						JOptionPane.showMessageDialog(null, "Mesa nro "+txtMesas.getText().toString()+" eliminada", "Mensaje", JOptionPane.WARNING_MESSAGE);
+					}
+					catch  (Exception e){
+						JOptionPane.showMessageDialog(null, "Ingrese un numero de mesa.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						txtMesas.setText("");
+					}
 				}
 			};
 		}

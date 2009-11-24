@@ -9,14 +9,18 @@ public class Producto {
 	private float puntoreab;
 	private Proveedor proveedor;
 	private boolean estaBajoPuntoPedido;
-	
+
+
+//	Constructor de instancia Producto
+//	-------------------------------------------------------------		
 	public Producto (String name, float canti, float puntop, float puntor, Proveedor prov){
 		this.nombre = name;
 		this.cantidad = canti;		//	cantidad existente del producto
 		this.puntoped = puntop;		//	cuando el stock es igual o menor a esta cantidad ordenar comprar
 		this.puntoreab = puntor;	//	cantidad a pedir cuando se alcanza o supera el punto de pedido
 		this.proveedor = prov;
-		//	estaBajoPunto de pedido depende de que producto sea menor o igual a bajo punto de pedido (o no)
+		//	estaBajoPunto de pedido depende de que producto 
+		//	sea menor o igual a bajo punto de pedido (o no).
 		if(canti <= puntop){
 			this.estaBajoPuntoPedido = true;
 		}else{
@@ -24,7 +28,7 @@ public class Producto {
 		}
 			
 	}
-	
+
 	public ProductoView getProductoView(){
 		ProductoView pv = new ProductoView(nombre, cantidad, puntoped, puntoreab, proveedor);
 		return pv;

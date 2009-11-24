@@ -7,7 +7,9 @@ public class Proveedor {
 	private String razonsocial;
 	private String domicilio;
 	
-
+	
+//	Constructor de instancia Proveedor
+//	-------------------------------------------------------------	
 	public Proveedor (String cuit, String razonsocial, String domicilio){
 		this.cuit = cuit;
 		this.razonsocial = razonsocial;
@@ -19,6 +21,9 @@ public class Proveedor {
 		return pv;
 	}
 
+	
+//	Metodos sets y gets para los atributos de la clase Proveedor
+//	-------------------------------------------------------------		
 	public String getRazonsocial() {
 		return razonsocial;
 	}

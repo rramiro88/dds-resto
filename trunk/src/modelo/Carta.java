@@ -33,9 +33,6 @@ public class Carta {
 	public Vector<ItemDeCarta> getItemsCarta() {
 		return itemsCarta;
 	}
-	public void setItemsCarta(Vector<ItemDeCarta> itemsCartaCarta) {
-		this.itemsCarta = itemsCartaCarta;
-	}
 
 	//	Metodo get que devuelve un CartaView para pasar a la vista
 	public CartaView getCartaView(){

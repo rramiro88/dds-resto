@@ -10,6 +10,7 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
 import controlador.Restaurante;
+import vista.Comandas.FormVender;
 import vista.Mozos.FormRendicionMozo;
 import vista.Productos.FormIngresarMercaderia;
 
@@ -37,17 +38,6 @@ public class FormMAIN extends javax.swing.JFrame {
 	private AbstractAction getGenerarOrdenesDeCompra;
 	private AbstractAction getSalirAccion;
 
-/** //	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormMAIN inst = new FormMAIN();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormMAIN() {
 		super();
@@ -74,156 +64,6 @@ public class FormMAIN extends javax.swing.JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-
-	private AbstractAction getAbrirDia() {
-		if(getAbrirDia == null) {
-			getAbrirDia = new AbstractAction("INICIAR DIA", null) {
-				public void actionPerformed(ActionEvent evt){
-					SwingUtilities.invokeLater(new Runnable() {
-						public void run() {
-							//	Revisa que la jornada no este abierta
-							if (Restaurante.getRestaurante().isOpen()){
-								//	Jornada ya abierta y en curso
-								JOptionPane.showMessageDialog(null, "La jornada ya se encuentra abierta", "ATENCION", JOptionPane.WARNING_MESSAGE);
-							}else{
-								//	Revisa que se pueda abrir la jornada
-								if (Restaurante.getRestaurante().abrirJornada())
-									JOptionPane.showMessageDialog(null, "Jornada abierta con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
-								else{
-									//	Notifica que faltan mesas, mozos o que no hay carta activa
-									JOptionPane.showMessageDialog(null, "No puede abrise la jornada ¿Carta? / ¿Mesas? / ¿Mozos?", "ATENCION", JOptionPane.WARNING_MESSAGE);
-								}
-									
-							}
-						}
-					});
-				}
-			};
-		}
-		return getAbrirDia;
-	}
-
-	
-	private AbstractAction getCerrarDia() {
-		if(getCerrarDia == null) {
-			getCerrarDia = new AbstractAction("CERRAR DIA", null) {
-				public void actionPerformed(ActionEvent evt){
-					SwingUtilities.invokeLater(new Runnable() {
-						public void run() {
-							//	Revisa que la jornada halla sido abierta
-							if (Restaurante.getRestaurante().isOpen()){
-								if (Restaurante.getRestaurante().cerrarJornada()){
-									FormRendicionMozo inst = new FormRendicionMozo();
-									inst.setLocationRelativeTo(null);
-									inst.setVisible(true);
-									JOptionPane.showMessageDialog(null, "Jornada cerrada con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
-								}else{
-									JOptionPane.showMessageDialog(null, "No se pudo cerrar. Mesa/s con comanda/s en curso.", "ATENCION", JOptionPane.WARNING_MESSAGE);
-								}
-							}else{
-								//	Jornada cerrada
-								JOptionPane.showMessageDialog(null, "La jornada no ha sido abierta.", "ATENCION", JOptionPane.WARNING_MESSAGE);
-							}
-						}
-					});
-				}
-			};
-		}
-		return getCerrarDia;
-	}
-	
-	
-	private AbstractAction getABM() {
-		if(getABM == null) {
-			getABM = new AbstractAction("ABMs", null) {
-				public void actionPerformed(ActionEvent evt){
-					SwingUtilities.invokeLater(new Runnable() {
-						public void run() {
-							//	Revisa que la jornada no este abierta
-							if (!Restaurante.getRestaurante().isOpen()){
-								FormABMs inst = new FormABMs();
-								inst.setLocationRelativeTo(null);
-								inst.setVisible(true);
-							}else{
-								//	Con jornada abierta no permite modificar los objetos
-								JOptionPane.showMessageDialog(null, "Jornada en curso. No se puede modificar.", "Prohibido", JOptionPane.WARNING_MESSAGE);
-							}
-						}
-					});
-				}
-			};
-		}
-		return getABM;
-	}
-	private AbstractAction getIngresarMercaderia() {
-		if(getIngresarMercaderia== null) {
-			getIngresarMercaderia= new AbstractAction("INGRESAR MERCADERIA", null) {
-				public void actionPerformed(ActionEvent evt){
-					SwingUtilities.invokeLater(new Runnable() {
-						public void run() {
-							FormIngresarMercaderia inst = new FormIngresarMercaderia();
-							inst.setLocationRelativeTo(null);
-							inst.setVisible(true);
-						}
-					});
-				}
-			};
-		}
-		return getIngresarMercaderia;
-	}
-
-	private AbstractAction getGenerarOrdenesDeCompra() {
-		getGenerarOrdenesDeCompra = new AbstractAction("GENERAR ORDENES", null) {
-			public void actionPerformed(ActionEvent evt){
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						//	Revisa que el dia no halla sido abierto
-						if (!Restaurante.getRestaurante().isOpen()){
-							int ord = Restaurante.getRestaurante().generarOrdenesDeCompra();
-							JOptionPane.showMessageDialog(null, "Ordenes de compra generadas: " +ord+"", "Atencion", JOptionPane.WARNING_MESSAGE);
-						}else{
-							//	Si el dia esta abierto, no permite generar las ordenes de compra
-							JOptionPane.showMessageDialog(null, "Jornada abierta. No se pueden generar ordenes de compra.", "Prohibido", JOptionPane.WARNING_MESSAGE);
-						}
-					}
-				});
-			}
-		};
-	return getGenerarOrdenesDeCompra;
-	}
-
-	private AbstractAction getComandas() {
-		getComandas = new AbstractAction("COMANDAS", null) {
-			public void actionPerformed(ActionEvent evt){
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						//	Revisa que la jornada halla sido abierta para poder vender.
-						if (Restaurante.getRestaurante().isOpen()){
-							FormVender inst = new FormVender();
-							inst.setLocationRelativeTo(null);
-							inst.setVisible(true);
-						}else{
-							//	Con la jornada cerrada no permite vernder
-							JOptionPane.showMessageDialog(null, "Jornada cerrada. No se puede vender.", "Prohibido", JOptionPane.WARNING_MESSAGE);
-						}
-					}
-				});
-			}
-		};
-		return getComandas;
-	}
-	
-	private AbstractAction getSalirAccion() {
-		if(getSalirAccion == null) {
-			getSalirAccion = new AbstractAction("CERRAR", null) {
-				public void actionPerformed(ActionEvent evt) {
-					dispose();
-				}
-			};
-		}
-		return getSalirAccion;
 	}
 	
 	private JPanel getJPanel1() {
@@ -323,5 +163,162 @@ public class FormMAIN extends javax.swing.JFrame {
 		}
 		return jPanel5;
 	}
+
+
+
+	private AbstractAction getAbrirDia() {
+		if(getAbrirDia == null) {
+			getAbrirDia = new AbstractAction("INICIAR DIA", null) {
+				public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							//	Revisa que la jornada no este abierta
+							if (Restaurante.getRestaurante().isOpen()){
+								//	Jornada ya abierta y en curso
+								JOptionPane.showMessageDialog(null, "La jornada ya se encuentra abierta", "ATENCION", JOptionPane.WARNING_MESSAGE);
+							}else{
+								//	Revisa que se pueda abrir la jornada
+								if (Restaurante.getRestaurante().abrirJornada())
+									JOptionPane.showMessageDialog(null, "Jornada abierta con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
+								else{
+									//	Notifica que faltan mesas, mozos o que no hay carta activa
+									JOptionPane.showMessageDialog(null, "No puede abrise la jornada ¿Carta? / ¿Mesas? / ¿Mozos?", "ATENCION", JOptionPane.WARNING_MESSAGE);
+								}
+									
+							}
+						}
+					});
+				}
+			};
+		}
+		return getAbrirDia;
+	}
+
+	
+	private AbstractAction getCerrarDia() {
+		if(getCerrarDia == null) {
+			getCerrarDia = new AbstractAction("CERRAR DIA", null) {
+				public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							//	Revisa que la jornada halla sido abierta
+							if (Restaurante.getRestaurante().isOpen()){
+								if (Restaurante.getRestaurante().cerrarJornada()){
+									FormRendicionMozo inst = new FormRendicionMozo();
+									inst.setLocationRelativeTo(null);
+									inst.setVisible(true);
+									JOptionPane.showMessageDialog(null, "Jornada cerrada con exito", "MENSAJE", JOptionPane.WARNING_MESSAGE);
+								}else{
+									JOptionPane.showMessageDialog(null, "No se pudo cerrar. Mesa/s con comanda/s en curso.", "ATENCION", JOptionPane.WARNING_MESSAGE);
+								}
+							}else{
+								//	Jornada cerrada
+								JOptionPane.showMessageDialog(null, "La jornada no ha sido abierta.", "ATENCION", JOptionPane.WARNING_MESSAGE);
+							}
+						}
+					});
+				}
+			};
+		}
+		return getCerrarDia;
+	}
+	
+	
+	private AbstractAction getABM() {
+		if(getABM == null) {
+			getABM = new AbstractAction("ABMs", null) {
+				public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							//	Revisa que la jornada no este abierta
+							if (!Restaurante.getRestaurante().isOpen()){
+								FormABMs inst = new FormABMs();
+								inst.setLocationRelativeTo(null);
+								inst.setVisible(true);
+							}else{
+								//	Con jornada abierta no permite modificar los objetos
+								JOptionPane.showMessageDialog(null, "Jornada en curso. No se puede modificar.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+							}
+						}
+					});
+				}
+			};
+		}
+		return getABM;
+	}
+
+	
+	private AbstractAction getIngresarMercaderia() {
+		if(getIngresarMercaderia== null) {
+			getIngresarMercaderia= new AbstractAction("INGRESAR MERCADERIA", null) {
+				public void actionPerformed(ActionEvent evt){
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							FormIngresarMercaderia inst = new FormIngresarMercaderia();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+						}
+					});
+				}
+			};
+		}
+		return getIngresarMercaderia;
+	}
+
+	
+	private AbstractAction getGenerarOrdenesDeCompra() {
+		getGenerarOrdenesDeCompra = new AbstractAction("GENERAR ORDENES", null) {
+			public void actionPerformed(ActionEvent evt){
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						//	Revisa que el dia no halla sido abierto
+						if (!Restaurante.getRestaurante().isOpen()){
+							int ord = Restaurante.getRestaurante().generarOrdenesDeCompra();
+							JOptionPane.showMessageDialog(null, "Ordenes de compra generadas: " +ord+"", "Atencion", JOptionPane.WARNING_MESSAGE);
+						}else{
+							//	Si el dia esta abierto, no permite generar las ordenes de compra
+							JOptionPane.showMessageDialog(null, "Jornada abierta. No se pueden generar ordenes de compra.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+						}
+					}
+				});
+			}
+		};
+		return getGenerarOrdenesDeCompra;
+	}
+
+	
+	private AbstractAction getComandas() {
+		getComandas = new AbstractAction("COMANDAS", null) {
+			public void actionPerformed(ActionEvent evt){
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						//	Revisa que la jornada halla sido abierta para poder vender.
+						if (Restaurante.getRestaurante().isOpen()){
+							FormVender inst = new FormVender();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+						}else{
+							//	Con la jornada cerrada no permite vernder
+							JOptionPane.showMessageDialog(null, "Jornada cerrada. No se puede vender.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+						}
+					}
+				});
+			}
+		};
+		return getComandas;
+	}
+
+	
+	private AbstractAction getSalirAccion() {
+		if(getSalirAccion == null) {
+			getSalirAccion = new AbstractAction("CERRAR", null) {
+				public void actionPerformed(ActionEvent evt) {
+					dispose();
+				}
+			};
+		}
+		return getSalirAccion;
+	}
+	
 
 }

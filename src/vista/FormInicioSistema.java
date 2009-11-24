@@ -31,7 +31,7 @@ public class FormInicioSistema extends javax.swing.JFrame {
 	private AbstractAction salirAccion;
 	
 
-/** */	//	Auto-generated main method to display this JFrame
+//	Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

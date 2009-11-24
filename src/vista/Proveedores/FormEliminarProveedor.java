@@ -23,17 +23,6 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 	private JLabel lblProveedor;
 	private JComboBox cmbProveedores;
 
-/** Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormEliminarProveedor inst = new FormEliminarProveedor();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormEliminarProveedor() {
 		super();
@@ -80,6 +69,8 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 		}
 	}
 	
+	
+	
 	private AbstractAction getEliminarAction() {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
@@ -94,6 +85,7 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 		return eliminarAction;
 	}
 	
+	
 	private AbstractAction getCerrarAction() {
 		if(cerrarAction == null) {
 			cerrarAction = new AbstractAction("Cerrar", null) {
@@ -104,6 +96,7 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 		}
 		return cerrarAction;
 	}
+	
 	
 	public Vector getProveedoresViewVector(Vector<ProveedorView> vpv){ 
 		Vector mv = new Vector();

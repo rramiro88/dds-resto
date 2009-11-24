@@ -19,18 +19,6 @@ import controlador.Restaurante;
 
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class FormModificarMozo extends javax.swing.JFrame {
 	private JTextField txtIdBuscar;
 	private JTextField txtId;
@@ -52,18 +40,6 @@ public class FormModificarMozo extends javax.swing.JFrame {
 	private AbstractAction buscarAction;
 	private AbstractAction cerrarAction;
 
-/**
-	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormModificarMozo inst = new FormModificarMozo();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormModificarMozo() {
 		super();
@@ -148,6 +124,33 @@ public class FormModificarMozo extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
+
+	private JLabel getJLabel1() {
+		if(jLabel1 == null) {
+			jLabel1 = new JLabel();
+			jLabel1.setText("ID: ");
+			jLabel1.setBounds(34, 28, 18, 21);
+		}
+		return jLabel1;
+	}
+	
+	private JTextField getTxtId() {
+		if(txtId == null) {
+			txtId = new JTextField();
+			txtId.setBounds(124, 28, 30, 21);
+			txtId.setEditable(false);
+		}
+		return txtId;
+	}
+	
+	private JCheckBox getChkHabilitado() {
+		if(chkHabilitado == null) {
+			chkHabilitado = new JCheckBox();
+			chkHabilitado.setText("HABILITADO");
+			chkHabilitado.setBounds(244, 83, 108, 18);
+		}
+		return chkHabilitado;
+	}
 	
 	private AbstractAction getCerrarAction() {
 		if(cerrarAction == null) {
@@ -159,6 +162,8 @@ public class FormModificarMozo extends javax.swing.JFrame {
 		}
 		return cerrarAction;
 	}
+	
+	
 	
 	private AbstractAction getBuscarAction() {
 		if(buscarAction == null) {
@@ -198,6 +203,7 @@ public class FormModificarMozo extends javax.swing.JFrame {
 		return buscarAction;
 	}
 	
+	
 	private AbstractAction getModificarAction() {
 		if(modificarAction == null) {
 			modificarAction = new AbstractAction("Modificar", null) {
@@ -215,31 +221,5 @@ public class FormModificarMozo extends javax.swing.JFrame {
 		return modificarAction;
 	}
 	
-	private JLabel getJLabel1() {
-		if(jLabel1 == null) {
-			jLabel1 = new JLabel();
-			jLabel1.setText("ID: ");
-			jLabel1.setBounds(34, 28, 18, 21);
-		}
-		return jLabel1;
-	}
-	
-	private JTextField getTxtId() {
-		if(txtId == null) {
-			txtId = new JTextField();
-			txtId.setBounds(124, 28, 30, 21);
-			txtId.setEditable(false);
-		}
-		return txtId;
-	}
-	
-	private JCheckBox getChkHabilitado() {
-		if(chkHabilitado == null) {
-			chkHabilitado = new JCheckBox();
-			chkHabilitado.setText("HABILITADO");
-			chkHabilitado.setBounds(244, 83, 108, 18);
-		}
-		return chkHabilitado;
-	}
 
 }

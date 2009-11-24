@@ -22,18 +22,6 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 	private JButton btnEliminar;
 	private JComboBox cmbMozos;
 
-/**
-	Auto-generated main method to display this JFrame
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormEliminarMozo inst = new FormEliminarMozo();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-*/
 	
 	public FormEliminarMozo() {
 		super();
@@ -81,6 +69,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 		}
 	}
 	
+	
 	private AbstractAction getEliminarAction() {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
@@ -95,6 +84,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 		return eliminarAction;
 	}
 	
+	
 	private AbstractAction getCerrarAction() {
 		if(cerrarAction == null) {
 			cerrarAction = new AbstractAction("Cerrar", null) {
@@ -106,6 +96,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 		return cerrarAction;
 	}
 	
+	
 	public Vector getMozosViewVector(Vector<MozoView> mozos){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mozos.size(); i++){
@@ -114,6 +105,7 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 		}
 		return mv;
 	}
+	
 	
 	public Integer getId(String s){
 		int i = 0;

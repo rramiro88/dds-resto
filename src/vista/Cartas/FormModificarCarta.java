@@ -68,21 +68,6 @@ public class FormModificarCarta extends javax.swing.JFrame {
 		return cmbDiaViejo;
 	}
 
-	private AbstractAction getAceptarAccion() {
-		if(aceptarAccion == null) {
-			aceptarAccion = new AbstractAction("MODIFICAR", null) {
-				public void actionPerformed(ActionEvent evt) {
-					if(Restaurante.getRestaurante().modificarCarta(cmbDiaViejo.getSelectedItem().toString(), cmbDiaNuevo.getSelectedItem().toString())){
-						JOptionPane.showMessageDialog(null, "Cartas modificadas con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);
-					}else{
-						JOptionPane.showMessageDialog(null, "El dia original NO posee carta o el dia destino YA posee carta asignada", "Prohibido", JOptionPane.WARNING_MESSAGE);
-					}
-				}
-			};
-		}
-		return aceptarAccion;
-	}
-	
 	private JComboBox getJComboBox1() {
 		if(cmbDiaNuevo == null) {
 			ComboBoxModel jComboBox1Model = 
@@ -103,5 +88,22 @@ public class FormModificarCarta extends javax.swing.JFrame {
 		}
 		return jLabel2;
 	}
+
+	
+	private AbstractAction getAceptarAccion() {
+		if(aceptarAccion == null) {
+			aceptarAccion = new AbstractAction("MODIFICAR", null) {
+				public void actionPerformed(ActionEvent evt) {
+					if(Restaurante.getRestaurante().modificarCarta(cmbDiaViejo.getSelectedItem().toString(), cmbDiaNuevo.getSelectedItem().toString())){
+						JOptionPane.showMessageDialog(null, "Cartas modificadas con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);
+					}else{
+						JOptionPane.showMessageDialog(null, "El dia original NO posee carta o el dia destino YA posee carta asignada", "Prohibido", JOptionPane.WARNING_MESSAGE);
+					}
+				}
+			};
+		}
+		return aceptarAccion;
+	}
+	
 
 }

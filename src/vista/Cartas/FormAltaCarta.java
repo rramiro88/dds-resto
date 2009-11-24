@@ -63,6 +63,7 @@ public class FormAltaCarta extends javax.swing.JFrame {
 		return jDias;
 	}
 
+	
 	private AbstractAction getAceptarAccion() {
 		if(aceptarAccion == null) {
 			aceptarAccion = new AbstractAction("CREAR", null) {
@@ -78,4 +79,5 @@ public class FormAltaCarta extends javax.swing.JFrame {
 		return aceptarAccion;
 	}
 
+	
 }

@@ -38,7 +38,7 @@ public class FormAltaMesa extends javax.swing.JFrame {
 			{
 				txtMesas = new JTextField();
 				getContentPane().add(txtMesas);
-				txtMesas.setText(Integer.toString(Restaurante.getRestaurante().getMesas().size()));
+				txtMesas.setText(Integer.toString(Restaurante.getRestaurante().cantidadMesas()));
 				txtMesas.setBounds(190, 30, 50, 30);
 				txtMesas.setEditable(false);
 			}
@@ -62,11 +62,12 @@ public class FormAltaMesa extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt) {
 					Restaurante.getRestaurante().altaDeMesa(false);
 					JOptionPane.showMessageDialog(null, "Mesa creada con exito", "Mensaje", JOptionPane.WARNING_MESSAGE);
+					txtMesas.setText(Integer.toString(Restaurante.getRestaurante().cantidadMesas()));
 				}
 			};
 		}
 		return aceptarAccion;
 	}
 
-	
+
 }

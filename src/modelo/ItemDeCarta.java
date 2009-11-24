@@ -28,7 +28,7 @@ public abstract class ItemDeCarta {
 	protected int getProximoNroItem(){
 		return ++ultimoNroItem;		
 	}
-	public int getNroItem() {
+	protected int getNroItem() {
 		return nroItem;
 	}
 
@@ -39,27 +39,28 @@ public abstract class ItemDeCarta {
 		this.name = name;
 	}
 
-	public float getPrecio() {
+	protected float getPrecio() {
 		return price;
 	}
 	public void setPrecio(float price) {
 		this.price = price;
 	}
 
-	public Vector<Ingrediente> getIngredientes() {
+	protected Vector<Ingrediente> getIngredientes() {
 		return ingredientes;
 	}
-	public void setIngredientes(Vector<Ingrediente> ingredientes) {
+	protected void setIngredientes(Vector<Ingrediente> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
 
-	public boolean isDisponible() {
+	protected boolean isDisponible() {
 		return disponible;
 	}
-	public void setDisponible(boolean disponible) {
+	protected void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
 
+	
 //	Metodos que operan con Ingredientes
 //	-------------------------------------------------------------	
 	private Ingrediente buscarIngrediente (Producto prod){
@@ -107,7 +108,13 @@ public abstract class ItemDeCarta {
 		}
 		return false;
 	}
-
+	
+//	Metodo get que devuelve un ItemDeCartaView para pasar a la vista
+	public ItemDeCartaView getItemDeCartaView(){
+		ItemDeCartaView icv = new ItemDeCartaView(name, price);
+		return icv;
+	}
+	
 	
 //	Metodos para preparar items de carta (platos - bebidas)
 //	-------------------------------------------------------------	
@@ -132,10 +139,6 @@ public abstract class ItemDeCarta {
 		}
 	}
 	
-	//	Metodo get que devuelve un ItemDeCartaView para pasar a la vista
-	public ItemDeCartaView getItemDeCartaView(){
-		ItemDeCartaView icv = new ItemDeCartaView(name, price);
-		return icv;
-	}
+
 	
 }

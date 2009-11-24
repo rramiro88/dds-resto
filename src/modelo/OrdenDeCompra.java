@@ -28,32 +28,12 @@ public class OrdenDeCompra {
 
 //	Metodos sets y gets para los atributos de la clase OrdenDecompra
 //	-------------------------------------------------------------	
-	public String getCuitProveedor() {
-		return cuitProveedor;
-	}
-	public void setCuitProveedor(String cuit) {
-		this.cuitProveedor = cuit;
-	}
-
-	public Vector<ItemDePedido> getItemsDePedido() {
-		return itemsDePedido;
-	}
-	public void setItemsDePedido(Vector<ItemDePedido> itemsDePedido) {
-		this.itemsDePedido = itemsDePedido;
-	}
-
 	public Proveedor getProveedor() {
 		return proveedor;
-	}
-	public void setProveedor(Proveedor proveedor) {
-		this.proveedor = proveedor;
 	}
 
 	public String getFecha() {
 		return fecha;
-	}
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
 	}
 
 //	Metodos que operan con Items de Pedido
@@ -77,23 +57,6 @@ public class OrdenDeCompra {
 			itPed = new ItemDePedido (prod, cant);
 			itemsDePedido.add(itPed);
 			System.out.println("ItemDePedido agregado a la Orden de Compra con exito.");
-		}
-	}
-	
-	public void eliminarItemDePedido(Producto prod){
-		ItemDePedido itPed = buscarItemDePedido (prod);
-		if (itPed != null){
-			itemsDePedido.remove(itPed);
-			System.out.println("ItemDePedido eliminado con exito.");
-		}
-	}
-
-	public void modificarItemDePedido(Producto prod, float cant){
-		ItemDePedido com = buscarItemDePedido (prod);
-		if (com != null){
-			com.setProducto(prod);
-			com.setCantidad(cant);
-			System.out.println("ItemDePedido modificado exitosamente.");
 		}
 	}
 

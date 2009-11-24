@@ -459,11 +459,11 @@ public class Restaurante {
 
 //	ABM - BUSCAR	Ordenes de Compra
 //	-----------------------------------------------------
-	private OrdenDeCompra buscarOrdenDeCompra (String cuitProv, String date){
+	private OrdenDeCompra buscarOrdenDeCompra (Proveedor prove, String date){
 	 	for (int i=0; i<ordenesCompra.size(); i++){
 	 		OrdenDeCompra ord = ordenesCompra.elementAt(i);
 	 		//	Busca la orden de compra segun el Proveedor
-	 		if (ord.getCuitProveedor().equals(cuitProv)){
+	 		if (ord.getProveedor().equals(prove)){
 	 			//	Compara fechas
 				if(ord.getFecha().equals(date)){
 					System.out.println("Orden de compra existente");
@@ -482,8 +482,7 @@ public class Restaurante {
 		for (int i= 0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getProveedor().equals(bajoProve)){
-				if (prod.getCantidad()<=prod.getPuntoped()){
-//					if (prod.estaBajoPuntoPedido()){//ByLEO
+				if (prod.estaBajoPuntoPedido()){
 					produc.add(prod);
 				}
 			}
@@ -491,13 +490,11 @@ public class Restaurante {
 		return produc;	//	Vector con los productos (de un proveedor) bajos en stock. 
 	}
 
-	/*	Genera las ordenes automaticamente para los productos
-		bajos en stock. Es UNA orden por proveedor, por dia.		*/
-	//QUE RECIBA U OBJETO PROVEEDOR Y QUE DENTRO SIGA UTILIZADO EL OBJETO PROVEEDOR
-	private int altaDeOrdenDeCompra (String cuitProv){
-		Proveedor prov = buscarProveedor(cuitProv);
-		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, fecha);
-		if (prov != null && ord == null){
+	/*	Genera las ordenes automaticamente para los productos bajos en stock. 
+		Es UNA orden por proveedor, por dia. El proveedor fue validado previamente.	*/
+	private int altaDeOrdenDeCompra (Proveedor prov){
+		OrdenDeCompra ord = buscarOrdenDeCompra(prov, fecha);
+		if (ord == null){
 			//	Vector generado por productosBajoPuntoPedido
 			Vector<Producto> itemsApedir = productosBajoPuntoPedido(prov);
 			//	Revisa que el vector de productos a pedir no esté vacío.
@@ -524,7 +521,7 @@ public class Restaurante {
 		int ord = 0;
 		for (int i=0; i<proveedores.size(); i++){
 			Proveedor prov = proveedores.elementAt(i);
-			int ord1 = altaDeOrdenDeCompra (prov.getCuit());
+			int ord1 = altaDeOrdenDeCompra (prov);
 			ord = ord + ord1;
 		}
 		return ord;

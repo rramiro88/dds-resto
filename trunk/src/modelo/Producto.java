@@ -8,15 +8,21 @@ public class Producto {
 	private float puntoped;
 	private float puntoreab;
 	private Proveedor proveedor;
-	//private boolean isDisponible;
+	private boolean estaBajoPuntoPedido;
 	
 	public Producto (String name, float canti, float puntop, float puntor, Proveedor prov){
 		this.nombre = name;
-		this.cantidad = canti;
-		this.puntoped = puntop;
-		this.puntoreab = puntor;
+		this.cantidad = canti;		//	cantidad existente del producto
+		this.puntoped = puntop;		//	cuando el stock es igual o menor a esta cantidad ordenar comprar
+		this.puntoreab = puntor;	//	cantidad a pedir cuando se alcanza o supera el punto de pedido
 		this.proveedor = prov;
-		//this.isDisponible = true;
+		//	estaBajoPunto de pedido depende de que producto sea menor o igual a bajo punto de pedido (o no)
+		if(canti <= puntop){
+			this.estaBajoPuntoPedido = true;
+		}else{
+			this.estaBajoPuntoPedido = false;
+		}
+			
 	}
 	
 	public ProductoView getProductoView(){
@@ -38,6 +44,8 @@ public class Producto {
 	}
 	public void setCantidad(float cantidad) {
 		this.cantidad = cantidad;
+		if (this.getCantidad() <= this.getPuntoped())
+			this.setEstaBajoPuntoPedido(true);
 	}
 
 	public float getPuntoped() {
@@ -60,23 +68,13 @@ public class Producto {
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
-
-	/*public boolean isDisponible() {
-		return isDisponible;
-	}
-	public void setDisponible(boolean isDisponible) {
-		this.isDisponible = isDisponible;
-	}
 	
-	public boolean esReducible(float cantidadTotal){
-		if (this.cantidad - cantidadTotal>=0){
-			return true;
-		}
-		return false;
+	public boolean estaBajoPuntoPedido() {
+		return estaBajoPuntoPedido;
+	}
+	private void setEstaBajoPuntoPedido(boolean estaBajoPuntoPedido) {
+		this.estaBajoPuntoPedido = estaBajoPuntoPedido;
 	}
 
-	public void reducirCantidad(float cantidadTotal){
-		this.setCantidad(this.cantidad - cantidadTotal);
-	}
-*/	
+	
 }

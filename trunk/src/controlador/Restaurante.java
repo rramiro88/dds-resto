@@ -125,62 +125,8 @@ public class Restaurante {
 	
 //	Metodos sets y gets para los atributos de Restaurante
 //	-------------------------------------------------------------	
-	public Vector<ItemDeCarta> getItemsCarta() {
-		return itemsCarta;
-	}
-	public void setItemsCarta(Vector<ItemDeCarta> itemsCarta) {
-		this.itemsCarta = itemsCarta;
-	}
 
-	public Vector<Carta> getCartas() {
-		return cartas;
-	}
-	public void setCartas(Vector<Carta> cartas) {
-		this.cartas = cartas;
-	}
 	
-	public Vector<Mozo> getMozos() {
-		return mozos;
-	}
-	public void setMozos(Vector<Mozo> mozos) {
-		this.mozos = mozos;
-	}
-	
-	public Vector<Mesa> getMesas() {
-		return mesas;
-	}
-	public void setMesas(Vector<Mesa> mesas) {
-		this.mesas = mesas;
-	}
-
-	public Vector<Comanda> getComandas() {
-		return comandas;
-	}
-	public void setComandas(Vector<Comanda> comandas) {
-		this.comandas = comandas;
-	}
-
-	public Vector<Proveedor> getProveedores() {
-		return proveedores;
-	}
-	public void setProveedores(Vector<Proveedor> proveedores) {
-		this.proveedores = proveedores;
-	}
-
-	public Vector<OrdenDeCompra> getOrdenesCompra() {
-		return ordenesCompra;
-	}
-	public void setOrdenesCompra(Vector<OrdenDeCompra> ordenesCompra) {
-		this.ordenesCompra = ordenesCompra;
-	}
-
-	public Vector<Producto> getProductos() {
-		return productos;
-	}
-	public void setProductos(Vector<Producto> productos) {
-		this.productos = productos;
-	}
-
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
@@ -194,26 +140,22 @@ public class Restaurante {
 	public void setDia(String dia) {
 		this.dia = dia;
 	}
+
 	public boolean isMesasAsignadas() {
 		return mesasAsignadas;
 	}
-	public void setMesasAsignadas(boolean mesasAsignadas) {
+	private void setMesasAsignadas(boolean mesasAsignadas) {
 		this.mesasAsignadas = mesasAsignadas;
 	}
 
 	public boolean isOpen() {
 		return open;
 	}
-	
-	public void setOpen(boolean open) {
+	private void setOpen(boolean open) {
 		this.open = open;
 	}
 
-	public Carta getCartaActiva() {
-		return cartaActiva;
-	}
-	
-	public void setCartaActiva(Carta cartaActiva) {
+	private void setCartaActiva(Carta cartaActiva) {
 		this.cartaActiva = cartaActiva;
 	}
 
@@ -242,7 +184,7 @@ public class Restaurante {
 	
 	public boolean cerrarJornada(){
 		for (int i = 0; i<mesas.size(); i++){
-			if (mesas.elementAt(i).getComanda() != null){
+			if (mesas.elementAt(i).isOcupada()){
 				System.out.println("Hay mesa/s con comandas en curso. Se deben cerrar previamente.");
 				return false;
 			}
@@ -465,7 +407,7 @@ public class Restaurante {
  		return null;
 	}
 	
-	public void altaDeProducto (String nombre, int cantidad, int pedido, int reab, Proveedor prov){
+	private void altaDeProducto (String nombre, int cantidad, int pedido, int reab, Proveedor prov){
 		Producto prod = buscarProducto(nombre);
 		if (prod == null){
 			prod = new Producto(nombre, cantidad, pedido, reab, prov);
@@ -492,10 +434,10 @@ public class Restaurante {
 		}
 	}
 	
-	public void modificarProducto (String name, float canti, float puntop, float puntor, String cuitProv){
+	public void modificarProducto (String name, float canti, float puntop, float puntor, String prove){
+		Proveedor prov = buscarProveedor(prove);
 		Producto prod = buscarProducto(name);
-		Proveedor prov = buscarProveedor(cuitProv);
-		if (prod != null){
+		if (prod != null || prov != null){
 			prod.setNombre(name);
 			prod.setCantidad(canti);
 			prod.setPuntoped(puntop);
@@ -535,12 +477,13 @@ public class Restaurante {
 
 	/*	Genera un vector con productos bajo punto de pedido, correspondientes
 		a un mismo proveedor. El vector se utiliza en altaDeOrdenDeCompra.		*/
-	public Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
+	private Vector<Producto> productosBajoPuntoPedido(Proveedor bajoProve){
 		Vector<Producto> produc = new Vector <Producto>();
 		for (int i= 0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getProveedor().equals(bajoProve)){
 				if (prod.getCantidad()<=prod.getPuntoped()){
+//					if (prod.estaBajoPuntoPedido()){//ByLEO
 					produc.add(prod);
 				}
 			}
@@ -550,7 +493,8 @@ public class Restaurante {
 
 	/*	Genera las ordenes automaticamente para los productos
 		bajos en stock. Es UNA orden por proveedor, por dia.		*/
-	public int altaDeOrdenDeCompra (String cuitProv){
+	//QUE RECIBA U OBJETO PROVEEDOR Y QUE DENTRO SIGA UTILIZADO EL OBJETO PROVEEDOR
+	private int altaDeOrdenDeCompra (String cuitProv){
 		Proveedor prov = buscarProveedor(cuitProv);
 		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, fecha);
 		if (prov != null && ord == null){
@@ -573,26 +517,6 @@ public class Restaurante {
 		}
 		//	Devuelve cero si no se creo la orden de compra.
 		return 0;
-	}
-
-	public void bajaDeOrdenDeCompra (String cuitProv, String date){
-		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
-		if (ord != null){
-			ordenesCompra.remove(ord);
-			System.out.println("Orden eliminada con exito.");
-		}
-	}
-
-	public void modificarOrdenDeCompra(String cuitProv, String date){
-		//	Valida la existencia del proveedor
-		Proveedor prov = buscarProveedor(cuitProv);
-		//	Valida la existencia de la orden de compra
-		OrdenDeCompra ord = buscarOrdenDeCompra(cuitProv, date);
-		if (prov != null && ord != null){
-				ord.setCuitProveedor(cuitProv);
-				ord.setFecha(date);
-				System.out.println("Orden de Compra modificada exitosamente.");
-		}
 	}
 
 	//	Genera todas las ordenes de compra para los productos bajos en stock

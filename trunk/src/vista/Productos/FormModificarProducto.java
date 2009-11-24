@@ -215,15 +215,6 @@ public class FormModificarProducto extends javax.swing.JFrame {
 						String sProveedor = cmbProveedores.getSelectedItem().toString().substring(0,11);
 						Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Float.parseFloat(txtCantidad.getText()), Float.parseFloat((txtPtoPedido.getText())), Float.parseFloat(txtPtoRefill.getText()), sProveedor);
 						JOptionPane.showMessageDialog(null, "Producto actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
-
-						/*String sProveedor = cmbProveedores.getSelectedItem().toString().substring(2,12);
-						if (Restaurante.getRestaurante().buscarProveedor(sProveedor) == null){
-							JOptionPane.showMessageDialog(null, "EL PROVEEDOR NO SIRVE!", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
-						}else{
-							Restaurante.getRestaurante().modificarProducto((txtNombre.getText()), Float.parseFloat(txtCantidad.getText()), Float.parseFloat((txtPtoPedido.getText())), Float.parseFloat(txtPtoRefill.getText()), Restaurante.getRestaurante().buscarProveedor(sProveedor));
-							JOptionPane.showMessageDialog(null, "Producto actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
-						}
-*/
 						txtIdBuscar.setText("");
 						txtNombre.setText("");
 						txtCantidad.setText("");

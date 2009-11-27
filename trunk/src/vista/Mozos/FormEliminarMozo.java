@@ -74,10 +74,14 @@ public class FormEliminarMozo extends javax.swing.JFrame {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					int id = getId(cmbMozos.getSelectedItem().toString());
-					Restaurante.getRestaurante().bajaDeMozo(id);
-					cmbMozos.removeItemAt(cmbMozos.getSelectedIndex());
-					JOptionPane.showMessageDialog(null, "Mozo eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+					try{
+						int id = getId(cmbMozos.getSelectedItem().toString());
+						Restaurante.getRestaurante().bajaDeMozo(id);
+						cmbMozos.removeItemAt(cmbMozos.getSelectedIndex());
+						JOptionPane.showMessageDialog(null, "Mozo eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+					}catch  (Exception e){
+						JOptionPane.showMessageDialog(null, "No hay mozos que eliminar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			};
 		}

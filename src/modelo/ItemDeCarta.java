@@ -30,7 +30,6 @@ public abstract class ItemDeCarta {
 	
 //	Metodos sets y gets para los atributos de la clase ItemDeCarta
 //	-------------------------------------------------------------	
-
 	public String getNombre() {
 		return name;
 	}

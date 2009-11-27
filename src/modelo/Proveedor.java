@@ -16,6 +16,8 @@ public class Proveedor {
 		this.domicilio = domicilio;
 	}
 	
+//	Metodo get que devuelve un ProveedorView para pasar a la vista
+//	-------------------------------------------------------------	
 	public ProveedorView getProveedorView(){
 		ProveedorView pv = new ProveedorView(cuit, razonsocial, domicilio);
 		return pv;
@@ -24,25 +26,19 @@ public class Proveedor {
 	
 //	Metodos sets y gets para los atributos de la clase Proveedor
 //	-------------------------------------------------------------		
-//	public String getRazonsocial() {
-//		return razonsocial;
-//	}
 	public void setRazonsocial(String razonsocial) {
 		this.razonsocial = razonsocial;
 	}
 
-//	public String getDomicilio() {
-//		return domicilio;
-//	}
 	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
 	}
 
-	public String getCuit() {
-		return cuit;
-	}
 	public void setCuit(String cuit) {
 		this.cuit = cuit;
+	}
+	public String getCuit() {
+		return cuit;
 	}
 	
 }

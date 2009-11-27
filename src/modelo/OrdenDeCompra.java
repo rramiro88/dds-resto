@@ -42,11 +42,9 @@ public class OrdenDeCompra {
  		for (int i=0; i<itemsDePedido.size(); i++){
  			ItemDePedido itemPed = itemsDePedido.elementAt(i);
 			if (itemPed.getProducto().equals(prod)){
-				System.out.println("Existe el ItemDePedido en la Orden de Compra");
 				return itemPed;
 			}
 		}
-		System.out.println("El ItemDePedido NO existe en esta Orden de Compra");
 		return null;
 	}
 
@@ -56,7 +54,6 @@ public class OrdenDeCompra {
 		if (itPed == null){
 			itPed = new ItemDePedido (prod, cant);
 			itemsDePedido.add(itPed);
-			System.out.println("ItemDePedido agregado a la Orden de Compra con exito.");
 		}
 	}
 

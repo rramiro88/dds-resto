@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.border.TitledBorder;
 import javax.swing.SwingUtilities;
 
 import controlador.Restaurante;
@@ -16,6 +17,19 @@ import vista.Productos.FormIngresarMercaderia;
 
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormMAIN extends javax.swing.JFrame {
 	private JButton btnIniciarDia;
 	private JButton btnCerrarDia;
@@ -49,18 +63,18 @@ public class FormMAIN extends javax.swing.JFrame {
 			getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("Restaurante");
-			this.setPreferredSize(new java.awt.Dimension(520, 400));
+			this.setPreferredSize(new java.awt.Dimension(520, 370));
 
 			{
 				btnSalir = new JButton();
 				getContentPane().add(btnSalir);
 				btnSalir.setText("CERRAR");
 				btnSalir.setAction(getSalirAccion());
-				btnSalir.setBounds(132, 300, 149, 27);
+				btnSalir.setBounds(161, 280, 190, 27);
 				getJPanel1();
 			}
 			pack();
-			this.setSize(520, 381);
+			this.setSize(512, 370);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,20 +88,20 @@ public class FormMAIN extends javax.swing.JFrame {
 				jPanel1.add(btnIniciarDia);
 				getContentPane().add(getJPanel1());
 				getContentPane().add(getJPanel3());
-				jPanel1.setBounds(12, 12, 188, 102);
-				jPanel1.setBorder(BorderFactory.createTitledBorder("JORNADA"));
+				jPanel1.setBounds(12, 12, 488, 79);
+				jPanel1.setBorder(BorderFactory.createTitledBorder(null, "JORNADA", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma",1,11), new java.awt.Color(0,0,255)));
 				jPanel1.setLayout(null);
-				jPanel1.setPreferredSize(new java.awt.Dimension(102, 188));
+				jPanel1.setForeground(new java.awt.Color(0,0,255));
 				btnIniciarDia.setText("INICIAR DIA");
 				btnIniciarDia.setAction(getAbrirDia());
-				btnIniciarDia.setBounds(24, 25, 135, 27);
+				btnIniciarDia.setBounds(25, 31, 190, 27);
 			}
 			{
 				btnCerrarDia = new JButton();
 				jPanel1.add(btnCerrarDia);
 				btnCerrarDia.setText("CERRAR DIA");
 				btnCerrarDia.setAction(getCerrarDia());
-				btnCerrarDia.setBounds(24, 57, 135, 27);
+				btnCerrarDia.setBounds(274, 31, 190, 27);
 			}
 		}
 		return jPanel1;
@@ -96,15 +110,16 @@ public class FormMAIN extends javax.swing.JFrame {
 	private JPanel getJPanel2() {
 		if(jPanel2 == null) {
 			jPanel2 = new JPanel();
-			jPanel2.setBounds(12, 205, 188, 73);
-			jPanel2.setBorder(BorderFactory.createTitledBorder("ABMs GENERALES"));
+			jPanel2.setBounds(261, 103, 237, 73);
+			jPanel2.setBorder(BorderFactory.createTitledBorder(null, "ABMs GENERALES", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma",1,11), new java.awt.Color(0,0,255)));
 			jPanel2.setLayout(null);
+			jPanel2.setForeground(new java.awt.Color(0,0,255));
 			{
 				btnABM = new JButton();
 				jPanel2.add(btnABM);
 				btnABM.setText("ABM");
 				btnABM.setAction(getABM());
-				btnABM.setBounds(27, 28, 135, 28);
+				btnABM.setBounds(26, 26, 190, 27);
 			}
 		}
 		return jPanel2;
@@ -113,9 +128,10 @@ public class FormMAIN extends javax.swing.JFrame {
 	private JPanel getJPanel3() {
 		if(jPanel3 == null) {
 			jPanel3 = new JPanel();
-			jPanel3.setBounds(12, 120, 188, 73);
-			jPanel3.setBorder(BorderFactory.createTitledBorder("VENTAS"));
+			jPanel3.setBounds(12, 103, 237, 73);
+			jPanel3.setBorder(BorderFactory.createTitledBorder(null, "VENTAS", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma",1,11), new java.awt.Color(0,0,255)));
 			jPanel3.setLayout(null);
+			jPanel3.setForeground(new java.awt.Color(0,0,255));
 			{
 				btnComandas = new JButton();
 				jPanel3.add(btnComandas);
@@ -123,7 +139,7 @@ public class FormMAIN extends javax.swing.JFrame {
 				getContentPane().add(getJPanel5());
 				btnComandas.setText("COMANDAS");
 				btnComandas.setAction(getComandas());
-				btnComandas.setBounds(26, 24, 135, 28);
+				btnComandas.setBounds(25, 24, 190, 27);
 			}
 		}
 		return jPanel3;
@@ -132,15 +148,16 @@ public class FormMAIN extends javax.swing.JFrame {
 	private JPanel getJPanel4() {
 		if(jPanel4 == null) {
 			jPanel4 = new JPanel();
-			jPanel4.setBounds(224, 120, 276, 73);
-			jPanel4.setBorder(BorderFactory.createTitledBorder("COMPRAS"));
+			jPanel4.setBounds(12, 188, 237, 73);
+			jPanel4.setBorder(BorderFactory.createTitledBorder(null, "COMPRAS", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma",1,11), new java.awt.Color(0,0,255)));
 			jPanel4.setLayout(null);
+			jPanel4.setForeground(new java.awt.Color(0,0,255));
 			{
 				btnGenerar = new JButton();
 				jPanel4.add(btnGenerar);
 				btnGenerar.setText("GENERAR ORDENES DE COMPRA");
 				btnGenerar.setAction(getGenerarOrdenesDeCompra());
-				btnGenerar.setBounds(28, 24, 222, 28);
+				btnGenerar.setBounds(26, 24, 190, 27);
 			}
 		}
 		return jPanel4;
@@ -149,16 +166,17 @@ public class FormMAIN extends javax.swing.JFrame {
 	private JPanel getJPanel5() {
 		if(jPanel5 == null) {
 			jPanel5 = new JPanel();
-			jPanel5.setBounds(224, 205, 276, 73);
-			jPanel5.setBorder(BorderFactory.createTitledBorder("STOCK"));
+			jPanel5.setBounds(261, 188, 237, 73);
+			jPanel5.setBorder(BorderFactory.createTitledBorder(null, "STOCK", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma",1,11), new java.awt.Color(0,0,255)));
 			jPanel5.setLayout(null);
+			jPanel5.setForeground(new java.awt.Color(0,0,255));
 			{
 				btnIngMerca = new JButton();
 				jPanel5.add(btnIngMerca);
 				getContentPane().add(getJPanel4());
 				btnIngMerca.setText("INGRESAR MERCADERIA");
 				btnIngMerca.setAction(getIngresarMercaderia());
-				btnIngMerca.setBounds(26, 25, 223, 28);
+				btnIngMerca.setBounds(26, 25, 190, 27);
 			}
 		}
 		return jPanel5;

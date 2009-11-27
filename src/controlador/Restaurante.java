@@ -73,21 +73,35 @@ public class Restaurante {
 		altaDeProducto("vino tinto", 20, 18, 8, prov2);
 		altaDeProducto("gaseosa naranja", 20, 4, 8, prov2);
 		altaDeProducto("gaseosa cola", 20, 4, 8, prov2);
+		altaDeProducto("agua sin gas 500cc", 200, 40, 80, prov3);
+		
 		//	Items de Carta		
-		altaDePlato("pollo con papas", 18);
-		ItemDeCarta polloPapas = buscarItemDeCarta ("pollo con papas");
+		altaDePlato("Pollo con Papas", 18);
+		ItemDeCarta polloPapas = buscarItemDeCarta ("Pollo con Papas");
 		polloPapas.agregarIngrediente(buscarProducto("pollo"), 120);
 		polloPapas.agregarIngrediente(buscarProducto("papa"), 85);
-		altaDePlato("ravioles con tuco", 12);
-		ItemDeCarta raviolesTuco = buscarItemDeCarta ("ravioles con tuco");
+		
+		altaDePlato("Ravioles con Tuco", 12);
+		ItemDeCarta raviolesTuco = buscarItemDeCarta ("Ravioles con Tuco");
 		raviolesTuco.agregarIngrediente(buscarProducto("ravioles"), 230);
 		raviolesTuco.agregarIngrediente(buscarProducto("tomate"), 35);
-		altaDeBebida("gaseosa naranja", 8);
-		ItemDeCarta gaseosa = buscarItemDeCarta ("gaseosa naranja");
+		
+		altaDePlato("Lomo con Fritas", 24);
+		ItemDeCarta lomoF = buscarItemDeCarta ("Lomo con Fritas");
+		lomoF.agregarIngrediente(buscarProducto("lomo"), 100);
+		lomoF.agregarIngrediente(buscarProducto("papa"), 150);
+		
+		altaDeBebida("Fanta Naranja", 8);
+		ItemDeCarta gaseosa = buscarItemDeCarta ("Fanta Naranja");
 		gaseosa.agregarIngrediente(buscarProducto("gaseosa naranja"), 1);
-		altaDeBebida("vino tinto", 16);
-		ItemDeCarta vinoT = buscarItemDeCarta ("vino tinto");
+		
+		altaDeBebida("Trapiche Malbec", 16);
+		ItemDeCarta vinoT = buscarItemDeCarta ("Trapiche Malbec");
 		vinoT.agregarIngrediente(buscarProducto("vino tinto"), 1);
+		
+		altaDeBebida("Agua sin Gas 500cc", 5);
+		ItemDeCarta agua = buscarItemDeCarta ("Agua sin Gas 500cc");
+		agua.agregarIngrediente(buscarProducto("agua sin gas 500cc"), 1);
 
 		//	Cartas
 		altaDeCarta("miércoles");
@@ -104,10 +118,15 @@ public class Restaurante {
 		carta3.agregarItemCarta(gaseosa);
 		carta3.agregarItemCarta(vinoT);
 		carta3.agregarItemCarta(polloPapas);
+		carta3.agregarItemCarta(agua);
+		carta3.agregarItemCarta(lomoF);
 		altaDeCarta("sábado");
 		Carta carta1 = buscarCarta("sábado");
 		carta1.agregarItemCarta(gaseosa);
 		carta1.agregarItemCarta(polloPapas);
+		carta1.agregarItemCarta(vinoT);
+		carta1.agregarItemCarta(agua);
+		carta1.agregarItemCarta(lomoF);
 	}
 /**				BORRAR LOS DATOS INGRESADOS ARRIBA
  **	------------------------------------------------------------	**/	

@@ -731,6 +731,14 @@ public class Restaurante {
 		}
 	}
 
+	public void modificarMesa(int id, boolean estado){
+		Mesa table = buscarMesa(id);
+		if (table != null){
+			table.setHabilitada(estado);
+		}
+	}
+	
+	
 	public int cantidadMesas (){
  		return (mesas.size());
  	}

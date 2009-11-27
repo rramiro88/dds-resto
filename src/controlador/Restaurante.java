@@ -242,10 +242,10 @@ public class Restaurante {
 		}
 	}
 
-	public void modificarItemDeCarta (String nombre, float precio){
-		ItemDeCarta itcar = buscarItemDeCarta(nombre);
+	public void modificarItemDeCarta (String nombreViejo, String nombreNuevo, float precio){
+		ItemDeCarta itcar = buscarItemDeCarta(nombreViejo);
 		if (itcar != null){
-			itcar.setNombre(nombre);
+			itcar.setNombre(nombreNuevo);
 			itcar.setPrecio(precio);
 			System.out.println("Item modificado con exito.");
 		}

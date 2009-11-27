@@ -33,7 +33,7 @@ public class FormEliminarIngrediente extends javax.swing.JFrame {
 		try {
 	getContentPane().setLayout(null);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			this.setTitle("Agregar Ingrediente");
+			this.setTitle("Eliminar Ingrediente");
 			{
 				btnEliminar = new JButton();
 				getContentPane().add(btnEliminar);

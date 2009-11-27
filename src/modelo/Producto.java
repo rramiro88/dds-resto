@@ -29,6 +29,8 @@ public class Producto {
 			
 	}
 
+//	Metodo get que devuelve un ProductoView para pasar a la vista
+//	-------------------------------------------------------------		
 	public ProductoView getProductoView(){
 		ProductoView pv = new ProductoView(nombre, cantidad, puntoped, puntoreab, proveedor);
 		return pv;

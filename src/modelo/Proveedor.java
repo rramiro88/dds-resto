@@ -24,16 +24,16 @@ public class Proveedor {
 	
 //	Metodos sets y gets para los atributos de la clase Proveedor
 //	-------------------------------------------------------------		
-	public String getRazonsocial() {
-		return razonsocial;
-	}
+//	public String getRazonsocial() {
+//		return razonsocial;
+//	}
 	public void setRazonsocial(String razonsocial) {
 		this.razonsocial = razonsocial;
 	}
 
-	public String getDomicilio() {
-		return domicilio;
-	}
+//	public String getDomicilio() {
+//		return domicilio;
+//	}
 	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
 	}

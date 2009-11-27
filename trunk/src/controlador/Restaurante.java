@@ -738,7 +738,6 @@ public class Restaurante {
 		}
 	}
 	
-	
 	public int cantidadMesas (){
  		return (mesas.size());
  	}

@@ -39,7 +39,7 @@ public class FormEliminarMesa extends javax.swing.JFrame {
 				btnEliminar.setAction(getAceptarAccion());
 			}
 			{
-				Vector mesasAsignadas = getMesas(Restaurante.getRestaurante().getMesasView());
+				Vector mesasAsignadas = getMesasVector(Restaurante.getRestaurante().getMesasView());
 				cmbMesas = new JComboBox(mesasAsignadas);
 				getContentPane().add(cmbMesas);
 				cmbMesas.setBounds(170, 30, 80, 30);
@@ -78,7 +78,7 @@ public class FormEliminarMesa extends javax.swing.JFrame {
 	}
 
 	
-	public Vector getMesas (Vector<MesaView> v){
+	public Vector getMesasVector (Vector<MesaView> v){
 		Vector asignadas = new Vector();
 		for (int i= 0; i < v.size(); i++){
 			asignadas.add(v.elementAt(i).getNroMesa());

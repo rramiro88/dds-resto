@@ -52,11 +52,9 @@ public abstract class ItemDeCarta {
  		for (int i=0; i<ingredientes.size(); i++){
  			Ingrediente ingred = ingredientes.elementAt(i);
 			if (ingred.getProducto().equals(prod)){
-				System.out.println("Existe el ingrediente");
 				return ingred;
 			}
 		}
-		System.out.println("El ingrediente NO existe en este item de carta");
 		return null;
 	}
 
@@ -66,7 +64,6 @@ public abstract class ItemDeCarta {
 		if (com == null){
 			com = new Ingrediente (prod, cant);
 			ingredientes.add(com);
-			System.out.println("Ingrediente agregado con exito.");
 			return true;
 		}
 		return false;
@@ -77,7 +74,6 @@ public abstract class ItemDeCarta {
 		Ingrediente com = buscarIngrediente (prod);
 		if (com != null){
 			ingredientes.remove(com);
-			System.out.println("Ingrediente eliminado del plato/bebida con exito.");
 			return true;
 		}
 		return false;

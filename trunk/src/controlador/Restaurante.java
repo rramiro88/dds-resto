@@ -107,8 +107,6 @@ public class Restaurante {
 		Carta carta1 = buscarCarta("sábado");
 		carta1.agregarItemCarta(gaseosa);
 		carta1.agregarItemCarta(polloPapas);
-
-		
 	}
 /**				BORRAR LOS DATOS INGRESADOS ARRIBA
  **	------------------------------------------------------------	**/	
@@ -122,11 +120,10 @@ public class Restaurante {
 		}
 		return restaurante;
 	}
+
 	
 //	Metodos sets y gets para los atributos de Restaurante
 //	-------------------------------------------------------------	
-
-	
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
@@ -159,17 +156,16 @@ public class Restaurante {
 		this.cartaActiva = cartaActiva;
 	}
 
+	
 //	Metodos de jornada (apertura y cierre)
 //	-------------------------------------------------------------		
 	public boolean abrirJornada(){
 		//	Revisa que exista una carta creada para asignar al presente dia
 		if (buscarCarta(dia)==null){
-				System.out.println("No hay carta activa. Crearla!!!");				
 				return false;
 			}
 		// Revisa que halla mozos y mesas disponibles para iniciar la jornada
 		if ((mozos == null) || (mesas == null)){
-				System.out.println("No hay mozos para atender o mesas para servir. Crearlos!!!");
 				return false;
 		}else{
 			//	Hay carta del dia, hay mozos y hay mesas; ergo, abre la jornada.
@@ -177,7 +173,6 @@ public class Restaurante {
 			setOpen(true);
 			//	Asignar la carta activa del dia
 			setCartaActiva(buscarCarta(dia));
-			System.out.println("Restaurante ABIERTO!!!");
 			return true;
 		}
 	}
@@ -185,7 +180,6 @@ public class Restaurante {
 	public boolean cerrarJornada(){
 		for (int i = 0; i<mesas.size(); i++){
 			if (mesas.elementAt(i).isOcupada()){
-				System.out.println("Hay mesa/s con comandas en curso. Se deben cerrar previamente.");
 				return false;
 			}
 		}
@@ -208,11 +202,9 @@ public class Restaurante {
  		for (int i=0; i<itemsCarta.size(); i++){
 			ItemDeCarta idecarta = itemsCarta.elementAt(i);
 			if (idecarta.getNombre().equals(nombre)){
-				System.out.println("Item de Carta existente");
 				return idecarta;
 			}
 		}
-		System.out.println("Item de Carta NO existe");
  		return null;
 	}
 
@@ -221,7 +213,6 @@ public class Restaurante {
 		if (itemc == null){
 			Plato redondo = new Plato (nombre, precio);
 			itemsCarta.add(redondo);
-			System.out.println("Plato creado con exito.");
 		}
 	}
 
@@ -230,7 +221,6 @@ public class Restaurante {
 		if (itemc == null){
 			Bebida vaso = new Bebida (nombre, precio);
 			itemsCarta.add(vaso);
-			System.out.println("Bebida creada con exito.");
 		}
 	}	
 
@@ -238,7 +228,6 @@ public class Restaurante {
 		ItemDeCarta itemc = buscarItemDeCarta(nombre);
 		if (itemc != null){
 			itemsCarta.remove(itemc);
-			System.out.println("Item eliminado con exito.");
 		}
 	}
 
@@ -247,7 +236,6 @@ public class Restaurante {
 		if (itcar != null){
 			itcar.setNombre(nombreNuevo);
 			itcar.setPrecio(precio);
-			System.out.println("Item modificado con exito.");
 		}
 	}
 
@@ -280,11 +268,9 @@ public class Restaurante {
  		for (int i=0; i<cartas.size(); i++){
 			Carta car = cartas.elementAt(i);
 			if (car.getDia().equals(dia)){
-				System.out.println("carta existente");
 				return car;
 			}
 		}
-		System.out.println("carta NO existe.");
  		return null;
 	}
 
@@ -323,7 +309,6 @@ public class Restaurante {
 			if (letter == null){
 				letter = new Carta (dia);
 				cartas.add(letter);
-				System.out.println("Carta creada con exito.");
 				return true;
 			}
 		}
@@ -338,7 +323,6 @@ public class Restaurante {
 			//	Revisa que la carta exista
 			if (letter != null){
 				cartas.remove(letter);
-				System.out.println("Carta eliminada con exito.");
 				return true;
 			}
 		}
@@ -355,16 +339,9 @@ public class Restaurante {
 			//	para que no pueda haber dos cartas del mismo dia.
 			Carta letterVieja = buscarCarta(diaViejo);
 			Carta letterNueva = buscarCarta(diaNuevo);
-			if (letterVieja != null){
-				if (letterNueva == null ){
-					letterVieja.setDia(diaNuevo);
-					System.out.println("Dia de Carta modificado con exito.");
-					return true;
-				}else{
-					System.out.println("La Carta Destino YA existe.");
-				}
-			}else{
-				System.out.println("La Carta Original NO existe.");
+			if (letterVieja != null || letterNueva == null ){
+				letterVieja.setDia(diaNuevo);
+				return true;
 			}
 		}
 		return false;
@@ -399,11 +376,9 @@ public class Restaurante {
  		for (int i=0; i<productos.size(); i++){
 			Producto prod = productos.elementAt(i);
 			if (prod.getNombre().equals(nombre)){
-				System.out.println("Producto existente");
 				return prod;
 			}
 		}
-		System.out.println("Producto NO existe");
  		return null;
 	}
 	
@@ -412,7 +387,6 @@ public class Restaurante {
 		if (prod == null){
 			prod = new Producto(nombre, cantidad, pedido, reab, prov);
 			productos.add(prod);
-			System.out.println("Producto creado con exito.");
 		}
 	}
 	
@@ -422,7 +396,7 @@ public class Restaurante {
 		if ((prod == null) && (proveedor != null)){
 			prod = new Producto(nombre, cantidad, pedido, reab, proveedor);
 			productos.add(prod);
-			System.out.println("Producto creado con exito.");
+
 		}
 	}
 
@@ -430,7 +404,6 @@ public class Restaurante {
 		Producto prod = buscarProducto(nombre);
 		if (prod != null){
 			productos.remove(prod);
-			System.out.println("Producto eliminado con exito.");
 		}
 	}
 	
@@ -443,7 +416,6 @@ public class Restaurante {
 			prod.setPuntoped(puntop);
 			prod.setPuntoreab(puntor);
 			prod.setProveedor(prov);
-			System.out.println("Producto modificado con exito.");
 		}		
 	}
 
@@ -452,8 +424,46 @@ public class Restaurante {
 		Producto prod = buscarProducto(produc);
 		if (prod != null){
 			prod.setCantidad(prod.getCantidad()+cantidad);
-			System.out.println("Stock de producto actualizado con exito.");
 		}
+	}
+
+	
+//	ABM - BUSCAR	Proveedores
+//	-----------------------------------------------------
+	 private Proveedor buscarProveedor (String cuit){
+	 	for (int i=0; i<proveedores.size(); i++){
+	 		Proveedor prov = proveedores.elementAt(i);
+			if (prov.getCuit().equals(cuit)){
+				return prov;
+			}
+		}
+		return null;
+	}
+
+	public void altaDeProveedor (String cuit, String razonsocial, String domicilio){
+		Proveedor prov = buscarProveedor(cuit);
+		if (prov == null){
+			prov = new Proveedor(cuit, razonsocial, domicilio);
+			proveedores.add(prov);
+		}
+	}
+
+	public void bajaDeProveedor (String cuit){
+		Proveedor prov = buscarProveedor(cuit);
+		if (prov != null){
+			proveedores.remove(prov);
+		}
+	}
+
+	public boolean modificarProveedor(String cuit, String razonsocial, String domicilio){
+		Proveedor prov = buscarProveedor(cuit);
+		if (prov != null){
+			prov.setCuit(cuit);
+			prov.setDomicilio(domicilio);
+			prov.setRazonsocial(razonsocial);
+			return true;
+		}
+		return false;
 	}
 
 
@@ -466,12 +476,10 @@ public class Restaurante {
 	 		if (ord.getProveedor().equals(prove)){
 	 			//	Compara fechas
 				if(ord.getFecha().equals(date)){
-					System.out.println("Orden de compra existente");
 					return ord;
 				}
 			}
 		}
-		System.out.println("La orden de compra NO existe");
 		return null;
 	}
 
@@ -507,7 +515,6 @@ public class Restaurante {
 				}
 				//	Agrega la orden de compra al vector de ordenes de compra
 				ordenesCompra.add(ord);
-				System.out.println("Orden de compra creada y cargada con exito.");
 				// Devuelve uno para contabilizar las ordenes de compra creadas.
 				return 1;
 			}
@@ -527,7 +534,6 @@ public class Restaurante {
 		return ord;
 	}
 	
-
 	
 //	ABM - BUSCAR	Mozos
 //	-----------------------------------------------------
@@ -535,25 +541,21 @@ public class Restaurante {
  		for (int i=0; i<mozos.size(); i++){
 			Mozo m = mozos.elementAt(i);
 			if (m.getId()==id){
-				System.out.println("Mozo existente");
 				return m;
 			}
 		}
-		System.out.println("Mozo NO existe");
  		return null;
 	}
 
 	public void altaDeMozo (String nombre, int comision, boolean habilitado){
 		Mozo mozo = new Mozo (nombre, comision, habilitado);
 		mozos.add(mozo);
-		System.out.println("Mozo creado con exito.");
 	}
 	
 	public void bajaDeMozo (int idMozo){
 		Mozo garzon = buscarMozo(idMozo);
 		if (garzon != null){
 			mozos.remove(garzon);
-			System.out.println("Mozo eliminado con exito.");
 		}
 	}
 
@@ -563,10 +565,9 @@ public class Restaurante {
 			m.setNombre(nombre);
 			m.setComision(comision);
 			m.setHabilitado(habilitado);
-			System.out.println("Mozo modificado con exito.");
-
 		}
 	}
+
 	
 	//----------------------------------------------------------
 	//	METODOS CON MESAS
@@ -581,9 +582,8 @@ public class Restaurante {
 		return mesasOk;
  	}
 	
-//	Asigna las mesas a cada mozo.
-	//	Tengo que ver cuantos son los mozos habilitados.
-	//	Va a determinar cuantas mesas quedan habilitadas y que mozo atiende que mesa.
+	//	Asigna las mesas a cada mozo.
+	//	Determina cuantas mesas quedan habilitadas y que mozo atiende cada mesa.
 	public void asignarMesas(){
 		int indice=0;
 		int i=0, j=0;
@@ -630,12 +630,21 @@ public class Restaurante {
 				}
 			}
 			setMesasAsignadas(true);
-			System.out.println("Mesas asignadas.");
-		}else{
-			System.out.println("No hay mozos habilitados o mesas disponibles");
 		}
 	}
 	
+	public void cerrarMesa (int nroMesa){
+ 		Mesa mesa = buscarMesa(nroMesa);
+ 		mesa.cerrarMesa();
+ 	}
+ 	
+ 	public float getTotalComanda(int nroMesa){
+ 		float totalMesa = 0;
+ 		Mesa m = buscarMesa(nroMesa);
+ 		if ((m != null) && (m.isOcupada()))
+ 			totalMesa = m.getTotal();
+ 		return totalMesa;
+ 	}
 	
 	//----------------------------------------------------------
 	//	METODOS CON MOZOS
@@ -654,9 +663,6 @@ public class Restaurante {
 		Mozo mozoHab = buscarMozo(idMozo);
 		if (mozoHab != null){
 			mozoHab.setHabilitado(true);
-			System.out.println("Mozo" +idMozo+ "habilitado con exito.");
-		}else{
-			System.out.println("Mozo" +idMozo+ "NO habilitado. Id no existente.");
 		}
 	}
 	
@@ -664,9 +670,6 @@ public class Restaurante {
 		Mozo mozoHab = buscarMozo(idMozo);
 		if (mozoHab != null){
 			mozoHab.setHabilitado(false);
-			System.out.println("Mozo" +idMozo+ "Inhabilitado con exito.");
-		}else{
-			System.out.println("Mozo" +idMozo+ "NO Inhabilitado. Id no existente.");
 		}
 	}
 	
@@ -713,56 +716,25 @@ public class Restaurante {
 			else
 				i++;
 		}
-		System.out.println("La mesa " + id + " no existe");
 		return null;
 	}
 
 	public void altaDeMesa (boolean habilitada){
 		Mesa mesaNew = new Mesa (habilitada);
 		mesas.add(mesaNew);
-		System.out.println("Mesa creada con exito.");
 	}
 
 	public void bajaDeMesa(int id){
 		Mesa table = buscarMesa(id);
 		if (table != null){
 			mesas.remove(table);
-			System.out.println("Mesa eliminada con exito.");
 		}
 	}
 
 	public int cantidadMesas (){
  		return (mesas.size());
  	}
-	/*public void altaDeMesa (int numeroMesa){
-		Mesa mesaNueva = buscarMesa(numeroMesa);
-		if (mesaNueva == null){
-			Mesa mesaNew = new Mesa (numeroMesa);
-			mesas.add(mesaNew);
-			System.out.println("Mesa creada con exito.");
-		}else{
-			System.out.println("La Mesa ya existe.");
-		}
-	}
-	public void habilitarMesa (int idMesa){
-		Mesa mesaHab = buscarMesa(idMesa);
-		if (mesaHab != null){
-			mesaHab.setHabilitada();
-			System.out.println("Mesa " +idMesa+ "habilitada con exito.");
-		}else{
-			System.out.println("Mesa " +idMesa+ "NO habilitada Id no existente.");
-		}
-	}
-	public void deshabilitarMesa (int idMesa){
-		Mesa mesaHab = buscarMesa(idMesa);
-		if (mesaHab != null){
-			mesaHab.setNoHabilitada();
-			System.out.println("Mesa" +idMesa+ "Inhabilitada con exito.");
-		}else{
-			System.out.println("Mesa" +idMesa+ "NO Inhabilitada. Id no existente.");
-		}
-	}
-	*/
+
 	public void abrirMesa (Mesa m){
 		Comanda c = m.abrirMesa();
 		comandas.add(c);
@@ -776,59 +748,11 @@ public class Restaurante {
 			ItemDeCarta itemCarta = cartaActiva.buscarItemDeCarta(nombreItemCarta);
 			if ((itemCarta != null) && itemCarta.esPreparable(cant)){
 				m.agregarItemComanda(cant, itemCarta);
-			}else{
-				System.out.println("En la carta del dia no existe el item o no faltan materias primas." + nombreItemCarta);
 			}
-		}else{
-			System.out.println("No existe la mesa " + nroMesa + " o no esta ocupada");
 		}
-		System.out.println("Agregado OK");
 	}
 
 	
-//	ABM - BUSCAR	Proveedores
-//	-----------------------------------------------------
-	 private Proveedor buscarProveedor (String cuit){
-	 	for (int i=0; i<proveedores.size(); i++){
-	 		Proveedor prov = proveedores.elementAt(i);
-			if (prov.getCuit().equals(cuit)){
-				System.out.println("Proveedor existente");
-				return prov;
-			}
-		}
-		System.out.println("El proveedor NO existe");
-		return null;
-	}
-
-	public void altaDeProveedor (String cuit, String razonsocial, String domicilio){
-		Proveedor prov = buscarProveedor(cuit);
-		if (prov == null){
-			prov = new Proveedor(cuit, razonsocial, domicilio);
-			proveedores.add(prov);
-			System.out.println("Proveedor creado con exito.");
-		}
-	}
-
-	public void bajaDeProveedor (String cuit){
-		Proveedor prov = buscarProveedor(cuit);
-		if (prov != null){
-			proveedores.remove(prov);
-			System.out.println("Proveedor eliminado con exito.");
-		}
-	}
-
-	public boolean modificarProveedor(String cuit, String razonsocial, String domicilio){
-		Proveedor prov = buscarProveedor(cuit);
-		if (prov != null){
-			prov.setCuit(cuit);
-			prov.setDomicilio(domicilio);
-			prov.setRazonsocial(razonsocial);
-			System.out.println("Proveedor modificado exitosamente.");
-			return true;
-		}
-		return false;
-	}
-
 	
 //	Metodos que operan con Vectores View
 //	-----------------------------------------------------
@@ -876,14 +800,6 @@ public class Restaurante {
 		}	
 		return mv;
 	}
-	// Falta mover
-	/*public Vector getProductosViewVector(){ 
-		Vector mv = new Vector();
-		for (int i= 0; i < productos.size(); i++){
-			mv.add(productos.elementAt(i).getProductoView().toVector());
-		}	
-		return mv;
-	}*/
 	
 	//	PROVEEDORES
 	public Vector<ProveedorView> getProveedoresView(){ 
@@ -913,19 +829,5 @@ public class Restaurante {
 		return mv;
  	}
  	
- 	public void cerrarMesa (int nroMesa){
- 		Mesa mesa = buscarMesa(nroMesa);
- 		mesa.cerrarMesa();
- 	}
  	
- 	public float getTotalComanda(int nroMesa){
- 		float totalMesa = 0;
- 		Mesa m = buscarMesa(nroMesa);
- 		if ((m != null) && (m.isOcupada())){
- 			totalMesa = m.getTotal();
- 		}else
- 			System.out.println("Si llegamos aca estamos en problemas");
- 		return totalMesa;
- 	}
- 		
 }

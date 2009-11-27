@@ -7,6 +7,19 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class FormABMMozo extends javax.swing.JFrame {
 	private JButton btnAlta;
 	private JButton btnModificar;
@@ -32,14 +45,14 @@ public class FormABMMozo extends javax.swing.JFrame {
 				getContentPane().add(btnAlta);
 				btnAlta.setText("CREAR MOZO");
 				btnAlta.setAction(getAltaMozoAccion());
-				btnAlta.setBounds(37, 12, 160, 35);
+				btnAlta.setBounds(55, 20, 160, 35);
 
 			}
 			{
 				btnModificar = new JButton();
 				getContentPane().add(btnModificar);
 				btnModificar.setText("MODIFICAR MOZO");
-				btnModificar.setBounds(37, 57, 160, 35);
+				btnModificar.setBounds(55, 66, 160, 35);
 				btnModificar.setAction(getModificarMozoAccion());
 			}
 			{
@@ -47,7 +60,7 @@ public class FormABMMozo extends javax.swing.JFrame {
 				getContentPane().add(btnEliminar);
 				btnEliminar.setText("ELIMINAR MOZO");
 				btnEliminar.setAction(getEliminarMozoAccion());
-				btnEliminar.setBounds(37, 102, 160, 35);
+				btnEliminar.setBounds(55, 112, 160, 35);
 
 			}
 			pack();

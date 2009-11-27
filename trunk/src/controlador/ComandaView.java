@@ -8,7 +8,7 @@ import modelo.Mozo;
 public class ComandaView {
 	
 	private Vector<ItemComanda> itemsComanda;
-	private Mozo mozo; //ver si hace falta
+	private Mozo mozo;
 	private float total;
 	
 	

@@ -11,22 +11,11 @@ public class MozoView {
 	static final String[] encabezados = {"ID", "Nombre", "Comision", "Habilitado"};
 	
 	public MozoView (int id, String nombre, int comision, boolean habilitado, float liquidacion){
-		super();
 		this.id = id;
 		this.nombre = nombre;	
 		this.comision = comision;
 		this.habilitado = habilitado;
 		this.liquidacion = liquidacion;
-	}
-	
-	public Vector toVector(){
-		Vector v = new Vector();
-		v.add(id);
-		v.add(nombre);
-		v.add(comision);
-		v.add(habilitado);
-		v.add(liquidacion);
-		return v;
 	}
 	
 	static public Vector getEncabezados() {

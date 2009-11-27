@@ -37,12 +37,4 @@ public class MesaView {
 	}
 	
 	
-	/*public Mozo getMozo(){
-		return mozo;
-	}
-	
-	public Comanda getComanda(){
-		return comandaActual;
-	}
-*/
 }

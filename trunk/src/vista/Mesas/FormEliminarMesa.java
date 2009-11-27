@@ -1,8 +1,11 @@
 package vista.Mesas;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
+
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -12,9 +15,9 @@ import controlador.*;
 
 
 public class FormEliminarMesa extends javax.swing.JFrame {
+	private JComboBox cmbMesas;
 	private JButton btnEliminar;
 	private JLabel lblCantidadMesas;
-	private JTextField txtMesas;
 	private AbstractAction aceptarAccion;
 
 	
@@ -36,10 +39,10 @@ public class FormEliminarMesa extends javax.swing.JFrame {
 				btnEliminar.setAction(getAceptarAccion());
 			}
 			{
-				txtMesas = new JTextField();
-				getContentPane().add(txtMesas);
-				txtMesas.setText("");
-				txtMesas.setBounds(170, 30, 50, 30);
+				Vector mesasAsignadas = getMesas(Restaurante.getRestaurante().getMesasView());
+				cmbMesas = new JComboBox(mesasAsignadas);
+				getContentPane().add(cmbMesas);
+				cmbMesas.setBounds(170, 30, 80, 30);
 			}
 			{
 				lblCantidadMesas = new JLabel();
@@ -59,19 +62,24 @@ public class FormEliminarMesa extends javax.swing.JFrame {
 		if(aceptarAccion == null) {
 			aceptarAccion = new AbstractAction("ELIMINAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					try{
-						Restaurante.getRestaurante().bajaDeMesa(Integer.parseInt(txtMesas.getText()));
-						JOptionPane.showMessageDialog(null, "Mesa nro "+txtMesas.getText().toString()+" eliminada", "Mensaje", JOptionPane.WARNING_MESSAGE);
-					}
-					catch  (Exception e){
-						JOptionPane.showMessageDialog(null, "Ingrese un numero de mesa.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
-						txtMesas.setText("");
-					}
+					String sMesa = cmbMesas.getSelectedItem().toString();
+					Restaurante.getRestaurante().bajaDeMesa(Integer.valueOf(sMesa));
+					JOptionPane.showMessageDialog(null, "Mesa nro "+(Integer.valueOf(sMesa))+" eliminada", "Mensaje", JOptionPane.WARNING_MESSAGE);
+					dispose();
 				}
 			};
 		}
 		return aceptarAccion;
 	}
 
+	
+	public Vector getMesas (Vector<MesaView> v){
+		Vector asignadas = new Vector();
+		for (int i= 0; i < v.size(); i++){
+			asignadas.add(v.elementAt(i).getNroMesa());
+		}
+		return asignadas;
+	}
+	
 	
 }

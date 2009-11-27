@@ -277,7 +277,7 @@ public class FormMAIN extends javax.swing.JFrame {
 							JOptionPane.showMessageDialog(null, "Ordenes de compra generadas: " +ord+"", "Atencion", JOptionPane.WARNING_MESSAGE);
 						}else{
 							//	Si el dia esta abierto, no permite generar las ordenes de compra
-							JOptionPane.showMessageDialog(null, "Jornada abierta. No se pueden generar ordenes de compra.", "Prohibido", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Jornada en curso. No se pueden generar ordenes de compra.", "Prohibido", JOptionPane.WARNING_MESSAGE);
 						}
 					}
 				});
@@ -313,7 +313,12 @@ public class FormMAIN extends javax.swing.JFrame {
 		if(getSalirAccion == null) {
 			getSalirAccion = new AbstractAction("CERRAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					dispose();
+					if(!Restaurante.getRestaurante().isOpen()){
+						JOptionPane.showMessageDialog(null, "Se cerrará el sistema. Que tenga un buen dia.", "ADIOS", JOptionPane.WARNING_MESSAGE);
+						System.exit(0);
+					}else{
+						JOptionPane.showMessageDialog(null, "Jornada en curso. No se puede salir.", "PROHIBIDO", JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			};
 		}

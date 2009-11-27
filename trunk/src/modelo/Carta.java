@@ -21,6 +21,13 @@ public class Carta {
 		itemsCarta = new Vector <ItemDeCarta>();
 	}
 
+//	Metodo get que devuelve un CartaView para pasar a la vista
+//	-------------------------------------------------------------	
+	public CartaView getCartaView(){
+		CartaView cv = new CartaView(dia);
+		return cv;
+	}
+	
 //	Metodos sets y gets para los atributos de la clase ItemDeCarta
 //	-------------------------------------------------------------	
 	public String getDia() {
@@ -34,12 +41,6 @@ public class Carta {
 		return itemsCarta;
 	}
 
-	//	Metodo get que devuelve un CartaView para pasar a la vista
-	public CartaView getCartaView(){
-		CartaView cv = new CartaView(dia);
-		return cv;
-	}
-	
 //	Metodos que operan con Platos/Bebidas de la Carta
 //	-------------------------------------------------------------	
 	public ItemDeCarta buscarItemDeCarta (String nombre){
@@ -67,6 +68,5 @@ public class Carta {
 		}
 		return false;
 	}
-
 	
 }

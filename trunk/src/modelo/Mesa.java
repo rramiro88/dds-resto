@@ -21,7 +21,8 @@ public class Mesa {
 		this.ocupada = false;
 	}
 
-	//	Metodo get que devuelve un MesaView para pasar a la vista
+//	Metodo get que devuelve un MesaView para pasar a la vista
+//	-------------------------------------------------------------	
 	public MesaView getMesaView(){
 		MesaView mv = new MesaView(nroMesa, habilitada, asignada, ocupada);
 		return mv;
@@ -88,5 +89,7 @@ public class Mesa {
 	public void agregarItemComanda(int cant, ItemDeCarta itemCarta){
 		comandaActual.agregarItemComanda(cant, itemCarta);
 	}
+	
+	
 }
 

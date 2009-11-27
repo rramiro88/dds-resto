@@ -8,12 +8,14 @@ public class Ingrediente {
 
 	
 //	Constructor de instancia ingrediente 
+//	-------------------------------------------------------------	
 	public Ingrediente (Producto product, float cant){
 		this.producto = product;
 		this.cantidad = cant;
-		//this.isFabricable = true;
 	}
 	
+//	Metodo get que devuelve un IngredienteView para pasar a la vista
+//	-------------------------------------------------------------	
 	public IngredienteView getIngredienteView(){
 		IngredienteView iv = new IngredienteView(producto, cantidad);
 		return iv;

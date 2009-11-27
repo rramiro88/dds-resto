@@ -4,8 +4,7 @@ import java.util.Vector;
 
 public class Comanda {
 	private Vector<ItemComanda> itemsComanda;
-	private Mozo mozo; //ver si hace falta
-	//private float total;
+	private Mozo mozo;
 	
 //	Constructor de instancia Comanda
 //	-------------------------------------------------------------	
@@ -13,7 +12,6 @@ public class Comanda {
 		super();
 		this.itemsComanda = new Vector<ItemComanda>();
 		this.mozo = mozo;
-		//this.total = 0;
 	}
 	
 //	Metodos que operan con Comandas
@@ -33,4 +31,5 @@ public class Comanda {
 	public Mozo getMozo() {
 		return mozo;
 	}
+
 }

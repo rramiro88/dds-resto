@@ -216,9 +216,19 @@ public class FormAltaMozo extends javax.swing.JFrame {
 	public Vector getMozosViewVector(Vector<MozoView> mozos){ 
 		Vector mv = new Vector();
 		for (int i= 0; i < mozos.size(); i++){
-			mv.add(mozos.elementAt(i).toVector());
+			mv.add(toVector(mozos.elementAt(i)));
 		}
 		return mv;
+	}
+	
+	public Vector toVector(MozoView mv){
+		Vector v = new Vector();
+		v.add(mv.getId());
+		v.add(mv.getNombre());
+		v.add(mv.getComision());
+		v.add(mv.isHabilitado());
+		v.add(mv.getLiquidacion());
+		return v;
 	}
 
 	

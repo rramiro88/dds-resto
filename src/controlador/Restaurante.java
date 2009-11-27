@@ -71,7 +71,8 @@ public class Restaurante {
 		altaDeProducto("ravioles", 1000, 550, 1000, prov2);
 		altaDeProducto("tomate", 1000, 550, 1000, prov3);		
 		altaDeProducto("vino tinto", 20, 18, 8, prov2);
-		altaDeProducto("gaseosa naranja", 20, 4, 8, prov2);		
+		altaDeProducto("gaseosa naranja", 20, 4, 8, prov2);
+		altaDeProducto("gaseosa cola", 20, 4, 8, prov2);
 		//	Items de Carta		
 		altaDePlato("pollo con papas", 18);
 		ItemDeCarta polloPapas = buscarItemDeCarta ("pollo con papas");

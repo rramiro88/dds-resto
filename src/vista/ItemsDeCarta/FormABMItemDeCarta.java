@@ -100,8 +100,8 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							FormModificarItemDeCarta inst = new FormModificarItemDeCarta();
-//							inst.setLocationRelativeTo(null);
-//							inst.setVisible(true);						
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);						
 						}
 					});
 				}
@@ -116,8 +116,8 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						FormEliminarItemDeCarta inst = new FormEliminarItemDeCarta();
-//						inst.setLocationRelativeTo(null);
-//						inst.setVisible(true);
+						inst.setLocationRelativeTo(null);
+						inst.setVisible(true);
 					}
 				});
 			}
@@ -146,10 +146,10 @@ public class FormABMItemDeCarta extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent evt){
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-/*							FormEliminarIngrediente inst = new FormEliminarIngrediente();
+							FormEliminarIngrediente inst = new FormEliminarIngrediente();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
-*/						}
+						}
 					});
 				}
 		};

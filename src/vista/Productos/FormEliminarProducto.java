@@ -76,10 +76,14 @@ public class FormEliminarProducto extends javax.swing.JFrame {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
 				public void actionPerformed(ActionEvent evt) {
-					String nombre = getNombreProducto(cmbProductos.getSelectedItem().toString());
-					Restaurante.getRestaurante().bajaDeProducto(nombre);
-					cmbProductos.removeItemAt(cmbProductos.getSelectedIndex());
-					JOptionPane.showMessageDialog(null, "Producto eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+					try{
+						String nombre = getNombreProducto(cmbProductos.getSelectedItem().toString());
+						Restaurante.getRestaurante().bajaDeProducto(nombre);
+						cmbProductos.removeItemAt(cmbProductos.getSelectedIndex());
+						JOptionPane.showMessageDialog(null, "Producto eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+					}catch  (Exception e){
+						JOptionPane.showMessageDialog(null, "No hay productos que eliminar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			};
 		}

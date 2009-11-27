@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,11 +18,12 @@ import controlador.*;
 
 
 
-
 public class FormModificarItemDeCarta extends javax.swing.JFrame {
 	private JLabel lblNombre;
 	private JLabel jLabel1;
 	private JLabel lblPrecio;
+
+	private JComboBox cmbItems;
 
 	private JPanel jPanel1;
 
@@ -30,13 +32,11 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 	private JButton btnModificar;
 
 	private JTextField txtNombre;
-	private JTextField txtIdBuscar;
 	private JTextField txtPrecio;
 
 	private AbstractAction modificarAction;
 	private AbstractAction buscarAction;
 	private AbstractAction cerrarAction;
-
 
 
 	public FormModificarItemDeCarta() {
@@ -51,15 +51,16 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			getContentPane().setLayout(null);
 			this.setPreferredSize(new java.awt.Dimension(400, 250));
 			{
+				Vector vp = getItemsViewVector(Restaurante.getRestaurante().getItemsDeCartaView());
+				cmbItems = new JComboBox(vp);
+				getContentPane().add(cmbItems);
+				cmbItems.setBounds(115, 15, 168, 21);
+			}
+			{
 				lblNombre = new JLabel();
 				getContentPane().add(lblNombre);
 				lblNombre.setText("PLATO/BEBIDA: ");
 				lblNombre.setBounds(20, 15, 95, 21);
-			}
-			{
-				txtIdBuscar = new JTextField();
-				getContentPane().add(txtIdBuscar);
-				txtIdBuscar.setBounds(130, 15, 145, 21);
 			}
 			{
 				btnBuscar = new JButton();
@@ -144,26 +145,18 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			if(buscarAction == null) {
 				buscarAction = new AbstractAction("Buscar", null) {
 					public void actionPerformed(ActionEvent evt) {
-						try{
-							Vector icv = Restaurante.getRestaurante().getItemsDeCartaView();
-							int i = 0;
-							txtNombre.setText("");
-							txtPrecio.setText("");
-							do{
-								ItemDeCartaView iv = ((ItemDeCartaView)icv.elementAt(i));
-								if (iv.getNombre().equals(txtIdBuscar.getText())){
-									txtNombre.setText(txtIdBuscar.getText());
-									txtPrecio.setText(Float.toString(iv.getPrecio()));
-									break;
-								}else
-									++i;
-							}while (i<icv.size());
-							if (i==icv.size())
-								JOptionPane.showMessageDialog(null, "No se encontro el plato/bebida.", "Atencion", JOptionPane.WARNING_MESSAGE);
-						}
-						catch (Exception e){
-							JOptionPane.showMessageDialog(null, "Debe ingresar el nombre del plato/bebida a buscar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
-							txtIdBuscar.setText("");
+						String nombre = cmbItems.getSelectedItem().toString();
+						Vector icv = Restaurante.getRestaurante().getItemsDeCartaView();
+						txtNombre.setText("");
+						txtPrecio.setText("");
+						for (int i = 0; i<icv.size(); i++){
+							ItemDeCartaView iv = ((ItemDeCartaView)icv.elementAt(i));
+							if (iv.getNombre().equals(nombre)){
+								txtNombre.setText(nombre);
+								txtPrecio.setText(Float.toString(iv.getPrecio()));
+							}
+						if (i==icv.size())
+							JOptionPane.showMessageDialog(null, "No se encontro el plato/bebida.", "Atencion", JOptionPane.WARNING_MESSAGE);
 						}
 					}
 				};
@@ -178,12 +171,10 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 						try{
 							Restaurante.getRestaurante().modificarItemDeCarta(txtNombre.getText(), Float.parseFloat(txtPrecio.getText()));
 							JOptionPane.showMessageDialog(null, "Plato/bebida actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
-							txtIdBuscar.setText("");
 							txtNombre.setText("");
 							txtPrecio.setText("");
 						}catch (Exception e){
 							JOptionPane.showMessageDialog(null, "No se pudo actualizar. Llame al admin del sistema.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
-							txtIdBuscar.setText("");
 						}
 					}
 				};
@@ -191,5 +182,15 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 			return modificarAction;
 		}
 		
+		
+	public Vector getItemsViewVector(Vector<ItemDeCartaView> vpv){
+		Vector mv = new Vector();
+		for (int i= 0; i < vpv.size(); i++){
+			String aux = String.valueOf(vpv.elementAt(i).getNombre()); 
+			mv.add(aux);
+		}
+		return mv;
+	}
+
 
 }

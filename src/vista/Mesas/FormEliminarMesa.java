@@ -62,10 +62,15 @@ public class FormEliminarMesa extends javax.swing.JFrame {
 		if(aceptarAccion == null) {
 			aceptarAccion = new AbstractAction("ELIMINAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					String sMesa = cmbMesas.getSelectedItem().toString();
-					Restaurante.getRestaurante().bajaDeMesa(Integer.valueOf(sMesa));
-					JOptionPane.showMessageDialog(null, "Mesa nro "+(Integer.valueOf(sMesa))+" eliminada", "Mensaje", JOptionPane.WARNING_MESSAGE);
-					dispose();
+					try{
+						String sMesa = cmbMesas.getSelectedItem().toString();
+						Restaurante.getRestaurante().bajaDeMesa(Integer.valueOf(sMesa));
+						JOptionPane.showMessageDialog(null, "Mesa nro "+(Integer.valueOf(sMesa))+" eliminada", "Mensaje", JOptionPane.WARNING_MESSAGE);
+						dispose();
+					}catch  (Exception e){
+						JOptionPane.showMessageDialog(null, "No hay mesas que eliminar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						dispose();
+					}
 				}
 			};
 		}

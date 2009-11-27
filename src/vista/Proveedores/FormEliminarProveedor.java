@@ -75,10 +75,15 @@ public class FormEliminarProveedor extends javax.swing.JFrame {
 		if(eliminarAction == null) {
 			eliminarAction = new AbstractAction("Eliminar", null) {
 				public void actionPerformed(ActionEvent evt) {
+					try{
 					String cuit = cmbProveedores.getSelectedItem().toString().substring(0,11);
 					Restaurante.getRestaurante().bajaDeProveedor(cuit);
 					cmbProveedores.removeItemAt(cmbProveedores.getSelectedIndex());
 					JOptionPane.showMessageDialog(null, "Proveedor eliminado con exito.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+					}catch  (Exception e){
+						JOptionPane.showMessageDialog(null, "No hay proveedores que eliminar.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+						dispose();
+					}
 				}
 			};
 		}

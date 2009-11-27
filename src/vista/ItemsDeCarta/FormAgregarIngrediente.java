@@ -52,13 +52,13 @@ public class FormAgregarIngrediente extends javax.swing.JFrame {
 				lblItem = new JLabel();
 				getContentPane().add(lblItem);
 				lblItem.setText("Plato/Bebida:");
-				lblItem.setBounds(10, 20, 70, 25);
+				lblItem.setBounds(10, 20, 81, 25);
 			}
 			{
 				lblProd = new JLabel();
 				getContentPane().add(lblProd);
 				lblProd.setText("Productos:");
-				lblProd.setBounds(10, 65, 70, 25);
+				lblProd.setBounds(10, 65, 81, 25);
 			}
 			{
 				lblCanti = new JLabel();
@@ -70,13 +70,13 @@ public class FormAgregarIngrediente extends javax.swing.JFrame {
 				Vector it = getProductosViewVector(Restaurante.getRestaurante().getProductosView());
 				cmbProductos = new JComboBox(it);
 				getContentPane().add(cmbProductos);
-				cmbProductos.setBounds(100, 65, 180, 25);
+				cmbProductos.setBounds(103, 65, 177, 25);
 			}
 			{
 				Vector vp = getItemsViewVector(Restaurante.getRestaurante().getItemsDeCartaView());
 				cmbItems = new JComboBox(vp);
 				getContentPane().add(cmbItems);
-				cmbItems.setBounds(100, 20, 180, 25);
+				cmbItems.setBounds(103, 20, 177, 25);
 			}
 			{
 				txtCanti = new JTextField();
@@ -95,13 +95,19 @@ public class FormAgregarIngrediente extends javax.swing.JFrame {
 		if(agregarAccion == null) {
 			agregarAccion = new AbstractAction("AGREGAR", null) {
 				public void actionPerformed(ActionEvent evt) {
-					String plabeb = cmbItems.getSelectedItem().toString();
-					String producto = cmbProductos.getSelectedItem().toString();
-					if( Restaurante.getRestaurante().cargarIngrediente( plabeb, producto , Integer.parseInt(txtCanti.getText()) ) ){
-						JOptionPane.showMessageDialog(null, "Ingrediente agregado con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);
-					}else{
-						JOptionPane.showMessageDialog(null, "El Plato/Bebida ya posee el ingrediente", "Prohibido", JOptionPane.WARNING_MESSAGE);
+					try{
+						String plabeb = cmbItems.getSelectedItem().toString();
+						String producto = cmbProductos.getSelectedItem().toString();
+						if( Restaurante.getRestaurante().cargarIngrediente( plabeb, producto , Integer.parseInt(txtCanti.getText()) ) ){
+							JOptionPane.showMessageDialog(null, "Ingrediente agregado con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);
+						}else{
+							JOptionPane.showMessageDialog(null, "El Plato/Bebida ya posee el ingrediente", "Prohibido", JOptionPane.WARNING_MESSAGE);
+						}
 					}
+					catch  (Exception e){
+						JOptionPane.showMessageDialog(null, "La cantidad debe ser un valor numérico entero.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
+					}
+
 				}
 			};
 		}

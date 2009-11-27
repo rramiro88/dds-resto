@@ -70,6 +70,7 @@ public class FormAltaCarta extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent evt) {
 					if(Restaurante.getRestaurante().altaDeCarta(jDias.getSelectedItem().toString())){
 						JOptionPane.showMessageDialog(null, "Carta creada con exito.", "MENSAJE", JOptionPane.WARNING_MESSAGE);
+						dispose();
 					}else{
 						JOptionPane.showMessageDialog(null, "El dia YA posee carta asignada", "Prohibido", JOptionPane.WARNING_MESSAGE);
 					}

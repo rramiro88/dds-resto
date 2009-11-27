@@ -31,7 +31,6 @@ public class FormInicioSistema extends javax.swing.JFrame {
 	private AbstractAction salirAccion;
 	
 
-//	Auto-generated main method to display this JFrame
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -42,8 +41,8 @@ public class FormInicioSistema extends javax.swing.JFrame {
 		});
 	}
 	
-	//	Metodo que genera la fecha y dia actual en texto
-	//	Para cargarlos al inicio en Restaurante.java.
+	//	Se genera la fecha y dia actual en texto
+	//	para cargarlos al inicio en Restaurante.java
 	Date date = Calendar.getInstance().getTime();
 	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	String fecha = formatter.format(date);
@@ -120,10 +119,9 @@ public class FormInicioSistema extends javax.swing.JFrame {
 						FormMAIN inst = new FormMAIN();
 						inst.setLocationRelativeTo(null);
 						inst.setVisible(true);
+						dispose();
 					}else{
 						JOptionPane.showMessageDialog(null, "Dia actual no es un dia de la semana.", "ERROR", JOptionPane.WARNING_MESSAGE);
-						txtDiaActual.setText("");
-						txtFecha.setText("");
 					}
 				}
 			};

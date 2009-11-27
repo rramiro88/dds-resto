@@ -169,10 +169,12 @@ public class FormModificarItemDeCarta extends javax.swing.JFrame {
 				modificarAction = new AbstractAction("Modificar", null) {
 					public void actionPerformed(ActionEvent evt) {
 						try{
-							Restaurante.getRestaurante().modificarItemDeCarta(txtNombre.getText(), Float.parseFloat(txtPrecio.getText()));
+							String nombre = cmbItems.getSelectedItem().toString();
+							Restaurante.getRestaurante().modificarItemDeCarta(nombre, txtNombre.getText(), Float.parseFloat(txtPrecio.getText()));
 							JOptionPane.showMessageDialog(null, "Plato/bebida actualizado con exito.", "Actualizacion de Datos", JOptionPane.INFORMATION_MESSAGE);
 							txtNombre.setText("");
 							txtPrecio.setText("");
+							dispose();
 						}catch (Exception e){
 							JOptionPane.showMessageDialog(null, "No se pudo actualizar. Llame al admin del sistema.", "Error en la carga de datos", JOptionPane.WARNING_MESSAGE);
 						}

@@ -8,6 +8,7 @@ import modelo.Mozo;
 
 public class MesaView {
 	private int nroMesa;
+	private boolean habilitada;
 	private boolean asignada;
 	private boolean ocupada;
 	//private Mozo mozo;
@@ -15,10 +16,11 @@ public class MesaView {
 	static final String[] encabezados = {"NroMesa", "Mozo", "ComandaActual"};
 
 	
-	public MesaView(int nro, boolean asignada, boolean ocupada)
+	public MesaView(int nro, boolean habilitada, boolean asignada, boolean ocupada)
 	{
 		super();
 		this.nroMesa = nro;
+		this.habilitada = habilitada;
 		this.asignada = asignada;
 		this.ocupada = ocupada;
 	}
@@ -44,6 +46,10 @@ public class MesaView {
 	public int getNroMesa()
 	{
 		return nroMesa;
+	}
+	
+	public boolean isHabilitada() {
+		return habilitada;
 	}
 
 	public boolean isAsignada() {

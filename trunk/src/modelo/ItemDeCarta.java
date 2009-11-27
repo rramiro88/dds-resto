@@ -9,28 +9,27 @@ public abstract class ItemDeCarta {
 	protected String name;
 	protected float price;
 	protected Vector <Ingrediente> ingredientes;
-	public boolean disponible;
-	protected int nroItem;
-	protected static int ultimoNroItem = 0;
 
+	
 //	Constructor de instancia ItemDeCarta
 //	-------------------------------------------------------------	
 	public ItemDeCarta (String nombre, float precio){
 		this.name = nombre;
 		this.price = precio;
 		ingredientes = new Vector<Ingrediente>();
-		this.disponible = true;
-		nroItem = getProximoNroItem();
 	}
 
+	
+//	Metodo que genera un ItemDeCartaView para pasar a la vista
+//	-------------------------------------------------------------	
+	public ItemDeCartaView getItemDeCartaView(){
+		ItemDeCartaView icv = new ItemDeCartaView(name, price);
+		return icv;
+	}
+
+	
 //	Metodos sets y gets para los atributos de la clase ItemDeCarta
 //	-------------------------------------------------------------	
-	protected int getProximoNroItem(){
-		return ++ultimoNroItem;		
-	}
-	protected int getNroItem() {
-		return nroItem;
-	}
 
 	public String getNombre() {
 		return name;
@@ -39,25 +38,11 @@ public abstract class ItemDeCarta {
 		this.name = name;
 	}
 
-	protected float getPrecio() {
+	public float getPrecio() {
 		return price;
 	}
 	public void setPrecio(float price) {
 		this.price = price;
-	}
-
-	protected Vector<Ingrediente> getIngredientes() {
-		return ingredientes;
-	}
-	protected void setIngredientes(Vector<Ingrediente> ingredientes) {
-		this.ingredientes = ingredientes;
-	}
-
-	protected boolean isDisponible() {
-		return disponible;
-	}
-	protected void setDisponible(boolean disponible) {
-		this.disponible = disponible;
 	}
 
 	
@@ -97,25 +82,8 @@ public abstract class ItemDeCarta {
 		}
 		return false;
 	}
+	
 
-	public boolean modificarIngrediente(Producto prod, float cant){
-		Ingrediente com = buscarIngrediente (prod);
-		if (com != null){
-			com.setProducto(prod);
-			com.setCantidad(cant);
-			System.out.println("Ingrediente modificado exitosamente.");
-			return true;
-		}
-		return false;
-	}
-	
-//	Metodo get que devuelve un ItemDeCartaView para pasar a la vista
-	public ItemDeCartaView getItemDeCartaView(){
-		ItemDeCartaView icv = new ItemDeCartaView(name, price);
-		return icv;
-	}
-	
-	
 //	Metodos para preparar items de carta (platos - bebidas)
 //	-------------------------------------------------------------	
 	/*	Revisa que la cantidad total de ingrediente alcance para
@@ -138,7 +106,6 @@ public abstract class ItemDeCarta {
 			ing.usar((ing.getCantidad()*cantidadItemsDeCarta));
 		}
 	}
-	
 
 	
 }
